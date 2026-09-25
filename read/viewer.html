@@ -47,7 +47,8 @@
   .zoom-controls button{min-width:38px;border:1px solid var(--forest);background:#fff;color:var(--forest);border-radius:999px;padding:7px 12px;font:600 .85rem var(--sans);cursor:pointer}
   .zoom-controls button:hover:not(:disabled){background:var(--forest);color:#fff}
   .zoom-controls button:disabled{opacity:.4;cursor:not-allowed}
-  #zoomLevel{min-width:48px;text-align:center;font-size:.82rem;color:var(--muted)}
+  #zoomLevel{width:68px;border:1px solid var(--line);border-radius:8px;padding:7px 6px;text-align:center;font:500 .85rem var(--sans);color:var(--text)}
+  .zoom-percent{font-size:.82rem;color:var(--muted);margin-left:-5px}
   #pageCounter{min-width:100px;text-align:center;font-size:.9rem;color:var(--muted)}
   .flip-progress{height:4px;background:rgba(4,70,56,.12);margin-top:18px;border-radius:99px;overflow:hidden}
   .flip-progress span{display:block;height:100%;background:var(--amber);width:0;transition:width .3s ease}
@@ -82,32 +83,15 @@
   </div>
 
   <div class="reader-layout" id="readerLayout">
-    <aside class="chapter-panel" id="chapterPanel" aria-label="Playbook chapters">
-      <h2>Chapters</h2>
-      <nav class="chapter-list" id="chapterList" aria-label="Go to chapter">
-        <button type="button" data-page="2">How to Use This Playbook</button>
-        <button type="button" data-page="5">Part I — Introduction</button>
-        <button type="button" data-page="11">Part II — Shared Definitions</button>
-        <button type="button" data-page="18">Part III — Evidence Base</button>
-        <button type="button" data-page="23">Part IV — Why Partnerships Stall</button>
-        <button type="button" data-page="34">Part V — Actor Incentives &amp; Political Economy</button>
-        <button type="button" data-page="46">Part VI — Systems Beneath the Models</button>
-        <button type="button" data-page="51">Part VII — Model Selection</button>
-        <button type="button" data-page="57">Part VIII — Aggregation &amp; Warehouse Platforms</button>
-        <button type="button" data-page="66">Part IX — Project Preparation &amp; Guarantees</button>
-        <button type="button" data-page="76">Part X — Predictable Delivery Networks</button>
-        <button type="button" data-page="87">Part XI — Sector Pathways</button>
-        <button type="button" data-page="97">Part XII — Country Adaptation</button>
-        <button type="button" data-page="104">Part XIII — Transaction Toolkit</button>
-        <button type="button" data-page="106">Part XIV — Monitoring &amp; Learning</button>
-        <button type="button" data-page="113">Part XV — Synthesis</button>
-        <button type="button" data-page="115">Annexes</button>
-      </nav>
+    <aside class="chapter-panel" id="chapterPanel" aria-label="Document contents">
+      <h2 id="chapterHeading">Contents</h2>
+      <nav class="chapter-list" id="chapterList" aria-label="Go to section"></nav>
     </aside>
     <div class="flipbook-shell" id="flipbookShell">
       <div class="zoom-controls" aria-label="Zoom controls">
         <button type="button" id="zoomOut" aria-label="Zoom out">&minus;</button>
-        <span id="zoomLevel" aria-live="polite">100%</span>
+        <input type="number" id="zoomLevel" aria-label="Zoom percentage" min="0" max="200" step="1" value="100">
+        <span class="zoom-percent" aria-hidden="true">%</span>
         <button type="button" id="zoomIn" aria-label="Zoom in">+</button>
         <button type="button" id="zoomReset">Fit</button>
       </div>
@@ -146,7 +130,8 @@
   var title = document.getElementById('docTitle');
   var readerLayout = document.getElementById('readerLayout');
   var flipbook = document.getElementById('flipbook');
-  var chapterButtons = document.querySelectorAll('#chapterList button');
+  var chapterList = document.getElementById('chapterList');
+  var chapterHeading = document.getElementById('chapterHeading');
   var zoomIn = document.getElementById('zoomIn');
   var zoomOut = document.getElementById('zoomOut');
   var zoomReset = document.getElementById('zoomReset');
@@ -166,17 +151,117 @@
   var pdfLoading = 0;
   var pages = [];
   var activeFile = '';
-  var zoomLevel = 1;
+  var zoomPercent = 100;
   var flipTimer = null;
   var navigationToken = 0;
   var renderTasks = new WeakMap();
+  var documentSections = {
+    'capital-mobilization-playbook.pdf': [
+      [2, 'How to Use This Playbook'],
+      [5, 'Part I — Introduction'],
+      [11, 'Part II — Shared Definitions'],
+      [18, 'Part III — Evidence Base'],
+      [23, 'Part IV — Why Partnerships Stall'],
+      [34, 'Part V — Actor Incentives & Political Economy'],
+      [46, 'Part VI — Systems Beneath the Models'],
+      [51, 'Part VII — Model Selection'],
+      [57, 'Part VIII — Aggregation & Warehouse Platforms'],
+      [66, 'Part IX — Project Preparation & Guarantees'],
+      [76, 'Part X — Predictable Delivery Networks'],
+      [87, 'Part XI — Sector Pathways'],
+      [97, 'Part XII — Country Adaptation'],
+      [104, 'Part XIII — Transaction Toolkit'],
+      [106, 'Part XIV — Monitoring & Learning'],
+      [113, 'Part XV — Synthesis'],
+      [115, 'Annexes']
+    ],
+    'executive-summary.pdf': [
+      [2, 'From Social Impact to Deployable Partnership Pathways'],
+      [5, 'Why Partnerships Stall Before They Scale'],
+      [7, 'From Diagnosis to Design: Choosing the Right Partnership Model'],
+      [10, 'Translating Models into Sector and Country Pathways'],
+      [11, 'System Readiness Before Scale'],
+      [12, 'From Insight to Action: What Institutions Should Do Differently'],
+      [13, 'From Models to Execution'],
+      [14, 'Conclusion']
+    ],
+    'case-study-babban-gona.pdf': [
+      [3, 'I. Case Snapshot'],
+      [5, 'II. Status Quo'],
+      [6, 'III. Playbook Diagnostic Framework'],
+      [7, 'IV. Constraint Diagnosis'],
+      [8, 'V. Why Model 1 Was Selected'],
+      [9, 'VI. Partnership Architecture'],
+      [11, 'VII. Capital and Incentive Alignment'],
+      [14, 'VIII. Governance and Coordination'],
+      [15, 'IX. Results and Scale'],
+      [17, 'X. Limits, Risks and Transferability'],
+      [18, 'XI. Strategic Insights and Recommendations'],
+      [19, 'Annex — Detailed Partner Roles']
+    ],
+    'case-study-kcb.pdf': [
+      [3, 'I. Case Snapshot'],
+      [4, 'II. Status Quo'],
+      [5, 'III. Playbook Diagnostic Framework'],
+      [6, 'IV. Constraint Diagnosis'],
+      [7, 'V. Why Model 2 Was Selected'],
+      [8, 'VI. Partnership Architecture'],
+      [10, 'VII. Capital and Incentive Alignment'],
+      [13, 'VIII. Governance and Coordination'],
+      [14, 'IX. Results and Scale'],
+      [16, 'X. Limits, Risks and Transferability'],
+      [17, 'XI. Strategic Insights and Recommendations'],
+      [18, 'Annex — Detailed Partner Roles']
+    ],
+    'case-study-ltwp.pdf': [
+      [3, 'I. Case Snapshot'],
+      [4, 'II. Status Quo'],
+      [5, 'III. Playbook Diagnostic Framework'],
+      [6, 'IV. Constraint Diagnosis'],
+      [7, 'V. Why Model 2 Was Selected'],
+      [8, 'VI. Partnership Architecture'],
+      [11, 'VII. Capital and Incentive Alignment'],
+      [14, 'VIII. Governance and Coordination'],
+      [15, 'IX. Results and Scale'],
+      [18, 'X. Limits, Risks and Transferability'],
+      [20, 'XI. Strategic Insights and Recommendations'],
+      [22, 'Annex — Detailed Partner Roles']
+    ],
+    'case-study-rutf.pdf': [
+      [3, 'I. Case Snapshot'],
+      [4, 'II. Status Quo'],
+      [5, 'III. Playbook Diagnostic Framework'],
+      [6, 'IV. Constraint Diagnosis'],
+      [7, 'V. Why Model 3 Was Selected'],
+      [8, 'VI. Partnership Architecture'],
+      [10, 'VII. Capital and Incentive Alignment'],
+      [13, 'VIII. Governance and Coordination'],
+      [14, 'IX. Results and Scale'],
+      [16, 'X. Limits, Risks and Transferability'],
+      [17, 'XI. Strategic Insights and Recommendations'],
+      [18, 'Annex — Detailed Partner Roles']
+    ]
+  };
+  function renderDocumentSections(file){
+    var sections = documentSections[file] || [];
+    chapterList.innerHTML = '';
+    chapterHeading.textContent = file === 'capital-mobilization-playbook.pdf' ? 'Chapters' : 'Contents';
+    sections.forEach(function(section){
+      var button = document.createElement('button');
+      button.type = 'button';
+      button.setAttribute('data-page', section[0]);
+      button.textContent = section[1];
+      chapterList.appendChild(button);
+    });
+    readerLayout.classList.toggle('chapters-visible', sections.length > 0);
+  }
   function updateZoomControls(){
     var availableWidth = flipbookShell.clientWidth - parseFloat(window.getComputedStyle(flipbookShell).paddingLeft) - parseFloat(window.getComputedStyle(flipbookShell).paddingRight);
     var baseWidth = Math.min(794, availableWidth);
-    flipbook.style.width = Math.round(baseWidth * zoomLevel) + 'px';
-    zoomLabel.textContent = Math.round(zoomLevel * 100) + '%';
-    zoomOut.disabled = zoomLevel <= 0.75;
-    zoomIn.disabled = zoomLevel >= 2.25;
+    flipbook.style.width = Math.max(1, Math.round(baseWidth * zoomPercent / 100)) + 'px';
+    zoomLabel.value = zoomPercent;
+    zoomOut.disabled = zoomPercent <= 0;
+    zoomIn.disabled = zoomPercent >= 200;
   }
   function renderVisiblePages(){
     if(!pdfDocument || !pages.length) return Promise.resolve();
@@ -190,7 +275,7 @@
     ]);
   }
   function setZoom(nextZoom){
-    zoomLevel = Math.max(0.75, Math.min(2.25, Math.round(nextZoom * 100) / 100));
+    zoomPercent = Math.max(0, Math.min(200, Math.round(nextZoom)));
     updateZoomControls();
     renderVisiblePages().catch(function(error){
       console.error('Unable to render the PDF at the selected zoom level.', error);
@@ -248,7 +333,7 @@
       var previousTask = renderTasks.get(canvas);
       if(previousTask) previousTask.cancel();
       var baseViewport = page.getViewport({scale:1});
-      var scale = 1.8 * zoomLevel;
+      var scale = Math.max(0.01, 1.8 * zoomPercent / 100);
       var viewport = page.getViewport({scale:scale});
       canvas.width = viewport.width;
       canvas.height = viewport.height;
@@ -270,11 +355,11 @@
     next.disabled = pageIndex === pages.length - 1;
     progress.style.width = (pages.length > 1 ? pageIndex / (pages.length - 1) * 100 : 100) + '%';
     var activeChapterPage = 0;
-    chapterButtons.forEach(function(button){
+    chapterList.querySelectorAll('button').forEach(function(button){
       var chapterPage = Number(button.getAttribute('data-page'));
       if(chapterPage <= pageIndex + 1 && chapterPage > activeChapterPage) activeChapterPage = chapterPage;
     });
-    chapterButtons.forEach(function(button){
+    chapterList.querySelectorAll('button').forEach(function(button){
       if(Number(button.getAttribute('data-page')) === activeChapterPage) button.setAttribute('aria-current', 'page');
       else button.removeAttribute('aria-current');
     });
@@ -316,8 +401,8 @@
     dl.href = '../downloads/' + file;
     nt.href = '../downloads/' + file;
     buildPages(file);
-    readerLayout.classList.toggle('chapters-visible', file === 'capital-mobilization-playbook.pdf');
-    if(zoomLevel !== 1) setZoom(1);
+    renderDocumentSections(file);
+    if(zoomPercent !== 100) setZoom(100);
     title.textContent = label;
     tabs.forEach(function(b){ b.classList.remove('active'); });
     if (btn) btn.classList.add('active');
@@ -330,11 +415,23 @@
   });
   prev.addEventListener('click', function(){ turn(-1); });
   next.addEventListener('click', function(){ turn(1); });
-  zoomIn.addEventListener('click', function(){ setZoom(zoomLevel + 0.25); });
-  zoomOut.addEventListener('click', function(){ setZoom(zoomLevel - 0.25); });
-  zoomReset.addEventListener('click', function(){ setZoom(1); });
-  chapterButtons.forEach(function(button){
-    button.addEventListener('click', function(){ goToPage(Number(button.getAttribute('data-page'))); });
+  zoomIn.addEventListener('click', function(){ setZoom(zoomPercent + 1); });
+  zoomOut.addEventListener('click', function(){ setZoom(zoomPercent - 1); });
+  zoomLabel.addEventListener('change', function(){
+    var enteredZoom = Number(zoomLabel.value);
+    if(zoomLabel.value === '' || !Number.isFinite(enteredZoom)){
+      updateZoomControls();
+      return;
+    }
+    setZoom(enteredZoom);
+  });
+  zoomLabel.addEventListener('keydown', function(event){
+    if(event.key === 'Enter') zoomLabel.blur();
+  });
+  zoomReset.addEventListener('click', function(){ setZoom(100); });
+  chapterList.addEventListener('click', function(event){
+    var button = event.target.closest('button[data-page]');
+    if(button && chapterList.contains(button)) goToPage(Number(button.getAttribute('data-page')));
   });
   window.addEventListener('resize', updateZoomControls);
   document.addEventListener('keydown', function(e){
@@ -350,7 +447,7 @@
     if (match) { selectDoc(docParam, match.getAttribute('data-title'), match); }
   } else {
     tabs[0].classList.add('active');
-    readerLayout.classList.add('chapters-visible');
+    renderDocumentSections(tabs[0].getAttribute('data-doc'));
     buildPages(tabs[0].getAttribute('data-doc'));
   }
 })();
