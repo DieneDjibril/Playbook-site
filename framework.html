@@ -236,24 +236,25 @@
   <div class="wrap">
     <div class="sec-head framework-section-head reveal">
       <span class="eyebrow">The diagnostic shift</span>
-      <h2>From Hypothesis to Diagnosis</h2>
+      <h2 id="hypothesis">From Hypothesis to Diagnosis</h2>
       <p class="lead">This platform can help you orient and form a hypothesis — it does not replace the deeper diagnostic process the Playbook and Toolkit require.</p>
     </div>
 
     <div id="hyp-cold" class="hyp-cold">
       <p class="muted" style="margin-bottom:16px">Not sure? Pick what sounds closest to what's holding your work back.</p>
       <div class="hyp-chips">
-        <button type="button" class="hyp-chip" data-area="demand" aria-pressed="false">Demand &amp; visibility</button>
-        <button type="button" class="hyp-chip" data-area="payment" aria-pressed="false">Payment credibility &amp; risk</button>
-        <button type="button" class="hyp-chip" data-area="preparation" aria-pressed="false">Preparation &amp; readiness</button>
-        <button type="button" class="hyp-chip" data-area="coordination" aria-pressed="false">Coordination &amp; fragmentation</button>
-        <button type="button" class="hyp-chip" data-area="legitimacy" aria-pressed="false">Legitimacy &amp; trust</button>
+        <button type="button" class="hyp-chip" data-area="demand-visibility" aria-pressed="false">Demand &amp; Visibility</button>
+        <button type="button" class="hyp-chip" data-area="payment-credibility" aria-pressed="false">Payment Credibility &amp; Risk</button>
+        <button type="button" class="hyp-chip" data-area="preparation-readiness" aria-pressed="false">Preparation &amp; Readiness</button>
+        <button type="button" class="hyp-chip" data-area="coordination-fragmentation" aria-pressed="false">Coordination &amp; Fragmentation</button>
+        <button type="button" class="hyp-chip" data-area="legitimacy-trust" aria-pressed="false">Legitimacy &amp; Trust</button>
       </div>
     </div>
 
     <div id="hyp-result" class="hyp-result" hidden>
-      <p class="muted" style="margin-bottom:16px">Your responses suggest these areas may warrant further investigation:</p>
+      <p id="hyp-main-copy" class="muted" style="margin-bottom:16px">Your responses suggest these areas may warrant further investigation:</p>
       <div id="hyp-cards" class="hyp-cards"></div>
+      <div id="hyp-secondary" class="hyp-secondary" hidden></div>
       <div style="margin-top:24px">
         <a href="resources.html" class="btn btn-primary">Use the Toolkit to test your hypothesis <span class="arw">&rarr;</span></a>
         <button type="button" id="hyp-reset" class="btn btn-ghost">Start over</button>
@@ -261,62 +262,84 @@
     </div>
   </div>
 </section>
+<script src="assets/areas.js"></script>
 <script>
 (function(){
-  var AREAS = {
-    demand: 'Demand & visibility',
-    payment: 'Payment credibility & risk',
-    preparation: 'Preparation & readiness',
-    coordination: 'Coordination & fragmentation',
-    legitimacy: 'Legitimacy & trust'
-  };
   var cold = document.getElementById('hyp-cold');
   var result = document.getElementById('hyp-result');
   var cardsWrap = document.getElementById('hyp-cards');
+  var mainCopy = document.getElementById('hyp-main-copy');
+  var secondaryWrap = document.getElementById('hyp-secondary');
   var resetBtn = document.getElementById('hyp-reset');
 
-  function renderAreas(keys){
+  function renderAreas(mainKeys, secondaryKeys){
     cardsWrap.innerHTML = '';
-    keys.forEach(function(k){
-      if (!AREAS[k]) return;
+    mainKeys.forEach(function(k){
+      var area = window.APB.areaByKey[k];
+      if (!area) return;
       var el = document.createElement('div');
       el.className = 'hyp-area-card';
-      el.innerHTML = '<h3>' + AREAS[k] + '</h3>' +
-        '<p class="muted" style="font-size:.85rem"><em>What this may indicate</em> and <em>what to investigate</em> for this area — content in progress.</p>';
+      var heading = document.createElement('h3');
+      heading.textContent = area.label;
+      var description = document.createElement('p');
+      description.className = 'muted';
+      description.style.fontSize = '.85rem';
+      description.innerHTML = '<em>What this may indicate</em> and <em>what to investigate</em> for this area — content in progress.';
+      el.appendChild(heading);
+      el.appendChild(description);
       cardsWrap.appendChild(el);
     });
-    cold.hidden = true;
-    result.hidden = false;
+
+    secondaryWrap.innerHTML = '';
+    if (secondaryKeys.length) {
+      var secondaryNames = window.APB.listLabels(secondaryKeys);
+      var secondaryMessage = document.createElement('p');
+      secondaryMessage.className = 'muted';
+      secondaryMessage.textContent = secondaryKeys.length === 1
+        ? 'One of your answers ' + (mainKeys.length ? 'also ' : '') + 'related to ' + secondaryNames + '. It may be worth keeping in view.'
+        : 'Some of your answers ' + (mainKeys.length ? 'also ' : '') + 'related to ' + secondaryNames + '. They may be worth keeping in view.';
+      secondaryWrap.appendChild(secondaryMessage);
+    }
+
+    mainCopy.hidden = !mainKeys.length;
+    secondaryWrap.hidden = !secondaryKeys.length;
+    cold.hidden = Boolean(mainKeys.length || secondaryKeys.length);
+    result.hidden = !Boolean(mainKeys.length || secondaryKeys.length);
+    document.querySelectorAll('.hyp-chip').forEach(function(chip){
+      var selected = mainKeys.indexOf(chip.getAttribute('data-area')) !== -1;
+      chip.classList.toggle('is-selected', selected);
+      chip.setAttribute('aria-pressed', selected ? 'true' : 'false');
+    });
   }
 
   document.querySelectorAll('.hyp-chip').forEach(function(btn){
     btn.addEventListener('click', function(){
-      document.querySelectorAll('.hyp-chip').forEach(function(chip){
-        chip.classList.toggle('is-selected', chip === btn);
-        chip.setAttribute('aria-pressed', chip === btn ? 'true' : 'false');
-      });
-      renderAreas([btn.getAttribute('data-area')]);
-    });
-  });
-  resetBtn.addEventListener('click', function(){
-    result.hidden = true; cold.hidden = false; cardsWrap.innerHTML = '';
-    document.querySelectorAll('.hyp-chip').forEach(function(chip){
-      chip.classList.remove('is-selected');
-      chip.setAttribute('aria-pressed', 'false');
+      clearAreaParams();
+      window.APB.setAreas([btn.getAttribute('data-area')]);
+      window.APB.setSecondary([]);
+      renderFromAPB();
     });
   });
 
-  // Home -> Framework handoff: read carried-over Indicative Challenge Area(s)
-  // from sessionStorage and/or a URL parameter, as a set of values.
-  try {
-    var fromUrl = new URLSearchParams(window.location.search).get('areas');
-    var fromSession = sessionStorage.getItem('indicativeChallengeAreas');
-    var raw = fromUrl || fromSession;
-    if (raw) {
-      var keys = raw.split(',').map(function(s){ return s.trim(); }).filter(Boolean);
-      if (keys.length) renderAreas(keys);
-    }
-  } catch (e) { /* sessionStorage unavailable — fail silently, cold-entry state shown */ }
+  function clearAreaParams(){
+    var url = new URL(window.location.href);
+    url.searchParams.delete('areas');
+    url.searchParams.delete('also');
+    window.history.replaceState({}, '', url.pathname + url.search + url.hash);
+  }
+
+  function renderFromAPB(){
+    renderAreas(window.APB.getAreas(), window.APB.getSecondary());
+  }
+
+  resetBtn.addEventListener('click', function(){
+    clearAreaParams();
+    window.APB.setAreas([]);
+    window.APB.setSecondary([]);
+    renderAreas([], []);
+  });
+
+  renderFromAPB();
 })();
 </script>
 

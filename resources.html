@@ -23,21 +23,25 @@
 .resources-intro{max-width:720px;margin-bottom:34px}
 .resources-intro h2{font-size:clamp(2rem,4vw,3.5rem);margin:12px 0}
 .resources-intro p{color:var(--muted);font-size:1.05rem;line-height:1.6}
-.resources-grid{align-items:stretch}
-.resources-grid .res{display:flex;flex-direction:column;min-height:390px;padding:28px;position:relative;overflow:hidden}
+.resources-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px;align-items:stretch}
+.resources-grid .res{display:flex;flex-direction:column;min-height:410px;padding:24px 18px;position:relative;overflow:hidden;background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);transition:transform .25s ease,box-shadow .25s ease}
+.resources-grid .res:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
 .resources-grid .res>div:last-child{display:flex;flex-direction:column;flex:1}
 .resources-grid .res:nth-child(1){border-top:4px solid var(--amber)}
 .resources-grid .res:nth-child(2){border-top:4px solid var(--forest)}
 .resources-grid .res:nth-child(3){border-top:4px solid var(--green)}
 .resources-grid .res:nth-child(4){border-top:4px solid #c48a2c}
-.resources-grid .res h3{font-size:clamp(1.45rem,2vw,2rem);margin:10px 0 12px}
-.resources-grid .res p{line-height:1.55}
-.resources-grid .res .ri{width:52px;height:52px;display:grid;place-items:center;border-radius:15px;background:var(--green-soft);color:var(--forest);margin-bottom:6px}
-.resources-grid .res .ri svg{width:26px;height:26px}
-.res-actions{display:flex;gap:10px;margin-top:auto;padding-top:22px;flex-wrap:wrap}
-.res-actions .btn{font-size:.86rem;padding:10px 16px}
+.resources-grid .res .tag{align-self:flex-start;font-size:.68rem;padding:4px 9px;margin-bottom:8px}
+.resources-grid .res h3{font-size:clamp(1.15rem,1.4vw,1.38rem);line-height:1.2;margin:6px 0 10px}
+.resources-grid .res p{font-size:.86rem;line-height:1.48;color:var(--muted)}
+.resources-grid .res .ri{width:46px;height:46px;display:grid;place-items:center;border-radius:13px;background:var(--green-soft);color:var(--forest);margin-bottom:12px}
+.resources-grid .res .ri svg{width:22px;height:22px}
+.res-actions{display:flex;gap:8px;margin-top:auto;padding-top:18px;flex-wrap:wrap;width:100%}
+.res-actions .btn{flex:1 1 calc(50% - 4px);min-width:85px;font-size:.8rem;padding:9px 8px;justify-content:center;text-align:center}
 .res-actions .btn-ghost{border:1.5px solid var(--forest);color:var(--forest)}
 .res-actions .btn-ghost:hover{background:var(--forest);color:#fff}
+.res-actions .btn[disabled]{flex:1 1 100%;opacity:.55;cursor:not-allowed}
+.res-note{width:100%;margin-top:8px;font-size:.78rem;color:var(--muted);font-style:italic;line-height:1.35}
 .resources-steps{background:var(--sand)}
 .resources-steps-head{text-align:center;max-width:700px;margin:0 auto 38px}
 .resources-steps-head h2{font-size:clamp(2rem,4vw,3.5rem);margin:12px 0}
@@ -51,14 +55,18 @@
   .resources-hero{min-height:520px;display:flex;align-items:center;padding:72px 0;background-position:center 42%}
   .resources-hero .wrap{width:100%}
 }
+@media(max-width:1080px){
+  .resources-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+}
 @media(max-width:760px){
   .resources-hero{padding:54px 0 62px}
   .resources-hero h1{font-size:clamp(2.8rem,14vw,4.3rem)}
   .resources-hero .lead{font-size:1rem}
   .resources-intro h2{font-size:2.15rem}
   .resources-intro p{font-size:.96rem}
+  .resources-grid{grid-template-columns:1fr;gap:16px}
   .resources-grid .res{min-height:0;padding:22px}
-  .resources-grid .res h3{font-size:1.45rem}
+  .resources-grid .res h3{font-size:1.35rem}
   .resources-grid .res p{font-size:.9rem}
   .res-actions .btn{flex:1;justify-content:center;text-align:center}
   .resources-step-grid{grid-template-columns:1fr;gap:14px}
@@ -85,7 +93,7 @@
       <h2>Choose the resource that fits your next step.</h2>
       <p>Each resource is designed to help you understand the opportunity, make better partnership decisions, and turn insight into practical action.</p>
     </div>
-    <div class="grid g-2 resources-grid">
+    <div class="resources-grid">
       <div class="res reveal">
         <div class="ri"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 4h11l5 5v11a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1z"/><path d="M14 4v6h6M8 14h8M8 17h5"/></svg></div>
         <div>
@@ -115,6 +123,7 @@
           <p>Diagnostics, scorecards, worksheets, templates, and decision tools to assess readiness, prioritize constraints, select models, and monitor outcomes.</p>
           <div class="res-actions">
             <button type="button" class="btn btn-primary" disabled title="Toolkit package is being finalized">Download files</button>
+            <p class="res-note"><em>The Toolkit package is being finalized.</em></p>
           </div>
         </div>
       </div>
