@@ -20,7 +20,7 @@
   --radius:18px;
   --radius-sm:12px;
   --maxw:1180px;
-  --serif:"Fraunces",Georgia,serif;
+  --serif:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
   --sans:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
 }
 
@@ -44,7 +44,7 @@ section{position:relative}
 .sec-pad-sm{padding:64px 0}
 
 /* ---------- Typography ---------- */
-h1,h2,h3,h4{font-family:var(--serif);font-weight:500;line-height:1.12;letter-spacing:-.01em;color:var(--ink)}
+h1,h2,h3,h4{font-family:var(--serif);font-weight:700;line-height:1.12;letter-spacing:-.02em;color:var(--ink)}
 h1{font-size:clamp(2.6rem,6vw,4.4rem)}
 h2{font-size:clamp(2rem,4vw,3rem)}
 h3{font-size:clamp(1.3rem,2.2vw,1.7rem)}
@@ -482,7 +482,7 @@ body.diag-lock{overflow:hidden}
 .diag-foot{border-top:1px solid var(--line);padding:16px 0;font-size:.8rem;color:var(--muted)}
 .diag-foot .wrap{max-width:860px}
 .or-result .diag-step{margin-bottom:14px}
-.or-result h2{font-size:clamp(1.75rem,3.3vw,2.55rem);font-weight:500;letter-spacing:-.025em;line-height:1.15;margin:0;outline:none;max-width:24ch}
+.or-result h2{font-size:clamp(1.75rem,3.3vw,2.55rem);font-weight:700;letter-spacing:-.025em;line-height:1.15;margin:0;outline:none;max-width:24ch}
 .or-lead{margin:16px 0 0;color:var(--muted);font-weight:300;max-width:64ch}
 .or-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin:32px 0 0}
 .or-card{position:relative;background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:28px 26px 26px;box-shadow:var(--shadow)}

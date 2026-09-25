@@ -12,6 +12,7 @@ var chatEl;
 var inputEl;
 var convo = [];
 var isSending = false;
+var BOT_AVATAR = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="7" width="16" height="13" rx="4"></rect><path d="M12 3v4M9 13h.01M15 13h.01M9 17h6M2 12h2M20 12h2"></path><circle cx="12" cy="3" r="1" fill="currentColor" stroke="none"></circle></svg>';
 
 function escapeHtml(value) {
   return String(value).replace(/[&<>"]/g, function (character) {
@@ -86,7 +87,7 @@ function addMsg(role, content, isHtml) {
   message.className = 'msg ' + role;
   var body = isHtml ? content : escapeHtml(content);
   message.innerHTML = role === 'bot'
-    ? '<div class="avatar">A</div><div class="bubble">' + body + '</div>'
+    ? '<div class="avatar">' + BOT_AVATAR + '</div><div class="bubble">' + body + '</div>'
     : '<div class="bubble">' + body + '</div>';
   chatEl.appendChild(message);
   chatEl.scrollTop = chatEl.scrollHeight;
@@ -96,7 +97,7 @@ function addMsg(role, content, isHtml) {
 function typingIndicator() {
   var message = document.createElement('div');
   message.className = 'msg bot';
-  message.innerHTML = '<div class="avatar">A</div><div class="bubble"><span class="typing"><i></i><i></i><i></i></span></div>';
+  message.innerHTML = '<div class="avatar">' + BOT_AVATAR + '</div><div class="bubble"><span class="typing"><i></i><i></i><i></i></span></div>';
   chatEl.appendChild(message);
   chatEl.scrollTop = chatEl.scrollHeight;
   return message;

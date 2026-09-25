@@ -56,15 +56,14 @@
   }
   .case-stage{overflow:hidden}
   .cs-detail{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;margin-bottom:30px}
-  .cs-visual{height:360px;position:relative;overflow:hidden;background:linear-gradient(135deg,#edf3ef,#dce9e1);display:flex;align-items:center;justify-content:center}
-  .cs-visual::before{content:"";position:absolute;inset:-24px;background-image:linear-gradient(rgba(4,28,24,.16),rgba(4,28,24,.28)),var(--case-image);background-position:center;background-size:cover;filter:blur(18px);transform:scale(1.08);opacity:.72}
-  .cs-visual img{position:relative;z-index:1;width:100%;height:100%;object-fit:contain;transition:transform .7s ease;filter:drop-shadow(0 8px 18px rgba(4,28,24,.2))}
+  .cs-visual{height:420px;position:relative;overflow:hidden;background:#29483d;display:flex;align-items:flex-end}
+  .cs-visual img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;transition:transform .7s ease}
   .cs-detail:hover .cs-visual img{transform:scale(1.025)}
-  .cs-visual::after{content:"";position:absolute;inset:auto 0 0;height:34%;background:linear-gradient(transparent,rgba(4,28,24,.62));pointer-events:none}
-  .cs-visual span{position:absolute;z-index:1;left:38px;bottom:26px;color:#fff;font-family:var(--serif);font-size:clamp(1.45rem,3vw,2.15rem);text-shadow:0 2px 8px rgba(0,0,0,.75)}
-  .cs-head{padding:30px 38px 24px;position:relative;border-bottom:1px solid var(--line)}
-  .cs-head .country{font-size:.78rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
-  .cs-head h2{margin:10px 0 10px;font-size:clamp(1.5rem,3vw,2rem);color:var(--ink)}
+  .cs-visual::after{content:"";position:absolute;z-index:1;inset:35% 0 0;background:linear-gradient(180deg,rgba(4,28,24,0),rgba(4,28,24,.76));pointer-events:none}
+  .cs-visual-copy{position:relative;z-index:2;width:min(100%,900px);padding:0 38px 28px;color:#fff}
+  .cs-visual-copy .country{display:block;color:rgba(255,255,255,.88);font-size:.78rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;text-shadow:0 1px 5px rgba(0,0,0,.35)}
+  .cs-visual-copy h2{margin:8px 0 0;color:#fff;font-size:clamp(1.65rem,3.4vw,2.5rem);line-height:1.12;text-shadow:0 2px 10px rgba(0,0,0,.42)}
+  .cs-head{padding:20px 38px;position:relative;border-bottom:1px solid var(--line)}
   .cs-head .mtag{display:inline-block;background:var(--green-soft);color:var(--forest);border:1px solid var(--line);padding:6px 14px;border-radius:999px;font-size:.82rem;font-weight:600;text-decoration:none}
   .cs-head .mtag:hover{border-color:var(--green)}
   .cs-stats{display:flex;gap:0;border-bottom:1px solid var(--line);flex-wrap:wrap}
@@ -103,8 +102,11 @@
   @media(max-width:760px){
     .model-tabs{gap:9px;margin-bottom:16px}
     .model-tabs button{min-height:70px;padding:12px;font-size:.8rem}
-    .cs-visual{height:250px}
-    .cs-visual span{left:22px;bottom:18px;font-size:1.35rem}
+    .cs-visual{height:290px}
+    .cs-visual-copy{padding:0 22px 20px}
+    .cs-visual-copy .country{font-size:.68rem}
+    .cs-visual-copy h2{font-size:clamp(1.4rem,6vw,1.85rem)}
+    .cs-head{padding:16px 20px}
     .cs-foot{padding:16px 20px}
     .cs-foot .case-read-btn{width:100%;min-width:0}
     .cs-cols{grid-template-columns:1fr}
@@ -141,10 +143,8 @@
     <!-- BABBAN GONA -->
     <div class="model-panel active" id="babbangona">
     <div class="cs-detail reveal">
-      <div class="cs-visual" style="--case-image:url('assets/cases/babban-gona.jpg')"><img src="assets/cases/babban-gona.jpg" alt="Agricultural field representing smallholder farming and food production"><span>Food &amp; agriculture</span></div>
+      <div class="cs-visual"><img src="assets/cases/babban-gona.jpg" alt="Agricultural field representing smallholder farming and food production"><div class="cs-visual-copy"><span class="country">Nigeria &middot; Food &amp; Agriculture</span><h2>Babban Gona Smallholder Aggregation Platform</h2></div></div>
       <div class="cs-head">
-        <span class="country">Nigeria &middot; Food &amp; Agriculture</span>
-        <h2>Babban Gona Smallholder Aggregation Platform</h2>
         <a href="models.html#model1" class="mtag">Model 1 &middot; Aggregation &amp; Warehouse Platforms</a>
       </div>
       <div class="cs-stats">
@@ -177,10 +177,8 @@
     <!-- KCB -->
     <div class="model-panel" id="kcb">
     <div class="cs-detail reveal">
-      <div class="cs-visual" style="--case-image:url('assets/cases/kcb-clean-cooking.jpg')"><img src="assets/cases/kcb-clean-cooking.jpg" alt="Modern kitchen representing a transition to cleaner cooking"><span>Clean energy transition</span></div>
+      <div class="cs-visual"><img src="assets/cases/kcb-clean-cooking.jpg" alt="Modern kitchen representing a transition to cleaner cooking"><div class="cs-visual-copy"><span class="country">Kenya &middot; Energy</span><h2>KCB Clean Cooking &amp; Clean Energy Transition</h2></div></div>
       <div class="cs-head">
-        <span class="country">Kenya &middot; Energy</span>
-        <h2>KCB Clean Cooking &amp; Clean Energy Transition</h2>
         <a href="models.html#model2" class="mtag">Model 2 &middot; Project Preparation &amp; Guarantee Platform</a>
       </div>
       <div class="cs-stats">
@@ -213,10 +211,8 @@
     <!-- RUTF -->
     <div class="model-panel" id="rutf">
     <div class="cs-detail reveal">
-      <div class="cs-visual" style="--case-image:url('assets/cases/rutf-nutrition.jpg')"><img src="assets/cases/rutf-nutrition.jpg" alt="Nutritious meal representing local therapeutic food production"><span>Health &amp; nutrition</span></div>
+      <div class="cs-visual"><img src="assets/cases/rutf-nutrition.jpg" alt="Nutritious meal representing local therapeutic food production"><div class="cs-visual-copy"><span class="country">Ethiopia &middot; Health &amp; Nutrition</span><h2>Local Production of Ready-to-Use Therapeutic Foods</h2></div></div>
       <div class="cs-head">
-        <span class="country">Ethiopia &middot; Health &amp; Nutrition</span>
-        <h2>Local Production of Ready-to-Use Therapeutic Foods</h2>
         <a href="models.html#model3" class="mtag">Model 3 &middot; Predictable Delivery Networks</a>
       </div>
       <div class="cs-stats">
@@ -248,10 +244,8 @@
     <!-- LTWP -->
     <div class="model-panel" id="ltwp">
     <div class="cs-detail reveal">
-      <div class="cs-visual" style="--case-image:url('assets/cases/ltwp-wind-power.jpg')"><img src="assets/cases/ltwp-wind-power.jpg" alt="Wind turbines representing renewable energy generation"><span>Renewable energy</span></div>
+      <div class="cs-visual"><img src="assets/cases/ltwp-wind-power.jpg" alt="Wind turbines representing renewable energy generation"><div class="cs-visual-copy"><span class="country">Kenya &middot; Energy</span><h2>Lake Turkana Wind Power Project</h2></div></div>
       <div class="cs-head">
-        <span class="country">Kenya &middot; Energy</span>
-        <h2>Lake Turkana Wind Power Project</h2>
         <a href="models.html#model2" class="mtag">Model 2 &middot; Project Preparation &amp; Guarantee Platform</a>
       </div>
       <div class="cs-stats">
