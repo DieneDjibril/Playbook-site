@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Case Studies — Advancing Partnerships Playbook</title>
+<meta name="description" content="KCB Clean Cooking, Local Production of RUTF, Babban Gona, and Lake Turkana Wind Power — the Playbook in practice.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css">
+<style>
+  .model-tabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:22px}
+  .model-tabs button{
+    border:1px solid var(--line);background:var(--paper);color:var(--text);min-height:76px;padding:14px 16px;border-radius:16px;
+    font-size:.88rem;font-weight:600;line-height:1.3;text-align:left;cursor:pointer;position:relative;
+    box-shadow:0 5px 14px rgba(15,40,35,.05);transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease,background .25s ease,color .25s ease
+  }
+  .model-tabs button::before{content:"0" attr(data-c);display:block;margin-bottom:8px;color:var(--amber);font-family:var(--serif);font-size:1.05rem;line-height:1}
+  .model-tabs button:hover{transform:translateY(-4px);border-color:var(--green);box-shadow:0 12px 24px rgba(15,40,35,.11)}
+  .model-tabs button:focus-visible{outline:3px solid rgba(217,131,48,.38);outline-offset:3px}
+  .model-tabs button[data-c="1"].active{background:var(--green);border-color:var(--green);color:#fff}
+  .model-tabs button[data-c="2"].active{background:var(--amber);border-color:var(--amber);color:#fff}
+  .model-tabs button[data-c="3"].active{background:#2f7d8f;border-color:#2f7d8f;color:#fff}
+  .model-tabs button[data-c="4"].active{background:#5a7d3a;border-color:#5a7d3a;color:#fff}
+  .model-tabs button.active::before{color:rgba(255,255,255,.78)}
+  .model-panel{display:none}
+  .model-panel.active{display:block}
+  .model-panel.slide-in-right{animation:caseSlideInRight .45s ease both}
+  .model-panel.slide-in-left{animation:caseSlideInLeft .45s ease both}
+  .model-panel.active .cs-detail{animation:caseDetailIn .7s .08s cubic-bezier(.16,1,.3,1) both}
+  .model-panel.active .cs-visual{animation:caseVisualIn .8s cubic-bezier(.16,1,.3,1) both}
+  .model-panel.active .cs-head{animation:caseContentIn .65s .12s cubic-bezier(.16,1,.3,1) both}
+  .model-panel.active .cs-stats{animation:caseContentIn .65s .2s cubic-bezier(.16,1,.3,1) both}
+  .model-panel.active .cs-cols{animation:caseContentIn .65s .28s cubic-bezier(.16,1,.3,1) both}
+  .model-panel.active .cs-foot{animation:caseContentIn .65s .36s cubic-bezier(.16,1,.3,1) both}
+  @keyframes caseSlideInRight{
+    from{opacity:0;transform:translateX(34px)}
+    to{opacity:1;transform:translateX(0)}
+  }
+  @keyframes caseSlideInLeft{
+    from{opacity:0;transform:translateX(-34px)}
+    to{opacity:1;transform:translateX(0)}
+  }
+  @keyframes caseDetailIn{
+    from{opacity:0;transform:translateY(18px)}
+    to{opacity:1;transform:translateY(0)}
+  }
+  @keyframes caseVisualIn{
+    from{opacity:0;transform:scale(1.08)}
+    to{opacity:1;transform:scale(1)}
+  }
+  @keyframes caseContentIn{
+    from{opacity:0;transform:translateY(16px)}
+    to{opacity:1;transform:translateY(0)}
+  }
+  .case-stage{overflow:hidden}
+  .cs-detail{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;margin-bottom:30px}
+  .cs-visual{height:360px;position:relative;overflow:hidden;background:linear-gradient(135deg,#edf3ef,#dce9e1);display:flex;align-items:center;justify-content:center}
+  .cs-visual::before{content:"";position:absolute;inset:-24px;background-image:linear-gradient(rgba(4,28,24,.16),rgba(4,28,24,.28)),var(--case-image);background-position:center;background-size:cover;filter:blur(18px);transform:scale(1.08);opacity:.72}
+  .cs-visual img{position:relative;z-index:1;width:100%;height:100%;object-fit:contain;transition:transform .7s ease;filter:drop-shadow(0 8px 18px rgba(4,28,24,.2))}
+  .cs-detail:hover .cs-visual img{transform:scale(1.025)}
+  .cs-visual::after{content:"";position:absolute;inset:auto 0 0;height:34%;background:linear-gradient(transparent,rgba(4,28,24,.62));pointer-events:none}
+  .cs-visual span{position:absolute;z-index:1;left:38px;bottom:26px;color:#fff;font-family:var(--serif);font-size:clamp(1.45rem,3vw,2.15rem);text-shadow:0 2px 8px rgba(0,0,0,.75)}
+  .cs-head{padding:30px 38px 24px;position:relative;border-bottom:1px solid var(--line)}
+  .cs-head .country{font-size:.78rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+  .cs-head h2{margin:10px 0 10px;font-size:clamp(1.5rem,3vw,2rem);color:var(--ink)}
+  .cs-head .mtag{display:inline-block;background:var(--green-soft);color:var(--forest);border:1px solid var(--line);padding:6px 14px;border-radius:999px;font-size:.82rem;font-weight:600;text-decoration:none}
+  .cs-head .mtag:hover{border-color:var(--green)}
+  .cs-stats{display:flex;gap:0;border-bottom:1px solid var(--line);flex-wrap:wrap}
+  .cs-stats .st{flex:1;min-width:170px;padding:22px 28px;border-right:1px solid var(--line)}
+  .cs-stats .st:last-child{border-right:none}
+  .cs-stats .st b{font-family:var(--serif);font-size:1.5rem;color:var(--forest);display:block;line-height:1.15}
+  .cs-stats .st span{font-size:.78rem;color:var(--muted)}
+  .cs-stats .st.soft b{font-size:1.05rem;color:var(--text);font-family:var(--sans);font-weight:600}
+  .cs-cols{display:grid;grid-template-columns:1fr 1fr;gap:0}
+  .cs-cols>div{padding:30px 38px}
+  .cs-cols>div:first-child{border-right:1px solid var(--line)}
+  .cs-cols h4{font-family:var(--sans);font-weight:700;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);margin-bottom:14px}
+  .cs-cols p{color:#33403b;font-size:.96rem;margin-bottom:12px}
+  .cs-cols ul{margin:0 0 0 18px;color:#33403b;font-size:.95rem}
+  .cs-cols li{margin-bottom:8px}
+  .cs-friction{background:#fbf1e8;border-top:1px solid var(--line);padding:26px 38px}
+  .cs-friction h4{font-size:.95rem;color:#a85615;margin-bottom:10px}
+  .cs-friction ul{margin:0 0 0 18px;font-size:.92rem;color:#4a3420}
+  .cs-friction li{margin-bottom:6px}
+  .cs-foot{padding:18px 38px;border-top:1px solid var(--line);background:var(--sand)}
+  .cs-foot{display:flex;justify-content:flex-end}
+  .cs-foot .case-read-btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-width:240px;padding:14px 22px;border-radius:12px;background:var(--forest);color:#fff;font-weight:700;text-decoration:none;box-shadow:0 8px 18px rgba(4,70,56,.16);transition:transform .25s ease,box-shadow .25s ease,background .25s ease}
+  .cs-foot .case-read-btn:hover{background:var(--green);transform:translateY(-3px);box-shadow:0 13px 24px rgba(4,70,56,.23)}
+  .cs-foot .case-read-btn .arw{font-size:1.1rem;transition:transform .25s ease}
+  .cs-foot .case-read-btn:hover .arw{transform:translateX(4px)}
+  .cs-stats .st{transition:background .25s ease,transform .25s ease}
+  .cs-stats .st:hover{background:var(--green-soft);transform:translateY(-3px)}
+  @media(prefers-reduced-motion:reduce){
+    .model-panel.slide-in-right,.model-panel.slide-in-left,.model-panel.active .cs-detail,.model-panel.active .cs-visual,.model-panel.active .cs-head,.model-panel.active .cs-stats,.model-panel.active .cs-cols,.model-panel.active .cs-foot{animation:none}
+    .cs-visual img{transition:none}
+    .cs-stats .st{transition:none}
+    .model-tabs button{transition:none}
+    .cs-foot .case-read-btn,.cs-foot .case-read-btn .arw{transition:none}
+  }
+  @media(max-width:960px){.model-tabs{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  @media(max-width:760px){
+    .model-tabs{gap:9px;margin-bottom:16px}
+    .model-tabs button{min-height:70px;padding:12px;font-size:.8rem}
+    .cs-visual{height:250px}
+    .cs-visual span{left:22px;bottom:18px;font-size:1.35rem}
+    .cs-foot{padding:16px 20px}
+    .cs-foot .case-read-btn{width:100%;min-width:0}
+    .cs-cols{grid-template-columns:1fr}
+    .cs-cols>div:first-child{border-right:none;border-bottom:1px solid var(--line)}
+  }
+</style>
+<link rel="icon" href="assets/brand/rf-favicon-32.png" type="image/png">
+<link rel="apple-touch-icon" href="assets/brand/rf-favicon-180.png">
+<meta property="og:image" content="assets/brand/rf-favicon-512.png">
+<meta property="og:site_name" content="Advancing Partnerships Playbook — The Rockefeller Foundation">
+</head>
+<body data-page="cases">
+<div id="nav"></div>
+
+<header class="page-hero">
+  <div class="wrap">
+    <div class="breadcrumb reveal"><a href="index.html">Home</a> / Case Studies</div>
+    <h1 class="reveal">Case studies</h1>
+    <p class="lead reveal">How teams across Africa translate principles into practice across food and agriculture, energy, and health.</p>
+    <p class="muted reveal" style="max-width:760px;margin-top:10px;font-size:.92rem">These cases were analyzed retrospectively through the Playbook's lens to illustrate how the partnership models identified can operate in practice.</p>
+  </div>
+</header>
+
+<section class="sec-pad-sm">
+  <div class="wrap">
+    <div class="model-tabs" id="caseTabs">
+      <button type="button" data-c="1" class="active" data-target="babbangona">Babban Gona</button>
+      <button type="button" data-c="2" data-target="kcb">KCB Clean Cooking</button>
+      <button type="button" data-c="3" data-target="rutf">Local RUTF Production</button>
+      <button type="button" data-c="4" data-target="ltwp">Lake Turkana Wind Power</button>
+    </div>
+
+    <div class="case-stage">
+    <!-- BABBAN GONA -->
+    <div class="model-panel active" id="babbangona">
+    <div class="cs-detail reveal">
+      <div class="cs-visual" style="--case-image:url('assets/cases/babban-gona.jpg')"><img src="assets/cases/babban-gona.jpg" alt="Agricultural field representing smallholder farming and food production"><span>Food &amp; agriculture</span></div>
+      <div class="cs-head">
+        <span class="country">Nigeria &middot; Food &amp; Agriculture</span>
+        <h2>Babban Gona Smallholder Aggregation Platform</h2>
+        <a href="models.html#model1" class="mtag">Model 1 &middot; Aggregation &amp; Warehouse Platforms</a>
+      </div>
+      <div class="cs-stats">
+        <div class="st"><b>200,000+</b><span>Farmers across 13 states</span></div>
+        <div class="st"><b>&asymp;USD 85M</b><span>Capital mobilized</span></div>
+        <div class="st"><b>&asymp;99%</b><span>Repayment rate over a decade+</span></div>
+        <div class="st"><b>&asymp;USD 10M</b><span>Citibank facility (2022, first local-currency commercial lending)</span></div>
+      </div>
+      <div class="cs-cols">
+        <div>
+          <h4>The challenge</h4>
+          <p>Fragmentation kept smallholder agriculture outside the reach of formal finance, weakened market efficiency, and limited farmers' commercial opportunities.</p>
+          <h4 style="margin-top:22px">The response</h4>
+          <p>Founded in 2012, an integrated aggregation platform organizes farmers into standardized Trust Groups — bundling input financing, agronomic training, input distribution, harvest aggregation, warehousing, and market access in one coordinated system, with Nestl&eacute; as a long-term buyer.</p>
+        </div>
+        <div>
+          <h4>Why this case illustrates Model 1</h4>
+          <ul>
+            <li><strong>Market visibility</strong> — dispersed producers become one coherent, transparent market.</li>
+            <li><strong>Quality standards</strong> — common practices make the system commercially reliable.</li>
+            <li><strong>Investability</strong> — reduced transaction costs create a financeable unit, attracting catalytic, sovereign, and commercial capital.</li>
+            <li><strong>Scaling</strong> — producers are added within a common framework without proportional coordination costs.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="cs-foot"><a href="read/viewer.html?doc=case-study-babban-gona.pdf" class="case-read-btn">Read the PDF case study <span class="arw">&rarr;</span></a></div>
+    </div>
+    </div>
+
+    <!-- KCB -->
+    <div class="model-panel" id="kcb">
+    <div class="cs-detail reveal">
+      <div class="cs-visual" style="--case-image:url('assets/cases/kcb-clean-cooking.jpg')"><img src="assets/cases/kcb-clean-cooking.jpg" alt="Modern kitchen representing a transition to cleaner cooking"><span>Clean energy transition</span></div>
+      <div class="cs-head">
+        <span class="country">Kenya &middot; Energy</span>
+        <h2>KCB Clean Cooking &amp; Clean Energy Transition</h2>
+        <a href="models.html#model2" class="mtag">Model 2 &middot; Project Preparation &amp; Guarantee Platform</a>
+      </div>
+      <div class="cs-stats">
+        <div class="st"><b>47 &rarr; 266</b><span>Schools in pilot progression</span></div>
+        <div class="st"><b>3,213</b><span>Boarding schools targeted, 47 counties (approved scale-up)</span></div>
+        <div class="st"><b>USD 96.9M</b><span>GCF facility &middot; USD 150M AfDB facility</span></div>
+        <div class="st"><b>&asymp;9.75%</b><span>Program rate vs &asymp;17.65% commercial benchmark</span></div>
+      </div>
+      <div class="cs-cols">
+        <div>
+          <h4>The challenge</h4>
+          <p>Schools depended on firewood, creating financial pressure, environmental harm, and serious public-health risks — a visible opportunity that could not become investable at scale.</p>
+          <h4 style="margin-top:22px">The response</h4>
+          <p>Kenya Commercial Bank launched an initiative to move learning institutions from biomass to cleaner cooking systems. Following a pilot that grew from 47 to 266 schools, national scale-up was approved — the program is still ongoing, with the 3,213-school target approved but not yet fully achieved.</p>
+        </div>
+        <div>
+          <h4>Why this case illustrates Model 2</h4>
+          <ul>
+            <li><strong>Project preparation</strong> — validated feasibility and clarified responsibilities, answering unbankable demand and the missing pipeline.</li>
+            <li><strong>Risk mitigation</strong> — credible mechanisms addressed unallocated implementation risk.</li>
+            <li><strong>Coordination</strong> — a single accountable platform aligned incentives and maintained momentum.</li>
+            <li><strong>Capital mobilization</strong> — the outcome: public, private, concessional, and climate finance could engage.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="cs-foot"><a href="read/viewer.html?doc=case-study-kcb.pdf" class="case-read-btn">Read the PDF case study <span class="arw">&rarr;</span></a></div>
+    </div>
+    </div>
+
+    <!-- RUTF -->
+    <div class="model-panel" id="rutf">
+    <div class="cs-detail reveal">
+      <div class="cs-visual" style="--case-image:url('assets/cases/rutf-nutrition.jpg')"><img src="assets/cases/rutf-nutrition.jpg" alt="Nutritious meal representing local therapeutic food production"><span>Health &amp; nutrition</span></div>
+      <div class="cs-head">
+        <span class="country">Ethiopia &middot; Health &amp; Nutrition</span>
+        <h2>Local Production of Ready-to-Use Therapeutic Foods</h2>
+        <a href="models.html#model3" class="mtag">Model 3 &middot; Predictable Delivery Networks</a>
+      </div>
+      <div class="cs-stats">
+        <div class="st"><b>USD 300,000</b><span>Catalytic equipment investment</span></div>
+        <div class="st"><b>40 &rarr; 80</b><span>MT/month to MT/day production capacity</span></div>
+        <div class="st"><b>10,000+ MT</b><span>Supplied annually</span></div>
+        <div class="st"><b>UNICEF</b><span>Anchor purchaser &middot; WFP &amp; USAID buyers today</span></div>
+      </div>
+      <div class="cs-cols">
+        <div>
+          <h4>The challenge</h4>
+          <p>Humanitarian financing paid for the same imported therapeutic foods year after year. Long supply chains raised costs, extended timelines, and left the nutrition response exposed to external disruption.</p>
+          <h4 style="margin-top:22px">The response</h4>
+          <p>Starting from a 2007 partnership, UNICEF partnered with Hilina Enriched Foods, Nutriset, and donor partners to establish Ethiopia's first large-scale local manufacturing platform for therapeutic foods — converting recurring humanitarian spend into sustainable domestic production.</p>
+        </div>
+        <div>
+          <h4>Why this case illustrates Model 3</h4>
+          <ul>
+            <li><strong>Demand structuring</strong> — UNICEF as anchor purchaser turned volatile procurement into a signal a manufacturer could invest against.</li>
+            <li><strong>Capability building</strong> — technology transfer from Nutriset delivered production, quality, and manufacturing standards.</li>
+            <li><strong>Catalytic financing</strong> — donor-financed equipment, repaid through product deliveries, created capacity where commercial finance was unavailable.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="cs-foot"><a href="read/viewer.html?doc=case-study-rutf.pdf" class="case-read-btn">Read the PDF case study <span class="arw">&rarr;</span></a></div>
+    </div>
+    </div>
+
+    <!-- LTWP -->
+    <div class="model-panel" id="ltwp">
+    <div class="cs-detail reveal">
+      <div class="cs-visual" style="--case-image:url('assets/cases/ltwp-wind-power.jpg')"><img src="assets/cases/ltwp-wind-power.jpg" alt="Wind turbines representing renewable energy generation"><span>Renewable energy</span></div>
+      <div class="cs-head">
+        <span class="country">Kenya &middot; Energy</span>
+        <h2>Lake Turkana Wind Power Project</h2>
+        <a href="models.html#model2" class="mtag">Model 2 &middot; Project Preparation &amp; Guarantee Platform</a>
+      </div>
+      <div class="cs-stats">
+        <div class="st"><b>&euro;623M</b><span>At financial close (2014)</span></div>
+        <div class="st"><b>310 MW</b><span>Wind farm capacity</span></div>
+        <div class="st"><b>1,481 GWh</b><span>Generated in 2023 (&asymp;11% of Kenya's electricity that year)</span></div>
+        <div class="st soft"><b>2014</b><span>Financial close</span></div>
+      </div>
+      <div class="cs-cols">
+        <div>
+          <h4>The challenge</h4>
+          <p>Hydro dependence created supply insecurity, fiscal stress, and a widening gap between energy ambition and delivery. A technically viable opportunity lacked the architecture to become an investable asset.</p>
+          <h4 style="margin-top:22px">The response</h4>
+          <p>The LTWP consortium partnered with the Government of Kenya, Kenya Power, KETRACO, and a consortium of DFIs to prepare and de-risk one of Africa's most ambitious renewable energy projects.</p>
+        </div>
+        <div>
+          <h4>Why this case illustrates Model 2</h4>
+          <ul>
+            <li><strong>Project preparation</strong> — established technical, financial, legal, environmental, and contractual foundations.</li>
+            <li><strong>Risk mitigation</strong> — allocated political, commercial, technical, and operational risks to the actors best placed to manage them.</li>
+            <li><strong>Coordination</strong> — aligned interdependent public and private institutions into a single delivery mechanism.</li>
+            <li><strong>Capital mobilization</strong> — DFIs, commercial lenders, and export credit agencies financed what no single institution could support alone.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="cs-friction">
+        <h4>THE COST OF THE SPLIT-ASSET DELAY</h4>
+        <ul>
+          <li>21-month delay in the transmission line connecting the wind farm to the grid</li>
+          <li>KSh 14.5bn (&asymp;&euro;127M) deemed-generation settlement</li>
+          <li>Six-year consumer tariff surcharge</li>
+          <li>A cancelled USD 40M Google equity investment</li>
+          <li>A Parliamentary Special Audit</li>
+        </ul>
+      </div>
+      <div class="cs-foot"><a href="read/viewer.html?doc=case-study-ltwp.pdf" class="case-read-btn">Read the PDF case study <span class="arw">&rarr;</span></a></div>
+    </div>
+    </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="sec-pad-sm">
+  <div class="wrap" style="text-align:center">
+    <p class="lead">For deeper detail on actor roles, financing structures, and implementation lessons, the <a href="resources.html" style="color:var(--forest);text-decoration:underline;font-weight:600">Case Study Compendium</a> is available on the Resources page.</p>
+  </div>
+</section>
+
+<div id="footer"></div>
+<script src="assets/components.js"></script>
+<script>
+(function(){
+  var tabs = document.querySelectorAll('#caseTabs button');
+  var panels = document.querySelectorAll('.model-panel');
+  var activeIndex = 0;
+  function activate(target, btn, animate){
+    var nextIndex = Array.prototype.indexOf.call(tabs, btn);
+    panels.forEach(function(p){ p.classList.toggle('active', p.id === target); });
+    tabs.forEach(function(b){ b.classList.remove('active'); });
+    btn.classList.add('active');
+    panels.forEach(function(p){ p.classList.remove('slide-in-left', 'slide-in-right'); });
+    if (animate) {
+      var entering = document.getElementById(target);
+      entering.classList.add(nextIndex >= activeIndex ? 'slide-in-right' : 'slide-in-left');
+    }
+    activeIndex = nextIndex;
+    history.replaceState(null, '', '#' + target);
+  }
+  tabs.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      if (!btn.classList.contains('active')) activate(btn.getAttribute('data-target'), btn, true);
+    });
+  });
+  var hash = window.location.hash.replace('#','');
+  var match = Array.prototype.find.call(tabs, function(b){ return b.getAttribute('data-target') === hash; });
+  if (match) activate(hash, match, false);
+})();
+</script>
+</body>
+</html>

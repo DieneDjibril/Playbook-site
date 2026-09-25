@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Read the Playbook — Advancing Partnerships Playbook</title>
+<meta name="description" content="Read the Capital Mobilization Playbook and its case studies directly as PDF.">
+<link rel="preconnect" href="https://fonts.googleapis.com/">
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/styles.css">
+<link rel="icon" href="../assets/brand/rf-favicon-32.png" type="image/png">
+<link rel="apple-touch-icon" href="../assets/brand/rf-favicon-180.png">
+<meta property="og:image" content="../assets/brand/rf-favicon-512.png">
+<meta property="og:site_name" content="Advancing Partnerships Playbook — The Rockefeller Foundation">
+<style>
+  .viewer-wrap{max-width:1180px;margin:0 auto;padding:28px 24px 60px}
+  .viewer-head{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;margin-bottom:18px}
+  .doc-tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+  .doc-tabs button{
+    border:1px solid var(--line);background:#fff;color:var(--text);
+    padding:9px 14px;border-radius:999px;font-size:.88rem;font-weight:500;cursor:pointer;transition:.15s;
+  }
+  .doc-tabs button:hover{border-color:var(--green)}
+  .doc-tabs button.active{background:var(--green);border-color:var(--green);color:#fff}
+  .flipbook-shell{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);background:linear-gradient(135deg,#e8e2d7,#f8f6f1);padding:clamp(18px,4vw,42px)}
+  .flipbook{width:min(100%,794px);margin:0 auto;perspective:1800px}
+  .flip-page{position:relative;width:100%;aspect-ratio:794/1123;background:#fff;box-shadow:0 12px 28px rgba(15,40,35,.18);transform-style:preserve-3d}
+  .flip-page.is-flipping{animation:pageFlip .72s cubic-bezier(.22,.61,.36,1)}
+  .flip-face{position:absolute;inset:0;backface-visibility:hidden;background:#fff}
+  .flip-face.back{transform:rotateY(180deg)}
+  .flip-face canvas{width:100%;height:100%;display:block}
+  @keyframes pageFlip{0%{transform:rotateY(0)}50%{transform:rotateY(-90deg)}100%{transform:rotateY(0)}}
+  .flip-controls{display:flex;align-items:center;justify-content:center;gap:14px;margin-top:22px}
+  .flip-controls button{border:1px solid var(--forest);background:#fff;color:var(--forest);border-radius:999px;padding:10px 18px;font:600 .88rem var(--sans);cursor:pointer}
+  .flip-controls button:hover:not(:disabled){background:var(--forest);color:#fff}
+  .flip-controls button:disabled{opacity:.4;cursor:not-allowed}
+  #pageCounter{min-width:100px;text-align:center;font-size:.9rem;color:var(--muted)}
+  .flip-progress{height:4px;background:rgba(4,70,56,.12);margin-top:18px;border-radius:99px;overflow:hidden}
+  .flip-progress span{display:block;height:100%;background:var(--amber);width:0;transition:width .3s ease}
+  .pdf-fallback{display:none;width:100%;height:78vh;min-height:520px;border:0;background:#fff}
+  .pdf-fallback-message{display:none;margin:14px 0 0;padding:12px 14px;border-radius:10px;background:var(--amber-soft);color:#6a431d;font-size:.88rem}
+  .viewer-actions{display:flex;gap:10px}
+  @media (max-width:720px){.viewer-wrap{padding:20px 14px 44px}.viewer-head{display:block}.viewer-actions{margin-top:14px}.viewer-actions .btn{flex:1;text-align:center;padding:10px 8px;font-size:.78rem}.doc-tabs{overflow-x:auto;flex-wrap:nowrap;padding-bottom:6px}.doc-tabs button{white-space:nowrap;font-size:.78rem}.flipbook-shell{padding:12px 8px 16px}.flip-controls{gap:8px}.flip-controls button{padding:9px 12px;font-size:.78rem}}
+</style>
+</head>
+<body data-page="read" data-root="../">
+<div id="nav"></div>
+
+<div class="viewer-wrap">
+  <div class="viewer-head">
+    <div>
+      <span class="eyebrow">Read online</span>
+      <h1 style="font-family:var(--serif);font-size:1.9rem;margin-top:4px" id="docTitle">Capital Mobilization Playbook</h1>
+    </div>
+    <div class="viewer-actions">
+      <a class="btn btn-ghost" id="downloadLink" href="../downloads/capital-mobilization-playbook.pdf" download>Download PDF</a>
+      <a class="btn btn-primary" id="newTabLink" href="../downloads/capital-mobilization-playbook.pdf" target="_blank" rel="noopener">Open in new tab</a>
+    </div>
+  </div>
+
+  <div class="doc-tabs" id="docTabs">
+    <button data-doc="capital-mobilization-playbook.pdf" data-title="Capital Mobilization Playbook">Full Playbook</button>
+    <button data-doc="executive-summary.pdf" data-title="Executive Summary">Executive Summary</button>
+    <button data-doc="case-study-babban-gona.pdf" data-title="Case Study — Babban Gona">Babban Gona</button>
+    <button data-doc="case-study-kcb.pdf" data-title="Case Study — KCB Clean Cooking">KCB</button>
+    <button data-doc="case-study-ltwp.pdf" data-title="Case Study — Lake Turkana Wind Power">Lake Turkana</button>
+    <button data-doc="case-study-rutf.pdf" data-title="Case Study — RUTF">RUTF</button>
+  </div>
+
+  <div class="flipbook-shell" id="flipbookShell">
+    <div class="flipbook" aria-live="polite">
+      <div class="flip-page" id="flipPage">
+        <div class="flip-face front"><canvas id="frontPage" aria-label="Current PDF page"></canvas></div>
+        <div class="flip-face back"><canvas id="backPage" aria-label="Next PDF page"></canvas></div>
+      </div>
+    </div>
+    <div class="flip-controls">
+      <button type="button" id="prevPage" aria-label="Previous page">&larr; Previous</button>
+      <span id="pageCounter">Page 1 / 1</span>
+      <button type="button" id="nextPage" aria-label="Next page">Next &rarr;</button>
+    </div>
+    <div class="flip-progress" aria-hidden="true"><span id="progressBar"></span></div>
+  </div>
+  <iframe id="pdfFallback" class="pdf-fallback" title="Native PDF viewer"></iframe>
+  <p id="pdfFallbackMessage" class="pdf-fallback-message">The interactive reader is unavailable in this browser, so the PDF is being opened with the native PDF viewer.</p>
+  <p style="margin-top:12px;color:var(--muted);font-size:.85rem">
+    Use the arrows or the left and right keys to turn the pages. The PDF download remains available above.
+  </p>
+</div>
+
+<div id="footer"></div>
+<script src="../assets/components.js"></script>
+<script src="../assets/vendor/pdfjs/pdf.min.js"></script>
+<script>
+(function(){
+  if (window.pdfjsLib) {
+    window.pdfjsLib.GlobalWorkerOptions.workerSrc = '../assets/vendor/pdfjs/pdf.worker.min.js';
+  }
+  var tabs = document.querySelectorAll('#docTabs button');
+  var dl = document.getElementById('downloadLink');
+  var nt = document.getElementById('newTabLink');
+  var title = document.getElementById('docTitle');
+  var flipPage = document.getElementById('flipPage');
+  var frontPage = document.getElementById('frontPage');
+  var backPage = document.getElementById('backPage');
+  var prev = document.getElementById('prevPage');
+  var next = document.getElementById('nextPage');
+  var counter = document.getElementById('pageCounter');
+  var progress = document.getElementById('progressBar');
+  var flipbookShell = document.getElementById('flipbookShell');
+  var pdfFallback = document.getElementById('pdfFallback');
+  var pdfFallbackMessage = document.getElementById('pdfFallbackMessage');
+  var pageIndex = 0;
+  var pdfDocument = null;
+  var pdfLoading = 0;
+  var pages = [];
+  var activeFile = '';
+  function showFallback(file){
+    activeFile = file;
+    flipbookShell.style.display = 'none';
+    prev.parentElement.style.display = 'none';
+    progress.parentElement.style.display = 'none';
+    pdfFallback.style.display = 'block';
+    pdfFallbackMessage.style.display = 'block';
+    pdfFallback.src = '../downloads/' + file;
+  }
+  function buildPages(file){
+    activeFile = file;
+    if (window.location.protocol === 'file:' || !window.pdfjsLib) {
+      showFallback(file);
+      return;
+    }
+    flipbookShell.style.display = '';
+    prev.parentElement.style.display = '';
+    progress.parentElement.style.display = '';
+    pdfFallback.style.display = 'none';
+    pdfFallbackMessage.style.display = 'none';
+    var requestId = ++pdfLoading;
+    pdfDocument = null;
+    pageIndex = 0;
+    pages = [];
+    counter.textContent = 'Loading PDF…';
+    prev.disabled = true;
+    next.disabled = true;
+    progress.style.width = '0%';
+    var loadingTask = window.pdfjsLib.getDocument('../downloads/' + file);
+    loadingTask.promise.then(function(pdf){
+      if(requestId !== pdfLoading) return;
+      pdfDocument = pdf;
+      pages = Array.from({length:pdf.numPages}, function(_, index){ return index + 1; });
+      renderPage(0, frontPage).then(function(){ return renderPage(Math.min(1, pages.length - 1), backPage); }).then(updateControls);
+    }).catch(function(){
+      showFallback(activeFile);
+    });
+  }
+  function renderPage(index, canvas){
+    if(!pdfDocument || !pages.length) return Promise.resolve();
+    return pdfDocument.getPage(pages[index]).then(function(page){
+      var baseViewport = page.getViewport({scale:1});
+      var scale = 1.8;
+      var viewport = page.getViewport({scale:scale});
+      canvas.width = viewport.width;
+      canvas.height = viewport.height;
+      canvas.closest('.flip-face').style.aspectRatio = baseViewport.width + '/' + baseViewport.height;
+      return page.render({canvasContext:canvas.getContext('2d'), viewport:viewport}).promise;
+    });
+  }
+  function updateControls(){
+    counter.textContent = 'Page ' + (pageIndex + 1) + ' / ' + pages.length;
+    prev.disabled = pageIndex === 0;
+    next.disabled = pageIndex === pages.length - 1;
+    progress.style.width = (pages.length > 1 ? pageIndex / (pages.length - 1) * 100 : 100) + '%';
+  }
+  function turn(direction){
+    var target = pageIndex + direction;
+    if(target < 0 || target >= pages.length || flipPage.classList.contains('is-flipping') || !pdfDocument) return;
+    renderPage(target, backPage).then(function(){
+      flipPage.classList.add('is-flipping');
+      window.setTimeout(function(){
+        renderPage(target, frontPage).then(function(){
+          pageIndex = target;
+          flipPage.classList.remove('is-flipping');
+          updateControls();
+        });
+      }, 360);
+    });
+  }
+
+  function selectDoc(file, label, btn){
+    dl.href = '../downloads/' + file;
+    nt.href = '../downloads/' + file;
+    buildPages(file);
+    title.textContent = label;
+    tabs.forEach(function(b){ b.classList.remove('active'); });
+    if (btn) btn.classList.add('active');
+  }
+
+  tabs.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      selectDoc(btn.getAttribute('data-doc'), btn.getAttribute('data-title'), btn);
+    });
+  });
+  prev.addEventListener('click', function(){ turn(-1); });
+  next.addEventListener('click', function(){ turn(1); });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'ArrowLeft') turn(-1);
+    if(e.key === 'ArrowRight') turn(1);
+  });
+
+  // deep link: viewer.html?doc=case-study-kcb.pdf
+  var params = new URLSearchParams(window.location.search);
+  var docParam = params.get('doc');
+  if (docParam) {
+    var match = Array.prototype.find.call(tabs, function(b){ return b.getAttribute('data-doc') === docParam; });
+    if (match) { selectDoc(docParam, match.getAttribute('data-title'), match); }
+  } else {
+    tabs[0].classList.add('active');
+    buildPages(tabs[0].getAttribute('data-doc'));
+  }
+})();
+</script>
+</body>
+</html>

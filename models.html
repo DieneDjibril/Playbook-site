@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Partnership Models — Advancing Partnerships Playbook</title>
+<meta name="description" content="Three partnership models: Aggregation & Warehouse Platforms, Integrated Project Preparation & Guarantee Platform, and Predictable Delivery Networks.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css">
+<style>
+  .models-selector{position:relative}
+  .models-selector::before{content:"Choose the constraint that best matches your context";display:block;margin-bottom:22px;color:var(--muted);font-size:.9rem;font-weight:600;letter-spacing:.03em}
+  .models-selector .card{min-height:250px;display:flex;flex-direction:column;align-items:flex-start;position:relative;overflow:hidden;transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease}
+  .models-selector .card::after{content:"";position:absolute;left:0;right:0;bottom:0;height:5px;background:var(--green);transform:scaleX(0);transform-origin:left;transition:transform .3s ease}
+  .models-selector .card:nth-child(2)::after{background:var(--amber)}
+  .models-selector .card:nth-child(3)::after{background:#2f7d8f}
+  .models-selector .card:hover{transform:translateY(-7px);box-shadow:var(--shadow-lg);border-color:var(--green)}
+  .models-selector .card:hover::after{transform:scaleX(1)}
+  .models-selector .card h3{margin:16px 0 10px;font-size:1.25rem}
+  .models-selector .card p{color:var(--muted);font-size:.92rem}
+  .models-selector .card .card-link{margin-top:auto;padding-top:18px}
+  .model-heading{display:flex;align-items:center;gap:18px}
+  .model-heading .mnum{flex:0 0 58px;display:grid;place-items:center;width:58px;height:58px;border-radius:50%;background:var(--green);color:#fff;font-family:var(--serif);font-size:1.7rem;box-shadow:0 0 0 8px rgba(8,128,103,.1)}
+  #model2 .model-heading .mnum{background:var(--amber);box-shadow:0 0 0 8px rgba(217,131,48,.12)}
+  #model3 .model-heading .mnum{background:#2f7d8f;box-shadow:0 0 0 8px rgba(47,125,143,.12)}
+  .model-heading h2{margin-top:4px}
+  .model-detail-card{transition:transform .3s ease,box-shadow .3s ease}
+  .model-detail-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg)}
+  .logic{transition:transform .25s ease,background .25s ease}
+  .logic:hover{transform:translateY(-5px);background:rgba(255,255,255,.12)}
+  .readiness-section{background:#fff;color:var(--text)}
+  .readiness-section .sec-head h2,
+  .readiness-section .sec-head .eyebrow,
+  .readiness-section .logic h3{color:#ed7d16}
+  .readiness-section .sec-head .lead,
+  .readiness-section .logic p,
+  .readiness-section > .wrap > .lead{color:var(--muted)!important}
+  .readiness-section .logic{background:#fff;border:1px solid var(--line);border-top:4px solid #ed7d16;border-radius:var(--radius);box-shadow:var(--shadow);padding:24px;transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease}
+  .readiness-section .logic:hover{background:#fff;border-color:#ed7d16;box-shadow:var(--shadow-lg)}
+  .readiness-section .logic:nth-child(2){border-top-color:var(--green)}
+  .readiness-section .logic:nth-child(2) h3{color:var(--green)}
+  .readiness-section .logic:nth-child(3){border-top-color:#2f7d8f}
+  .readiness-section .logic:nth-child(3) h3{color:#2f7d8f}
+  .page-hero .lead{max-width:68ch}
+  .models-selector .card:nth-child(1){transition-delay:.05s}
+  .models-selector .card:nth-child(2){transition-delay:.12s}
+  .models-selector .card:nth-child(3){transition-delay:.19s}
+  .model-heading .mnum{transition:transform .35s ease,box-shadow .35s ease}
+  .model-heading:hover .mnum{transform:scale(1.08) rotate(-5deg)}
+  .model-heading h2{transition:color .25s ease}
+  #model1 .model-heading:hover h2{color:var(--green)}
+  #model2 .model-heading:hover h2{color:var(--amber)}
+  #model3 .model-heading:hover h2{color:#2f7d8f}
+  .model-detail-card .chip{transition:transform .2s ease,background .2s ease,color .2s ease}
+  .model-detail-card .chip:hover{transform:translateY(-2px);background:var(--green);color:#fff}
+  .model-detail-card .card-link{transition:color .2s ease,transform .2s ease}
+  .model-detail-card .card-link:hover{transform:translateX(4px)}
+  .readiness-section .sec-head.reveal,
+  .readiness-section .logic.reveal,
+  .readiness-section>.wrap>.lead.reveal{transition-duration:.8s}
+  .readiness-section .logic:nth-child(1){transition-delay:.08s}
+  .readiness-section .logic:nth-child(2){transition-delay:.16s}
+  .readiness-section .logic:nth-child(3){transition-delay:.24s}
+  .readiness-section .logic h3{transition:transform .25s ease}
+  .readiness-section .logic:hover h3{transform:translateX(4px)}
+  .cta-band{transition:transform .35s ease,box-shadow .35s ease}
+  .cta-band:hover{transform:translateY(-5px);box-shadow:0 20px 42px rgba(4,70,56,.2)}
+  @media(prefers-reduced-motion:reduce){
+    .models-selector .card,.model-heading .mnum,.model-heading h2,.model-detail-card .chip,.model-detail-card .card-link,
+    .readiness-section .logic,.readiness-section .logic h3,.cta-band{transition:none!important}
+  }
+  @media(max-width:760px){
+    .models-selector::before{margin-bottom:16px}
+    .models-selector .card{min-height:0}
+    .model-heading{align-items:flex-start;gap:14px}
+    .model-heading .mnum{flex-basis:48px;width:48px;height:48px;font-size:1.4rem}
+    .model-heading h2{font-size:1.55rem}
+    .band .logics{grid-template-columns:1fr!important}
+  }
+  @media(prefers-reduced-motion:reduce){
+    .models-selector .card,.models-selector .card::after,.model-detail-card,.logic{transition:none}
+  }
+</style>
+</head>
+<body data-page="models">
+<div id="nav"></div>
+
+<header class="page-hero">
+  <div class="wrap">
+    <div class="breadcrumb reveal"><a href='index.html'>Home</a> / Partnership Models</div>
+    <h1 class="reveal">Three partnership models</h1>
+    <p class="lead reveal">Different constraints require fundamentally different responses. Applying the wrong model — or the right model to the wrong problem — leads to stalled partnerships, inefficient capital, or repeated pilot cycles without scale.</p>
+  </div>
+</header>
+
+<!-- SELECTOR OVERVIEW -->
+<section class="sec-pad-sm">
+  <div class="wrap models-selector">
+    <div class="grid g-3">
+      <a href="#model1" class="card reveal"><span class="tag">Model 1</span><h3>Aggregation &amp; Warehouse Platforms</h3><p>For fragmentation — when dispersed producers or opportunities are invisible to buyers and financiers.</p><span class="card-link">Explore <span class="arw">&rarr;</span></span></a>
+      <a href="#model2" class="card reveal"><span class="tag">Model 2</span><h3>Preparation &amp; Guarantee Platform</h3><p>For underdeveloped opportunities — when preparation, coordination, and risk allocation are missing.</p><span class="card-link">Explore <span class="arw">&rarr;</span></span></a>
+      <a href="#model3" class="card reveal"><span class="tag">Model 3</span><h3>Predictable Delivery Networks</h3><p>For fragmented delivery — when existing providers lack anchor demand and credible payment.</p><span class="card-link">Explore <span class="arw">&rarr;</span></span></a>
+    </div>
+  </div>
+</section>
+
+<!-- MODEL 1 -->
+<section class="sec-pad" id="model1" style="background:var(--green-soft)">
+  <div class="wrap">
+    <div class="model model-heading m1 reveal" style="background:transparent;border:none;padding:0;margin-bottom:36px">
+      <div class="mnum">1</div>
+      <div><div class="m-sub">Constraint: fragmentation</div><h2>Aggregation &amp; Warehouse Platforms</h2></div>
+    </div>
+    <div class="grid g-2" style="align-items:start">
+      <div class="reveal"><div class="prose">
+        <p>Pools multiple small or fragmented opportunities into a larger, standardized portfolio that can be assessed, financed, and managed collectively — the direct answer to opportunities without visibility.</p>
+        <h3>Four complementary functions</h3>
+        <ul>
+          <li><strong>Market visibility</strong> — organizes dispersed producers into a single, transparent commercial structure.</li>
+          <li><strong>Quality standards</strong> — common practices and performance monitoring improve commercial reliability.</li>
+          <li><strong>Investability</strong> — reduced transaction costs create a financeable unit.</li>
+          <li><strong>Scaling</strong> — growth within one operational framework, not isolated transactions.</li>
+        </ul>
+      </div></div>
+      <div class="reveal">
+        <div class="card model-detail-card"><h3 style="margin-bottom:16px">Best when</h3>
+          <div class="chips"><span class="chip">Many small producers</span><span class="chip">No aggregation owner</span><span class="chip">Weak standardization</span><span class="chip">High transaction costs</span></div>
+          <div style="margin-top:24px;padding-top:20px;border-top:1px solid var(--line)">
+            <span class="tag">Live case</span>
+            <p class="muted" style="margin-top:8px">Babban Gona organizes farmers into standardized Trust Groups, bundling input financing, training, aggregation, warehousing, and market access into one system — now one of Nigeria's largest single maize producers.</p>
+            <a class='card-link' href='cases.html#babbangona'>Read the case <span class="arw">&rarr;</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MODEL 2 -->
+<section class="sec-pad" id="model2">
+  <div class="wrap">
+    <div class="model model-heading m2 reveal" style="background:transparent;border:none;padding:0;margin-bottom:36px">
+      <div class="mnum">2</div>
+      <div><div class="m-sub">Constraint: underdeveloped opportunity</div><h2>Integrated Project Preparation &amp; Guarantee Platform</h2></div>
+    </div>
+    <div class="grid g-2" style="align-items:start">
+      <div class="reveal"><div class="prose">
+        <p>Rather than focusing on a single barrier, the model strengthens the broader conditions required for large-scale implementation. Capital mobilization is the outcome, not the starting point.</p>
+        <h3>Four complementary functions</h3>
+        <ul>
+          <li><strong>Project preparation</strong> — validates assumptions and clarifies responsibilities before execution, turning strategic opportunities into propositions partners can engage with confidence.</li>
+          <li><strong>Risk mitigation</strong> — credible mechanisms show how risks will be understood, managed, and shared.</li>
+          <li><strong>Coordination</strong> — a single accountable pathway aligns incentives and maintains momentum.</li>
+          <li><strong>Capital mobilization</strong> — public, private, concessional, and climate finance engage once conditions are set.</li>
+        </ul>
+      </div></div>
+      <div class="reveal">
+        <div class="card model-detail-card"><h3 style="margin-bottom:16px">Best when</h3>
+          <div class="chips"><span class="chip">Unbankable demand</span><span class="chip">Missing pipeline</span><span class="chip">Unallocated risk</span><span class="chip">No coordination owner</span></div>
+          <div style="margin-top:24px;padding-top:20px;border-top:1px solid var(--line)">
+            <span class="tag">Live cases</span>
+            <p class="muted" style="margin-top:8px">KCB's Clean Cooking transition for schools (47 &rarr; 266 schools, national scale-up approved) and Lake Turkana Wind Power (€623m, Kenya's largest private investment at financial close) both apply this model.</p>
+            <a class='card-link' href='cases.html#kcb'>Read the cases <span class="arw">&rarr;</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MODEL 3 -->
+<section class="sec-pad" id="model3" style="background:var(--green-soft)">
+  <div class="wrap">
+    <div class="model model-heading m3 reveal" style="background:transparent;border:none;padding:0;margin-bottom:36px">
+      <div class="mnum">3</div>
+      <div><div class="m-sub">Constraint: fragmented delivery</div><h2>Predictable Delivery Networks</h2></div>
+    </div>
+    <div class="grid g-2" style="align-items:start">
+      <div class="reveal"><div class="prose">
+        <p>Rather than creating new providers or technologies, the model organizes existing capabilities into a coordinated delivery system with reliable standards, verification, and payment flows.</p>
+        <h3>Four complementary functions</h3>
+        <ul>
+          <li><strong>Demand structuring</strong> — an anchor purchaser converts volatile demand into a commercial signal a provider can invest against.</li>
+          <li><strong>Capability building</strong> — strengthens existing providers through technology transfer and quality systems.</li>
+          <li><strong>Catalytic financing</strong> — removes the initial investment barrier while preserving commercial discipline.</li>
+          <li><strong>Coordination &amp; verification</strong> — sustains delivery continuity, quality, and payment reliability.</li>
+        </ul>
+      </div></div>
+      <div class="reveal">
+        <div class="card model-detail-card"><h3 style="margin-bottom:16px">Best when</h3>
+          <div class="chips"><span class="chip">Unpredictable demand</span><span class="chip">Capability gap</span><span class="chip">Import dependence</span><span class="chip">Fragmented providers</span></div>
+          <div style="margin-top:24px;padding-top:20px;border-top:1px solid var(--line)">
+            <span class="tag">Live case</span>
+            <p class="muted" style="margin-top:8px">UNICEF as anchor purchaser plus technology transfer from Nutriset enabled Hilina to supply 10,000+ MT of therapeutic foods annually — reducing import dependence in Ethiopia.</p>
+            <a class='card-link' href='cases.html#rutf'>Read the case <span class="arw">&rarr;</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SYSTEM READINESS -->
+<section class="sec-pad band readiness-section">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Before you scale</span>
+      <h2>System readiness beats model design</h2>
+      <p class="lead">A model can be conceptually strong but still stall if the systems beneath it are too weak to support delivery, payment, coordination, and learning.</p>
+    </div>
+    <div class="logics" style="grid-template-columns:repeat(3,1fr)">
+      <div class="logic reveal"><h3>Financial &amp; regulatory</h3><p>Payment rails, procurement, regulatory approvals, and governance systems.</p></div>
+      <div class="logic reveal"><h3>Operational &amp; data</h3><p>Logistics, delivery capacity, data infrastructure, and verification mechanisms.</p></div>
+      <div class="logic reveal"><h3>Relational &amp; accountability</h3><p>Trust, community engagement, feedback loops, grievance channels, and protection.</p></div>
+    </div>
+    <p class="lead reveal" style="margin-top:34px"><strong>Key implication:</strong> scaling is not only a function of model design — it is a function of system readiness.</p>
+  </div>
+</section>
+
+<section class="sec-pad-sm">
+  <div class="wrap"><div class="cta-band reveal">
+    <h2>Which model fits your context?</h2>
+    <p>Ask the AI Companion to help you diagnose your binding constraint and point to the right model and tools.</p>
+    <div class="hero-cta"><a class='btn btn-amber' href='companion.html'>Ask the AI Companion <span class="arw">&rarr;</span></a></div>
+  </div></div>
+</section>
+
+<div id="footer"></div>
+<script src="assets/components.js"></script>
+</body>
+</html>

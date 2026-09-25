@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Advancing Partnerships Playbook — From social impact to deployable pathways</title>
+<meta name="description" content="A practical guide for turning social-impact activity into deployable, investable, and repeatable partnership pathways across Sub-Saharan Africa.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css">
+<link rel="icon" href="assets/brand/rf-favicon-32.png" type="image/png">
+<link rel="apple-touch-icon" href="assets/brand/rf-favicon-180.png">
+<meta property="og:image" content="assets/brand/rf-favicon-512.png">
+<meta property="og:site_name" content="Advancing Partnerships Playbook — The Rockefeller Foundation">
+<style>
+  .home-hero{min-height:clamp(500px,66vh,650px);display:flex;align-items:flex-end;padding:64px 0 52px;position:relative;isolation:isolate;overflow:hidden;color:#fff}
+  .home-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(4,28,24,.58),rgba(4,28,24,.2) 62%,rgba(4,28,24,.04));z-index:-1}
+  .home-hero-slides,.home-hero-slide{position:absolute;inset:0}
+  .home-hero-slides{z-index:-2;background:#174d38}
+  .home-hero-slide{opacity:0;background:center/cover no-repeat;transition:opacity .9s ease}
+  .home-hero-slide.active{opacity:1}
+  .home-hero-slide:nth-child(1){background-image:url('assets/cases/home-african-green.jpg')}
+  .home-hero-slide:nth-child(2){background-image:url('assets/cases/home-african-coast.jpg')}
+  .home-hero-slide:nth-child(3){background-image:url('assets/cases/home-african-market.jpg')}
+  .home-hero-slide:nth-child(4){background-image:url('assets/cases/home-african-community.jpg')}
+  .home-hero-controls{position:absolute;right:clamp(20px,5vw,72px);bottom:34px;display:flex;align-items:center;gap:8px;z-index:2}
+  .home-hero-control{width:11px;height:11px;padding:0;border:1px solid rgba(255,255,255,.85);border-radius:50%;background:transparent;cursor:pointer}
+  .home-hero-control.active{background:#fff;box-shadow:0 0 0 4px rgba(255,255,255,.2)}
+  .home-hero-control:focus-visible{outline:2px solid #fff;outline-offset:4px}
+  .home-hero .hero-grid{display:block;width:100%}
+  .home-hero .hero-copy{max-width:850px}
+  .home-hero .hero-copy>*{animation:homeContentIn .8s cubic-bezier(.16,1,.3,1) both}
+  .home-hero .hero-copy>*:nth-child(1){animation-delay:.1s}
+  .home-hero .hero-copy>*:nth-child(2){animation-delay:.2s}
+  .home-hero .hero-copy>*:nth-child(3){animation-delay:.3s}
+  .home-hero .hero-copy>*:nth-child(4){animation-delay:.4s}
+  .home-hero .hero-copy>*:nth-child(5){animation-delay:.5s}
+  .home-hero .eyebrow{color:#fff}
+  .home-hero .eyebrow::before{background:var(--amber)}
+  .home-hero h1{color:#fff;font-size:clamp(2.8rem,7vw,6rem);max-width:900px;margin:16px 0 20px;letter-spacing:-.045em}
+  .home-hero .lead{color:rgba(255,255,255,.9);font-size:clamp(1.08rem,2vw,1.35rem);max-width:700px}
+  .home-hero .btn-primary{background:#fff;color:var(--forest)}
+  .home-hero .btn-primary:hover{background:var(--amber);color:#fff}
+  .home-hero .hero-links a{color:rgba(255,255,255,.88)!important}
+  .home-hero .hero-stats{gap:34px;margin-top:38px}
+  .home-hero .hero-stats .stat b{color:#fff}
+  .home-hero .hero-stats .stat span{color:rgba(255,255,255,.78)}
+  .home-intro{background:var(--paper);padding:96px 0}
+  .home-intro-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:72px;align-items:center}
+  .home-intro-mark{display:flex;align-items:center;justify-content:center}
+  .home-intro-mark img{width:min(100%,230px);height:auto;animation:heartBeat 3.2s ease-in-out infinite;transform-origin:center}
+  .home-intro-mark.reveal{opacity:0;transform:translateX(-70px)}
+  .home-intro-mark.reveal.in{opacity:1;transform:translateX(0);transition:opacity .8s ease,transform .8s cubic-bezier(.16,1,.3,1)}
+  .home-intro-copy{max-width:650px}
+  .home-intro-copy.reveal{opacity:0;transform:translateX(70px)}
+  .home-intro-copy.reveal.in{opacity:1;transform:translateX(0);transition:opacity .8s .12s ease,transform .8s .12s cubic-bezier(.16,1,.3,1)}
+  .home-intro-copy h2{font-size:clamp(2.2rem,4vw,4rem);margin:16px 0 22px}
+  .home-intro-copy p{font-size:1.12rem;color:var(--muted);max-width:60ch}
+  .home-cases{background:var(--paper);padding:112px 0}
+  .home-cases-head{display:block;max-width:850px;margin-bottom:42px}
+  .home-cases-head .sec-head{margin-bottom:0}
+  .home-cases-head h2{font-size:clamp(3.1rem,7vw,6.4rem);line-height:.98;letter-spacing:-.055em;margin:16px 0 22px;color:var(--ink)}
+  .home-cases-intro{max-width:760px;color:var(--muted);font-size:clamp(1.05rem,1.7vw,1.28rem);line-height:1.55;margin:0}
+  .home-case-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+  .home-case-card{display:block;position:relative;min-height:420px;border-radius:18px;overflow:hidden;background:var(--ink);transition:transform .35s ease,box-shadow .35s ease}
+  .home-case-card:hover{transform:translateY(-7px);box-shadow:var(--shadow-lg)}
+  .home-case-image{position:absolute;inset:0;height:auto;overflow:hidden}
+  .home-case-image::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,24,20,.08) 25%,rgba(8,24,20,.82) 100%);transition:background .35s ease}
+  .home-case-image img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+  .home-case-card:hover .home-case-image::after{background:linear-gradient(180deg,rgba(8,24,20,.16) 15%,rgba(8,24,20,.9) 100%)}
+  .home-case-card:hover .home-case-image img{transform:scale(1.08)}
+  .home-case-body{position:absolute;inset:auto 0 0;z-index:1;padding:26px 22px 24px;color:#fff}
+  .home-case-kicker{display:block;color:#ffd08a;font-size:.68rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;margin-bottom:10px}
+  .home-case-body h3{font-size:clamp(1.35rem,2vw,1.85rem);line-height:1.08;margin:0 0 10px;color:#fff;max-width:18ch}
+  .home-case-body p{color:rgba(255,255,255,.82);font-size:.88rem;line-height:1.45;margin:0;max-width:36ch}
+  .home-case-link{display:inline-flex;align-items:center;gap:7px;margin-top:18px;color:#fff;font-weight:700;font-size:.84rem}
+  .home-case-link span{display:inline-block;transition:transform .25s ease}
+  .home-case-card:hover .home-case-link span{transform:translateX(5px)}
+  .home-pathways{background:var(--sand)!important;border-top:none!important}
+  .home-pathways .sec-head{text-align:left;max-width:760px}
+  .home-pathways .sec-head.center{margin-left:0;margin-right:0}
+  .home-pathways .path-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+  .home-pathways .path-card{display:flex;flex-direction:column;aspect-ratio:auto;min-height:350px}
+  .home-pathways .path-card img{height:190px;transition:transform .5s ease}
+  .home-pathways .path-card .path-content{height:auto;flex:1}
+  .home-pathways .path-card .path-button{margin-top:auto}
+  .home-pathways .path-card:hover img{transform:scale(1.06)}
+  .home-pathways .path-button{align-self:flex-start;margin-top:16px;padding:10px 15px;border:1.5px solid var(--forest);border-radius:999px;color:var(--forest);background:transparent;transition:background .25s ease,color .25s ease,border-color .25s ease}
+  .home-pathways .path-button:hover{background:var(--forest);border-color:var(--forest);color:#fff}
+  .home-pathways .path-card.reveal{opacity:0;transform:translateX(-60px)}
+  .home-pathways .path-card.reveal.in{opacity:1;transform:translateX(0);transition:opacity .7s ease,transform .7s cubic-bezier(.16,1,.3,1)}
+  .home-pathways .path-card:nth-child(even).reveal{transform:translateX(60px)}
+  .home-pathways .path-card:nth-child(even).reveal.in{transform:translateX(0)}
+  .home-case-card.reveal{opacity:0;transform:translateY(45px)}
+  .home-case-card.reveal.in{opacity:1;transform:translateY(0);transition:opacity .75s ease,transform .75s cubic-bezier(.16,1,.3,1)}
+  .home-case-card:nth-child(2).reveal.in{transition-delay:.08s}
+  .home-case-card:nth-child(3).reveal.in{transition-delay:.16s}
+  .home-case-card:nth-child(4).reveal.in{transition-delay:.24s}
+  .home-pathways .path-card:nth-child(2){transition-delay:.08s}
+  .home-pathways .path-card:nth-child(3){transition-delay:.16s}
+  .home-pathways .path-card:nth-child(4){transition-delay:.24s}
+  @keyframes homeContentIn{
+    from{opacity:0;transform:translateY(26px)}
+    to{opacity:1;transform:translateY(0)}
+  }
+  @keyframes heartBeat{
+    0%,100%{transform:scale(1) rotate(0)}
+    8%{transform:scale(1.06) rotate(-2deg)}
+    16%{transform:scale(1) rotate(1deg)}
+    24%{transform:scale(1.04) rotate(0)}
+  }
+  @media(prefers-reduced-motion:reduce){
+    .home-hero .hero-copy>*,.home-intro-mark img{animation:none}
+    .home-hero-slide{transition:none}
+    .home-intro-mark.reveal,.home-intro-copy.reveal,.home-pathways .path-card.reveal,.home-case-card.reveal{opacity:1;transform:none;transition:none}
+    .home-pathways .path-card img{transition:none}
+  }
+  @media(max-width:760px){
+    .home-hero{min-height:0;padding:44px 0 38px}
+    .home-hero-controls{right:18px;bottom:18px}
+    .home-hero h1{font-size:clamp(2.15rem,10vw,3.2rem);line-height:1.04;margin:12px 0 16px}
+    .home-hero .lead{font-size:.96rem;line-height:1.48;max-width:34rem}
+    .home-hero .btn-primary{padding:12px 17px;font-size:.86rem}
+    .home-hero .hero-cta{gap:14px;flex-wrap:wrap}
+    .home-hero .hero-links a{font-size:.78rem!important}
+    .home-hero .hero-stats{gap:16px;margin-top:28px;flex-wrap:wrap}
+    .home-hero .hero-stats .stat b{font-size:1.45rem}
+    .home-hero .hero-stats .stat span{font-size:.68rem}
+    .home-intro{padding:52px 0}
+    .home-intro-grid{grid-template-columns:1fr;gap:10px}
+    .home-intro-mark img{width:min(100%,150px)}
+    .home-intro-copy h2{font-size:clamp(1.9rem,8vw,2.7rem);line-height:1.08;margin:12px 0 16px}
+    .home-intro-copy p{font-size:.96rem;line-height:1.55}
+    .home-cases{padding:64px 0}
+    .home-cases-head{display:block;margin-bottom:32px}
+    .home-cases-head h2{font-size:clamp(2.35rem,11vw,3.5rem);line-height:1; margin:12px 0 16px}
+    .home-cases-intro{margin-top:16px;font-size:.96rem;line-height:1.5}
+    .home-case-grid{grid-template-columns:1fr}
+    .home-case-card{min-height:350px;border-radius:14px}
+    .home-case-body{padding:22px 18px 20px}
+    .home-case-kicker{font-size:.61rem;margin-bottom:8px}
+    .home-case-body h3{font-size:1.42rem;line-height:1.08;margin-bottom:8px}
+    .home-case-body p{font-size:.8rem;line-height:1.4}
+    .home-case-link{font-size:.78rem;margin-top:14px}
+    .home-pathways .path-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .home-pathways .path-card{min-height:0;border-radius:14px}
+    .home-pathways .path-card img{height:135px}
+    .home-pathways .path-content{padding:14px 13px 16px}
+    .home-pathways .path-kicker{font-size:.61rem}
+    .home-pathways .path-card h3{font-size:.94rem;line-height:1.15;margin:5px 0 7px}
+    .home-pathways .path-card p{font-size:.76rem;line-height:1.4}
+    .home-pathways .path-button{width:100%;justify-content:center;padding:9px 8px;font-size:.7rem;margin-top:13px}
+  }
+</style>
+</head>
+<body data-page="home">
+<div id="nav"></div>
+
+<!-- HERO -->
+<header class="hero home-hero">
+  <div class="home-hero-slides" aria-hidden="true">
+    <div class="home-hero-slide active"></div>
+    <div class="home-hero-slide"></div>
+    <div class="home-hero-slide"></div>
+    <div class="home-hero-slide"></div>
+  </div>
+  <div class="wrap hero-grid">
+    <div class="hero-copy reveal">
+      <span class="eyebrow">The Advancing Partnerships Playbook</span>
+      <h1>From social impact to deployable partnership pathways</h1>
+      <p class="lead">Across Sub-Saharan Africa, development actors already do the work that makes markets possible. This playbook helps translate that work into structures private-sector partners, financiers, and governments can assess, finance, and repeat.</p>
+      <div class="hero-cta">
+        <a href="#pathways" class="btn btn-primary">Find your starting point <span class="arw">&darr;</span></a>
+      </div>
+      <div class="hero-cta hero-links" style="margin-top:10px">
+        <a href="framework.html" style="font-size:.88rem;font-weight:500;color:var(--muted);text-decoration:underline">Explore the framework</a>
+        <a href="companion.html" style="font-size:.88rem;font-weight:500;color:var(--muted);text-decoration:underline">Ask the AI Companion</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><b>3</b><span>Partnership models</span></div>
+        <div class="stat"><b>170+</b><span>Sources reviewed</span></div>
+        <div class="stat"><b>4</b><span>Live case studies</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="home-hero-controls" aria-label="Hero image selection">
+    <button class="home-hero-control active" type="button" aria-label="Show green African landscape" aria-pressed="true"></button>
+    <button class="home-hero-control" type="button" aria-label="Show African coastline" aria-pressed="false"></button>
+    <button class="home-hero-control" type="button" aria-label="Show African market" aria-pressed="false"></button>
+    <button class="home-hero-control" type="button" aria-label="Show African community" aria-pressed="false"></button>
+  </div>
+</header>
+
+<!-- ORIENTATION (condensed) -->
+<section class="home-intro">
+  <div class="wrap home-intro-grid">
+    <div class="home-intro-mark reveal"><img src="assets/heart.svg" alt="Heart representing people-centered partnerships"></div>
+    <div class="home-intro-copy reveal">
+      <span class="eyebrow">A shared language for action</span>
+      <h2>Partnerships become powerful when everyone can see the pathway.</h2>
+      <p>This Playbook is a translation tool: it helps development actors, financiers, and governments describe the same opportunity in a shared language — so social-impact activity can become deployable, investable, and repeatable.</p>
+    </div>
+  </div>
+</section>
+
+<!-- STAKEHOLDER PATHWAYS -->
+<section class="sec-pad home-pathways" id="pathways" style="border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head center">
+      <span class="eyebrow">Choose your path</span>
+      <h2>Who are you, and what are you looking for?</h2>
+      <p class="lead">Pick the option that fits you best to see the models, examples, and resources most relevant to you.</p>
+    </div>
+    <div class="path-grid">
+      <a href="pathways/development.html" class="path-card reveal">
+        <img src="assets/cases/path-development.jpg" alt="Development and delivery actors collaborating around a table">
+        <div class="path-content">
+          <span class="path-kicker">01</span>
+          <h3>Development &amp; Delivery Actors</h3>
+          <p>How can I scale my work through partnerships?</p>
+          <span class="path-button">Choose your path <span class="arw">&rarr;</span></span>
+        </div>
+      </a>
+      <a href="pathways/funders.html" class="path-card reveal">
+        <img src="assets/cases/path-funders.jpg" alt="Capital providers reviewing financial documents">
+        <div class="path-content">
+          <span class="path-kicker">02</span>
+          <h3>Funders &amp; Capital Providers</h3>
+          <p>How can I fund partnerships that scale?</p>
+          <span class="path-button">Choose your path <span class="arw">&rarr;</span></span>
+        </div>
+      </a>
+      <a href="pathways/government.html" class="path-card reveal">
+        <img src="assets/cases/path-government.jpg" alt="Public institution building representing government">
+        <div class="path-content">
+          <span class="path-kicker">03</span>
+          <h3>Governments &amp; Public Institutions</h3>
+          <p>How can I build stronger partnerships with the private sector?</p>
+          <span class="path-button">Choose your path <span class="arw">&rarr;</span></span>
+        </div>
+      </a>
+      <a href="pathways/investors.html" class="path-card reveal">
+        <img src="assets/cases/path-investors.jpg" alt="Private sector team working in a modern office">
+        <div class="path-content">
+          <span class="path-kicker">04</span>
+          <h3>Private Sector &amp; Investors</h3>
+          <p>Where are the opportunities for me?</p>
+          <span class="path-button">Choose your path <span class="arw">&rarr;</span></span>
+        </div>
+      </a>
+    </div>
+    <p class="reveal" style="margin-top:22px;font-size:.92rem;text-align:center"><span class="muted">Not sure yet? </span><a href="framework.html" style="font-weight:600;color:var(--forest);text-decoration:underline">Explore everything &rarr;</a></p>
+  </div>
+</section>
+
+<!-- CASE STUDIES -->
+<section class="home-cases" id="case-studies">
+  <div class="wrap">
+    <div class="home-cases-head">
+      <div class="sec-head">
+        <span class="eyebrow">The Playbook in practice</span>
+        <h2>Case studies that make the pathway visible.</h2>
+      </div>
+      <p class="home-cases-intro">Explore how teams across Africa turned fragmentation, underdeveloped opportunities, and delivery constraints into investable partnership pathways.</p>
+    </div>
+    <div class="home-case-grid">
+      <a href="cases.html#babbangona" class="home-case-card reveal">
+        <div class="home-case-image"><img src="assets/cases/babban-gona.jpg" alt="Agricultural field representing the Babban Gona aggregation platform"></div>
+        <div class="home-case-body">
+          <span class="home-case-kicker">Nigeria · Food &amp; agriculture</span>
+          <h3>Babban Gona Smallholder Aggregation Platform</h3>
+          <p>How aggregation, standards, and market access made fragmented smallholder agriculture financeable at scale.</p>
+          <span class="home-case-link">Explore the case <span>&rarr;</span></span>
+        </div>
+      </a>
+      <a href="cases.html#kcb" class="home-case-card reveal">
+        <div class="home-case-image"><img src="assets/cases/kcb-clean-cooking.jpg" alt="Modern kitchen representing the KCB clean cooking transition"></div>
+        <div class="home-case-body">
+          <span class="home-case-kicker">Kenya · Energy</span>
+          <h3>KCB Clean Cooking Transition</h3>
+          <p>How preparation, coordination, and risk mitigation helped a visible opportunity become investable.</p>
+          <span class="home-case-link">Explore the case <span>&rarr;</span></span>
+        </div>
+      </a>
+      <a href="cases.html#rutf" class="home-case-card reveal">
+        <div class="home-case-image"><img src="assets/cases/rutf-nutrition.jpg" alt="Nutritious meal representing local therapeutic food production"></div>
+        <div class="home-case-body">
+          <span class="home-case-kicker">Ethiopia · Health &amp; nutrition</span>
+          <h3>Local RUTF Production</h3>
+          <p>How anchor demand, technology transfer, and catalytic finance built domestic production capacity.</p>
+          <span class="home-case-link">Explore the case <span>&rarr;</span></span>
+        </div>
+      </a>
+      <a href="cases.html#ltwp" class="home-case-card reveal">
+        <div class="home-case-image"><img src="assets/cases/ltwp-wind-power.jpg" alt="Wind turbines representing the Lake Turkana Wind Power project"></div>
+        <div class="home-case-body">
+          <span class="home-case-kicker">Kenya · Renewable energy</span>
+          <h3>Lake Turkana Wind Power</h3>
+          <p>How project preparation and risk allocation aligned public and private actors around a major renewable asset.</p>
+          <span class="home-case-link">Explore the case <span>&rarr;</span></span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<div id="footer"></div>
+<script src="assets/components.js"></script>
+<script>
+  (() => {
+    const hero = document.querySelector('.home-hero');
+    if (!hero) return;
+    const slides = [...hero.querySelectorAll('.home-hero-slide')];
+    const controls = [...hero.querySelectorAll('.home-hero-control')];
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let current = 0;
+    let timer;
+    const showSlide = (index) => {
+      current = (index + slides.length) % slides.length;
+      slides.forEach((slide, slideIndex) => slide.classList.toggle('active', slideIndex === current));
+      controls.forEach((control, controlIndex) => {
+        const active = controlIndex === current;
+        control.classList.toggle('active', active);
+        control.setAttribute('aria-pressed', String(active));
+      });
+    };
+    const start = () => {
+      if (!reducedMotion.matches) timer = window.setInterval(() => showSlide(current + 1), 5500);
+    };
+    controls.forEach((control, index) => control.addEventListener('click', () => {
+      window.clearInterval(timer);
+      showSlide(index);
+      start();
+    }));
+    start();
+  })();
+</script>
+</body>
+</html>

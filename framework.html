@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Framework — Advancing Partnerships Playbook</title>
+<meta name="description" content="Deployability, the translation gap, constraint-led diagnosis, and the Impact Capital Continuum.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css">
+<link rel="icon" href="assets/brand/rf-favicon-32.png" type="image/png">
+<link rel="apple-touch-icon" href="assets/brand/rf-favicon-180.png">
+<meta property="og:image" content="assets/brand/rf-favicon-512.png">
+<meta property="og:site_name" content="Advancing Partnerships Playbook — The Rockefeller Foundation">
+<style>
+  .framework-graphic{position:relative;min-height:400px;border-radius:24px;padding:24px;background:#fff;border:1px solid var(--line);overflow:hidden;isolation:isolate;box-shadow:var(--shadow)}
+  .framework-graphic::before,.framework-graphic::after{content:"";position:absolute;border-radius:50%;pointer-events:none;z-index:-1}
+  .framework-graphic::before{width:360px;height:360px;top:-190px;right:-100px;background:rgba(217,131,48,.12);filter:blur(2px)}
+  .framework-graphic::after{width:280px;height:280px;bottom:-150px;left:-100px;background:rgba(8,128,103,.1)}
+  .framework-graphic .graphic-orbit{position:absolute;inset:38px;border:1px solid rgba(4,70,56,.2);border-radius:50%;transform:rotate(-12deg)}
+  .framework-graphic .graphic-orbit::before{content:"";position:absolute;inset:22px;border:1px dashed rgba(4,70,56,.18);border-radius:50%}
+  .framework-graphic .graphic-center{position:absolute;top:50%;left:50%;z-index:3;width:120px;height:120px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;border-radius:50%;transform:translate(-50%,-50%);background:radial-gradient(circle at 36% 30%,#fff4a8 0%,#ffd95a 34%,#f5a623 72%,#d96f18 100%);color:#7a3d0b;font-family:var(--serif);font-size:1.25rem;line-height:1.08;box-shadow:0 0 0 8px rgba(255,190,45,.12),0 0 22px rgba(245,166,35,.5),0 14px 30px rgba(15,40,35,.16);animation:frameworkPulse 4s ease-in-out infinite}
+  .framework-graphic .graphic-center small{display:block;margin-top:5px;font-family:var(--sans);font-size:.62rem;line-height:1.2;letter-spacing:.12em;text-transform:uppercase;opacity:.82}
+  .framework-graphic .graphic-node{position:absolute;z-index:2;width:160px;min-height:66px;padding:9px 12px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;border:1px solid rgba(4,70,56,.18);border-radius:12px;background:rgba(255,255,255,.94);color:var(--ink);font-size:.74rem;line-height:1.25;box-shadow:0 8px 18px rgba(15,40,35,.07);animation:frameworkNodeIn .7s both}
+  .framework-graphic .graphic-node::before{content:attr(data-number);display:block;width:20px;height:20px;margin-bottom:5px;border-radius:50%;background:var(--amber);color:#fff;text-align:center;line-height:20px;font-size:.65rem;font-weight:700}
+  .framework-graphic .graphic-node{transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease}
+  .framework-graphic .graphic-node:hover{z-index:4;border-color:var(--amber);box-shadow:0 12px 24px rgba(15,40,35,.16)}
+  .framework-graphic .node-1:hover,.framework-graphic .node-4:hover{transform:translateX(-50%) translateY(-4px)}
+  .framework-graphic .node-7:hover{transform:translateY(-50%) translateX(-4px)}
+  .framework-graphic .node-2:hover,.framework-graphic .node-3:hover,.framework-graphic .node-5:hover,.framework-graphic .node-6:hover{transform:translateY(-4px)}
+  .framework-graphic .node-1{top:12px;left:50%;transform:translateX(-50%);animation-delay:.08s}
+  .framework-graphic .node-2{top:92px;right:14px;animation-delay:.16s}
+  .framework-graphic .node-3{bottom:92px;right:14px;animation-delay:.24s}
+  .framework-graphic .node-4{bottom:12px;left:50%;transform:translateX(-50%);animation-delay:.32s}
+  .framework-graphic .node-5{bottom:92px;left:14px;animation-delay:.4s}
+  .framework-graphic .node-6{top:92px;left:14px;animation-delay:.48s}
+  .framework-graphic .node-7{top:50%;left:calc(50% + 185px);transform:translateY(-50%);animation-delay:.56s}
+  @keyframes frameworkPulse{0%,100%{transform:translate(-50%,-50%) scale(1)}50%{transform:translate(-50%,-50%) scale(1.045)}}
+  @keyframes frameworkNodeIn{from{opacity:0;transform:translateY(14px) scale(.96)}to{opacity:1}}
+  .framework-graphic .node-1,.framework-graphic .node-4{animation-name:frameworkNodeVertical}
+  .framework-graphic .node-7{animation-name:frameworkNodeHorizontal}
+  @keyframes frameworkNodeVertical{from{opacity:0;transform:translate(-50%,14px) scale(.96)}to{opacity:1;transform:translateX(-50%) scale(1)}}
+  @keyframes frameworkNodeHorizontal{from{opacity:0;transform:translate(18px,-50%) scale(.96)}to{opacity:1;transform:translateY(-50%) scale(1)}}
+  .framework-deployability-grid{grid-template-columns:1fr!important;gap:34px}
+  .framework-deployability-grid>.framework-graphic{width:100%;min-height:400px}
+  @media(max-width:760px){
+    .framework-graphic{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;min-height:0;padding:24px 16px}
+    .framework-graphic .graphic-orbit{display:none}
+    .framework-graphic .graphic-center{position:relative;top:auto;left:auto;grid-column:1 / -1;grid-row:3;width:108px;height:108px;margin:0 auto 10px;font-size:1.1rem;transform:none;animation:none}
+    .framework-graphic .graphic-node{position:relative;top:auto;right:auto;bottom:auto;left:auto;width:auto;min-height:76px;padding:10px 8px;font-size:.7rem;transform:none;animation-name:frameworkNodeIn}
+    .framework-graphic .node-1,.framework-graphic .node-4,.framework-graphic .node-7{transform:none;animation-name:frameworkNodeIn}
+    .framework-graphic .node-1{grid-column:1;grid-row:1}
+    .framework-graphic .node-2{grid-column:2;grid-row:1}
+    .framework-graphic .node-3{grid-column:1 / -1;grid-row:2;max-width:190px;width:100%;justify-self:center}
+    .framework-graphic .node-4{grid-column:1;grid-row:4}
+    .framework-graphic .node-5{grid-column:2;grid-row:4}
+    .framework-graphic .node-6{grid-column:1;grid-row:5}
+    .framework-graphic .node-7{grid-column:2;grid-row:5}
+    .framework-hero-grid{display:block;grid-template-columns:none;gap:0;margin-top:-34px}
+    .framework-hero-copy{width:100%;max-width:none}
+    .framework-deployability-grid{gap:24px}
+    .framework-deployability-grid>.framework-graphic{min-height:0}
+  }
+  @media(max-width:420px){
+    .framework-graphic{grid-template-columns:1fr;gap:10px}
+    .framework-graphic .graphic-node{grid-column:1 / -1;max-width:none}
+    .framework-graphic .node-1{grid-row:1}
+    .framework-graphic .node-2{grid-row:2}
+    .framework-graphic .node-3{grid-row:3}
+    .framework-graphic .graphic-center{grid-row:4}
+    .framework-graphic .node-4{grid-row:5}
+    .framework-graphic .node-5{grid-row:6}
+    .framework-graphic .node-6{grid-row:7}
+    .framework-graphic .node-7{grid-row:8}
+  }
+  @media(prefers-reduced-motion:reduce){
+    .framework-graphic .graphic-center,.framework-graphic .graphic-node{animation:none}
+  }
+  @media(max-width:760px){
+    .page-hero{padding:24px 0 28px}
+    .page-hero>.wrap{padding:0 16px}
+    .breadcrumb{position:relative;z-index:2;margin:0;padding:18px 24px 0;color:rgba(255,255,255,.78)}
+    .breadcrumb a{color:#fff}
+    .framework-hero-grid{display:block;margin-top:-34px}
+    .framework-hero-copy{
+      min-height:430px;padding:86px 24px 34px;display:flex;flex-direction:column;justify-content:flex-end;
+      border-radius:20px;overflow:hidden;position:relative;z-index:1;
+      background:linear-gradient(180deg,rgba(4,28,24,.12) 12%,rgba(4,28,24,.84) 100%),url("assets/cases/framework-africa-community.jpg") center/cover no-repeat;
+      box-shadow:var(--shadow-lg)
+    }
+    .framework-hero-copy h1,.framework-hero-copy .lead{position:relative;z-index:1;color:#fff}
+    .framework-hero-copy h1{margin-bottom:14px}
+    .framework-hero-copy::before{position:relative;z-index:1;color:#fff!important;font-size:.64rem}
+    .framework-hero-copy::after{position:relative;z-index:1;margin-top:14px}
+    .framework-intro-visual{display:none}
+    .framework-hero-copy .lead{font-size:1rem;line-height:1.5}
+    .hyp-result .btn{max-width:100%;white-space:normal;text-align:center;line-height:1.35}
+  }
+  .framework-hero-grid{display:grid;grid-template-columns:1fr .9fr;gap:46px;align-items:center;margin-top:28px}
+  .framework-hero-copy{max-width:650px}
+  .framework-hero-copy::before{content:"A practical operating language";display:inline-flex;align-items:center;gap:9px;color:var(--green);font-size:.72rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase}
+  .framework-hero-copy::after{content:"";display:block;width:28px;height:2px;background:var(--amber);margin-top:-8px}
+  .framework-hero-copy .lead{max-width:62ch;font-size:clamp(1.05rem,1.7vw,1.25rem);line-height:1.6}
+  .framework-hero-copy h1{max-width:10ch;line-height:1.02;text-wrap:balance}
+  .framework-hero-copy .reveal:nth-child(2){transition-delay:.12s}
+  .framework-white-section{background:#fff}
+  .framework-intro-visual{height:360px;margin-top:0;border-radius:22px;overflow:hidden;position:relative;box-shadow:var(--shadow-lg);background:var(--forest)}
+  .framework-intro-visual img{width:100%;height:100%;object-fit:cover;transition:transform .9s cubic-bezier(.16,1,.3,1)}
+  .framework-intro-visual:hover img{transform:scale(1.06)}
+  .framework-intro-visual:hover{box-shadow:0 22px 48px rgba(15,40,35,.2)}
+  .framework-intro-visual::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(4,70,56,.04) 30%,rgba(4,28,24,.72))}
+  .framework-intro-visual figcaption{position:absolute;z-index:1;left:28px;right:28px;bottom:24px;color:#fff;font-size:.82rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;line-height:1.45;text-shadow:0 2px 8px rgba(0,0,0,.45)}
+  .translation-gap{background:#fff;color:var(--text);padding:58px 0}
+  .translation-gap .sec-head h2,.translation-gap .tgap-voice h3{color:var(--amber)}
+  .translation-gap .sec-head .lead{color:var(--muted)}
+  .translation-gap .tgap-diagram{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:28px}
+  .translation-gap .tgap-voice{width:auto;margin:0;min-height:145px;display:flex;flex-direction:column;background:var(--sand);border:1px solid var(--line);border-radius:var(--radius);padding:20px 22px;box-shadow:var(--shadow);color:var(--text);transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease}
+  .translation-gap .tgap-voice:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);border-color:var(--amber)}
+  .translation-gap .tgap-voice h3{font-size:1.15rem;margin-bottom:8px}
+  .translation-gap .tgap-voice p{color:var(--muted);font-size:.92rem}
+  .translation-gap .tgap-lines{grid-column:1 / -1;height:18px;margin:0;display:flex;justify-content:center;gap:100px}
+  .translation-gap .tgap-lines span{background:linear-gradient(var(--amber),rgba(217,131,48,.15))}
+  .translation-gap .tgap-converge{grid-column:1 / -1;max-width:780px;margin:0 auto;color:var(--forest);border-top:2px solid var(--amber);padding-top:14px}
+  .framework-section-head.reveal{opacity:0;transform:translateY(28px)}
+  .framework-section-head.reveal.in{opacity:1;transform:translateY(0);transition:opacity .7s ease,transform .7s cubic-bezier(.16,1,.3,1)}
+  .framework-graphic.reveal{opacity:0;transform:translateY(30px) scale(.98)}
+  .framework-graphic.reveal.in{opacity:1;transform:translateY(0) scale(1);transition:opacity .8s ease,transform .8s cubic-bezier(.16,1,.3,1)}
+  .hyp-chip{transition:transform .25s ease,box-shadow .25s ease}
+  .hyp-chip:hover{transform:translateY(-3px);box-shadow:0 8px 18px rgba(15,40,35,.1)}
+  .hyp-chip:focus-visible{outline:3px solid rgba(217,131,48,.45);outline-offset:3px}
+  .hyp-chip.is-selected{border-color:var(--amber);background:var(--amber-soft);color:#6b3a10;box-shadow:0 6px 14px rgba(217,131,48,.14)}
+  .hyp-cold,.hyp-result{padding:24px;border:1px solid var(--line);border-radius:var(--radius);background:var(--paper);box-shadow:var(--shadow)}
+  .hyp-result[hidden]{display:none}
+  .hyp-result:not([hidden]){animation:frameworkReveal .5s ease both}
+  .hyp-area-card{transition:transform .25s ease,box-shadow .25s ease}
+  .hyp-area-card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+  @keyframes frameworkReveal{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+  .jstep .jc{transition:transform .3s ease}
+  .jstep:hover .jc{transform:translateX(6px)}
+  .cstage{transition:transform .3s ease,box-shadow .3s ease}
+  .cstage:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
+  .cta-band{transition:transform .35s ease,box-shadow .35s ease}
+  .cta-band:hover{transform:translateY(-3px);box-shadow:0 20px 42px rgba(4,70,56,.2)}
+  @media(prefers-reduced-motion:reduce){
+    .framework-intro-visual,.framework-intro-visual img,.translation-gap .tgap-voice,.hyp-chip,.jstep .jc,.cstage,.cta-band,.framework-graphic .graphic-node{transition:none}
+    .framework-section-head.reveal,.framework-graphic.reveal{opacity:1;transform:none;transition:none}
+    .hyp-result:not([hidden]){animation:none}
+  }
+  @media(max-width:760px){
+    .translation-gap .tgap-diagram{grid-template-columns:1fr;gap:16px}
+    .translation-gap .tgap-voice{min-height:0}
+    .translation-gap .tgap-lines{display:none}
+    .translation-gap .tgap-converge{grid-column:auto;margin-top:10px}
+  }
+  @media(max-width:760px){
+    .framework-hero-grid{display:block;grid-template-columns:none;gap:0;margin-top:-34px}
+    .framework-hero-copy{width:100%;max-width:none}
+  }
+</style>
+</head>
+<body data-page="framework">
+<div id="nav"></div>
+
+<header class="page-hero">
+  <div class="wrap">
+    <div class="breadcrumb reveal"><a href="index.html">Home</a> / The Framework</div>
+    <div class="framework-hero-grid">
+      <div class="framework-hero-copy">
+        <h1 class="reveal">The Framework</h1>
+        <p class="lead reveal">Partnerships underperform not because opportunity, impact, or capital is absent — but because development activity is rarely translated into forms that partners can assess, structure, finance, scale, and repeat.</p>
+      </div>
+      <figure class="framework-intro-visual reveal">
+        <img src="assets/cases/framework-africa-community.jpg" alt="African community gathered outdoors, representing shared action and partnership">
+      </figure>
+    </div>
+  </div>
+</header>
+
+<!-- DEPLOYABILITY -->
+<section class="sec-pad-sm framework-white-section" id="deployability">
+  <div class="wrap">
+    <div class="grid g-2 framework-deployability-grid" style="align-items:start">
+      <div class="reveal">
+        <span class="eyebrow">The core idea</span>
+        <h2 style="margin:14px 0 18px">What is deployability?</h2>
+        <div class="prose">
+          <p>Deployability refers to the conditions that allow capital, institutional commitment, and private-sector participation to move into an opportunity with confidence. A deployable opportunity has more than impact potential.</p>
+          <div class="callout"><strong>Deployability precedes and enables bankability.</strong> The binding constraint is often not capital scarcity — it is whether the opportunity has been organized in a way that lets different actors participate sustainably.</div>
+        </div>
+      </div>
+      <div class="framework-graphic reveal" aria-label="Deployability framework with seven enabling conditions">
+        <div class="graphic-orbit" aria-hidden="true"></div>
+        <div class="graphic-center">Deployability<small>conditions for action</small></div>
+        <div class="graphic-node node-1" data-number="1">Clear demand signal</div>
+        <div class="graphic-node node-2" data-number="2">Credible payer / revenue logic</div>
+        <div class="graphic-node node-3" data-number="3">Operational delivery model</div>
+        <div class="graphic-node node-4" data-number="4">Appropriate risk allocation</div>
+        <div class="graphic-node node-5" data-number="5">Sufficient preparation</div>
+        <div class="graphic-node node-6" data-number="6">Accountable institutions</div>
+        <div class="graphic-node node-7" data-number="7">A pathway to replication</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRANSLATION GAP -->
+<section class="sec-pad translation-gap">
+  <div class="wrap">
+    <div class="sec-head framework-section-head reveal">
+      <span class="eyebrow">Why partnerships stall</span>
+      <h2>The translation gap</h2>
+      <p class="lead">Different actors describe the same opportunity in different languages. These perspectives are not incompatible — strong partnerships require all of them — but without a common operating logic, opportunities stay stuck between worlds.</p>
+    </div>
+    <div class="tgap-diagram">
+      <div class="tgap-voice reveal">
+        <h3>Development actors</h3>
+        <p>Beneficiaries, needs, inclusion, impact, theory of change, community trust, program sustainability.</p>
+      </div>
+      <div class="tgap-voice reveal">
+        <h3>Financiers &amp; private sector</h3>
+        <p>Clients, revenue, margins, repayment, risk, return, cash flow, offtake, guarantees, scale.</p>
+      </div>
+      <div class="tgap-voice reveal">
+        <h3>Governments</h3>
+        <p>Policy alignment, fiscal exposure, procurement, public value, accountability, political feasibility.</p>
+      </div>
+      <div class="tgap-lines" aria-hidden="true"><span></span><span></span><span></span></div>
+      <div class="tgap-converge reveal">A program may have beneficiaries but no defined payer. It may show need but not bankable demand.<br>The language gap is not a communications problem alone &mdash; <strong>it is a structuring problem.</strong></div>
+    </div>
+  </div>
+</section>
+
+<!-- DIAGNOSTIC SHIFT -->
+<section class="sec-pad" id="diagnosis">
+  <div class="wrap">
+    <div class="sec-head framework-section-head reveal">
+      <span class="eyebrow">The diagnostic shift</span>
+      <h2>From Hypothesis to Diagnosis</h2>
+      <p class="lead">This platform can help you orient and form a hypothesis — it does not replace the deeper diagnostic process the Playbook and Toolkit require.</p>
+    </div>
+
+    <div id="hyp-cold" class="hyp-cold">
+      <p class="muted" style="margin-bottom:16px">Not sure? Pick what sounds closest to what's holding your work back.</p>
+      <div class="hyp-chips">
+        <button type="button" class="hyp-chip" data-area="demand" aria-pressed="false">Demand &amp; visibility</button>
+        <button type="button" class="hyp-chip" data-area="payment" aria-pressed="false">Payment credibility &amp; risk</button>
+        <button type="button" class="hyp-chip" data-area="preparation" aria-pressed="false">Preparation &amp; readiness</button>
+        <button type="button" class="hyp-chip" data-area="coordination" aria-pressed="false">Coordination &amp; fragmentation</button>
+        <button type="button" class="hyp-chip" data-area="legitimacy" aria-pressed="false">Legitimacy &amp; trust</button>
+      </div>
+    </div>
+
+    <div id="hyp-result" class="hyp-result" hidden>
+      <p class="muted" style="margin-bottom:16px">Your responses suggest these areas may warrant further investigation:</p>
+      <div id="hyp-cards" class="hyp-cards"></div>
+      <div style="margin-top:24px">
+        <a href="resources.html" class="btn btn-primary">Use the Toolkit to test your hypothesis <span class="arw">&rarr;</span></a>
+        <button type="button" id="hyp-reset" class="btn btn-ghost">Start over</button>
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+(function(){
+  var AREAS = {
+    demand: 'Demand & visibility',
+    payment: 'Payment credibility & risk',
+    preparation: 'Preparation & readiness',
+    coordination: 'Coordination & fragmentation',
+    legitimacy: 'Legitimacy & trust'
+  };
+  var cold = document.getElementById('hyp-cold');
+  var result = document.getElementById('hyp-result');
+  var cardsWrap = document.getElementById('hyp-cards');
+  var resetBtn = document.getElementById('hyp-reset');
+
+  function renderAreas(keys){
+    cardsWrap.innerHTML = '';
+    keys.forEach(function(k){
+      if (!AREAS[k]) return;
+      var el = document.createElement('div');
+      el.className = 'hyp-area-card';
+      el.innerHTML = '<h3>' + AREAS[k] + '</h3>' +
+        '<p class="muted" style="font-size:.85rem"><em>What this may indicate</em> and <em>what to investigate</em> for this area — content in progress.</p>';
+      cardsWrap.appendChild(el);
+    });
+    cold.hidden = true;
+    result.hidden = false;
+  }
+
+  document.querySelectorAll('.hyp-chip').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      document.querySelectorAll('.hyp-chip').forEach(function(chip){
+        chip.classList.toggle('is-selected', chip === btn);
+        chip.setAttribute('aria-pressed', chip === btn ? 'true' : 'false');
+      });
+      renderAreas([btn.getAttribute('data-area')]);
+    });
+  });
+  resetBtn.addEventListener('click', function(){
+    result.hidden = true; cold.hidden = false; cardsWrap.innerHTML = '';
+    document.querySelectorAll('.hyp-chip').forEach(function(chip){
+      chip.classList.remove('is-selected');
+      chip.setAttribute('aria-pressed', 'false');
+    });
+  });
+
+  // Home -> Framework handoff: read carried-over Indicative Challenge Area(s)
+  // from sessionStorage and/or a URL parameter, as a set of values.
+  try {
+    var fromUrl = new URLSearchParams(window.location.search).get('areas');
+    var fromSession = sessionStorage.getItem('indicativeChallengeAreas');
+    var raw = fromUrl || fromSession;
+    if (raw) {
+      var keys = raw.split(',').map(function(s){ return s.trim(); }).filter(Boolean);
+      if (keys.length) renderAreas(keys);
+    }
+  } catch (e) { /* sessionStorage unavailable — fail silently, cold-entry state shown */ }
+})();
+</script>
+
+<!-- FIVE TRANSLATION QUESTIONS -->
+<section class="sec-pad framework-white-section">
+  <div class="wrap">
+    <div class="sec-head framework-section-head reveal">
+      <span class="eyebrow">Ask early, not after</span>
+      <h2>Five translation questions</h2>
+      <p class="lead">Asked at the start, these questions convert social-impact activity into partnership architecture — making complexity visible and manageable.</p>
+    </div>
+    <div class="journey journey-connected">
+      <div class="jstep reveal"><div class="jn">1</div><div class="jc"><span class="jtag">Benefit</span><h3>Who benefits?</h3><p>Not only who needs the intervention, but who uses it, values it, depends on it, or gains from its continued delivery.</p></div></div>
+      <div class="jstep reveal"><div class="jn">2</div><div class="jc"><span class="jtag">Payment</span><h3>Who pays?</h3><p>The person who benefits may not be the one who pays. Without a credible payment logic, demand stays visible but not bankable.</p></div></div>
+      <div class="jstep reveal"><div class="jn">3</div><div class="jc"><span class="jtag">Risk</span><h3>What risk blocks capital?</h3><p>Demand, payment, political, currency, procurement, construction, or performance risk — each needs a different instrument.</p></div></div>
+      <div class="jstep reveal"><div class="jn">4</div><div class="jc"><span class="jtag">Sustainability</span><h3>What makes it sustainable?</h3><p>Reliable delivery capacity, clear standards, sufficient margins, credible governance, and a pathway to institutional ownership.</p></div></div>
+      <div class="jstep reveal"><div class="jn">5</div><div class="jc"><span class="jtag">Repeatability</span><h3>How does it repeat?</h3><p>Scale depends on standardization, templates, data, benchmarks, and models that adapt across locations without redesign.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CAPITAL CONTINUUM -->
+<section class="sec-pad">
+  <div class="wrap">
+    <div class="sec-head framework-section-head reveal">
+      <span class="eyebrow">Sequencing capital to readiness</span>
+      <h2>The Impact Capital Continuum</h2>
+      <p class="lead">The purpose is not to push every opportunity toward commercial finance, but to ensure capital follows readiness rather than substituting for structure.</p>
+    </div>
+    <div class="continuum continuum-gradient">
+      <div class="cstage reveal"><div class="cs-i">01</div><h4>Grant &amp; market-building</h4><p>Builds trust, validates demand, supports inclusion, strengthens early market conditions.</p></div>
+      <div class="cstage reveal"><div class="cs-i">02</div><h4>Technical assistance</h4><p>Strengthens capacity, feasibility, structuring, and procurement readiness.</p></div>
+      <div class="cstage reveal"><div class="cs-i">03</div><h4>Catalytic &amp; first-loss</h4><p>Absorbs higher risk or lower returns to crowd in more risk-averse capital.</p></div>
+      <div class="cstage reveal"><div class="cs-i">04</div><h4>Guarantees &amp; concessional</h4><p>Covers specific risks and improves financing terms where repayment is credible.</p></div>
+      <div class="cstage reveal"><div class="cs-i">05</div><h4>Domestic &amp; commercial</h4><p>Market-based capital as demand, payment, and delivery systems become credible.</p></div>
+    </div>
+    <div class="callout reveal" style="margin-top:36px"><strong>Capital sequencing</strong> matches the right form of capital to the right stage of readiness — depending on the maturity of demand, credibility of the payer, allocation of risk, and readiness of institutions to execute.</div>
+  </div>
+</section>
+
+<section class="sec-pad-sm">
+  <div class="wrap"><div class="cta-band reveal">
+    <h2>See the models in action</h2>
+    <p>Partnership Models are one possible class of response within the broader Playbook logic — not the default next step for every situation. Explore how each of the three models addresses a different structural constraint.</p>
+    <div class="hero-cta"><a href="models.html" class="btn btn-amber">Partnership Models <span class="arw">&rarr;</span></a><a href="cases.html" class="btn btn-ghost" style="color:#fff;border-color:rgba(255,255,255,.4)">Case Studies</a></div>
+  </div></div>
+</section>
+
+<div id="footer"></div>
+<script src="assets/components.js"></script>
+</body>
+</html>
