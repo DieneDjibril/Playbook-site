@@ -4,391 +4,557 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Framework — Advancing Partnerships Playbook</title>
-<meta name="description" content="Deployability, the translation gap, constraint-led diagnosis, and the Impact Capital Continuum.">
+<meta name="description" content="Explore deployability, the translation gap, challenge-area diagnosis, and the Impact Capital Continuum.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/styles.css">
 <link rel="icon" href="assets/brand/rf-favicon-32.png" type="image/png">
-<link rel="apple-touch-icon" href="assets/brand/rf-favicon-180.png">
-<meta property="og:image" content="assets/brand/rf-favicon-512.png">
-<meta property="og:site_name" content="Advancing Partnerships Playbook — The Rockefeller Foundation">
 <style>
-  .framework-graphic{position:relative;min-height:400px;border-radius:24px;padding:24px;background:#fff;border:1px solid var(--line);overflow:hidden;isolation:isolate;box-shadow:var(--shadow)}
-  .framework-graphic::before,.framework-graphic::after{content:"";position:absolute;border-radius:50%;pointer-events:none;z-index:-1}
-  .framework-graphic::before{width:360px;height:360px;top:-190px;right:-100px;background:rgba(217,131,48,.12);filter:blur(2px)}
-  .framework-graphic::after{width:280px;height:280px;bottom:-150px;left:-100px;background:rgba(8,128,103,.1)}
-  .framework-graphic .graphic-orbit{position:absolute;inset:38px;border:1px solid rgba(4,70,56,.2);border-radius:50%;transform:rotate(-12deg)}
-  .framework-graphic .graphic-orbit::before{content:"";position:absolute;inset:22px;border:1px dashed rgba(4,70,56,.18);border-radius:50%}
-  .framework-graphic .graphic-center{position:absolute;top:50%;left:50%;z-index:3;width:120px;height:120px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;border-radius:50%;transform:translate(-50%,-50%);background:radial-gradient(circle at 36% 30%,#fff4a8 0%,#ffd95a 34%,#f5a623 72%,#d96f18 100%);color:#7a3d0b;font-family:var(--serif);font-size:1.25rem;line-height:1.08;box-shadow:0 0 0 8px rgba(255,190,45,.12),0 0 22px rgba(245,166,35,.5),0 14px 30px rgba(15,40,35,.16);animation:frameworkPulse 4s ease-in-out infinite}
-  .framework-graphic .graphic-center small{display:block;margin-top:5px;font-family:var(--sans);font-size:.62rem;line-height:1.2;letter-spacing:.12em;text-transform:uppercase;opacity:.82}
-  .framework-graphic .graphic-node{position:absolute;z-index:2;width:160px;min-height:66px;padding:9px 12px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;border:1px solid rgba(4,70,56,.18);border-radius:12px;background:rgba(255,255,255,.94);color:var(--ink);font-size:.74rem;line-height:1.25;box-shadow:0 8px 18px rgba(15,40,35,.07);animation:frameworkNodeIn .7s both}
-  .framework-graphic .graphic-node::before{content:attr(data-number);display:block;width:20px;height:20px;margin-bottom:5px;border-radius:50%;background:var(--amber);color:#fff;text-align:center;line-height:20px;font-size:.65rem;font-weight:700}
-  .framework-graphic .graphic-node{transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease}
-  .framework-graphic .graphic-node:hover{z-index:4;border-color:var(--amber);box-shadow:0 12px 24px rgba(15,40,35,.16)}
-  .framework-graphic .node-1:hover,.framework-graphic .node-4:hover{transform:translateX(-50%) translateY(-4px)}
-  .framework-graphic .node-7:hover{transform:translateY(-50%) translateX(-4px)}
-  .framework-graphic .node-2:hover,.framework-graphic .node-3:hover,.framework-graphic .node-5:hover,.framework-graphic .node-6:hover{transform:translateY(-4px)}
-  .framework-graphic .node-1{top:12px;left:50%;transform:translateX(-50%);animation-delay:.08s}
-  .framework-graphic .node-2{top:92px;right:14px;animation-delay:.16s}
-  .framework-graphic .node-3{bottom:92px;right:14px;animation-delay:.24s}
-  .framework-graphic .node-4{bottom:12px;left:50%;transform:translateX(-50%);animation-delay:.32s}
-  .framework-graphic .node-5{bottom:92px;left:14px;animation-delay:.4s}
-  .framework-graphic .node-6{top:92px;left:14px;animation-delay:.48s}
-  .framework-graphic .node-7{top:50%;left:calc(50% + 185px);transform:translateY(-50%);animation-delay:.56s}
-  @keyframes frameworkPulse{0%,100%{transform:translate(-50%,-50%) scale(1)}50%{transform:translate(-50%,-50%) scale(1.045)}}
-  @keyframes frameworkNodeIn{from{opacity:0;transform:translateY(14px) scale(.96)}to{opacity:1}}
-  .framework-graphic .node-1,.framework-graphic .node-4{animation-name:frameworkNodeVertical}
-  .framework-graphic .node-7{animation-name:frameworkNodeHorizontal}
-  @keyframes frameworkNodeVertical{from{opacity:0;transform:translate(-50%,14px) scale(.96)}to{opacity:1;transform:translateX(-50%) scale(1)}}
-  @keyframes frameworkNodeHorizontal{from{opacity:0;transform:translate(18px,-50%) scale(.96)}to{opacity:1;transform:translateY(-50%) scale(1)}}
-  .framework-deployability-grid{grid-template-columns:1fr!important;gap:34px}
-  .framework-deployability-grid>.framework-graphic{width:100%;min-height:400px}
-  @media(max-width:760px){
-    .framework-graphic{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;min-height:0;padding:24px 16px}
-    .framework-graphic .graphic-orbit{display:none}
-    .framework-graphic .graphic-center{position:relative;top:auto;left:auto;grid-column:1 / -1;grid-row:3;width:108px;height:108px;margin:0 auto 10px;font-size:1.1rem;transform:none;animation:none}
-    .framework-graphic .graphic-node{position:relative;top:auto;right:auto;bottom:auto;left:auto;width:auto;min-height:76px;padding:10px 8px;font-size:.7rem;transform:none;animation-name:frameworkNodeIn}
-    .framework-graphic .node-1,.framework-graphic .node-4,.framework-graphic .node-7{transform:none;animation-name:frameworkNodeIn}
-    .framework-graphic .node-1{grid-column:1;grid-row:1}
-    .framework-graphic .node-2{grid-column:2;grid-row:1}
-    .framework-graphic .node-3{grid-column:1 / -1;grid-row:2;max-width:190px;width:100%;justify-self:center}
-    .framework-graphic .node-4{grid-column:1;grid-row:4}
-    .framework-graphic .node-5{grid-column:2;grid-row:4}
-    .framework-graphic .node-6{grid-column:1;grid-row:5}
-    .framework-graphic .node-7{grid-column:2;grid-row:5}
-    .framework-hero-grid{display:block;grid-template-columns:none;gap:0;margin-top:-34px}
-    .framework-hero-copy{width:100%;max-width:none}
-    .framework-deployability-grid{gap:24px}
-    .framework-deployability-grid>.framework-graphic{min-height:0}
+  #framework-page{
+    --canvas:var(--sand);
+    --white:var(--paper);
+    --mist:var(--green-soft);
+    --mist-2:#dcebe5;
+    --plum:var(--forest);
+    --plum-deep:var(--ink);
+    --flame:var(--amber);
+    --flame-soft:var(--amber-soft);
+    --line-2:#d8d2c7;
+    color:var(--text);
+    font-family:"Alexandria",system-ui,-apple-system,"Segoe UI",sans-serif;
+    overflow:hidden;
   }
-  @media(max-width:420px){
-    .framework-graphic{grid-template-columns:1fr;gap:10px}
-    .framework-graphic .graphic-node{grid-column:1 / -1;max-width:none}
-    .framework-graphic .node-1{grid-row:1}
-    .framework-graphic .node-2{grid-row:2}
-    .framework-graphic .node-3{grid-row:3}
-    .framework-graphic .graphic-center{grid-row:4}
-    .framework-graphic .node-4{grid-row:5}
-    .framework-graphic .node-5{grid-row:6}
-    .framework-graphic .node-6{grid-row:7}
-    .framework-graphic .node-7{grid-row:8}
+  #framework-page h1,#framework-page h2,#framework-page h3,#framework-page h4{font-family:inherit}
+  #framework-page .section{padding:clamp(72px,8vw,116px) 0}
+  #framework-page .section-sm{padding:clamp(56px,6vw,84px) 0}
+  #framework-page .eyebrow.flame{color:var(--flame)}
+  #framework-page .eyebrow.flame::before{background:var(--flame)}
+  #framework-page .split-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,.85fr);gap:clamp(28px,6vw,84px);align-items:end;margin-bottom:clamp(34px,4vw,54px)}
+  #framework-page .split-head h2{margin:16px 0 0}
+  #framework-page .split-head .lead{margin:0;max-width:62ch}
+  #framework-page .fw-hero{position:relative;isolation:isolate;min-height:510px;padding:56px 0 72px;background:var(--canvas);overflow:hidden}
+  #framework-page .fw-hero .wrap{position:relative;z-index:1}
+  #framework-page .fw-hero .breadcrumb{margin-bottom:clamp(44px,7vw,88px)}
+  #framework-page .fw-hero h1{max-width:11ch;margin:18px 0 20px;font-size:clamp(3rem,6vw,5.25rem);font-weight:700;line-height:.99;letter-spacing:-.045em}
+  #framework-page .fw-hero .lead{max-width:min(40rem,46vw);font-size:clamp(1.05rem,1.7vw,1.25rem);line-height:1.65}
+  #framework-page .fw-visual{position:absolute;z-index:0;right:max(24px,calc((100vw - 1280px)/2));top:50%;width:min(560px,44vw);height:auto;transform:translateY(-42%);pointer-events:none;overflow:visible}
+  #framework-page .fw-visual-mobile{display:none}
+  #framework-page .fw-visual .fw-halo{fill:#e7e7f6;opacity:.5}
+  #framework-page .fw-visual .fw-network{fill:none;stroke:#a9a8e0;stroke-dasharray:4 7;stroke-linecap:round;stroke-width:1.5}
+  #framework-page .fw-visual .fw-node{fill:#fff;stroke:#a9a8e0;stroke-width:2}
+  #framework-page .fw-visual .fw-node.accent{fill:#ee5f2a;stroke:#ee5f2a}
+  #framework-page .fw-visual .fw-node.dark{fill:#3d3142;stroke:#3d3142}
+  #framework-page .fw-visual .fw-platform-float{transform-box:fill-box;transform-origin:center;animation:frameworkPlatformFloat 7s ease-in-out infinite}
+  #framework-page .fw-visual .fw-surface{fill:url(#framework-surface);stroke:#fff;stroke-width:2}
+  #framework-page .fw-visual .fw-mid-left{fill:url(#framework-mid);stroke:#fff;stroke-width:1}
+  #framework-page .fw-visual .fw-mid-right{fill:#8582c7;fill-opacity:.78;stroke:#fff;stroke-width:1}
+  #framework-page .fw-visual .fw-base-top{fill:url(#framework-base)}
+  #framework-page .fw-visual .fw-base-left{fill:#342a3a}
+  #framework-page .fw-visual .fw-base-right{fill:#211a27}
+  #framework-page .fw-visual .fw-foundation-left{fill:#e5e4f1;fill-opacity:.9}
+  #framework-page .fw-visual .fw-foundation-right{fill:#ceccdf;fill-opacity:.9}
+  #framework-page .fw-visual .fw-core-top{fill:url(#framework-sun)}
+  #framework-page .fw-visual .fw-core-left{fill:#d98330}
+  #framework-page .fw-visual .fw-core-right{fill:#b86727}
+  #framework-page .fw-visual .fw-graph-label{fill:#3d3142;font-family:"Alexandria",Arial,sans-serif;font-size:12px;font-weight:600;letter-spacing:1.2px}
+  @keyframes frameworkPlatformFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+  #framework-page .fw-core{padding-top:clamp(44px,4.6vw,64px);padding-bottom:clamp(56px,6vw,88px);background:#fff}
+  #framework-page .fw-core-text{max-width:760px}
+  #framework-page .fw-core-text h2{margin:14px 0 18px;font-size:clamp(2rem,3.4vw,3rem);font-weight:600;line-height:1.12;letter-spacing:-.02em}
+  #framework-page .fw-core-text .def{max-width:747px;margin:0 0 16px;font-size:1rem;line-height:1.65}
+  #framework-page .fw-callout{max-width:747px;margin:26px 0 0;padding:20px 24px;border-left:4px solid var(--flame);border-radius:0 12px 12px 0;background:var(--flame-soft);font-size:1.02rem;line-height:1.6;color:#5a3a17}
+  #framework-page .fw-callout strong{color:var(--ink)}
+  #framework-page .fw-orbit-fig{margin:34px 0 0}
+  #framework-page .fw-orbit{position:relative;aspect-ratio:1000/460;border:1px solid var(--line);border-radius:24px;background:#fff;box-shadow:var(--shadow);overflow:hidden;isolation:isolate}
+  #framework-page .fw-orbit::before,#framework-page .fw-orbit::after{position:absolute;z-index:-1;border-radius:50%;content:"";pointer-events:none}
+  #framework-page .fw-orbit::before{width:380px;height:380px;top:-200px;right:-110px;background:rgba(217,131,48,.08)}
+  #framework-page .fw-orbit::after{width:300px;height:300px;bottom:-170px;left:-110px;background:rgba(8,128,103,.08)}
+  #framework-page .orb-lines{position:absolute;inset:0;width:100%;height:100%;max-width:none}
+  #framework-page .orb{stroke:rgba(4,70,56,.2);stroke-width:1;vector-effect:non-scaling-stroke}
+  #framework-page .orb.o2{stroke-dasharray:4 6;stroke:rgba(4,70,56,.16)}
+  #framework-page .orb-core{position:absolute;z-index:2;top:50%;left:50%;display:grid;width:clamp(130px,17vw,184px);aspect-ratio:1;border:1px solid rgba(235,173,29,.5);border-radius:50%;background:radial-gradient(circle at 34% 27%,#fffbd1 0%,#ffe56b 34%,#ffc928 67%,#eda715 100%);box-shadow:0 0 0 12px rgba(255,201,40,.16),0 0 48px rgba(255,190,30,.32),0 18px 45px rgba(15,40,35,.16);place-items:center;text-align:center;transform:translate(-50%,-50%)}
+  #framework-page .orb-core::before{display:none}
+  #framework-page .orb-core::after{position:absolute;z-index:-2;inset:-9%;border:1px solid rgba(248,183,31,.52);border-radius:50%;background:rgba(255,226,105,.12);box-shadow:0 0 26px rgba(255,199,40,.4);content:""}
+  #framework-page .orb-core small{display:block;color:#684c10;font-size:.62rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+  #framework-page .orb-core b{display:block;margin-top:4px;color:#49330a;font-family:inherit;font-size:clamp(.95rem,1.5vw,1.2rem);font-weight:700;line-height:1.18}
+  #framework-page .orb-nodes{position:absolute;inset:0;list-style:none;margin:0;padding:0}
+  #framework-page .orb-node{position:absolute;display:flex;align-items:center;gap:9px;width:max-content;max-width:220px;min-height:42px;padding:8px 12px;border:1px solid rgba(4,70,56,.16);border-radius:999px;background:rgba(255,255,255,.96);box-shadow:0 6px 18px rgba(15,40,35,.08);color:var(--ink);font-size:clamp(.68rem,.9vw,.82rem);line-height:1.25;transform:translate(-50%,-50%)}
+  #framework-page .orb-node .k{display:grid;width:23px;height:23px;flex:none;border-radius:50%;background:var(--flame);color:#fff;font-size:.68rem;font-weight:700;place-items:center}
+  #framework-page .fw-orbit.is-armed:not(.is-in) .orb-core,#framework-page .fw-orbit.is-armed:not(.is-in) .orb-node{opacity:0}
+  #framework-page .fw-orbit.is-armed:not(.is-in) .orb{stroke-dasharray:1;stroke-dashoffset:1}
+  #framework-page .fw-orbit.is-in .orb-core{animation:orbCore .6s cubic-bezier(.2,.7,.2,1) both}
+  #framework-page .fw-orbit.is-in .orb.o1{animation:orbDraw .7s cubic-bezier(.45,0,.25,1) .25s both}
+  #framework-page .fw-orbit.is-in .orb.o2{animation:orbFade .7s ease .4s both}
+  #framework-page .fw-orbit.is-in .orb.o3{animation:orbDraw 1s cubic-bezier(.45,0,.25,1) .45s both}
+  #framework-page .fw-orbit.is-in .orb-node{animation:orbNode .5s cubic-bezier(.2,.7,.2,1) both}
+  #framework-page .fw-orbit.is-in .n1{animation-delay:.7s}#framework-page .fw-orbit.is-in .n2{animation-delay:.8s}#framework-page .fw-orbit.is-in .n3{animation-delay:.9s}#framework-page .fw-orbit.is-in .n4{animation-delay:1s}#framework-page .fw-orbit.is-in .n5{animation-delay:1.1s}#framework-page .fw-orbit.is-in .n6{animation-delay:1.2s}#framework-page .fw-orbit.is-in .n7{animation-delay:1.3s}
+  @keyframes orbCore{from{opacity:0;transform:translate(-50%,-50%) scale(.88)}to{opacity:1;transform:translate(-50%,-50%) scale(1)}}
+  @keyframes orbDraw{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+  @keyframes orbFade{from{opacity:0}to{opacity:1}}
+  @keyframes orbNode{from{opacity:0;translate:0 9px}to{opacity:1;translate:0 0}}
+  #framework-page .tg-section{padding:clamp(80px,8.5vw,124px) 0 clamp(56px,6.5vw,96px);background:var(--sand)}
+  #framework-page .tg-intro{max-width:800px;margin-bottom:44px}
+  #framework-page .tg-intro .eyebrow::before{width:24px;height:1.5px;background:var(--flame);content:""}
+  #framework-page .tg-intro h2{margin-top:16px;font-size:clamp(2rem,3.1vw,2.8rem)}
+  #framework-page .tg-intro .lead{margin-top:20px;font-size:1.08rem}
+  #framework-page .tg-diagram{display:grid;grid-template-columns:minmax(0,1fr) clamp(48px,6vw,86px) clamp(150px,15vw,196px);grid-template-rows:auto auto;align-items:stretch}
+  #framework-page .tg-rows{display:grid;grid-auto-rows:1fr;gap:12px}
+  #framework-page .tg-row{position:relative;display:flex;align-items:flex-start;gap:16px;padding:18px 22px 18px 18px;border:1px solid var(--line);border-radius:18px;background:#fff;box-shadow:0 1px 2px rgba(15,40,35,.04)}
+  #framework-page .tg-row::after{position:absolute;top:50%;right:-5px;width:10px;height:10px;border-radius:50%;background:var(--tg-c);box-shadow:0 0 0 3px #fff;content:"";transform:translateY(-50%)}
+  #framework-page .tg-row.r1{--tg-c:var(--amber);--tg-bg:var(--amber-soft)}
+  #framework-page .tg-row.r2{--tg-c:#7770a5;--tg-bg:#e9e6f4}
+  #framework-page .tg-row.r3{--tg-c:#2f7d8f;--tg-bg:#e2eff2}
+  #framework-page .tg-ic{display:grid;width:44px;height:44px;flex:none;border-radius:50%;background:var(--tg-bg);color:var(--tg-c);place-items:center}
+  #framework-page .tg-ic svg{width:22px;height:22px}
+  #framework-page .tg-row h3{font-size:1.06rem;line-height:1.25}
+  #framework-page .tg-verb{margin:3px 0 4px;color:var(--tg-c);font-size:.72rem;font-weight:600;letter-spacing:.09em;text-transform:uppercase}
+  #framework-page .tg-words{margin:0;color:var(--text);font-size:.9rem;line-height:1.55}
+  #framework-page .tg-words span{white-space:nowrap}
+  #framework-page .tg-words span:not(:last-child)::after{margin:0 .12em 0 .38em;color:var(--tg-c);font-weight:700;content:"·"}
+  #framework-page .tg-lines{display:block;width:100%;height:100%;overflow:visible}
+  #framework-page .tg-core{display:grid;place-items:center}
+  #framework-page .tg-circle{position:relative;display:grid;width:100%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 35% 30%,#f7925f,var(--amber) 62%);box-shadow:0 0 0 12px rgba(217,131,48,.12),0 0 0 26px rgba(217,131,48,.06),0 18px 40px -18px rgba(217,131,48,.6);padding:14%;place-items:center;text-align:center}
+  #framework-page .tg-circle .eyebrow{justify-content:center;color:#fff;font-size:clamp(.8rem,1.15vw,.98rem);line-height:1.35;letter-spacing:.1em}
+  #framework-page .tg-circle .eyebrow::before{display:none}
+  #framework-page .tg-conclusion{grid-column:1/-1;max-width:70ch;margin:30px 0 0;padding-left:18px;border-left:2px solid var(--flame);color:var(--text);font-size:1.02rem;font-weight:300;line-height:1.6}
+  #framework-page .tg-conclusion strong{color:var(--flame);font-weight:600}
+  #framework-page .inv-section{background:#fff}
+  #framework-page .inv-path{display:flex;flex-wrap:wrap;align-items:center;gap:10px 0;margin:0 0 clamp(22px,2.6vw,32px);padding:0;list-style:none}
+  #framework-page .inv-path li{position:relative;display:inline-flex;align-items:center;gap:8px;padding-right:26px;color:var(--ink);font-size:.72rem;font-weight:600;white-space:nowrap}
+  #framework-page .inv-path li::before{width:9px;height:9px;flex:none;border-radius:50%;background:var(--flame);content:""}
+  #framework-page .inv-path li.next{color:var(--muted)}
+  #framework-page .inv-path li.next::before{background:transparent;box-shadow:inset 0 0 0 1.5px var(--line-2)}
+  #framework-page .inv-path li:not(:last-child)::after{position:absolute;top:50%;right:7px;width:12px;height:1.5px;background:var(--line-2);content:""}
+  #framework-page .inv-path li.here:not(:last-child)::after{background:rgba(217,131,48,.45)}
+  #framework-page .inv-state .inv-note{max-width:62ch;margin:10px 0 0;color:var(--ink);font-size:1.02rem}
+  #framework-page .inv-also{max-width:68ch;margin:8px 0 0;color:var(--muted);font-size:.9rem;font-weight:300}
+  #framework-page .inv{padding:clamp(20px,3vw,34px);border:1px solid var(--line);border-radius:20px;background:#fff;box-shadow:var(--shadow)}
+  #framework-page .inv-tabs{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:22px}
+  #framework-page .inv-tab{display:inline-flex;align-items:center;gap:9px;padding:10px 16px;border:1.5px solid var(--line);border-radius:999px;background:#fff;color:var(--text);font-family:inherit;font-size:.88rem;font-weight:500;cursor:pointer;transition:border-color .2s,background .2s,color .2s}
+  #framework-page .inv-tab:hover{border-color:var(--forest)}
+  #framework-page .inv-tab[aria-selected="true"]{border-color:var(--ink);background:var(--ink);color:#fff}
+  #framework-page .inv-tab .yours-dot{display:none;width:7px;height:7px;flex:none;border-radius:50%;background:var(--flame)}
+  #framework-page .inv-tab.is-yours .yours-dot{display:block}
+  #framework-page .inv-tabs-sep{margin:0 4px 0 10px;padding-left:14px;border-left:1px solid var(--line);color:var(--muted);font-size:.7rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase}
+  #framework-page .inv-panels{margin-top:26px;padding-top:26px;border-top:1px solid var(--line)}
+  #framework-page .inv-empty{display:none}
+  #framework-page .inv.js-tabs .inv-empty{display:flex;flex-wrap:wrap;gap:10px 28px;align-self:start;padding:18px 20px;border:1.5px dashed var(--line);border-radius:16px;color:var(--muted);font-size:.78rem;font-weight:600;letter-spacing:.09em;text-transform:uppercase}
+  #framework-page .inv.js-tabs .inv-empty[hidden],#framework-page .inv.js-tabs .inv-panel[hidden]{display:none}
+  #framework-page .inv.js-tabs .inv-panel.is-active{animation:invIn .32s cubic-bezier(.2,.7,.2,1)}
+  #framework-page .inv-panel+.inv-panel{margin-top:34px}
+  #framework-page .inv.js-tabs .inv-panel+.inv-panel{margin-top:0}
+  #framework-page .inv-panel-head h3{font-size:1.35rem;font-weight:600}
+  #framework-page .inv-panel-head p{max-width:72ch;margin:6px 0 0;color:var(--muted);font-size:.93rem;font-weight:300}
+  #framework-page .inv-cols{display:grid;grid-template-columns:1fr 1.25fr 1fr;gap:clamp(18px,2.4vw,32px);align-items:start;margin-top:22px}
+  #framework-page .inv-col h4{margin-bottom:10px;color:var(--flame);font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase}
+  #framework-page .inv-col p{margin:0;color:var(--text);font-size:.93rem;font-weight:300;line-height:1.6}
+  #framework-page .inv-q{display:grid;gap:9px;margin:0;padding:0;list-style:none}
+  #framework-page .inv-q li{position:relative;padding-left:18px;color:var(--text);font-size:.93rem;line-height:1.5}
+  #framework-page .inv-q li::before{position:absolute;top:.62em;left:0;width:7px;height:1.5px;background:var(--flame);content:""}
+  #framework-page .inv-challenge{padding:16px 18px;border-radius:14px;background:var(--sand)}
+  #framework-page .inv-challenge h4{color:var(--forest)}
+  #framework-page .inv-tq{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;margin-top:22px;padding-top:18px;border-top:1px solid var(--line)}
+  #framework-page .inv-tq-label{color:var(--muted);font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase}
+  #framework-page .inv-tq-label small{font-size:inherit;font-weight:400;letter-spacing:.02em;text-transform:none}
+  #framework-page .inv-tq ul{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}
+  #framework-page .inv-tq li{padding:5px 11px;border:1px solid var(--line);border-radius:999px;background:#fff;color:var(--muted);font-size:.8rem}
+  #framework-page .inv-tq li.on{border-color:var(--flame);background:var(--flame-soft);color:var(--ink);font-weight:500}
+  #framework-page .inv-foot{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:14px 24px;margin-top:26px}
+  #framework-page .inv-foot .caution{max-width:64ch;margin:0;color:var(--muted);font-size:.86rem;font-weight:300}
+  #framework-page .inv-foot .link-arrow{font-weight:600}
+  #framework-page .inv-path.is-armed:not(.is-in) li{opacity:0}
+  #framework-page .inv-path.is-in li{animation:libText .45s cubic-bezier(.2,.7,.2,1) backwards}
+  #framework-page .inv-path.is-in li:nth-child(2){animation-delay:.12s}#framework-page .inv-path.is-in li:nth-child(3){animation-delay:.24s}#framework-page .inv-path.is-in li:nth-child(4){animation-delay:.36s}#framework-page .inv-path.is-in li:nth-child(5){animation-delay:.52s}#framework-page .inv-path.is-in li:nth-child(6){animation-delay:.64s}
+  @keyframes invIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+  #framework-page .continuum{position:relative;display:block;overflow:visible;border:0;border-radius:0}
+  #framework-page .cont-track{--marker-size:38px;position:relative;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));align-items:center;height:42px;margin:0 0 28px}
+  #framework-page .cont-track::before,#framework-page .cont-track-fill{position:absolute;top:50%;right:0;left:calc(var(--marker-size)/2);height:6px;border-radius:999px;content:"";transform:translateY(-50%)}
+  #framework-page .cont-track::before{background:var(--green-soft)}
+  #framework-page .cont-track-fill{z-index:1;background:linear-gradient(90deg,#d98330 0%,#c87945 45%,#088067 100%);transform:translateY(-50%) scaleX(1);transform-origin:left center}
+  #framework-page .cont-marker{position:relative;z-index:2;display:grid;width:var(--marker-size);height:var(--marker-size);justify-self:start;border:3px solid #dcebe5;border-radius:50%;background:#fff;color:var(--forest);font-size:.9rem;font-weight:700;place-items:center}
+  #framework-page .cont-marker:nth-of-type(2){border-color:var(--amber);background:var(--amber);color:#fff}
+  #framework-page .cont-stages{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0}
+  #framework-page .cstage{position:relative;min-width:0;padding:0 20px 0 0;background:transparent}
+  #framework-page .cstage:hover{background:transparent}
+  #framework-page .cstage:not(:last-child){margin-right:20px;border-right:1px solid var(--line)}
+  #framework-page .cstage h4{margin:0 0 10px;font-size:1rem;line-height:1.35}
+  #framework-page .cstage p{margin:0;color:var(--muted);font-size:.86rem;line-height:1.55}
+  #framework-page .cont-axis{display:flex;justify-content:space-between;margin-top:34px;color:var(--muted);font-size:.78rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+  #framework-page .cont-axis span:last-child{text-align:right}
+  #framework-page .continuum.is-armed:not(.is-in) .cont-track-fill{transform:translateY(-50%) scaleX(0)}
+  #framework-page .continuum.is-armed:not(.is-in) .cont-marker,#framework-page .continuum.is-armed:not(.is-in) .cstage,#framework-page .continuum.is-armed:not(.is-in) .cont-axis span{opacity:0}
+  #framework-page .continuum.is-in .cont-track-fill{animation:contBar 1.6s cubic-bezier(.45,0,.25,1) .1s both}
+  #framework-page .continuum.is-in .cont-marker{animation:libFade .4s ease backwards}
+  #framework-page .continuum.is-in .cont-marker:nth-of-type(2){animation-delay:.2s}#framework-page .continuum.is-in .cont-marker:nth-of-type(3){animation-delay:.52s}#framework-page .continuum.is-in .cont-marker:nth-of-type(4){animation-delay:.84s}#framework-page .continuum.is-in .cont-marker:nth-of-type(5){animation-delay:1.16s}#framework-page .continuum.is-in .cont-marker:nth-of-type(6){animation-delay:1.48s}
+  #framework-page .continuum.is-in .cstage{animation:libText .55s cubic-bezier(.2,.7,.2,1) backwards}
+  #framework-page .continuum.is-in .cstage:nth-child(1){animation-delay:.2s}#framework-page .continuum.is-in .cstage:nth-child(2){animation-delay:.52s}#framework-page .continuum.is-in .cstage:nth-child(3){animation-delay:.84s}#framework-page .continuum.is-in .cstage:nth-child(4){animation-delay:1.16s}#framework-page .continuum.is-in .cstage:nth-child(5){animation-delay:1.48s}
+  #framework-page .continuum.is-in .cont-axis span:first-child{animation:libFade .5s ease .1s backwards}
+  #framework-page .continuum.is-in .cont-axis span:last-child{animation:libFade .5s ease 1.75s backwards}
+  @keyframes contBar{from{transform:translateY(-50%) scaleX(0)}to{transform:translateY(-50%) scaleX(1)}}
+  @keyframes libText{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes libFade{from{opacity:0}to{opacity:1}}
+  #framework-page .framework-cta{text-align:left}
+  #framework-page .framework-cta .eyebrow{color:#fff}
+  #framework-page .framework-cta h2{max-width:18ch;color:#fff}
+  #framework-page .framework-cta p{max-width:72ch;margin:16px 0 24px;color:rgba(255,255,255,.86);font-weight:300}
+  #framework-page .framework-cta .hero-cta{display:flex;flex-wrap:wrap;gap:12px}
+  @media(max-width:960px){
+    #framework-page .fw-hero{min-height:0}
+    #framework-page .fw-hero .lead{max-width:48vw}
+    #framework-page .fw-visual{right:12px;width:min(520px,46vw)}
+    #framework-page .inv-cols{grid-template-columns:1fr 1fr}
+    #framework-page .inv-challenge{grid-column:1/-1}
+  }
+  @media(max-width:760px){
+    #framework-page .section{padding:64px 0}
+    #framework-page .split-head{grid-template-columns:1fr;gap:16px}
+    #framework-page .fw-hero{padding:24px 0 38px}
+    #framework-page .fw-hero .breadcrumb{margin-bottom:48px}
+    #framework-page .fw-hero h1{font-size:clamp(2.7rem,12vw,4rem)}
+    #framework-page .fw-hero .lead{max-width:100%}
+    #framework-page .fw-visual-desktop{display:none}
+    #framework-page .fw-visual-mobile{position:relative;top:auto;right:auto;display:block;width:min(420px,100%);margin:30px auto -12px;transform:none}
+    #framework-page .fw-core{padding-top:48px;padding-bottom:60px}
+    #framework-page .fw-orbit{aspect-ratio:auto;padding:22px 16px}
+    #framework-page .orb-lines{display:none}
+    #framework-page .orb-core{position:relative;top:auto;left:auto;width:132px;margin:0 auto 20px;transform:none}
+    #framework-page .fw-orbit.is-in .orb-core{animation-name:orbCoreMobile}
+    @keyframes orbCoreMobile{from{opacity:0;scale:.88}to{opacity:1;scale:1}}
+    #framework-page .orb-nodes{position:relative;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+    #framework-page .orb-node{position:static;width:auto;max-width:none;min-height:56px;padding:8px;border-radius:12px;font-size:.72rem;transform:none}
+    #framework-page .orb-node:last-child{grid-column:1/-1;justify-self:center;width:min(100%,260px)}
+    #framework-page .tg-diagram{grid-template-columns:minmax(0,1fr) 52px 92px}
+    #framework-page .tg-row{gap:10px;padding:14px 12px}
+    #framework-page .tg-ic{width:36px;height:36px}
+    #framework-page .tg-row h3{font-size:.95rem}
+    #framework-page .tg-words{font-size:.8rem}
+    #framework-page .tg-circle .eyebrow{font-size:.68rem;letter-spacing:.04em}
+    #framework-page .inv-cols{grid-template-columns:1fr}
+    #framework-page .inv-challenge{grid-column:auto}
+    #framework-page .inv-tabs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+    #framework-page .inv-tab{min-width:0;min-height:48px;justify-content:center;padding:9px 8px;text-align:center;white-space:normal;font-size:.76rem;line-height:1.3}
+    #framework-page .inv-tabs-sep{grid-column:1/-1}
+    #framework-page .inv-path{flex-direction:column;align-items:flex-start;gap:8px}
+    #framework-page .inv-path li{padding-right:0;white-space:normal}
+    #framework-page .inv-path li:not(:last-child)::after{display:none}
+    #framework-page .inv-tabs-sep{flex-basis:100%;margin:6px 0 0;padding-left:0;border:0}
+    #framework-page .cont-stages{grid-template-columns:1fr;gap:18px}
+    #framework-page .cstage{padding:0 0 18px;border-bottom:1px solid var(--line)}
+    #framework-page .cstage:not(:last-child){margin:0;border-right:0}
+    #framework-page .cont-track{--marker-size:34px;height:38px;margin-bottom:24px}
+    #framework-page .cont-track::before,#framework-page .cont-track-fill{height:5px}
+    #framework-page .cont-marker{font-size:.8rem}
+    #framework-page .cont-axis{margin-top:24px;font-size:.67rem}
+  }
+  @media(max-width:480px){
+    #framework-page .fw-visual-mobile{width:min(340px,100%)}
+    #framework-page .tg-diagram{grid-template-columns:minmax(0,1fr) 34px 68px}
+    #framework-page .tg-row{gap:8px;padding:12px 9px}
+    #framework-page .tg-ic{width:30px;height:30px}
+    #framework-page .tg-ic svg{width:18px;height:18px}
+    #framework-page .tg-row h3{font-size:.83rem}
+    #framework-page .tg-verb{font-size:.63rem}
+    #framework-page .tg-words{font-size:.72rem}
+    #framework-page .tg-circle{box-shadow:0 0 0 6px rgba(217,131,48,.1)}
+    #framework-page .tg-circle .eyebrow{font-size:.58rem}
+    #framework-page .tg-conclusion{font-size:.94rem}
+    #framework-page .inv{padding:18px 14px}
+    #framework-page .inv-tab{padding:8px 6px;font-size:.72rem}
+    #framework-page .inv-tq{align-items:flex-start;flex-direction:column}
   }
   @media(prefers-reduced-motion:reduce){
-    .framework-graphic .graphic-center,.framework-graphic .graphic-node{animation:none}
-  }
-  @media(max-width:760px){
-    .page-hero{padding:24px 0 28px}
-    .page-hero>.wrap{padding:0 16px}
-    .breadcrumb{position:relative;z-index:2;margin:0;padding:18px 24px 0;color:rgba(255,255,255,.78)}
-    .breadcrumb a{color:#fff}
-    .framework-hero-grid{display:block;margin-top:-34px}
-    .framework-hero-copy{
-      min-height:430px;padding:86px 24px 34px;display:flex;flex-direction:column;justify-content:flex-end;
-      border-radius:20px;overflow:hidden;position:relative;z-index:1;
-      background:linear-gradient(180deg,rgba(4,28,24,.12) 12%,rgba(4,28,24,.84) 100%),url("assets/cases/framework-africa-community.jpg") center/cover no-repeat;
-      box-shadow:var(--shadow-lg)
-    }
-    .framework-hero-copy h1,.framework-hero-copy .lead{position:relative;z-index:1;color:#fff}
-    .framework-hero-copy h1{margin-bottom:14px}
-    .framework-hero-copy::before{position:relative;z-index:1;color:#fff!important;font-size:.64rem}
-    .framework-hero-copy::after{position:relative;z-index:1;margin-top:14px}
-    .framework-intro-visual{display:none}
-    .framework-hero-copy .lead{font-size:1rem;line-height:1.5}
-    .hyp-result .btn{max-width:100%;white-space:normal;text-align:center;line-height:1.35}
-  }
-  .framework-hero-grid{display:grid;grid-template-columns:1fr .9fr;gap:46px;align-items:center;margin-top:28px}
-  .framework-hero-copy{max-width:650px}
-  .framework-hero-copy::before{content:"A practical operating language";display:inline-flex;align-items:center;gap:9px;color:var(--green);font-size:.72rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase}
-  .framework-hero-copy::after{content:"";display:block;width:28px;height:2px;background:var(--amber);margin-top:-8px}
-  .framework-hero-copy .lead{max-width:62ch;font-size:clamp(1.05rem,1.7vw,1.25rem);line-height:1.6}
-  .framework-hero-copy h1{max-width:10ch;line-height:1.02;text-wrap:balance}
-  .framework-hero-copy .reveal:nth-child(2){transition-delay:.12s}
-  .framework-white-section{background:#fff}
-  .framework-intro-visual{height:360px;margin-top:0;border-radius:22px;overflow:hidden;position:relative;box-shadow:var(--shadow-lg);background:var(--forest)}
-  .framework-intro-visual img{width:100%;height:100%;object-fit:cover;transition:transform .9s cubic-bezier(.16,1,.3,1)}
-  .framework-intro-visual:hover img{transform:scale(1.06)}
-  .framework-intro-visual:hover{box-shadow:0 22px 48px rgba(15,40,35,.2)}
-  .framework-intro-visual::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(4,70,56,.04) 30%,rgba(4,28,24,.72))}
-  .framework-intro-visual figcaption{position:absolute;z-index:1;left:28px;right:28px;bottom:24px;color:#fff;font-size:.82rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;line-height:1.45;text-shadow:0 2px 8px rgba(0,0,0,.45)}
-  .translation-gap{background:#fff;color:var(--text);padding:58px 0}
-  .translation-gap .sec-head h2,.translation-gap .tgap-voice h3{color:var(--amber)}
-  .translation-gap .sec-head .lead{color:var(--muted)}
-  .translation-gap .tgap-diagram{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:28px}
-  .translation-gap .tgap-voice{width:auto;margin:0;min-height:145px;display:flex;flex-direction:column;background:var(--sand);border:1px solid var(--line);border-radius:var(--radius);padding:20px 22px;box-shadow:var(--shadow);color:var(--text);transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease}
-  .translation-gap .tgap-voice:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);border-color:var(--amber)}
-  .translation-gap .tgap-voice h3{font-size:1.15rem;margin-bottom:8px}
-  .translation-gap .tgap-voice p{color:var(--muted);font-size:.92rem}
-  .translation-gap .tgap-lines{grid-column:1 / -1;height:18px;margin:0;display:flex;justify-content:center;gap:100px}
-  .translation-gap .tgap-lines span{background:linear-gradient(var(--amber),rgba(217,131,48,.15))}
-  .translation-gap .tgap-converge{grid-column:1 / -1;max-width:780px;margin:0 auto;color:var(--forest);border-top:2px solid var(--amber);padding-top:14px}
-  .framework-section-head.reveal{opacity:0;transform:translateY(28px)}
-  .framework-section-head.reveal.in{opacity:1;transform:translateY(0);transition:opacity .7s ease,transform .7s cubic-bezier(.16,1,.3,1)}
-  .framework-graphic.reveal{opacity:0;transform:translateY(30px) scale(.98)}
-  .framework-graphic.reveal.in{opacity:1;transform:translateY(0) scale(1);transition:opacity .8s ease,transform .8s cubic-bezier(.16,1,.3,1)}
-  .hyp-chip{transition:transform .25s ease,box-shadow .25s ease}
-  .hyp-chip:hover{transform:translateY(-3px);box-shadow:0 8px 18px rgba(15,40,35,.1)}
-  .hyp-chip:focus-visible{outline:3px solid rgba(217,131,48,.45);outline-offset:3px}
-  .hyp-chip.is-selected{border-color:var(--amber);background:var(--amber-soft);color:#6b3a10;box-shadow:0 6px 14px rgba(217,131,48,.14)}
-  .hyp-cold,.hyp-result{padding:24px;border:1px solid var(--line);border-radius:var(--radius);background:var(--paper);box-shadow:var(--shadow)}
-  .hyp-result[hidden]{display:none}
-  .hyp-result:not([hidden]){animation:frameworkReveal .5s ease both}
-  .hyp-area-card{transition:transform .25s ease,box-shadow .25s ease}
-  .hyp-area-card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
-  @keyframes frameworkReveal{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
-  .jstep .jc{transition:transform .3s ease}
-  .jstep:hover .jc{transform:translateX(6px)}
-  .cstage{transition:transform .3s ease,box-shadow .3s ease}
-  .cstage:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
-  .cta-band{transition:transform .35s ease,box-shadow .35s ease}
-  .cta-band:hover{transform:translateY(-3px);box-shadow:0 20px 42px rgba(4,70,56,.2)}
-  @media(prefers-reduced-motion:reduce){
-    .framework-intro-visual,.framework-intro-visual img,.translation-gap .tgap-voice,.hyp-chip,.jstep .jc,.cstage,.cta-band,.framework-graphic .graphic-node{transition:none}
-    .framework-section-head.reveal,.framework-graphic.reveal{opacity:1;transform:none;transition:none}
-    .hyp-result:not([hidden]){animation:none}
-  }
-  @media(max-width:760px){
-    .translation-gap .tgap-diagram{grid-template-columns:1fr;gap:16px}
-    .translation-gap .tgap-voice{min-height:0}
-    .translation-gap .tgap-lines{display:none}
-    .translation-gap .tgap-converge{grid-column:auto;margin-top:10px}
-  }
-  @media(max-width:760px){
-    .framework-hero-grid{display:block;grid-template-columns:none;gap:0;margin-top:-34px}
-    .framework-hero-copy{width:100%;max-width:none}
+    #framework-page .fw-visual .fw-platform-float,#framework-page .fw-orbit .orb-core,#framework-page .fw-orbit .orb,#framework-page .fw-orbit .orb-node,
+    #framework-page .inv.js-tabs .inv-panel.is-active,#framework-page .inv-path li,#framework-page .continuum .cont-marker,
+    #framework-page .continuum .cstage,#framework-page .continuum .cont-axis span{animation:none!important;opacity:1!important}
+    #framework-page .continuum .cont-track-fill{animation:none!important;opacity:1!important;transform:translateY(-50%) scaleX(1)}
   }
 </style>
 </head>
 <body data-page="framework">
 <div id="nav"></div>
+<main id="framework-page">
+  <header class="fw-hero">
+    <div class="wrap">
+      <div class="breadcrumb reveal"><a href="index.html">Home</a> &nbsp;/&nbsp; The Framework</div>
+      <span class="eyebrow flame reveal">The Framework</span>
+      <h1 class="reveal">The Framework</h1>
+      <p class="lead reveal">Partnerships underperform not because opportunity, impact, or capital is absent — but because development activity is rarely translated into forms that partners can assess, structure, finance, scale, and repeat.</p>
+    </div>
+    <svg class="fw-visual fw-visual-desktop" viewBox="0 0 700 520" role="img" aria-labelledby="hero-graph-title hero-graph-desc">
+      <title id="hero-graph-title">The Framework as connected layers for deployable partnerships</title>
+      <desc id="hero-graph-desc">A layered foundation brings impact, institutions, capital and delivery into one connected system, represented by an illuminated central opportunity.</desc>
+      <defs>
+        <radialGradient id="framework-halo"><stop offset="0" stop-color="#e7e7f6" stop-opacity=".9"/><stop offset=".72" stop-color="#f3f3fb" stop-opacity=".48"/><stop offset="1" stop-color="#fffaF6" stop-opacity="0"/></radialGradient>
+        <linearGradient id="framework-base" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#4b3e55"/><stop offset="1" stop-color="#2b222f"/></linearGradient>
+        <linearGradient id="framework-mid" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d6d5f4" stop-opacity=".9"/><stop offset="1" stop-color="#8f8cd2" stop-opacity=".65"/></linearGradient>
+        <linearGradient id="framework-surface" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff" stop-opacity=".96"/><stop offset="1" stop-color="#e7e7f6" stop-opacity=".78"/></linearGradient>
+        <linearGradient id="framework-sun" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffc7a6"/><stop offset=".5" stop-color="#f58a55"/><stop offset="1" stop-color="#ee5f2a"/></linearGradient>
+        <radialGradient id="framework-core-glow"><stop stop-color="#ee5f2a" stop-opacity=".3"/><stop offset="1" stop-color="#ee5f2a" stop-opacity="0"/></radialGradient>
+      </defs>
+      <circle class="fw-halo" cx="350" cy="250" r="240" fill="url(#framework-halo)"/>
+      <ellipse cx="350" cy="440" rx="250" ry="62" fill="url(#framework-core-glow)"/>
+      <g class="fw-network">
+        <path d="M73 142C130 163 161 201 204 228"/><path d="M620 118C557 153 535 190 496 221"/>
+        <path d="M61 354C124 335 166 312 209 289"/><path d="M635 349C573 332 534 310 491 286"/>
+      </g>
+      <circle class="fw-node" cx="73" cy="142" r="9"/><circle class="fw-node accent" cx="620" cy="118" r="10"/>
+      <circle class="fw-node dark" cx="61" cy="354" r="8"/><circle class="fw-node" cx="635" cy="349" r="8"/>
+      <g class="fw-platform-float">
+        <polygon class="fw-foundation-left" points="90,350 350,494 350,520 90,376"/>
+        <polygon class="fw-foundation-right" points="350,494 610,350 610,376 350,520"/>
+        <polygon class="fw-surface" points="350,204 610,350 350,494 90,350"/>
+        <polygon class="fw-base-left" points="164,350 350,453 350,480 164,377"/>
+        <polygon class="fw-base-right" points="350,453 536,350 536,377 350,480"/>
+        <polygon class="fw-base-top" points="350,245 536,350 350,453 164,350"/>
+        <polygon class="fw-mid-left" points="228,350 350,418 350,442 228,374"/>
+        <polygon class="fw-mid-right" points="350,418 472,350 472,374 350,442"/>
+        <polygon points="350,282 472,350 350,418 228,350" fill="url(#framework-mid)" stroke="#fff" stroke-opacity=".85"/>
+        <polygon points="272,350 350,307 428,350 350,393" fill="#f3f2fc" fill-opacity=".96" stroke="#fff"/>
+        <polygon points="272,350 350,393 350,418 272,375" fill="#aaa7db" fill-opacity=".88"/>
+        <polygon points="350,393 428,350 428,375 350,418" fill="#7772bd" fill-opacity=".86"/>
+        <polygon class="fw-core-left" points="322,350 350,334 350,364 322,380"/>
+        <polygon class="fw-core-right" points="350,334 378,350 378,380 350,364"/>
+        <polygon class="fw-core-top" points="350,318 378,334 350,350 322,334"/>
+        <circle cx="350" cy="334" r="8" fill="#fff" opacity=".56"/>
+      </g>
+      <g class="fw-platform-float">
+        <text class="fw-graph-label" x="28" y="118">IMPACT</text>
+        <text class="fw-graph-label" x="553" y="93">CAPITAL</text>
+        <text class="fw-graph-label" x="23" y="389">INSTITUTIONS</text>
+        <text class="fw-graph-label" x="548" y="384">DELIVERY</text>
+      </g>
+    </svg>
+    <svg class="fw-visual fw-visual-mobile" viewBox="0 0 400 390" role="img" aria-labelledby="hero-graph-mobile-title hero-graph-mobile-desc">
+      <title id="hero-graph-mobile-title">The Framework as connected layers for deployable partnerships</title>
+      <desc id="hero-graph-mobile-desc">A compact layered system linking impact, institutions, capital and delivery around a central opportunity.</desc>
+      <defs>
+        <radialGradient id="framework-halo-mobile"><stop offset="0" stop-color="#e7e7f6" stop-opacity=".9"/><stop offset=".72" stop-color="#f3f3fb" stop-opacity=".48"/><stop offset="1" stop-color="#fffaF6" stop-opacity="0"/></radialGradient>
+        <linearGradient id="framework-sun-mobile" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffc7a6"/><stop offset=".5" stop-color="#f58a55"/><stop offset="1" stop-color="#ee5f2a"/></linearGradient>
+        <linearGradient id="framework-glass-mobile" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d6d5f4" stop-opacity=".9"/><stop offset="1" stop-color="#8f8cd2" stop-opacity=".65"/></linearGradient>
+      </defs>
+      <circle cx="200" cy="186" r="186" fill="url(#framework-halo-mobile)"/>
+      <ellipse cx="200" cy="327" rx="165" ry="38" fill="#ee5f2a" fill-opacity=".12"/>
+      <g fill="none" stroke="#a9a8e0" stroke-dasharray="4 7" stroke-linecap="round" stroke-width="1.5">
+        <path d="M47 76C84 93 103 124 125 144"/><path d="M353 76C316 93 297 124 275 144"/>
+        <path d="M47 286C84 269 103 238 125 218"/><path d="M353 286C316 269 297 238 275 218"/>
+      </g>
+      <circle cx="47" cy="76" r="6" fill="#fff" stroke="#a9a8e0" stroke-width="2"/>
+      <circle cx="353" cy="76" r="7" fill="#ee5f2a"/>
+      <circle cx="47" cy="286" r="6" fill="#3d3142"/>
+      <circle cx="353" cy="286" r="6" fill="#fff" stroke="#ee5f2a" stroke-width="2"/>
+      <text x="22" y="59" fill="#3d3142" font-family="Alexandria,Arial,sans-serif" font-size="10" font-weight="600" letter-spacing="1">IMPACT</text>
+      <text x="305" y="59" fill="#3d3142" font-family="Alexandria,Arial,sans-serif" font-size="10" font-weight="600" letter-spacing="1">CAPITAL</text>
+      <text x="7" y="310" fill="#3d3142" font-family="Alexandria,Arial,sans-serif" font-size="9" font-weight="600" letter-spacing=".7">INSTITUTIONS</text>
+      <text x="315" y="310" fill="#3d3142" font-family="Alexandria,Arial,sans-serif" font-size="10" font-weight="600" letter-spacing="1">DELIVERY</text>
+      <g class="fw-platform-float">
+        <polygon points="43,229 200,316 200,338 43,251" fill="#e5e4f1"/>
+        <polygon points="200,316 357,229 357,251 200,338" fill="#ceccdf"/>
+        <polygon points="200,145 357,229 200,316 43,229" fill="#fff" fill-opacity=".92" stroke="#fff" stroke-width="2"/>
+        <polygon points="88,229 200,291 200,313 88,251" fill="#342a3a"/>
+        <polygon points="200,291 312,229 312,251 200,313" fill="#211a27"/>
+        <polygon points="200,166 312,229 200,291 88,229" fill="#4b3e55"/>
+        <polygon points="128,229 200,189 200,270 128,230" fill="#aaa7db" fill-opacity=".9"/>
+        <polygon points="200,270 272,229 272,230 200,271" fill="#7772bd" fill-opacity=".86"/>
+        <polygon points="128,229 200,189 272,229 200,270" fill="url(#framework-glass-mobile)" stroke="#fff" stroke-opacity=".85"/>
+        <polygon points="173,229 200,214 200,246 173,261" fill="#d98330"/>
+        <polygon points="200,214 227,229 227,261 200,246" fill="#b86727"/>
+        <polygon points="200,198 227,213 200,229 173,213" fill="url(#framework-sun-mobile)"/>
+      </g>
+    </svg>
+  </header>
 
-<header class="page-hero">
-  <div class="wrap">
-    <div class="breadcrumb reveal"><a href="index.html">Home</a> / The Framework</div>
-    <div class="framework-hero-grid">
-      <div class="framework-hero-copy">
-        <h1 class="reveal">The Framework</h1>
-        <p class="lead reveal">Partnerships underperform not because opportunity, impact, or capital is absent — but because development activity is rarely translated into forms that partners can assess, structure, finance, scale, and repeat.</p>
+  <section class="section fw-core" id="deployability">
+    <div class="wrap">
+      <div class="fw-core-text reveal">
+        <span class="eyebrow flame">The core idea</span>
+        <h2>What is deployability?</h2>
+        <p class="def">Deployability refers to the conditions that allow capital, institutional commitment, and private-sector participation to move into an opportunity with confidence. A deployable opportunity has more than impact potential.</p>
+        <div class="fw-callout"><strong>Deployability precedes and enables bankability.</strong> The binding constraint is often not capital scarcity — it is whether the opportunity has been organized in a way that lets different actors participate sustainably.</div>
       </div>
-      <figure class="framework-intro-visual reveal">
-        <img src="assets/cases/framework-africa-community.jpg" alt="African community gathered outdoors, representing shared action and partnership">
+      <figure class="fw-orbit-fig reveal">
+        <div class="fw-orbit" aria-label="Anatomy of deployability: seven conditions, all part of one system around deployability">
+          <svg class="orb-lines" viewBox="0 0 1000 460" aria-hidden="true" focusable="false">
+            <g transform="rotate(-7 500 230)" fill="none">
+              <ellipse class="orb o3" cx="500" cy="230" rx="400" ry="170" pathLength="1"/>
+              <ellipse class="orb o2" cx="500" cy="230" rx="290" ry="118" pathLength="1"/>
+              <ellipse class="orb o1" cx="500" cy="230" rx="176" ry="80" pathLength="1"/>
+            </g>
+          </svg>
+          <div class="orb-core"><div><small>Anatomy of</small><b>Deployability</b></div></div>
+          <ol class="orb-nodes">
+            <li class="orb-node n1" style="left:47.93%;top:13.32%"><span class="k" aria-hidden="true">1</span>Clear demand signal</li>
+            <li class="orb-node n2" style="left:79.75%;top:18.84%"><span class="k" aria-hidden="true">2</span>Credible payer / revenue logic</li>
+            <li class="orb-node n3" style="left:89.17%;top:47.83%"><span class="k" aria-hidden="true">3</span>Operational delivery model</li>
+            <li class="orb-node n4" style="left:69.09%;top:78.45%"><span class="k" aria-hidden="true">4</span>Appropriate risk allocation</li>
+            <li class="orb-node n5" style="left:34.64%;top:87.65%"><span class="k" aria-hidden="true">5</span>Sufficient preparation</li>
+            <li class="orb-node n6" style="left:11.75%;top:68.49%"><span class="k" aria-hidden="true">6</span>Accountable institutions</li>
+            <li class="orb-node n7" style="left:17.67%;top:35.42%"><span class="k" aria-hidden="true">7</span>A pathway to replication</li>
+          </ol>
+        </div>
       </figure>
     </div>
-  </div>
-</header>
+  </section>
 
-<!-- DEPLOYABILITY -->
-<section class="sec-pad-sm framework-white-section" id="deployability">
-  <div class="wrap">
-    <div class="grid g-2 framework-deployability-grid" style="align-items:start">
-      <div class="reveal">
-        <span class="eyebrow">The core idea</span>
-        <h2 style="margin:14px 0 18px">What is deployability?</h2>
-        <div class="prose">
-          <p>Deployability refers to the conditions that allow capital, institutional commitment, and private-sector participation to move into an opportunity with confidence. A deployable opportunity has more than impact potential.</p>
-          <div class="callout"><strong>Deployability precedes and enables bankability.</strong> The binding constraint is often not capital scarcity — it is whether the opportunity has been organized in a way that lets different actors participate sustainably.</div>
+  <section class="section tg-section" aria-labelledby="translation-heading">
+    <div class="wrap tg">
+      <div class="tg-intro reveal">
+        <span class="eyebrow">Why partnerships stall</span>
+        <h2 id="translation-heading">The translation gap</h2>
+        <p class="lead">Different actors describe the same opportunity in different languages. These perspectives are not incompatible — strong partnerships require all of them — but without a common operating logic, opportunities stay stuck between worlds.</p>
+      </div>
+      <div class="tg-diagram reveal">
+        <div class="tg-rows">
+          <div class="tg-row r1">
+            <span class="tg-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="7.5" r="3.2"/><path d="M5.5 19c0-3.6 2.9-6.3 6.5-6.3s6.5 2.7 6.5 6.3"/><circle cx="4.8" cy="10" r="2.2"/><path d="M1.5 17.5c.2-2.2 1.6-3.7 3.6-4"/><circle cx="19.2" cy="10" r="2.2"/><path d="M22.5 17.5c-.2-2.2-1.6-3.7-3.6-4"/></svg></span>
+            <div><h3>Development actors</h3><p class="tg-verb">Speak of</p><p class="tg-words"><span>beneficiaries</span> <span>needs</span> <span>inclusion</span> <span>impact</span> <span>theory of change</span> <span>community trust</span> <span>program sustainability</span></p></div>
+          </div>
+          <div class="tg-row r2">
+            <span class="tg-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><ellipse cx="12" cy="6" rx="7" ry="2.8"/><path d="M5 6v6c0 1.5 3.1 2.8 7 2.8s7-1.3 7-2.8V6M5 12v6c0 1.5 3.1 2.8 7 2.8s7-1.3 7-2.8v-6"/></svg></span>
+            <div><h3>Financiers &amp; private sector</h3><p class="tg-verb">Ask about</p><p class="tg-words"><span>clients</span> <span>revenue</span> <span>margins</span> <span>repayment</span> <span>risk</span> <span>return</span> <span>cash flow</span> <span>offtake</span> <span>guarantees</span> <span>scale</span></p></div>
+          </div>
+          <div class="tg-row r3">
+            <span class="tg-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9 12 4l9 5Z"/><path d="M5 9v8M10 9v8M14 9v8M19 9v8M3 20h18"/></svg></span>
+            <div><h3>Governments</h3><p class="tg-verb">Focus on</p><p class="tg-words"><span>policy alignment</span> <span>fiscal exposure</span> <span>procurement</span> <span>public value</span> <span>accountability</span> <span>political feasibility</span></p></div>
+          </div>
+        </div>
+        <svg class="tg-lines" viewBox="0 0 100 300" preserveAspectRatio="none" aria-hidden="true">
+          <g fill="none" stroke-width="2" vector-effect="non-scaling-stroke"><path d="M0 50 C55 50 45 150 100 150" stroke="#d98330" stroke-opacity=".8"/><path d="M0 150 L100 150" stroke="#7770a5"/><path d="M0 250 C55 250 45 150 100 150" stroke="#2f7d8f" stroke-opacity=".8"/></g>
+        </svg>
+        <div class="tg-core"><div class="tg-circle"><span class="eyebrow">One shared problem</span></div></div>
+        <p class="tg-conclusion">A program may have beneficiaries but no defined payer. It may show need but not bankable demand. The language gap is not a communications problem alone — <strong>it is a structuring problem.</strong></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section inv-section" id="hypothesis">
+    <div class="wrap">
+      <div class="split-head reveal">
+        <div><span class="eyebrow">The diagnostic shift</span><h2 style="margin-top:16px">From hypothesis to diagnosis</h2></div>
+        <p class="lead">The platform suggests where to investigate. The Toolkit helps test the hypothesis — distinguishing symptoms from underlying causes on the way to the actual binding constraint.</p>
+      </div>
+      <ol class="inv-path" data-seq aria-label="From an indicative challenge area to an appropriate response">
+        <li class="here">Indicative challenge area</li><li class="here">Starting hypothesis</li><li class="here">Investigate</li><li class="here">Challenge the hypothesis</li><li class="next">Identify the binding constraint</li><li class="next">Consider appropriate responses</li>
+      </ol>
+      <div class="inv" id="inv">
+        <div class="inv-head">
+          <div class="inv-state" id="invCarried" hidden>
+            <span class="eyebrow flame">Your starting point</span>
+            <p class="inv-note" id="invCarriedNote">Your responses suggest this area may warrant further investigation.</p>
+            <p class="inv-also" id="invAlso" hidden></p>
+          </div>
+          <div class="inv-state" id="invCold">
+            <span class="eyebrow flame">Explore a challenge area</span>
+            <p class="inv-note">Select an area to see what it may indicate, what to investigate, and what would challenge it.</p>
+            <p class="inv-also" id="invAlsoCold" hidden></p>
+          </div>
+        </div>
+        <div class="inv-tabs" role="tablist" aria-label="Indicative challenge areas">
+          <button type="button" class="inv-tab" role="tab" id="t-demand-visibility" aria-controls="p-demand-visibility" aria-selected="false" data-k="demand-visibility" tabindex="0"><i class="yours-dot" aria-hidden="true"></i>Demand &amp; Visibility</button>
+          <button type="button" class="inv-tab" role="tab" id="t-payment-credibility" aria-controls="p-payment-credibility" aria-selected="false" data-k="payment-credibility" tabindex="-1"><i class="yours-dot" aria-hidden="true"></i>Payment Credibility &amp; Risk</button>
+          <button type="button" class="inv-tab" role="tab" id="t-preparation-readiness" aria-controls="p-preparation-readiness" aria-selected="false" data-k="preparation-readiness" tabindex="-1"><i class="yours-dot" aria-hidden="true"></i>Preparation &amp; Readiness</button>
+          <button type="button" class="inv-tab" role="tab" id="t-coordination-fragmentation" aria-controls="p-coordination-fragmentation" aria-selected="false" data-k="coordination-fragmentation" tabindex="-1"><i class="yours-dot" aria-hidden="true"></i>Coordination &amp; Fragmentation</button>
+          <button type="button" class="inv-tab" role="tab" id="t-legitimacy-trust" aria-controls="p-legitimacy-trust" aria-selected="false" data-k="legitimacy-trust" tabindex="-1"><i class="yours-dot" aria-hidden="true"></i>Legitimacy &amp; Trust</button>
+        </div>
+        <div class="inv-panels">
+          <div class="inv-empty" id="invEmpty"><span>What this may indicate</span><span>Questions to investigate</span><span>What would challenge this hypothesis?</span></div>
+          <article class="inv-panel" role="tabpanel" id="p-demand-visibility" aria-labelledby="t-demand-visibility" data-k="demand-visibility" tabindex="0">
+            <header class="inv-panel-head"><h3>Demand &amp; Visibility</h3><p>Whether the need or demand can be seen, evidenced and sized by those who might buy, fund or invest.</p></header>
+            <div class="inv-cols">
+              <div class="inv-col"><h4>What this may indicate</h4><p>The need may be real and well understood by those close to it, but not yet evidenced or sized in terms that buyers, funders or investors can assess. Visible need does not automatically become bankable demand.</p></div>
+              <div class="inv-col"><h4>Questions to investigate</h4><ul class="inv-q"><li>Who benefits — who uses, values, depends on, or gains from the intervention’s continued delivery?</li><li>Is the demand visible, validated, and understood from the perspective of users or communities?</li><li>Are beneficiaries, users, clients, and payers the same or different actors?</li></ul></div>
+              <div class="inv-col inv-challenge"><h4>What would challenge this hypothesis?</h4><p>If demand is already evidenced and sized, but no one has committed to buy or pay, the constraint may sit in Payment Credibility &amp; Risk instead. Weak investor interest is a symptom — on its own, it does not show that demand is the binding constraint.</p></div>
+            </div>
+            <div class="inv-tq"><span class="inv-tq-label">The five translation questions <small>— those most relevant here are highlighted</small></span><ul><li class="on">Who benefits?</li><li>Who pays?</li><li>What risk blocks capital?</li><li>What makes it sustainable?</li><li>How does it repeat?</li></ul></div>
+          </article>
+          <article class="inv-panel" role="tabpanel" id="p-payment-credibility" aria-labelledby="t-payment-credibility" data-k="payment-credibility" tabindex="0">
+            <header class="inv-panel-head"><h3>Payment Credibility &amp; Risk</h3><p>Whether visible demand is backed by a credible commitment to buy or pay — and whether risks sit with those able to carry them.</p></header>
+            <div class="inv-cols">
+              <div class="inv-col"><h4>What this may indicate</h4><p>Demand may be visible, but not yet connected to a credible payment, purchasing, reimbursement, offtake, or revenue mechanism — or risks may be carried by actors who cannot manage, price, or absorb them.</p></div>
+              <div class="inv-col"><h4>Questions to investigate</h4><ul class="inv-q"><li>Is the payer clearly identified, with the budget, liquidity, and willingness to pay?</li><li>Are commitments written, budgeted, or contract-backed — or only verbal?</li><li>Which risks are present, who is carrying each one, and are they best placed to manage it?</li><li>Can payment be verified through claims, invoices, outputs, or performance data?</li></ul></div>
+              <div class="inv-col inv-challenge"><h4>What would challenge this hypothesis?</h4><p>If a clearly identified payer has budget- or contract-backed commitments and pays reliably, the blockage may lie elsewhere — for example in preparation. And if preparation is incomplete, guarantees alone will not make the opportunity financeable.</p></div>
+            </div>
+            <div class="inv-tq"><span class="inv-tq-label">The five translation questions <small>— those most relevant here are highlighted</small></span><ul><li>Who benefits?</li><li class="on">Who pays?</li><li class="on">What risk blocks capital?</li><li>What makes it sustainable?</li><li>How does it repeat?</li></ul></div>
+          </article>
+          <article class="inv-panel" role="tabpanel" id="p-preparation-readiness" aria-labelledby="t-preparation-readiness" data-k="preparation-readiness" tabindex="0">
+            <header class="inv-panel-head"><h3>Preparation &amp; Readiness</h3><p>Whether the opportunity is developed enough — studies, costings, standards, structure — for partners to assess and act on it.</p></header>
+            <div class="inv-cols">
+              <div class="inv-col"><h4>What this may indicate</h4><p>The opportunity may be identified and even prioritized, but not yet translated into an executable structure. A list of opportunities is not the same as an investable pipeline.</p></div>
+              <div class="inv-col"><h4>Questions to investigate</h4><ul class="inv-q"><li>How far have feasibility, financial, operational, and legal structuring progressed?</li><li>Are procurement, approval, and implementation steps clear?</li><li>Are delivery assumptions and operating costs documented?</li><li>Does the opportunity rest on repeatable structures, or on one-off relationships?</li></ul></div>
+              <div class="inv-col inv-challenge"><h4>What would challenge this hypothesis?</h4><p>If the opportunity is well prepared but no credible payer stands behind it, further studies will not unlock it. Repeated studies without progress may also signal an incentive issue rather than a capacity gap — ask who benefits from delay.</p></div>
+            </div>
+            <div class="inv-tq"><span class="inv-tq-label">The five translation questions <small>— those most relevant here are highlighted</small></span><ul><li>Who benefits?</li><li>Who pays?</li><li class="on">What risk blocks capital?</li><li class="on">What makes it sustainable?</li><li class="on">How does it repeat?</li></ul></div>
+          </article>
+          <article class="inv-panel" role="tabpanel" id="p-coordination-fragmentation" aria-labelledby="t-coordination-fragmentation" data-k="coordination-fragmentation" tabindex="0">
+            <header class="inv-panel-head"><h3>Coordination &amp; Fragmentation</h3><p>Whether someone owns the process of moving things forward, and whether many small or separate efforts can add up.</p></header>
+            <div class="inv-cols">
+              <div class="inv-col"><h4>What this may indicate</h4><p>Several actors may be committed, yet no one is responsible for moving the opportunity from concept to structure, financing, implementation, and learning — so the work fragments across institutions.</p></div>
+              <div class="inv-col"><h4>Questions to investigate</h4><ul class="inv-q"><li>Is there a clear coordination owner responsible for moving the opportunity to execution?</li><li>Which institutions approve the project — and who can block progress even without formally leading it?</li><li>Are handoffs between program design, financing, procurement, and delivery clear?</li><li>Are any actors advantaged by unclear roles or opaque processes?</li></ul></div>
+              <div class="inv-col inv-challenge"><h4>What would challenge this hypothesis?</h4><p>If a clear owner is already maintaining momentum across decision points, slow progress may point to incomplete preparation or weak payment commitments instead. Where payer credibility is weak, additional convening will not unlock scale.</p></div>
+            </div>
+            <div class="inv-tq"><span class="inv-tq-label">The five translation questions <small>— those most relevant here are highlighted</small></span><ul><li class="on">Who benefits?</li><li>Who pays?</li><li>What risk blocks capital?</li><li class="on">What makes it sustainable?</li><li class="on">How does it repeat?</li></ul></div>
+          </article>
+          <article class="inv-panel" role="tabpanel" id="p-legitimacy-trust" aria-labelledby="t-legitimacy-trust" data-k="legitimacy-trust" tabindex="0">
+            <header class="inv-panel-head"><h3>Legitimacy &amp; Trust</h3><p>Whether the people and communities involved trust, accept and help shape the work — and can hold it to account.</p></header>
+            <div class="inv-cols">
+              <div class="inv-col"><h4>What this may indicate</h4><p>Community trust, social acceptance, and user adoption may have been assumed rather than built into the partnership. Legitimacy is built over time through relationships, responsiveness, accountability, and credible delivery.</p></div>
+              <div class="inv-col"><h4>Questions to investigate</h4><ul class="inv-q"><li>Are trust, legitimacy, and adoption conditions strong enough to support implementation?</li><li>Which actors are already trusted by users — and are they involved early enough to shape design?</li><li>Are inclusion, affordability, and community-level risks identified early?</li><li>Are feedback, grievance, and accountability mechanisms built into the operating model?</li></ul></div>
+              <div class="inv-col inv-challenge"><h4>What would challenge this hypothesis?</h4><p>If communities already trust and use the service and feedback mechanisms work, hesitation from partners may reflect payment or preparation gaps instead. But weak legitimacy can make implementation fail even where financing is available.</p></div>
+            </div>
+            <div class="inv-tq"><span class="inv-tq-label">The five translation questions <small>— those most relevant here are highlighted</small></span><ul><li class="on">Who benefits?</li><li>Who pays?</li><li>What risk blocks capital?</li><li class="on">What makes it sustainable?</li><li>How does it repeat?</li></ul></div>
+          </article>
+        </div>
+        <div class="inv-foot">
+          <p class="caution">These are hypotheses, not conclusions. This logic should not be applied mechanically — more than one area, and more than one response, may be relevant.</p>
+          <a href="resources.html#toolkit" class="link-arrow">Investigate further in the Toolkit <span aria-hidden="true">→</span></a>
         </div>
       </div>
-      <div class="framework-graphic reveal" aria-label="Deployability framework with seven enabling conditions">
-        <div class="graphic-orbit" aria-hidden="true"></div>
-        <div class="graphic-center">Deployability<small>conditions for action</small></div>
-        <div class="graphic-node node-1" data-number="1">Clear demand signal</div>
-        <div class="graphic-node node-2" data-number="2">Credible payer / revenue logic</div>
-        <div class="graphic-node node-3" data-number="3">Operational delivery model</div>
-        <div class="graphic-node node-4" data-number="4">Appropriate risk allocation</div>
-        <div class="graphic-node node-5" data-number="5">Sufficient preparation</div>
-        <div class="graphic-node node-6" data-number="6">Accountable institutions</div>
-        <div class="graphic-node node-7" data-number="7">A pathway to replication</div>
+    </div>
+  </section>
+
+  <section class="section continuum-section">
+    <div class="wrap">
+      <div class="split-head reveal">
+        <div><span class="eyebrow">Sequencing capital to readiness</span><h2 style="margin-top:16px">The Impact Capital Continuum</h2></div>
+        <p class="lead">The purpose is not to push every opportunity toward commercial finance, but to ensure capital follows readiness rather than substituting for structure.</p>
+      </div>
+      <div class="continuum" data-seq>
+        <div class="cont-track" aria-hidden="true">
+          <span class="cont-track-fill"></span>
+          <span class="cont-marker">1</span>
+          <span class="cont-marker">2</span>
+          <span class="cont-marker">3</span>
+          <span class="cont-marker">4</span>
+          <span class="cont-marker">5</span>
+        </div>
+        <div class="cont-stages">
+          <div class="cstage"><h4>Grant &amp; market-building</h4><p>Builds trust, validates demand, supports inclusion, strengthens early market conditions.</p></div>
+          <div class="cstage"><h4>Technical assistance</h4><p>Strengthens capacity, feasibility, structuring, and procurement readiness.</p></div>
+          <div class="cstage"><h4>Catalytic &amp; first-loss</h4><p>Absorbs higher risk or lower returns to crowd in more risk-averse capital.</p></div>
+          <div class="cstage"><h4>Guarantees &amp; concessional</h4><p>Covers specific risks and improves financing terms where repayment is credible.</p></div>
+          <div class="cstage"><h4>Domestic &amp; commercial</h4><p>Market-based capital as demand, payment, and delivery systems become credible.</p></div>
+        </div>
+        <div class="cont-axis" aria-hidden="true"><span>Earlier readiness</span><span>Greater readiness</span></div>
+      </div>
+      <div class="callout reveal" style="margin-top:44px"><strong>Capital sequencing</strong> matches the right form of capital to the right stage of readiness — depending on the maturity of demand, credibility of the payer, allocation of risk, and readiness of institutions to execute.</div>
+    </div>
+  </section>
+
+  <section class="section-sm">
+    <div class="wrap">
+      <div class="cta-band framework-cta reveal">
+        <span class="eyebrow">One class of response</span>
+        <h2>See the models in action</h2>
+        <p>The three partnership models are one possible class of response within the broader Playbook logic — alongside institutional roles and systems strengthening. Which, if any, is relevant depends on what the deeper diagnosis reveals.</p>
+        <div class="hero-cta"><a href="models.html" class="btn btn-amber">Partnership Models <span class="arw">→</span></a><a href="cases.html" class="btn btn-ghost" style="color:#fff;border-color:rgba(255,255,255,.4)">Case Studies</a></div>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- TRANSLATION GAP -->
-<section class="sec-pad translation-gap">
-  <div class="wrap">
-    <div class="sec-head framework-section-head reveal">
-      <span class="eyebrow">Why partnerships stall</span>
-      <h2>The translation gap</h2>
-      <p class="lead">Different actors describe the same opportunity in different languages. These perspectives are not incompatible — strong partnerships require all of them — but without a common operating logic, opportunities stay stuck between worlds.</p>
-    </div>
-    <div class="tgap-diagram">
-      <div class="tgap-voice reveal">
-        <h3>Development actors</h3>
-        <p>Beneficiaries, needs, inclusion, impact, theory of change, community trust, program sustainability.</p>
-      </div>
-      <div class="tgap-voice reveal">
-        <h3>Financiers &amp; private sector</h3>
-        <p>Clients, revenue, margins, repayment, risk, return, cash flow, offtake, guarantees, scale.</p>
-      </div>
-      <div class="tgap-voice reveal">
-        <h3>Governments</h3>
-        <p>Policy alignment, fiscal exposure, procurement, public value, accountability, political feasibility.</p>
-      </div>
-      <div class="tgap-lines" aria-hidden="true"><span></span><span></span><span></span></div>
-      <div class="tgap-converge reveal">A program may have beneficiaries but no defined payer. It may show need but not bankable demand.<br>The language gap is not a communications problem alone &mdash; <strong>it is a structuring problem.</strong></div>
-    </div>
-  </div>
-</section>
-
-<!-- DIAGNOSTIC SHIFT -->
-<section class="sec-pad" id="diagnosis">
-  <div class="wrap">
-    <div class="sec-head framework-section-head reveal">
-      <span class="eyebrow">The diagnostic shift</span>
-      <h2 id="hypothesis">From Hypothesis to Diagnosis</h2>
-      <p class="lead">This platform can help you orient and form a hypothesis — it does not replace the deeper diagnostic process the Playbook and Toolkit require.</p>
-    </div>
-
-    <div id="hyp-cold" class="hyp-cold">
-      <p class="muted" style="margin-bottom:16px">Not sure? Pick what sounds closest to what's holding your work back.</p>
-      <div class="hyp-chips">
-        <button type="button" class="hyp-chip" data-area="demand-visibility" aria-pressed="false">Demand &amp; Visibility</button>
-        <button type="button" class="hyp-chip" data-area="payment-credibility" aria-pressed="false">Payment Credibility &amp; Risk</button>
-        <button type="button" class="hyp-chip" data-area="preparation-readiness" aria-pressed="false">Preparation &amp; Readiness</button>
-        <button type="button" class="hyp-chip" data-area="coordination-fragmentation" aria-pressed="false">Coordination &amp; Fragmentation</button>
-        <button type="button" class="hyp-chip" data-area="legitimacy-trust" aria-pressed="false">Legitimacy &amp; Trust</button>
-      </div>
-    </div>
-
-    <div id="hyp-result" class="hyp-result" hidden>
-      <p id="hyp-main-copy" class="muted" style="margin-bottom:16px">Your responses suggest these areas may warrant further investigation:</p>
-      <div id="hyp-cards" class="hyp-cards"></div>
-      <div id="hyp-secondary" class="hyp-secondary" hidden></div>
-      <div style="margin-top:24px">
-        <a href="resources.html" class="btn btn-primary">Use the Toolkit to test your hypothesis <span class="arw">&rarr;</span></a>
-        <button type="button" id="hyp-reset" class="btn btn-ghost">Start over</button>
-      </div>
-    </div>
-  </div>
-</section>
-<script src="assets/areas.js"></script>
-<script>
-(function(){
-  var cold = document.getElementById('hyp-cold');
-  var result = document.getElementById('hyp-result');
-  var cardsWrap = document.getElementById('hyp-cards');
-  var mainCopy = document.getElementById('hyp-main-copy');
-  var secondaryWrap = document.getElementById('hyp-secondary');
-  var resetBtn = document.getElementById('hyp-reset');
-
-  function renderAreas(mainKeys, secondaryKeys){
-    cardsWrap.innerHTML = '';
-    mainKeys.forEach(function(k){
-      var area = window.APB.areaByKey[k];
-      if (!area) return;
-      var el = document.createElement('div');
-      el.className = 'hyp-area-card';
-      var heading = document.createElement('h3');
-      heading.textContent = area.label;
-      var description = document.createElement('p');
-      description.className = 'muted';
-      description.style.fontSize = '.85rem';
-      description.innerHTML = '<em>What this may indicate</em> and <em>what to investigate</em> for this area — content in progress.';
-      el.appendChild(heading);
-      el.appendChild(description);
-      cardsWrap.appendChild(el);
-    });
-
-    secondaryWrap.innerHTML = '';
-    if (secondaryKeys.length) {
-      var secondaryNames = window.APB.listLabels(secondaryKeys);
-      var secondaryMessage = document.createElement('p');
-      secondaryMessage.className = 'muted';
-      secondaryMessage.textContent = secondaryKeys.length === 1
-        ? 'One of your answers ' + (mainKeys.length ? 'also ' : '') + 'related to ' + secondaryNames + '. It may be worth keeping in view.'
-        : 'Some of your answers ' + (mainKeys.length ? 'also ' : '') + 'related to ' + secondaryNames + '. They may be worth keeping in view.';
-      secondaryWrap.appendChild(secondaryMessage);
-    }
-
-    mainCopy.hidden = !mainKeys.length;
-    secondaryWrap.hidden = !secondaryKeys.length;
-    cold.hidden = Boolean(mainKeys.length || secondaryKeys.length);
-    result.hidden = !Boolean(mainKeys.length || secondaryKeys.length);
-    document.querySelectorAll('.hyp-chip').forEach(function(chip){
-      var selected = mainKeys.indexOf(chip.getAttribute('data-area')) !== -1;
-      chip.classList.toggle('is-selected', selected);
-      chip.setAttribute('aria-pressed', selected ? 'true' : 'false');
-    });
-  }
-
-  document.querySelectorAll('.hyp-chip').forEach(function(btn){
-    btn.addEventListener('click', function(){
-      clearAreaParams();
-      window.APB.setAreas([btn.getAttribute('data-area')]);
-      window.APB.setSecondary([]);
-      renderFromAPB();
-    });
-  });
-
-  function clearAreaParams(){
-    var url = new URL(window.location.href);
-    url.searchParams.delete('areas');
-    url.searchParams.delete('also');
-    window.history.replaceState({}, '', url.pathname + url.search + url.hash);
-  }
-
-  function renderFromAPB(){
-    renderAreas(window.APB.getAreas(), window.APB.getSecondary());
-  }
-
-  resetBtn.addEventListener('click', function(){
-    clearAreaParams();
-    window.APB.setAreas([]);
-    window.APB.setSecondary([]);
-    renderAreas([], []);
-  });
-
-  renderFromAPB();
-})();
-</script>
-
-<!-- FIVE TRANSLATION QUESTIONS -->
-<section class="sec-pad framework-white-section">
-  <div class="wrap">
-    <div class="sec-head framework-section-head reveal">
-      <span class="eyebrow">Ask early, not after</span>
-      <h2>Five translation questions</h2>
-      <p class="lead">Asked at the start, these questions convert social-impact activity into partnership architecture — making complexity visible and manageable.</p>
-    </div>
-    <div class="journey journey-connected">
-      <div class="jstep reveal"><div class="jn">1</div><div class="jc"><span class="jtag">Benefit</span><h3>Who benefits?</h3><p>Not only who needs the intervention, but who uses it, values it, depends on it, or gains from its continued delivery.</p></div></div>
-      <div class="jstep reveal"><div class="jn">2</div><div class="jc"><span class="jtag">Payment</span><h3>Who pays?</h3><p>The person who benefits may not be the one who pays. Without a credible payment logic, demand stays visible but not bankable.</p></div></div>
-      <div class="jstep reveal"><div class="jn">3</div><div class="jc"><span class="jtag">Risk</span><h3>What risk blocks capital?</h3><p>Demand, payment, political, currency, procurement, construction, or performance risk — each needs a different instrument.</p></div></div>
-      <div class="jstep reveal"><div class="jn">4</div><div class="jc"><span class="jtag">Sustainability</span><h3>What makes it sustainable?</h3><p>Reliable delivery capacity, clear standards, sufficient margins, credible governance, and a pathway to institutional ownership.</p></div></div>
-      <div class="jstep reveal"><div class="jn">5</div><div class="jc"><span class="jtag">Repeatability</span><h3>How does it repeat?</h3><p>Scale depends on standardization, templates, data, benchmarks, and models that adapt across locations without redesign.</p></div></div>
-    </div>
-  </div>
-</section>
-
-<!-- CAPITAL CONTINUUM -->
-<section class="sec-pad">
-  <div class="wrap">
-    <div class="sec-head framework-section-head reveal">
-      <span class="eyebrow">Sequencing capital to readiness</span>
-      <h2>The Impact Capital Continuum</h2>
-      <p class="lead">The purpose is not to push every opportunity toward commercial finance, but to ensure capital follows readiness rather than substituting for structure.</p>
-    </div>
-    <div class="continuum continuum-gradient">
-      <div class="cstage reveal"><div class="cs-i">01</div><h4>Grant &amp; market-building</h4><p>Builds trust, validates demand, supports inclusion, strengthens early market conditions.</p></div>
-      <div class="cstage reveal"><div class="cs-i">02</div><h4>Technical assistance</h4><p>Strengthens capacity, feasibility, structuring, and procurement readiness.</p></div>
-      <div class="cstage reveal"><div class="cs-i">03</div><h4>Catalytic &amp; first-loss</h4><p>Absorbs higher risk or lower returns to crowd in more risk-averse capital.</p></div>
-      <div class="cstage reveal"><div class="cs-i">04</div><h4>Guarantees &amp; concessional</h4><p>Covers specific risks and improves financing terms where repayment is credible.</p></div>
-      <div class="cstage reveal"><div class="cs-i">05</div><h4>Domestic &amp; commercial</h4><p>Market-based capital as demand, payment, and delivery systems become credible.</p></div>
-    </div>
-    <div class="callout reveal" style="margin-top:36px"><strong>Capital sequencing</strong> matches the right form of capital to the right stage of readiness — depending on the maturity of demand, credibility of the payer, allocation of risk, and readiness of institutions to execute.</div>
-  </div>
-</section>
-
-<section class="sec-pad-sm">
-  <div class="wrap"><div class="cta-band reveal">
-    <h2>See the models in action</h2>
-    <p>Partnership Models are one possible class of response within the broader Playbook logic — not the default next step for every situation. Explore how each of the three models addresses a different structural constraint.</p>
-    <div class="hero-cta"><a href="models.html" class="btn btn-amber">Partnership Models <span class="arw">&rarr;</span></a><a href="cases.html" class="btn btn-ghost" style="color:#fff;border-color:rgba(255,255,255,.4)">Case Studies</a></div>
-  </div></div>
-</section>
-
+  </section>
+</main>
 <div id="footer"></div>
+<script src="assets/areas.js"></script>
+<script src="assets/framework.js"></script>
+<script src="assets/fw-motion.js"></script>
 <script src="assets/components.js"></script>
 </body>
 </html>
