@@ -32,17 +32,17 @@
       '</div>' +
     '</div>';
 
-  var companion = '<a href="' + h('companion.html') + '"' + (page === 'companion' ? ' class="active"' : '') + '>AI Companion</a>';
+  var companion = '<a href="' + h('companion.html') + '" class="companion-nav-link' + (page === 'companion' ? ' active' : '') + '">AI Companion</a>';
+  var networkMark = '<span class="network-mark" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none"><path d="M24 24 10 10M24 24 38 10M24 24 10 38M24 24 38 38" stroke="currentColor" stroke-width="2.5"/><circle cx="24" cy="24" r="6" fill="var(--green)" stroke="currentColor" stroke-width="2"/><circle cx="10" cy="10" r="5" fill="var(--amber)"/><circle cx="38" cy="10" r="5" fill="var(--forest)"/><circle cx="10" cy="38" r="5" fill="var(--forest)"/><circle cx="38" cy="38" r="5" fill="var(--amber)"/></svg></span>';
 
   var nav =
     '<div class="nav"><div class="wrap nav-inner">' +
       '<a class="brand" href="' + h('index.html') + '">' +
         '<img class="logo-mark" src="' + h('assets/brand/rf-logo.png') + '" alt="">' +
-        '<span class="brand-copy"><span class="brand-name">Advancing Partnerships</span><small>The Playbook</small></span>' +
+        '<span class="brand-divider" aria-hidden="true"></span>' + networkMark +
+        '<span class="brand-copy"><span class="brand-name">Advancing<br>Partnerships</span><small>Playbook</small></span>' +
       '</a>' +
-      '<nav class="nav-links" id="navLinks">' + mainLinks + readMenu + companion +
-        '<a href="' + h('read/viewer.html') + '" class="btn btn-primary nav-cta">Read the Playbook</a>' +
-      '</nav>' +
+      '<nav class="nav-links" id="navLinks">' + mainLinks + readMenu + companion + '</nav>' +
       '<button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>' +
     '</div></div>';
 
@@ -50,10 +50,11 @@
     '<footer class="footer"><div class="wrap">' +
       '<div class="footer-grid">' +
         '<div>' +
-          '<div class="brand"><img class="logo-mark" src="' + h('assets/brand/rf-logo.png') + '" alt=""><span class="brand-copy"><span class="brand-name">Advancing Partnerships</span><small>The Playbook</small></span></div>' +
+          '<div class="footer-kicker">An initiative of</div>' +
+          '<div class="brand"><img class="logo-mark" src="' + h('assets/brand/rf-logo.png') + '" alt=""><span class="brand-divider" aria-hidden="true"></span>' + networkMark + '<span class="brand-copy"><span class="brand-name">Advancing<br>Partnerships</span><small>Playbook</small></span></div>' +
           '<p>A practical guide for turning social-impact activity into deployable, investable, and repeatable partnership pathways across Sub-Saharan Africa.</p>' +
         '</div>' +
-        '<div><h5>Quick links</h5><ul>' +
+        '<div><h5>Explore</h5><ul>' +
           '<li><a href="' + h('index.html') + '">Home</a></li>' +
           '<li><a href="' + h('resources.html') + '">Resources</a></li>' +
           '<li><a href="' + h('framework.html') + '">The Framework</a></li>' +
@@ -62,15 +63,20 @@
           '<li><a href="' + h('read/viewer.html') + '">Read</a></li>' +
           '<li><a href="' + h('companion.html') + '">AI Companion</a></li>' +
         '</ul></div>' +
-        '<div><h5>Contact</h5><ul>' +
-          '<li><a href="mailto:contact@example.com">contact@example.com</a></li>' +
+        '<div><h5>Read</h5><ul>' +
+          '<li><a href="' + h('read/viewer.html?doc=executive-summary.pdf') + '">Executive Summary</a></li>' +
+          '<li><a href="' + h('read/viewer.html') + '">Full Playbook</a></li>' +
+          '<li><a href="' + h('downloads.html') + '">Downloads</a></li>' +
         '</ul></div>' +
+        '<div><h5>Contact &amp; follow</h5><div class="footer-social">' +
+          '<a href="https://www.rockefellerfoundation.org/" target="_blank" rel="noopener" aria-label="Rockefeller Foundation website">◎</a>' +
+          '<a href="https://www.linkedin.com/company/rockefeller-foundation/" target="_blank" rel="noopener" aria-label="Rockefeller Foundation on LinkedIn">in</a>' +
+          '<a href="mailto:contact@example.com" aria-label="Email">✉</a>' +
+        '</div></div>' +
       '</div>' +
-      '<div class="footer-bot">' +
-        '<span>&copy; 2026 Haskè Conseil. All rights reserved.</span>' +
-        '<span>Platform v1.0 &middot; Last updated September 2026</span>' +
-      '</div>' +
-    '</div></footer>';
+    '</div><div class="footer-bot"><div class="wrap">' +
+      '<span>&copy; 2026 Haskè Conseil. All rights reserved.</span>' +
+    '</div></div></footer>';
 
   var navMount = document.getElementById('nav');
   var footMount = document.getElementById('footer');

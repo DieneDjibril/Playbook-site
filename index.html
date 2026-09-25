@@ -15,19 +15,8 @@
 <meta property="og:site_name" content="Advancing Partnerships Playbook — The Rockefeller Foundation">
 <style>
   .home-hero{min-height:clamp(500px,66vh,650px);display:flex;align-items:flex-end;padding:64px 0 52px;position:relative;isolation:isolate;overflow:hidden;color:#fff}
-  .home-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(4,28,24,.58),rgba(4,28,24,.2) 62%,rgba(4,28,24,.04));z-index:-1}
-  .home-hero-slides,.home-hero-slide{position:absolute;inset:0}
-  .home-hero-slides{z-index:-2;background:#174d38}
-  .home-hero-slide{opacity:0;background:center/cover no-repeat;transition:opacity .9s ease}
-  .home-hero-slide.active{opacity:1}
-  .home-hero-slide:nth-child(1){background-image:url('assets/cases/home-african-green.jpg')}
-  .home-hero-slide:nth-child(2){background-image:url('assets/cases/home-african-coast.jpg')}
-  .home-hero-slide:nth-child(3){background-image:url('assets/cases/home-african-market.jpg')}
-  .home-hero-slide:nth-child(4){background-image:url('assets/cases/home-african-community.jpg')}
-  .home-hero-controls{position:absolute;right:clamp(20px,5vw,72px);bottom:34px;display:flex;align-items:center;gap:8px;z-index:2}
-  .home-hero-control{width:11px;height:11px;padding:0;border:1px solid rgba(255,255,255,.85);border-radius:50%;background:transparent;cursor:pointer}
-  .home-hero-control.active{background:#fff;box-shadow:0 0 0 4px rgba(255,255,255,.2)}
-  .home-hero-control:focus-visible{outline:2px solid #fff;outline-offset:4px}
+  .home-hero::after{display:none}
+  .home-hero{background:url('assets/home/home-hero.jpg') center/cover no-repeat}
   .home-hero .hero-grid{display:block;width:100%}
   .home-hero .hero-copy{max-width:850px}
   .home-hero .hero-copy>*{animation:homeContentIn .8s cubic-bezier(.16,1,.3,1) both}
@@ -47,9 +36,16 @@
   .home-hero .hero-stats .stat b{color:#fff}
   .home-hero .hero-stats .stat span{color:rgba(255,255,255,.78)}
   .home-intro{background:var(--paper);padding:96px 0}
-  .home-intro-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:72px;align-items:center}
+  .home-intro-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
   .home-intro-mark{display:flex;align-items:center;justify-content:center}
-  .home-intro-mark img{width:min(100%,230px);height:auto;animation:heartBeat 3.2s ease-in-out infinite;transform-origin:center}
+  .home-intro-mark svg{width:min(100%,520px);height:auto}
+  .home-intro-mark .graph-ring{fill:none;stroke:#e7e7f6;stroke-width:2}
+  .home-intro-mark .graph-ring.inner{stroke:#a9a8e0;stroke-dasharray:4 9}
+  .home-intro-mark .graph-link{stroke:url(#homeSpoke);stroke-width:3}
+  .home-intro-mark .graph-core{fill:#3d3142}
+  .home-intro-mark .graph-node{fill:#fff;stroke:#3d3142;stroke-width:3}
+  .home-intro-mark .graph-dot{fill:#ee5f2a}
+  .home-intro-mark text{font-family:var(--sans)}
   .home-intro-mark.reveal{opacity:0;transform:translateX(-70px)}
   .home-intro-mark.reveal.in{opacity:1;transform:translateX(0);transition:opacity .8s ease,transform .8s cubic-bezier(.16,1,.3,1)}
   .home-intro-copy{max-width:650px}
@@ -82,10 +78,12 @@
   .home-pathways .sec-head.center{margin-left:0;margin-right:0}
   .home-pathways .path-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
   .home-pathways .path-card{display:flex;flex-direction:column;aspect-ratio:auto;min-height:350px}
-  .home-pathways .path-card img{height:190px;transition:transform .5s ease}
+  .home-pathways .path-card{background:var(--paper);border:1px solid var(--line);box-shadow:var(--shadow);border-radius:18px;padding:24px}
+  .home-pathways .path-card img{display:none}
+  .home-pathways .path-card .path-icon{width:64px;height:64px;color:var(--forest);margin:4px 0 18px}
   .home-pathways .path-card .path-content{height:auto;flex:1}
   .home-pathways .path-card .path-button{margin-top:auto}
-  .home-pathways .path-card:hover img{transform:scale(1.06)}
+  .home-pathways .path-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
   .home-pathways .path-button{align-self:flex-start;margin-top:16px;padding:10px 15px;border:1.5px solid var(--forest);border-radius:999px;color:var(--forest);background:transparent;transition:background .25s ease,color .25s ease,border-color .25s ease}
   .home-pathways .path-button:hover{background:var(--forest);border-color:var(--forest);color:#fff}
   .home-pathways .path-card.reveal{opacity:0;transform:translateX(-60px)}
@@ -111,14 +109,11 @@
     24%{transform:scale(1.04) rotate(0)}
   }
   @media(prefers-reduced-motion:reduce){
-    .home-hero .hero-copy>*,.home-intro-mark img{animation:none}
-    .home-hero-slide{transition:none}
+    .home-hero .hero-copy>*,.home-intro-mark svg{animation:none}
     .home-intro-mark.reveal,.home-intro-copy.reveal,.home-pathways .path-card.reveal,.home-case-card.reveal{opacity:1;transform:none;transition:none}
-    .home-pathways .path-card img{transition:none}
   }
   @media(max-width:760px){
     .home-hero{min-height:0;padding:44px 0 38px}
-    .home-hero-controls{right:18px;bottom:18px}
     .home-hero h1{font-size:clamp(2.15rem,10vw,3.2rem);line-height:1.04;margin:12px 0 16px}
     .home-hero .lead{font-size:.96rem;line-height:1.48;max-width:34rem}
     .home-hero .btn-primary{padding:12px 17px;font-size:.86rem}
@@ -129,7 +124,7 @@
     .home-hero .hero-stats .stat span{font-size:.68rem}
     .home-intro{padding:52px 0}
     .home-intro-grid{grid-template-columns:1fr;gap:10px}
-    .home-intro-mark img{width:min(100%,150px)}
+    .home-intro-mark svg{width:min(100%,360px)}
     .home-intro-copy h2{font-size:clamp(1.9rem,8vw,2.7rem);line-height:1.08;margin:12px 0 16px}
     .home-intro-copy p{font-size:.96rem;line-height:1.55}
     .home-cases{padding:64px 0}
@@ -159,12 +154,6 @@
 
 <!-- HERO -->
 <header class="hero home-hero">
-  <div class="home-hero-slides" aria-hidden="true">
-    <div class="home-hero-slide active"></div>
-    <div class="home-hero-slide"></div>
-    <div class="home-hero-slide"></div>
-    <div class="home-hero-slide"></div>
-  </div>
   <div class="wrap hero-grid">
     <div class="hero-copy reveal">
       <span class="eyebrow">The Advancing Partnerships Playbook</span>
@@ -184,18 +173,24 @@
       </div>
     </div>
   </div>
-  <div class="home-hero-controls" aria-label="Hero image selection">
-    <button class="home-hero-control active" type="button" aria-label="Show green African landscape" aria-pressed="true"></button>
-    <button class="home-hero-control" type="button" aria-label="Show African coastline" aria-pressed="false"></button>
-    <button class="home-hero-control" type="button" aria-label="Show African market" aria-pressed="false"></button>
-    <button class="home-hero-control" type="button" aria-label="Show African community" aria-pressed="false"></button>
-  </div>
 </header>
 
 <!-- ORIENTATION (condensed) -->
 <section class="home-intro">
   <div class="wrap home-intro-grid">
-    <div class="home-intro-mark reveal"><img src="assets/heart.svg" alt="Heart representing people-centered partnerships"></div>
+    <div class="home-intro-mark reveal">
+      <svg viewBox="0 0 600 460" role="img" aria-labelledby="homeGraphTitle">
+        <title id="homeGraphTitle">Actors connected around one deployable partnership pathway</title>
+        <defs><linearGradient id="homeSpoke" x1="0" x2="1"><stop offset="0" stop-color="#a9a8e0"/><stop offset="1" stop-color="#ee5f2a"/></linearGradient></defs>
+        <circle class="graph-ring" cx="300" cy="230" r="170"></circle><circle class="graph-ring inner" cx="300" cy="230" r="124"></circle>
+        <path d="M170 100 430 100 430 360 170 360Z" fill="none" stroke="#d9d2d8" stroke-width="1.5"></path>
+        <g fill="none"><path class="graph-link" d="M181 111 232 162"></path><path class="graph-link" d="M419 111 368 162"></path><path class="graph-link" d="M419 349 368 298"></path><path class="graph-link" d="M181 349 232 298"></path></g>
+        <circle class="graph-core" cx="300" cy="230" r="92"></circle>
+        <text x="300" y="214" text-anchor="middle" fill="#fff" font-size="19" font-weight="600">Deployable</text><text x="300" y="238" text-anchor="middle" fill="#fff" font-size="19" font-weight="600">partnership</text><text x="300" y="262" text-anchor="middle" fill="#a9a8e0" font-size="19" font-weight="600">pathway</text>
+        <g><circle class="graph-node" cx="170" cy="100" r="15"></circle><circle class="graph-node" cx="430" cy="100" r="15"></circle><circle class="graph-node" cx="430" cy="360" r="15"></circle><circle class="graph-node" cx="170" cy="360" r="15"></circle><circle class="graph-dot" cx="170" cy="100" r="5"></circle><circle class="graph-dot" cx="430" cy="100" r="5"></circle><circle class="graph-dot" cx="430" cy="360" r="5"></circle><circle class="graph-dot" cx="170" cy="360" r="5"></circle></g>
+        <g font-size="15" font-weight="500" fill="#1b1b1f"><text x="146" y="92" text-anchor="end">Development &amp;</text><text x="146" y="112" text-anchor="end">delivery actors</text><text x="454" y="92">Funders &amp;</text><text x="454" y="112">capital providers</text><text x="454" y="352">Private sector</text><text x="454" y="372">&amp; investors</text><text x="146" y="352" text-anchor="end">Governments &amp;</text><text x="146" y="372" text-anchor="end">public institutions</text></g>
+      </svg>
+    </div>
     <div class="home-intro-copy reveal">
       <span class="eyebrow">A shared language for action</span>
       <h2>Partnerships become powerful when everyone can see the pathway.</h2>
@@ -214,7 +209,7 @@
     </div>
     <div class="path-grid">
       <a href="pathways/development.html" class="path-card reveal">
-        <img src="assets/cases/path-development.jpg" alt="Development and delivery actors collaborating around a table">
+        <svg class="path-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="32" cy="20" r="8"></circle><path d="M18 50c0-8 6-14 14-14s14 6 14 14"></path><circle cx="13" cy="27" r="5.5"></circle><path d="M3 49c0-6 4-10 10-10 2.5 0 4.5.6 6 1.8"></path><circle cx="51" cy="27" r="5.5"></circle><path d="M61 49c0-6-4-10-10-10-2.5 0-4.5.6-6 1.8"></path></svg>
         <div class="path-content">
           <span class="path-kicker">01</span>
           <h3>Development &amp; Delivery Actors</h3>
@@ -223,7 +218,7 @@
         </div>
       </a>
       <a href="pathways/funders.html" class="path-card reveal">
-        <img src="assets/cases/path-funders.jpg" alt="Capital providers reviewing financial documents">
+        <svg class="path-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><ellipse cx="24" cy="46" rx="14" ry="5"></ellipse><path d="M10 46v6c0 2.8 6.3 5 14 5s14-2.2 14-5v-6M10 38c0 2.8 6.3 5 14 5s14-2.2 14-5"></path><ellipse cx="24" cy="30" rx="14" ry="5"></ellipse><path d="M10 30v8M38 30v8M46 36V10M38 18l8-8 8 8"></path></svg>
         <div class="path-content">
           <span class="path-kicker">02</span>
           <h3>Funders &amp; Capital Providers</h3>
@@ -232,7 +227,7 @@
         </div>
       </a>
       <a href="pathways/government.html" class="path-card reveal">
-        <img src="assets/cases/path-government.jpg" alt="Public institution building representing government">
+        <svg class="path-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 24 32 9l26 15Z"></path><path d="M8 24h48M14 28v20M26 28v20M38 28v20M50 28v20M6 52h52M4 57h56"></path></svg>
         <div class="path-content">
           <span class="path-kicker">03</span>
           <h3>Governments &amp; Public Institutions</h3>
@@ -241,7 +236,7 @@
         </div>
       </a>
       <a href="pathways/investors.html" class="path-card reveal">
-        <img src="assets/cases/path-investors.jpg" alt="Private sector team working in a modern office">
+        <svg class="path-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="8" y="14" width="48" height="38" rx="3"></rect><path d="M22 14v-4h20v4M18 25h28M18 36h28M18 47h16"></path></svg>
         <div class="path-content">
           <span class="path-kicker">04</span>
           <h3>Private Sector &amp; Investors</h3>
@@ -307,34 +302,5 @@
 
 <div id="footer"></div>
 <script src="assets/components.js"></script>
-<script>
-  (() => {
-    const hero = document.querySelector('.home-hero');
-    if (!hero) return;
-    const slides = [...hero.querySelectorAll('.home-hero-slide')];
-    const controls = [...hero.querySelectorAll('.home-hero-control')];
-    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-    let current = 0;
-    let timer;
-    const showSlide = (index) => {
-      current = (index + slides.length) % slides.length;
-      slides.forEach((slide, slideIndex) => slide.classList.toggle('active', slideIndex === current));
-      controls.forEach((control, controlIndex) => {
-        const active = controlIndex === current;
-        control.classList.toggle('active', active);
-        control.setAttribute('aria-pressed', String(active));
-      });
-    };
-    const start = () => {
-      if (!reducedMotion.matches) timer = window.setInterval(() => showSlide(current + 1), 5500);
-    };
-    controls.forEach((control, index) => control.addEventListener('click', () => {
-      window.clearInterval(timer);
-      showSlide(index);
-      start();
-    }));
-    start();
-  })();
-</script>
 </body>
 </html>
