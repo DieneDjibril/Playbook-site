@@ -10,7 +10,7 @@ The Companion sends the complete browser conversation to
 2. Open **Site settings → Environment variables** in Netlify.
 3. Add `GROQ_API_KEY` with the secret key value.
 4. Optionally add `GROQ_MODEL` to override the default
-   `llama-3.3-70b-versatile`.
+   `openai/gpt-oss-120b`.
 5. Redeploy the site. The root `netlify.toml` points Netlify to
    `netlify/functions`.
 
