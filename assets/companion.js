@@ -20,7 +20,12 @@ function escapeHtml(value) {
 }
 
 function renderMarkdown(text) {
-  var safe = escapeHtml(text).replace(/\r?\n/g, '<br>');
+  var plainText = String(text)
+    .replace(/^[ \t]*(?:[-*+•]|\d+[.)])[ \t]+/gm, '')
+    .replace(/(\*\*|__)(.*?)\1/g, '$2')
+    .replace(/(^|[^\w])(\*|_)([^*_\n]+)\2(?!\w)/gm, '$1$3')
+    .replace(/^#{1,6}[ \t]+/gm, '');
+  var safe = escapeHtml(plainText).replace(/\r?\n/g, '<br>');
   return safe.replace(/\[([^\]]+)\]\((framework\.html|models\.html|cases\.html|resources\.html)\)/g,
     '<a href="$2">$1</a>');
 }
