@@ -23,7 +23,15 @@
   }
   .doc-tabs button:hover{border-color:var(--green)}
   .doc-tabs button.active{background:var(--green);border-color:var(--green);color:#fff}
-  .flipbook-shell{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);background:linear-gradient(135deg,#e8e2d7,#f8f6f1);padding:clamp(18px,4vw,42px)}
+  .reader-layout{display:grid;grid-template-columns:230px minmax(0,1fr);align-items:start;gap:20px}
+  .reader-layout:not(.chapters-visible){display:block}
+  .chapter-panel{display:none;position:sticky;top:20px;max-height:calc(100vh - 40px);overflow-y:auto;border:1px solid var(--line);border-radius:var(--radius);background:#fff;padding:16px}
+  .chapters-visible .chapter-panel{display:block}
+  .chapter-panel h2{font:600 1rem var(--sans);margin:0 0 10px;color:var(--forest)}
+  .chapter-list{display:grid;gap:5px}
+  .chapter-list button{width:100%;border:0;border-radius:8px;background:transparent;color:var(--text);text-align:left;padding:8px;font:500 .78rem/1.4 var(--sans);cursor:pointer}
+  .chapter-list button:hover,.chapter-list button[aria-current="page"]{background:var(--amber-soft);color:var(--forest)}
+  .flipbook-shell{border:1px solid var(--line);border-radius:var(--radius);overflow:auto;box-shadow:var(--shadow);background:linear-gradient(135deg,#e8e2d7,#f8f6f1);padding:clamp(18px,4vw,42px)}
   .flipbook{width:min(100%,794px);margin:0 auto;perspective:1800px}
   .flip-page{position:relative;width:100%;aspect-ratio:794/1123;background:#fff;box-shadow:0 12px 28px rgba(15,40,35,.18);transform-style:preserve-3d}
   .flip-page.is-flipping{animation:pageFlip .72s cubic-bezier(.22,.61,.36,1)}
@@ -35,13 +43,18 @@
   .flip-controls button{border:1px solid var(--forest);background:#fff;color:var(--forest);border-radius:999px;padding:10px 18px;font:600 .88rem var(--sans);cursor:pointer}
   .flip-controls button:hover:not(:disabled){background:var(--forest);color:#fff}
   .flip-controls button:disabled{opacity:.4;cursor:not-allowed}
+  .zoom-controls{display:flex;align-items:center;justify-content:center;gap:8px;margin:0 auto 16px}
+  .zoom-controls button{min-width:38px;border:1px solid var(--forest);background:#fff;color:var(--forest);border-radius:999px;padding:7px 12px;font:600 .85rem var(--sans);cursor:pointer}
+  .zoom-controls button:hover:not(:disabled){background:var(--forest);color:#fff}
+  .zoom-controls button:disabled{opacity:.4;cursor:not-allowed}
+  #zoomLevel{min-width:48px;text-align:center;font-size:.82rem;color:var(--muted)}
   #pageCounter{min-width:100px;text-align:center;font-size:.9rem;color:var(--muted)}
   .flip-progress{height:4px;background:rgba(4,70,56,.12);margin-top:18px;border-radius:99px;overflow:hidden}
   .flip-progress span{display:block;height:100%;background:var(--amber);width:0;transition:width .3s ease}
   .pdf-fallback{display:none;width:100%;height:78vh;min-height:520px;border:0;background:#fff}
   .pdf-fallback-message{display:none;margin:14px 0 0;padding:12px 14px;border-radius:10px;background:var(--amber-soft);color:#6a431d;font-size:.88rem}
   .viewer-actions{display:flex;gap:10px}
-  @media (max-width:720px){.viewer-wrap{padding:20px 14px 44px}.viewer-head{display:block}.viewer-actions{margin-top:14px}.viewer-actions .btn{flex:1;text-align:center;padding:10px 8px;font-size:.78rem}.doc-tabs{overflow-x:auto;flex-wrap:nowrap;padding-bottom:6px}.doc-tabs button{white-space:nowrap;font-size:.78rem}.flipbook-shell{padding:12px 8px 16px}.flip-controls{gap:8px}.flip-controls button{padding:9px 12px;font-size:.78rem}}
+  @media (max-width:720px){.viewer-wrap{padding:20px 14px 44px}.viewer-head{display:block}.viewer-actions{margin-top:14px}.viewer-actions .btn{flex:1;text-align:center;padding:10px 8px;font-size:.78rem}.doc-tabs{overflow-x:auto;flex-wrap:nowrap;padding-bottom:6px}.doc-tabs button{white-space:nowrap;font-size:.78rem}.reader-layout{grid-template-columns:minmax(0,1fr);gap:12px}.chapter-panel{position:static;max-height:190px;padding:10px}.chapter-panel h2{font-size:.9rem}.chapter-list{grid-template-columns:repeat(2,minmax(0,1fr));gap:2px}.chapter-list button{font-size:.72rem;padding:7px}.flipbook-shell{padding:12px 8px 16px}.flip-controls{gap:8px}.flip-controls button{padding:9px 12px;font-size:.78rem}.zoom-controls{gap:5px}.zoom-controls button{padding:7px 10px}}
 </style>
 </head>
 <body data-page="read" data-root="../">
@@ -68,19 +81,49 @@
     <button data-doc="case-study-rutf.pdf" data-title="Case Study — RUTF">RUTF</button>
   </div>
 
-  <div class="flipbook-shell" id="flipbookShell">
-    <div class="flipbook" aria-live="polite">
-      <div class="flip-page" id="flipPage">
-        <div class="flip-face front"><canvas id="frontPage" aria-label="Current PDF page"></canvas></div>
-        <div class="flip-face back"><canvas id="backPage" aria-label="Next PDF page"></canvas></div>
+  <div class="reader-layout" id="readerLayout">
+    <aside class="chapter-panel" id="chapterPanel" aria-label="Playbook chapters">
+      <h2>Chapters</h2>
+      <nav class="chapter-list" id="chapterList" aria-label="Go to chapter">
+        <button type="button" data-page="2">How to Use This Playbook</button>
+        <button type="button" data-page="5">Part I — Introduction</button>
+        <button type="button" data-page="11">Part II — Shared Definitions</button>
+        <button type="button" data-page="18">Part III — Evidence Base</button>
+        <button type="button" data-page="23">Part IV — Why Partnerships Stall</button>
+        <button type="button" data-page="34">Part V — Actor Incentives &amp; Political Economy</button>
+        <button type="button" data-page="46">Part VI — Systems Beneath the Models</button>
+        <button type="button" data-page="51">Part VII — Model Selection</button>
+        <button type="button" data-page="57">Part VIII — Aggregation &amp; Warehouse Platforms</button>
+        <button type="button" data-page="66">Part IX — Project Preparation &amp; Guarantees</button>
+        <button type="button" data-page="76">Part X — Predictable Delivery Networks</button>
+        <button type="button" data-page="87">Part XI — Sector Pathways</button>
+        <button type="button" data-page="97">Part XII — Country Adaptation</button>
+        <button type="button" data-page="104">Part XIII — Transaction Toolkit</button>
+        <button type="button" data-page="106">Part XIV — Monitoring &amp; Learning</button>
+        <button type="button" data-page="113">Part XV — Synthesis</button>
+        <button type="button" data-page="115">Annexes</button>
+      </nav>
+    </aside>
+    <div class="flipbook-shell" id="flipbookShell">
+      <div class="zoom-controls" aria-label="Zoom controls">
+        <button type="button" id="zoomOut" aria-label="Zoom out">&minus;</button>
+        <span id="zoomLevel" aria-live="polite">100%</span>
+        <button type="button" id="zoomIn" aria-label="Zoom in">+</button>
+        <button type="button" id="zoomReset">Fit</button>
       </div>
+      <div class="flipbook" id="flipbook" aria-live="polite">
+        <div class="flip-page" id="flipPage">
+          <div class="flip-face front"><canvas id="frontPage" aria-label="Current PDF page"></canvas></div>
+          <div class="flip-face back"><canvas id="backPage" aria-label="Next PDF page"></canvas></div>
+        </div>
+      </div>
+      <div class="flip-controls">
+        <button type="button" id="prevPage" aria-label="Previous page">&larr; Previous</button>
+        <span id="pageCounter">Page 1 / 1</span>
+        <button type="button" id="nextPage" aria-label="Next page">Next &rarr;</button>
+      </div>
+      <div class="flip-progress" aria-hidden="true"><span id="progressBar"></span></div>
     </div>
-    <div class="flip-controls">
-      <button type="button" id="prevPage" aria-label="Previous page">&larr; Previous</button>
-      <span id="pageCounter">Page 1 / 1</span>
-      <button type="button" id="nextPage" aria-label="Next page">Next &rarr;</button>
-    </div>
-    <div class="flip-progress" aria-hidden="true"><span id="progressBar"></span></div>
   </div>
   <iframe id="pdfFallback" class="pdf-fallback" title="Native PDF viewer"></iframe>
   <p id="pdfFallbackMessage" class="pdf-fallback-message">The interactive reader is unavailable in this browser, so the PDF is being opened with the native PDF viewer.</p>
@@ -101,6 +144,13 @@
   var dl = document.getElementById('downloadLink');
   var nt = document.getElementById('newTabLink');
   var title = document.getElementById('docTitle');
+  var readerLayout = document.getElementById('readerLayout');
+  var flipbook = document.getElementById('flipbook');
+  var chapterButtons = document.querySelectorAll('#chapterList button');
+  var zoomIn = document.getElementById('zoomIn');
+  var zoomOut = document.getElementById('zoomOut');
+  var zoomReset = document.getElementById('zoomReset');
+  var zoomLabel = document.getElementById('zoomLevel');
   var flipPage = document.getElementById('flipPage');
   var frontPage = document.getElementById('frontPage');
   var backPage = document.getElementById('backPage');
@@ -116,8 +166,39 @@
   var pdfLoading = 0;
   var pages = [];
   var activeFile = '';
+  var zoomLevel = 1;
+  var flipTimer = null;
+  var navigationToken = 0;
+  var renderTasks = new WeakMap();
+  function updateZoomControls(){
+    var availableWidth = flipbookShell.clientWidth - parseFloat(window.getComputedStyle(flipbookShell).paddingLeft) - parseFloat(window.getComputedStyle(flipbookShell).paddingRight);
+    var baseWidth = Math.min(794, availableWidth);
+    flipbook.style.width = Math.round(baseWidth * zoomLevel) + 'px';
+    zoomLabel.textContent = Math.round(zoomLevel * 100) + '%';
+    zoomOut.disabled = zoomLevel <= 0.75;
+    zoomIn.disabled = zoomLevel >= 2.25;
+  }
+  function renderVisiblePages(){
+    if(!pdfDocument || !pages.length) return Promise.resolve();
+    navigationToken += 1;
+    window.clearTimeout(flipTimer);
+    flipPage.classList.remove('is-flipping');
+    updateZoomControls();
+    return Promise.all([
+      renderPage(pageIndex, frontPage),
+      renderPage(Math.min(pageIndex + 1, pages.length - 1), backPage)
+    ]);
+  }
+  function setZoom(nextZoom){
+    zoomLevel = Math.max(0.75, Math.min(2.25, Math.round(nextZoom * 100) / 100));
+    updateZoomControls();
+    renderVisiblePages().catch(function(error){
+      console.error('Unable to render the PDF at the selected zoom level.', error);
+    });
+  }
   function showFallback(file){
     activeFile = file;
+    readerLayout.classList.remove('chapters-visible');
     flipbookShell.style.display = 'none';
     prev.parentElement.style.display = 'none';
     progress.parentElement.style.display = 'none';
@@ -127,6 +208,9 @@
   }
   function buildPages(file){
     activeFile = file;
+    navigationToken += 1;
+    window.clearTimeout(flipTimer);
+    flipPage.classList.remove('is-flipping');
     if (window.location.protocol === 'file:' || !window.pdfjsLib) {
       showFallback(file);
       return;
@@ -144,26 +228,40 @@
     prev.disabled = true;
     next.disabled = true;
     progress.style.width = '0%';
+    updateZoomControls();
     var loadingTask = window.pdfjsLib.getDocument('../downloads/' + file);
     loadingTask.promise.then(function(pdf){
       if(requestId !== pdfLoading) return;
       pdfDocument = pdf;
       pages = Array.from({length:pdf.numPages}, function(_, index){ return index + 1; });
-      renderPage(0, frontPage).then(function(){ return renderPage(Math.min(1, pages.length - 1), backPage); }).then(updateControls);
+      renderPage(0, frontPage).then(function(){ return renderPage(Math.min(1, pages.length - 1), backPage); }).then(updateControls).catch(function(error){
+        console.error('Unable to render the PDF pages.', error);
+        showFallback(file);
+      });
     }).catch(function(){
-      showFallback(activeFile);
+      showFallback(file);
     });
   }
   function renderPage(index, canvas){
     if(!pdfDocument || !pages.length) return Promise.resolve();
     return pdfDocument.getPage(pages[index]).then(function(page){
+      var previousTask = renderTasks.get(canvas);
+      if(previousTask) previousTask.cancel();
       var baseViewport = page.getViewport({scale:1});
-      var scale = 1.8;
+      var scale = 1.8 * zoomLevel;
       var viewport = page.getViewport({scale:scale});
       canvas.width = viewport.width;
       canvas.height = viewport.height;
       canvas.closest('.flip-face').style.aspectRatio = baseViewport.width + '/' + baseViewport.height;
-      return page.render({canvasContext:canvas.getContext('2d'), viewport:viewport}).promise;
+      var renderTask = page.render({canvasContext:canvas.getContext('2d'), viewport:viewport});
+      renderTasks.set(canvas, renderTask);
+      return renderTask.promise.then(function(){
+        if(renderTasks.get(canvas) === renderTask) renderTasks.delete(canvas);
+      }, function(error){
+        if(renderTasks.get(canvas) === renderTask) renderTasks.delete(canvas);
+        if(error && error.name === 'RenderingCancelledException') return;
+        throw error;
+      });
     });
   }
   function updateControls(){
@@ -171,26 +269,55 @@
     prev.disabled = pageIndex === 0;
     next.disabled = pageIndex === pages.length - 1;
     progress.style.width = (pages.length > 1 ? pageIndex / (pages.length - 1) * 100 : 100) + '%';
+    var activeChapterPage = 0;
+    chapterButtons.forEach(function(button){
+      var chapterPage = Number(button.getAttribute('data-page'));
+      if(chapterPage <= pageIndex + 1 && chapterPage > activeChapterPage) activeChapterPage = chapterPage;
+    });
+    chapterButtons.forEach(function(button){
+      if(Number(button.getAttribute('data-page')) === activeChapterPage) button.setAttribute('aria-current', 'page');
+      else button.removeAttribute('aria-current');
+    });
   }
   function turn(direction){
     var target = pageIndex + direction;
     if(target < 0 || target >= pages.length || flipPage.classList.contains('is-flipping') || !pdfDocument) return;
+    var turnToken = ++navigationToken;
     renderPage(target, backPage).then(function(){
+      if(turnToken !== navigationToken) return;
       flipPage.classList.add('is-flipping');
-      window.setTimeout(function(){
+      flipTimer = window.setTimeout(function(){
         renderPage(target, frontPage).then(function(){
+          if(turnToken !== navigationToken) return;
           pageIndex = target;
           flipPage.classList.remove('is-flipping');
           updateControls();
         });
       }, 360);
-    });
+    }).catch(function(error){ console.error('Unable to turn the PDF page.', error); });
+  }
+  function goToPage(pageNumber){
+    var target = pageNumber - 1;
+    if(!pdfDocument || target < 0 || target >= pages.length) return;
+    navigationToken += 1;
+    var jumpToken = navigationToken;
+    window.clearTimeout(flipTimer);
+    flipPage.classList.remove('is-flipping');
+    renderPage(target, frontPage).then(function(){
+      if(jumpToken !== navigationToken) return;
+      pageIndex = target;
+      return renderPage(Math.min(target + 1, pages.length - 1), backPage);
+    }).then(function(){
+      if(jumpToken === navigationToken) updateControls();
+    }).catch(function(error){ console.error('Unable to open the selected Playbook chapter.', error); });
   }
 
   function selectDoc(file, label, btn){
     dl.href = '../downloads/' + file;
     nt.href = '../downloads/' + file;
     buildPages(file);
+    readerLayout.classList.toggle('chapters-visible', file === 'capital-mobilization-playbook.pdf');
+    if(zoomLevel !== 1) setZoom(1);
     title.textContent = label;
     tabs.forEach(function(b){ b.classList.remove('active'); });
     if (btn) btn.classList.add('active');
@@ -203,6 +330,13 @@
   });
   prev.addEventListener('click', function(){ turn(-1); });
   next.addEventListener('click', function(){ turn(1); });
+  zoomIn.addEventListener('click', function(){ setZoom(zoomLevel + 0.25); });
+  zoomOut.addEventListener('click', function(){ setZoom(zoomLevel - 0.25); });
+  zoomReset.addEventListener('click', function(){ setZoom(1); });
+  chapterButtons.forEach(function(button){
+    button.addEventListener('click', function(){ goToPage(Number(button.getAttribute('data-page'))); });
+  });
+  window.addEventListener('resize', updateZoomControls);
   document.addEventListener('keydown', function(e){
     if(e.key === 'ArrowLeft') turn(-1);
     if(e.key === 'ArrowRight') turn(1);
@@ -216,6 +350,7 @@
     if (match) { selectDoc(docParam, match.getAttribute('data-title'), match); }
   } else {
     tabs[0].classList.add('active');
+    readerLayout.classList.add('chapters-visible');
     buildPages(tabs[0].getAttribute('data-doc'));
   }
 })();
