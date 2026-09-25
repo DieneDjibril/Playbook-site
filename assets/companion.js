@@ -19,15 +19,66 @@ function escapeHtml(value) {
   });
 }
 
+function highlightKeyTerms(html) {
+  var container = document.createElement('div');
+  container.innerHTML = html;
+  var terms = [
+    'Demand & visibility',
+    'Payment credibility & risk',
+    'Preparation & readiness',
+    'Coordination & fragmentation',
+    'Legitimacy & trust',
+    'Aggregation & Warehouse Platforms',
+    'Project Preparation & Guarantee Platform',
+    'Predictable Delivery Networks'
+  ];
+  var pattern = new RegExp('(' + terms.map(function (term) {
+    return term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  }).join('|') + ')', 'g');
+  var walker = document.createTreeWalker(container, NodeFilter.SHOW_TEXT);
+  var nodes = [];
+  var node;
+  while ((node = walker.nextNode())) {
+    if (node.parentElement && !/^(A|CODE|PRE|SCRIPT|STYLE)$/i.test(node.parentElement.tagName)) {
+      nodes.push(node);
+    }
+  }
+  nodes.forEach(function (textNode) {
+    if (!pattern.test(textNode.nodeValue)) {
+      pattern.lastIndex = 0;
+      return;
+    }
+    pattern.lastIndex = 0;
+    var fragment = document.createDocumentFragment();
+    var parts = textNode.nodeValue.split(pattern);
+    parts.forEach(function (part, index) {
+      if (!part) return;
+      var isTerm = index % 2 === 1;
+      if (isTerm) {
+        var badge = document.createElement('span');
+        badge.className = 'term-badge';
+        badge.textContent = part;
+        fragment.appendChild(badge);
+      } else {
+        fragment.appendChild(document.createTextNode(part));
+      }
+    });
+    textNode.parentNode.replaceChild(fragment, textNode);
+  });
+  return container.innerHTML;
+}
+
 function renderMarkdown(text) {
-  var plainText = String(text)
-    .replace(/^[ \t]*(?:[-*+•]|\d+[.)])[ \t]+/gm, '')
-    .replace(/(\*\*|__)(.*?)\1/g, '$2')
-    .replace(/(^|[^\w])(\*|_)([^*_\n]+)\2(?!\w)/gm, '$1$3')
-    .replace(/^#{1,6}[ \t]+/gm, '');
-  var safe = escapeHtml(plainText).replace(/\r?\n/g, '<br>');
-  return safe.replace(/\[([^\]]+)\]\((framework\.html|models\.html|cases\.html|resources\.html)\)/g,
-    '<a href="$2">$1</a>');
+  if (typeof marked === 'undefined' || typeof DOMPurify === 'undefined') {
+    return '<p>' + escapeHtml(text).replace(/\r?\n/g, '<br>') + '</p>';
+  }
+  marked.setOptions({ breaks: true, gfm: true });
+  var rendered = marked.parse(String(text));
+  var sanitized = DOMPurify.sanitize(rendered, {
+    USE_PROFILES: { html: true },
+    ALLOWED_URI_REGEXP: /^(?:(?:https?|mailto|tel):|[^a-z]|[a-z+.-]+(?:[^a-z+.-]|$))/i
+  });
+  return highlightKeyTerms(sanitized);
 }
 
 function addMsg(role, content, isHtml) {
@@ -40,16 +91,6 @@ function addMsg(role, content, isHtml) {
   chatEl.appendChild(message);
   chatEl.scrollTop = chatEl.scrollHeight;
   return message;
-}
-
-function renderLinks(links) {
-  if (!Array.isArray(links) || !links.length) return '';
-  return '<div class="msg-links">' + links.map(function (link) {
-    if (!link || typeof link.label !== 'string' || typeof link.url !== 'string') return '';
-    var allowed = ['framework.html', 'models.html', 'cases.html', 'resources.html'];
-    if (allowed.indexOf(link.url) === -1) return '';
-    return '<a href="' + link.url + '">' + escapeHtml(link.label) + ' &rarr;</a>';
-  }).join('') + '</div>';
 }
 
 function typingIndicator() {
@@ -85,7 +126,7 @@ async function send(text) {
     if (!response.ok || typeof data.reply !== 'string' || !data.reply.trim()) {
       throw new Error(data.error || 'The Companion is temporarily unavailable — try again in a moment.');
     }
-    var replyHtml = renderMarkdown(data.reply) + renderLinks(data.links);
+    var replyHtml = renderMarkdown(data.reply);
     typing.remove();
     addMsg('bot', replyHtml, true);
     convo.push({ role: 'assistant', content: data.reply });
