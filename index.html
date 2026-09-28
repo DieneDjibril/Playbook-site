@@ -102,6 +102,21 @@
   .home-intro-copy.reveal.in{opacity:1;transform:translateX(0);transition:opacity .8s .12s ease,transform .8s .12s cubic-bezier(.16,1,.3,1)}
   .home-intro-copy h2{font-size:clamp(2.2rem,4vw,4rem);margin:16px 0 22px}
   .home-intro-copy p{font-size:1.12rem;color:var(--muted);max-width:60ch}
+  .home-partners{padding:52px 0;background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden}
+  .home-partners-head{text-align:center;margin:0 auto 28px}
+  .home-partners-head .eyebrow{justify-content:center}
+  .home-partners-head p{margin-top:8px;color:var(--muted);font-size:.9rem}
+  .home-partners-marquee{overflow:hidden}
+  .home-partners-track{display:flex;width:max-content;animation:partnerLogosScroll 36s linear infinite}
+  .home-partners-marquee:hover .home-partners-track,.home-partners-marquee:focus-within .home-partners-track{animation-play-state:paused}
+  .home-partners-group{display:flex;flex:none;align-items:center;gap:18px;padding-right:18px}
+  .home-partner-placeholder{display:flex;flex:none;width:208px;height:92px;align-items:center;justify-content:center;gap:12px;padding:16px;border:1px dashed #c9c4ba;border-radius:12px;background:var(--sand);color:#66716d}
+  .home-partner-placeholder-mark{position:relative;display:block;flex:none;width:34px;height:34px;border:2px solid #8d9690;border-radius:50%}
+  .home-partner-placeholder-mark::before,.home-partner-placeholder-mark::after{content:"";position:absolute;background:#8d9690}
+  .home-partner-placeholder-mark::before{width:14px;height:2px;left:8px;top:14px}
+  .home-partner-placeholder-mark::after{width:2px;height:14px;left:14px;top:8px}
+  .home-partner-placeholder-label{font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+  @keyframes partnerLogosScroll{to{transform:translateX(-50%)}}
   .home-cases{background:var(--paper);padding:112px 0}
   .home-cases-head{display:block;max-width:850px;margin-bottom:42px}
   .home-cases-head .sec-head{margin-bottom:0}
@@ -161,6 +176,7 @@
   @media(prefers-reduced-motion:reduce){
     .home-hero .hero-copy>*,.home-intro-mark svg{animation:none}
     .home-hero-slide{transition:none}
+    .home-partners-track{animation:none}
     .home-intro-mark.reveal,.home-intro-copy.reveal,.home-pathways .path-card.reveal,.home-case-card.reveal{opacity:1;transform:none;transition:none}
   }
   @media(max-width:960px){
@@ -169,6 +185,7 @@
   }
   @media(max-width:760px){
     .home-hero{min-height:max(90vh,75vw);padding:54px 0 38px}
+    .home-hero-slide{background-size:cover}
     .home-hero-controls{right:18px;bottom:15px}
     .home-hero h1{font-size:clamp(1.85rem,7.2vw,2.5rem);line-height:1.12;margin:12px 0 14px}
     .home-hero .lead{font-size:.96rem;line-height:1.48;max-width:34rem}
@@ -184,6 +201,13 @@
     .home-intro-mark svg{width:min(100%,360px)}
     .home-intro-copy h2{font-size:clamp(1.9rem,8vw,2.7rem);line-height:1.08;margin:12px 0 16px}
     .home-intro-copy p{font-size:.96rem;line-height:1.55}
+    .home-partners{padding:38px 0}
+    .home-partners-head{padding:0 20px;margin-bottom:22px}
+    .home-partner-placeholder{width:176px;height:78px;gap:9px;padding:12px}
+    .home-partner-placeholder-mark{width:28px;height:28px}
+    .home-partner-placeholder-mark::before{width:12px;left:6px;top:11px}
+    .home-partner-placeholder-mark::after{height:12px;left:11px;top:6px}
+    .home-partner-placeholder-label{font-size:.68rem}
     .home-cases{padding:64px 0}
     .home-cases-head{display:block;margin-bottom:32px}
     .home-cases-head h2{font-size:clamp(2.35rem,11vw,3.5rem);line-height:1; margin:12px 0 16px}
@@ -268,6 +292,35 @@
       <span class="eyebrow">A shared language for action</span>
       <h2>Partnerships become powerful when everyone can see the pathway.</h2>
       <p>This Playbook is a translation tool: it helps development actors, financiers, and governments describe the same opportunity in a shared language — so social-impact activity can become deployable, investable, and repeatable.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PARTNER LOGO PLACEHOLDERS -->
+<section class="home-partners" aria-labelledby="home-partners-title">
+  <div class="home-partners-head">
+    <span class="eyebrow">Working together</span>
+    <h2 id="home-partners-title">Our partners</h2>
+    <p>Partner logos will appear here.</p>
+  </div>
+  <div class="home-partners-marquee">
+    <div class="home-partners-track">
+      <div class="home-partners-group" role="list" aria-label="Illustrative partner logo placeholders">
+        <div class="home-partner-placeholder" role="listitem"><span class="home-partner-placeholder-mark" aria-hidden="true"></span><span class="home-partner-placeholder-label">Partner logo</span></div>
+        <div class="home-partner-placeholder" role="listitem"><span class="home-partner-placeholder-mark" aria-hidden="true"></span><span class="home-partner-placeholder-label">Partner logo</span></div>
+        <div class="home-partner-placeholder" role="listitem"><span class="home-partner-placeholder-mark" aria-hidden="true"></span><span class="home-partner-placeholder-label">Partner logo</span></div>
+        <div class="home-partner-placeholder" role="listitem"><span class="home-partner-placeholder-mark" aria-hidden="true"></span><span class="home-partner-placeholder-label">Partner logo</span></div>
+        <div class="home-partner-placeholder" role="listitem"><span class="home-partner-placeholder-mark" aria-hidden="true"></span><span class="home-partner-placeholder-label">Partner logo</span></div>
+        <div class="home-partner-placeholder" role="listitem"><span class="home-partner-placeholder-mark" aria-hidden="true"></span><span class="home-partner-placeholder-label">Partner logo</span></div>
+      </div>
+      <div class="home-partners-group" aria-hidden="true">
+        <div class="home-partner-placeholder"><span class="home-partner-placeholder-mark"></span><span class="home-partner-placeholder-label">Partner logo</span></div>
+        <div class="home-partner-placeholder"><span class="home-partner-placeholder-mark"></span><span class="home-partner-placeholder-label">Partner logo</span></div>
+        <div class="home-partner-placeholder"><span class="home-partner-placeholder-mark"></span><span class="home-partner-placeholder-label">Partner logo</span></div>
+        <div class="home-partner-placeholder"><span class="home-partner-placeholder-mark"></span><span class="home-partner-placeholder-label">Partner logo</span></div>
+        <div class="home-partner-placeholder"><span class="home-partner-placeholder-mark"></span><span class="home-partner-placeholder-label">Partner logo</span></div>
+        <div class="home-partner-placeholder"><span class="home-partner-placeholder-mark"></span><span class="home-partner-placeholder-label">Partner logo</span></div>
+      </div>
     </div>
   </div>
 </section>
