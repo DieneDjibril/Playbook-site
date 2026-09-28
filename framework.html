@@ -37,28 +37,15 @@
   #framework-page .fw-hero .wrap{position:relative;z-index:1}
   #framework-page .fw-hero .breadcrumb{margin-bottom:clamp(44px,7vw,88px)}
   #framework-page .fw-hero h1{max-width:11ch;margin:18px 0 20px;font-size:clamp(3rem,6vw,5.25rem);font-weight:700;line-height:.99;letter-spacing:-.045em}
-  #framework-page .fw-hero .lead{max-width:min(40rem,46vw);font-size:clamp(1.05rem,1.7vw,1.25rem);line-height:1.65}
-  #framework-page .fw-visual{position:absolute;z-index:0;right:max(24px,calc((100vw - 1280px)/2));top:50%;width:min(560px,44vw);height:auto;transform:translateY(-42%);pointer-events:none;overflow:visible}
-  #framework-page .fw-visual-mobile{display:none}
-  #framework-page .fw-visual .fw-halo{fill:#e7e7f6;opacity:.5}
-  #framework-page .fw-visual .fw-network{fill:none;stroke:#a9a8e0;stroke-dasharray:4 7;stroke-linecap:round;stroke-width:1.5}
-  #framework-page .fw-visual .fw-node{fill:#fff;stroke:#a9a8e0;stroke-width:2}
-  #framework-page .fw-visual .fw-node.accent{fill:#ee5f2a;stroke:#ee5f2a}
-  #framework-page .fw-visual .fw-node.dark{fill:#3d3142;stroke:#3d3142}
-  #framework-page .fw-visual .fw-platform-float{transform-box:fill-box;transform-origin:center;animation:frameworkPlatformFloat 7s ease-in-out infinite}
-  #framework-page .fw-visual .fw-surface{fill:url(#framework-surface);stroke:#fff;stroke-width:2}
-  #framework-page .fw-visual .fw-mid-left{fill:url(#framework-mid);stroke:#fff;stroke-width:1}
-  #framework-page .fw-visual .fw-mid-right{fill:#8582c7;fill-opacity:.78;stroke:#fff;stroke-width:1}
-  #framework-page .fw-visual .fw-base-top{fill:url(#framework-base)}
-  #framework-page .fw-visual .fw-base-left{fill:#342a3a}
-  #framework-page .fw-visual .fw-base-right{fill:#211a27}
-  #framework-page .fw-visual .fw-foundation-left{fill:#e5e4f1;fill-opacity:.9}
-  #framework-page .fw-visual .fw-foundation-right{fill:#ceccdf;fill-opacity:.9}
-  #framework-page .fw-visual .fw-core-top{fill:url(#framework-sun)}
-  #framework-page .fw-visual .fw-core-left{fill:#d98330}
-  #framework-page .fw-visual .fw-core-right{fill:#b86727}
-  #framework-page .fw-visual .fw-graph-label{fill:#3d3142;font-family:var(--sans);font-size:12px;font-weight:600;letter-spacing:1.2px}
-  @keyframes frameworkPlatformFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+  #framework-page .fw-hero .lead{max-width:min(40rem,52vw);font-size:clamp(1.05rem,1.7vw,1.25rem);line-height:1.65}
+  #framework-page .fw-hero .breadcrumb.reveal{transition-delay:.05s}
+  #framework-page .fw-hero .eyebrow.reveal{transition-delay:.14s}
+  #framework-page .fw-hero h1.reveal{transition-delay:.23s}
+  #framework-page .fw-hero .lead.reveal{transition-delay:.32s}
+  #framework-page .fw-visual{position:absolute;z-index:0;right:max(24px,calc((100vw - 1280px)/2));top:50%;width:min(500px,36vw);height:auto;transform:translateY(-46%);pointer-events:none;overflow:visible;animation:frameworkVisualEnter .85s .18s cubic-bezier(.2,.7,.2,1) both}
+  @keyframes frameworkVisualEnter{from{opacity:0;scale:.94}to{opacity:1;scale:1}}
+  #framework-page .fw-visual .fw-float{transform-box:fill-box;transform-origin:center;animation:fwFloat 7s ease-in-out infinite}
+  @keyframes fwFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
   #framework-page .fw-core{padding-top:clamp(44px,4.6vw,64px);padding-bottom:clamp(56px,6vw,88px);background:#fff}
   #framework-page .fw-core-text{max-width:760px}
   #framework-page .fw-core-text h2{margin:14px 0 18px;font-size:clamp(2rem,3.4vw,3rem);font-weight:700;line-height:1.12;letter-spacing:-.02em}
@@ -201,10 +188,12 @@
   #framework-page .framework-cta .hero-cta{display:flex;flex-wrap:wrap;justify-content:center;gap:12px}
   @media(max-width:960px){
     #framework-page .fw-hero{min-height:0}
-    #framework-page .fw-hero .lead{max-width:48vw}
-    #framework-page .fw-visual{right:12px;width:min(520px,46vw)}
     #framework-page .inv-cols{grid-template-columns:1fr 1fr}
     #framework-page .inv-challenge{grid-column:1/-1}
+  }
+  @media(max-width:900px){
+    #framework-page .fw-hero .lead{max-width:none}
+    #framework-page .fw-visual-desktop{position:relative;top:auto;right:auto;display:block;width:min(500px,88%);margin:26px auto -8px;transform:none}
   }
   @media(max-width:760px){
     #framework-page .section{padding:64px 0}
@@ -213,8 +202,7 @@
     #framework-page .fw-hero .breadcrumb{margin-bottom:48px}
     #framework-page .fw-hero h1{font-size:clamp(2.7rem,12vw,4rem)}
     #framework-page .fw-hero .lead{max-width:100%}
-    #framework-page .fw-visual-desktop{display:none}
-    #framework-page .fw-visual-mobile{position:relative;top:auto;right:auto;display:block;width:min(420px,100%);margin:30px auto -12px;transform:none}
+    #framework-page .fw-visual-desktop{width:min(420px,100%);margin:30px auto -12px}
     #framework-page .fw-core{padding-top:48px;padding-bottom:60px}
     #framework-page .fw-orbit{aspect-ratio:auto;padding:22px 16px}
     #framework-page .orb-lines{display:none}
@@ -248,7 +236,7 @@
     #framework-page .cont-axis{margin-top:24px;font-size:.67rem}
   }
   @media(max-width:480px){
-    #framework-page .fw-visual-mobile{width:min(340px,100%)}
+    #framework-page .fw-visual-desktop{width:min(340px,100%)}
     #framework-page .tg-diagram{grid-template-columns:minmax(0,1fr) 34px 68px}
     #framework-page .tg-row{gap:8px;padding:12px 9px}
     #framework-page .tg-ic{width:30px;height:30px}
@@ -264,7 +252,8 @@
     #framework-page .inv-tq{align-items:flex-start;flex-direction:column}
   }
   @media(prefers-reduced-motion:reduce){
-    #framework-page .fw-visual .fw-platform-float,#framework-page .fw-orbit .orb-core,#framework-page .fw-orbit .orb,#framework-page .fw-orbit .orb-node,
+    #framework-page .fw-visual{animation:none;opacity:1;scale:1}
+    #framework-page .fw-visual .fw-float,#framework-page .fw-orbit .orb-core,#framework-page .fw-orbit .orb,#framework-page .fw-orbit .orb-node,
     #framework-page .inv.js-tabs .inv-panel.is-active,#framework-page .inv-path li,#framework-page .continuum .cont-marker,
     #framework-page .continuum .cstage,#framework-page .continuum .cont-axis span{animation:none!important;opacity:1!important}
     #framework-page .continuum .cont-track-fill{animation:none!important;opacity:1!important;transform:translateY(-50%) scaleX(1)}
@@ -281,87 +270,67 @@
       <h1 class="reveal">The Framework</h1>
       <p class="lead reveal">Partnerships underperform not because opportunity, impact, or capital is absent — but because development activity is rarely translated into forms that partners can assess, structure, finance, scale, and repeat.</p>
     </div>
-    <svg class="fw-visual fw-visual-desktop" viewBox="0 0 700 520" role="img" aria-labelledby="hero-graph-title hero-graph-desc">
-      <title id="hero-graph-title">The Framework as connected layers for deployable partnerships</title>
-      <desc id="hero-graph-desc">A layered foundation brings impact, institutions, capital and delivery into one connected system, represented by an illuminated central opportunity.</desc>
+    <svg class="fw-visual fw-visual-desktop" viewBox="0 0 600 560" role="img" aria-labelledby="reference-graph-title reference-graph-desc">
+      <title id="reference-graph-title">The Framework as connected layers for deployable partnerships</title>
+      <desc id="reference-graph-desc">A layered foundation connects impact, capital, institutions and delivery around a central opportunity.</desc>
       <defs>
-        <radialGradient id="framework-halo"><stop offset="0" stop-color="#e7e7f6" stop-opacity=".9"/><stop offset=".72" stop-color="#f3f3fb" stop-opacity=".48"/><stop offset="1" stop-color="#fffaF6" stop-opacity="0"/></radialGradient>
-        <linearGradient id="framework-base" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#4b3e55"/><stop offset="1" stop-color="#2b222f"/></linearGradient>
-        <linearGradient id="framework-mid" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d6d5f4" stop-opacity=".9"/><stop offset="1" stop-color="#8f8cd2" stop-opacity=".65"/></linearGradient>
-        <linearGradient id="framework-surface" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff" stop-opacity=".96"/><stop offset="1" stop-color="#e7e7f6" stop-opacity=".78"/></linearGradient>
-        <linearGradient id="framework-sun" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffc7a6"/><stop offset=".5" stop-color="#f58a55"/><stop offset="1" stop-color="#ee5f2a"/></linearGradient>
-        <radialGradient id="framework-core-glow"><stop stop-color="#ee5f2a" stop-opacity=".3"/><stop offset="1" stop-color="#ee5f2a" stop-opacity="0"/></radialGradient>
-      </defs>
-      <circle class="fw-halo" cx="350" cy="250" r="240" fill="url(#framework-halo)"/>
-      <ellipse cx="350" cy="440" rx="250" ry="62" fill="url(#framework-core-glow)"/>
-      <g class="fw-network">
-        <path d="M73 142C130 163 161 201 204 228"/><path d="M620 118C557 153 535 190 496 221"/>
-        <path d="M61 354C124 335 166 312 209 289"/><path d="M635 349C573 332 534 310 491 286"/>
-      </g>
-      <circle class="fw-node" cx="73" cy="142" r="9"/><circle class="fw-node accent" cx="620" cy="118" r="10"/>
-      <circle class="fw-node dark" cx="61" cy="354" r="8"/><circle class="fw-node" cx="635" cy="349" r="8"/>
-      <g class="fw-platform-float">
-        <polygon class="fw-foundation-left" points="90,350 350,494 350,520 90,376"/>
-        <polygon class="fw-foundation-right" points="350,494 610,350 610,376 350,520"/>
-        <polygon class="fw-surface" points="350,204 610,350 350,494 90,350"/>
-        <polygon class="fw-base-left" points="164,350 350,453 350,480 164,377"/>
-        <polygon class="fw-base-right" points="350,453 536,350 536,377 350,480"/>
-        <polygon class="fw-base-top" points="350,245 536,350 350,453 164,350"/>
-        <polygon class="fw-mid-left" points="228,350 350,418 350,442 228,374"/>
-        <polygon class="fw-mid-right" points="350,418 472,350 472,374 350,442"/>
-        <polygon points="350,282 472,350 350,418 228,350" fill="url(#framework-mid)" stroke="#fff" stroke-opacity=".85"/>
-        <polygon points="272,350 350,307 428,350 350,393" fill="#f3f2fc" fill-opacity=".96" stroke="#fff"/>
-        <polygon points="272,350 350,393 350,418 272,375" fill="#aaa7db" fill-opacity=".88"/>
-        <polygon points="350,393 428,350 428,375 350,418" fill="#7772bd" fill-opacity=".86"/>
-        <polygon class="fw-core-left" points="322,350 350,334 350,364 322,380"/>
-        <polygon class="fw-core-right" points="350,334 378,350 378,380 350,364"/>
-        <polygon class="fw-core-top" points="350,318 378,334 350,350 322,334"/>
-        <circle cx="350" cy="334" r="8" fill="#fff" opacity=".56"/>
-      </g>
-      <g class="fw-platform-float">
-        <text class="fw-graph-label" x="28" y="118">IMPACT</text>
-        <text class="fw-graph-label" x="553" y="93">CAPITAL</text>
-        <text class="fw-graph-label" x="23" y="389">INSTITUTIONS</text>
-        <text class="fw-graph-label" x="548" y="384">DELIVERY</text>
-      </g>
-    </svg>
-    <svg class="fw-visual fw-visual-mobile" viewBox="0 0 400 390" role="img" aria-labelledby="hero-graph-mobile-title hero-graph-mobile-desc">
-      <title id="hero-graph-mobile-title">The Framework as connected layers for deployable partnerships</title>
-      <desc id="hero-graph-mobile-desc">A compact layered system linking impact, institutions, capital and delivery around a central opportunity.</desc>
-      <defs>
-        <radialGradient id="framework-halo-mobile"><stop offset="0" stop-color="#e7e7f6" stop-opacity=".9"/><stop offset=".72" stop-color="#f3f3fb" stop-opacity=".48"/><stop offset="1" stop-color="#fffaF6" stop-opacity="0"/></radialGradient>
-        <linearGradient id="framework-sun-mobile" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffc7a6"/><stop offset=".5" stop-color="#f58a55"/><stop offset="1" stop-color="#ee5f2a"/></linearGradient>
-        <linearGradient id="framework-glass-mobile" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d6d5f4" stop-opacity=".9"/><stop offset="1" stop-color="#8f8cd2" stop-opacity=".65"/></linearGradient>
-      </defs>
-      <circle cx="200" cy="186" r="186" fill="url(#framework-halo-mobile)"/>
-      <ellipse cx="200" cy="327" rx="165" ry="38" fill="#ee5f2a" fill-opacity=".12"/>
-      <g fill="none" stroke="#a9a8e0" stroke-dasharray="4 7" stroke-linecap="round" stroke-width="1.5">
-        <path d="M47 76C84 93 103 124 125 144"/><path d="M353 76C316 93 297 124 275 144"/>
-        <path d="M47 286C84 269 103 238 125 218"/><path d="M353 286C316 269 297 238 275 218"/>
-      </g>
-      <circle cx="47" cy="76" r="6" fill="#fff" stroke="#a9a8e0" stroke-width="2"/>
-      <circle cx="353" cy="76" r="7" fill="#ee5f2a"/>
-      <circle cx="47" cy="286" r="6" fill="#3d3142"/>
-      <circle cx="353" cy="286" r="6" fill="#fff" stroke="#ee5f2a" stroke-width="2"/>
-      <text x="22" y="59" fill="#3d3142" font-family="Inter,Arial,sans-serif" font-size="10" font-weight="600" letter-spacing="1">IMPACT</text>
-      <text x="305" y="59" fill="#3d3142" font-family="Inter,Arial,sans-serif" font-size="10" font-weight="600" letter-spacing="1">CAPITAL</text>
-      <text x="7" y="310" fill="#3d3142" font-family="Inter,Arial,sans-serif" font-size="9" font-weight="600" letter-spacing=".7">INSTITUTIONS</text>
-      <text x="315" y="310" fill="#3d3142" font-family="Inter,Arial,sans-serif" font-size="10" font-weight="600" letter-spacing="1">DELIVERY</text>
-      <g class="fw-platform-float">
-        <polygon points="43,229 200,316 200,338 43,251" fill="#e5e4f1"/>
-        <polygon points="200,316 357,229 357,251 200,338" fill="#ceccdf"/>
-        <polygon points="200,145 357,229 200,316 43,229" fill="#fff" fill-opacity=".92" stroke="#fff" stroke-width="2"/>
-        <polygon points="88,229 200,291 200,313 88,251" fill="#342a3a"/>
-        <polygon points="200,291 312,229 312,251 200,313" fill="#211a27"/>
-        <polygon points="200,166 312,229 200,291 88,229" fill="#4b3e55"/>
-        <polygon points="128,229 200,189 200,270 128,230" fill="#aaa7db" fill-opacity=".9"/>
-        <polygon points="200,270 272,229 272,230 200,271" fill="#7772bd" fill-opacity=".86"/>
-        <polygon points="128,229 200,189 272,229 200,270" fill="url(#framework-glass-mobile)" stroke="#fff" stroke-opacity=".85"/>
-        <polygon points="173,229 200,214 200,246 173,261" fill="#d98330"/>
-        <polygon points="200,214 227,229 227,261 200,246" fill="#b86727"/>
-        <polygon points="200,198 227,213 200,229 173,213" fill="url(#framework-sun-mobile)"/>
-      </g>
-    </svg>
+    <radialGradient id="fwHalo" cx="50%" cy="46%" r="50%"><stop offset="0" stop-color="#E7E7F6" stop-opacity=".9"/><stop offset=".6" stop-color="#F3F3FB" stop-opacity=".5"/><stop offset="1" stop-color="#FFFAF6" stop-opacity="0"/></radialGradient>
+    <radialGradient id="fwGround" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#EE5F2A" stop-opacity=".30"/><stop offset=".55" stop-color="#EE5F2A" stop-opacity=".08"/><stop offset="1" stop-color="#EE5F2A" stop-opacity="0"/></radialGradient>
+    <linearGradient id="fwBaseTop" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4B3E55"/><stop offset="1" stop-color="#2B222F"/></linearGradient>
+    <linearGradient id="fwRimTop" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFFFFF" stop-opacity=".85"/><stop offset="1" stop-color="#E7E7F6" stop-opacity=".55"/></linearGradient>
+    <linearGradient id="fwCore" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFC7A6"/><stop offset=".45" stop-color="#F58A55"/><stop offset="1" stop-color="#EE5F2A"/></linearGradient>
+    <linearGradient id="fwGlass" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#D6D5F4" stop-opacity=".62"/><stop offset="1" stop-color="#8F8CD2" stop-opacity=".42"/></linearGradient>
+    <linearGradient id="fwBlockL" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF" stop-opacity=".75"/><stop offset="1" stop-color="#FDD9C6" stop-opacity=".75"/></linearGradient>
+    <linearGradient id="fwBlockR" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#EDEDFA" stop-opacity=".8"/><stop offset="1" stop-color="#F9C3A6" stop-opacity=".7"/></linearGradient>
+    <filter id="fwBlur" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="16"/></filter>
+    <filter id="fwSoft" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="5"/></filter>
+
+    <clipPath id="fwInner"><polygon points="300.0,313.6 440.0,392.0 300.0,470.4 160.0,392.0"/></clipPath>
+  </defs>
+  <circle cx="300" cy="270" r="275" fill="url(#fwHalo)"/>
+  <ellipse cx="300" cy="470" rx="250" ry="70" fill="url(#fwGround)"/>
+  <g class="fw-links" fill="none" stroke="#A9A8E0" stroke-width="1.2" stroke-dasharray="3 5"><path d="M58 196 C 70 222, 78 240, 95 250"/><path d="M548 158 C 540 200, 525 232, 505 250"/><path d="M40 372 C 60 392, 76 396, 95 392"/><path d="M566 344 C 552 372, 530 388, 505 392"/></g>
+  <circle cx="58" cy="196" r="7" fill="#fff" stroke="#A9A8E0" stroke-width="1.6"/>
+  <circle cx="548" cy="158" r="8" fill="#EE5F2A" stroke="none" stroke-width="1.6"/>
+  <circle cx="40" cy="372" r="6" fill="#3D3142" stroke="none" stroke-width="1.6"/>
+  <circle cx="566" cy="344" r="6" fill="#fff" stroke="#EE5F2A" stroke-width="1.6"/>
+  <g class="fw-base">
+  <polygon points="95.0,392.0 300.0,506.8 300.0,540.8 95.0,426.0" fill="#E7E7F6" fill-opacity=".75" stroke="#fff" stroke-width="1"/>
+  <polygon points="300.0,506.8 505.0,392.0 505.0,426.0 300.0,540.8" fill="#D9D8F0" fill-opacity=".75" stroke="#fff" stroke-width="1"/>
+  <polygon points="300.0,277.2 505.0,392.0 300.0,506.8 95.0,392.0" fill="url(#fwRimTop)" stroke="#fff" stroke-width="1.4"/>
+  <polygon points="160.0,392.0 300.0,470.4 300.0,500.4 160.0,422.0" fill="#2E2433"/>
+  <polygon points="300.0,470.4 440.0,392.0 440.0,422.0 300.0,500.4" fill="#221A26"/>
+  <polygon points="300.0,313.6 440.0,392.0 300.0,470.4 160.0,392.0" fill="url(#fwBaseTop)"/>
+  <g clip-path="url(#fwInner)"><circle cx="250.7" cy="336.1" r="0.7" fill="#F5B48E" opacity="0.35"/><circle cx="262.4" cy="321.3" r="0.8" fill="#F5B48E" opacity="0.35"/><circle cx="281.4" cy="323.2" r="0.7" fill="#C9C8F0" opacity="0.35"/><circle cx="391.5" cy="331.8" r="0.8" fill="#F5B48E" opacity="0.9"/><circle cx="173.9" cy="347.4" r="0.8" fill="#EE5F2A" opacity="0.9"/><circle cx="200.4" cy="330.8" r="1" fill="#FFD7BF" opacity="0.35"/><circle cx="322.8" cy="414.2" r="1" fill="#F5B48E" opacity="0.35"/><circle cx="318.0" cy="411.0" r="1.2" fill="#C9C8F0" opacity="0.7"/><circle cx="290.4" cy="459.8" r="1" fill="#EE5F2A" opacity="0.5"/><circle cx="382.4" cy="423.8" r="0.8" fill="#F5B48E" opacity="0.7"/><circle cx="307.1" cy="452.0" r="1.2" fill="#EE5F2A" opacity="0.35"/><circle cx="193.1" cy="378.9" r="1" fill="#FFD7BF" opacity="0.9"/><circle cx="278.1" cy="465.9" r="0.7" fill="#EE5F2A" opacity="0.7"/><circle cx="354.7" cy="407.1" r="1.2" fill="#F5B48E" opacity="0.35"/><circle cx="424.5" cy="387.9" r="0.7" fill="#F5B48E" opacity="0.7"/><circle cx="341.2" cy="470.9" r="1.2" fill="#EE5F2A" opacity="0.9"/><circle cx="408.4" cy="367.5" r="1.2" fill="#EE5F2A" opacity="0.5"/><circle cx="331.1" cy="391.0" r="0.8" fill="#EE5F2A" opacity="0.5"/><circle cx="366.7" cy="375.7" r="1.2" fill="#F5B48E" opacity="0.5"/><circle cx="285.8" cy="399.9" r="0.8" fill="#C9C8F0" opacity="0.7"/><circle cx="357.8" cy="469.8" r="1.2" fill="#FFD7BF" opacity="0.5"/><circle cx="183.2" cy="336.2" r="0.8" fill="#F5B48E" opacity="0.9"/><circle cx="392.7" cy="341.2" r="1" fill="#F5B48E" opacity="0.5"/><circle cx="277.3" cy="371.1" r="1" fill="#FFD7BF" opacity="0.35"/><circle cx="287.9" cy="451.4" r="1.2" fill="#C9C8F0" opacity="0.9"/><circle cx="270.4" cy="389.0" r="1.2" fill="#F5B48E" opacity="0.5"/><circle cx="178.9" cy="345.4" r="0.8" fill="#F5B48E" opacity="0.7"/><circle cx="328.2" cy="328.4" r="0.8" fill="#F5B48E" opacity="0.7"/><circle cx="331.8" cy="323.3" r="0.8" fill="#C9C8F0" opacity="0.5"/><circle cx="337.6" cy="464.9" r="1" fill="#C9C8F0" opacity="0.35"/><circle cx="192.3" cy="390.1" r="1.2" fill="#C9C8F0" opacity="0.9"/><circle cx="247.3" cy="335.1" r="1" fill="#EE5F2A" opacity="0.9"/><circle cx="392.1" cy="337.8" r="0.7" fill="#FFD7BF" opacity="0.7"/><circle cx="201.0" cy="398.9" r="0.7" fill="#EE5F2A" opacity="0.35"/><circle cx="354.9" cy="353.8" r="1" fill="#FFD7BF" opacity="0.7"/><circle cx="376.1" cy="397.2" r="1" fill="#FFD7BF" opacity="0.5"/><circle cx="385.7" cy="442.9" r="0.8" fill="#FFD7BF" opacity="0.9"/><circle cx="259.6" cy="316.6" r="0.7" fill="#EE5F2A" opacity="0.9"/><circle cx="232.6" cy="422.8" r="1" fill="#C9C8F0" opacity="0.7"/><circle cx="427.4" cy="370.3" r="0.8" fill="#F5B48E" opacity="0.5"/><circle cx="291.6" cy="366.0" r="1.2" fill="#F5B48E" opacity="0.9"/><circle cx="414.6" cy="367.0" r="0.7" fill="#F5B48E" opacity="0.9"/><circle cx="379.0" cy="432.0" r="1.2" fill="#FFD7BF" opacity="0.9"/><circle cx="381.0" cy="365.2" r="1.2" fill="#C9C8F0" opacity="0.9"/><circle cx="368.1" cy="325.6" r="0.8" fill="#FFD7BF" opacity="0.5"/><circle cx="167.7" cy="406.5" r="1.2" fill="#FFD7BF" opacity="0.9"/><circle cx="344.0" cy="368.1" r="0.8" fill="#F5B48E" opacity="0.35"/><circle cx="383.8" cy="428.2" r="0.7" fill="#FFD7BF" opacity="0.9"/><circle cx="436.2" cy="343.2" r="0.8" fill="#F5B48E" opacity="0.7"/><circle cx="219.6" cy="392.2" r="1" fill="#EE5F2A" opacity="0.9"/><circle cx="393.6" cy="321.7" r="1" fill="#C9C8F0" opacity="0.9"/><circle cx="391.6" cy="452.5" r="0.8" fill="#FFD7BF" opacity="0.35"/><circle cx="404.4" cy="436.2" r="0.7" fill="#FFD7BF" opacity="0.5"/><circle cx="199.6" cy="411.1" r="0.7" fill="#F5B48E" opacity="0.7"/><circle cx="351.1" cy="396.9" r="1.2" fill="#F5B48E" opacity="0.35"/><circle cx="229.6" cy="356.3" r="0.7" fill="#C9C8F0" opacity="0.35"/><circle cx="372.8" cy="458.0" r="1.2" fill="#EE5F2A" opacity="0.5"/><circle cx="354.0" cy="384.4" r="1.2" fill="#FFD7BF" opacity="0.7"/><circle cx="418.4" cy="454.8" r="0.8" fill="#C9C8F0" opacity="0.5"/><circle cx="276.7" cy="374.8" r="1" fill="#F5B48E" opacity="0.5"/><circle cx="279.9" cy="346.0" r="1" fill="#F5B48E" opacity="0.5"/><circle cx="423.1" cy="415.0" r="1" fill="#FFD7BF" opacity="0.7"/><circle cx="407.2" cy="466.8" r="0.8" fill="#F5B48E" opacity="0.9"/><circle cx="407.8" cy="338.0" r="0.8" fill="#FFD7BF" opacity="0.9"/><circle cx="438.3" cy="376.6" r="1.2" fill="#FFD7BF" opacity="0.7"/><circle cx="249.2" cy="427.5" r="0.7" fill="#EE5F2A" opacity="0.9"/><circle cx="283.3" cy="314.9" r="1" fill="#EE5F2A" opacity="0.35"/><circle cx="191.6" cy="459.0" r="0.8" fill="#F5B48E" opacity="0.35"/><circle cx="234.4" cy="318.3" r="0.8" fill="#EE5F2A" opacity="0.5"/><circle cx="389.5" cy="447.9" r="1" fill="#C9C8F0" opacity="0.5"/><circle cx="310.2" cy="394.4" r="1.2" fill="#EE5F2A" opacity="0.35"/><circle cx="238.1" cy="439.9" r="0.8" fill="#C9C8F0" opacity="0.35"/><circle cx="235.3" cy="314.7" r="0.7" fill="#EE5F2A" opacity="0.35"/><circle cx="330.3" cy="347.6" r="1" fill="#F5B48E" opacity="0.9"/><circle cx="163.2" cy="471.1" r="1.2" fill="#EE5F2A" opacity="0.5"/><circle cx="172.1" cy="425.5" r="0.7" fill="#FFD7BF" opacity="0.7"/><circle cx="174.1" cy="344.3" r="1" fill="#EE5F2A" opacity="0.5"/><circle cx="241.2" cy="392.0" r="0.8" fill="#EE5F2A" opacity="0.7"/><circle cx="385.0" cy="471.1" r="0.7" fill="#F5B48E" opacity="0.35"/><circle cx="365.3" cy="400.2" r="0.8" fill="#C9C8F0" opacity="0.5"/><circle cx="421.7" cy="329.0" r="1.2" fill="#C9C8F0" opacity="0.9"/><circle cx="431.7" cy="361.2" r="0.8" fill="#FFD7BF" opacity="0.7"/><circle cx="215.6" cy="453.1" r="0.8" fill="#C9C8F0" opacity="0.7"/><circle cx="434.9" cy="445.9" r="0.7" fill="#F5B48E" opacity="0.7"/><circle cx="280.6" cy="320.9" r="1.2" fill="#EE5F2A" opacity="0.5"/><circle cx="354.0" cy="319.2" r="0.8" fill="#FFD7BF" opacity="0.7"/><circle cx="284.8" cy="354.1" r="1" fill="#EE5F2A" opacity="0.5"/><circle cx="169.6" cy="453.2" r="0.8" fill="#EE5F2A" opacity="0.5"/><circle cx="160.3" cy="373.1" r="1.2" fill="#EE5F2A" opacity="0.5"/><circle cx="229.5" cy="436.2" r="0.7" fill="#EE5F2A" opacity="0.35"/><circle cx="200.3" cy="405.9" r="1.2" fill="#F5B48E" opacity="0.7"/><circle cx="245.2" cy="349.2" r="0.8" fill="#C9C8F0" opacity="0.7"/><circle cx="361.8" cy="391.1" r="1" fill="#FFD7BF" opacity="0.35"/><circle cx="391.0" cy="426.4" r="1.2" fill="#FFD7BF" opacity="0.35"/><circle cx="391.4" cy="405.4" r="0.8" fill="#F5B48E" opacity="0.35"/><circle cx="171.7" cy="413.9" r="0.7" fill="#C9C8F0" opacity="0.9"/><circle cx="316.4" cy="412.4" r="0.8" fill="#C9C8F0" opacity="0.7"/><circle cx="160.9" cy="439.6" r="0.7" fill="#F5B48E" opacity="0.9"/><circle cx="230.6" cy="323.9" r="1" fill="#FFD7BF" opacity="0.5"/><circle cx="224.6" cy="416.0" r="1.2" fill="#C9C8F0" opacity="0.9"/><circle cx="181.5" cy="457.7" r="1" fill="#F5B48E" opacity="0.5"/><circle cx="181.7" cy="335.6" r="1" fill="#EE5F2A" opacity="0.5"/><circle cx="163.5" cy="321.7" r="1" fill="#F5B48E" opacity="0.5"/><circle cx="349.2" cy="358.5" r="1" fill="#C9C8F0" opacity="0.9"/><circle cx="290.6" cy="331.0" r="0.8" fill="#EE5F2A" opacity="0.35"/><circle cx="422.2" cy="314.8" r="1.2" fill="#F5B48E" opacity="0.9"/><circle cx="438.3" cy="373.9" r="0.8" fill="#F5B48E" opacity="0.35"/><circle cx="199.7" cy="395.9" r="1" fill="#FFD7BF" opacity="0.7"/><circle cx="408.3" cy="424.5" r="0.8" fill="#C9C8F0" opacity="0.9"/><circle cx="270.3" cy="337.5" r="1.2" fill="#C9C8F0" opacity="0.9"/><circle cx="244.5" cy="334.5" r="1" fill="#C9C8F0" opacity="0.7"/><circle cx="193.9" cy="365.0" r="1" fill="#EE5F2A" opacity="0.9"/><circle cx="193.6" cy="460.2" r="0.7" fill="#EE5F2A" opacity="0.7"/><circle cx="264.2" cy="374.9" r="0.7" fill="#EE5F2A" opacity="0.9"/><circle cx="371.6" cy="448.7" r="1" fill="#F5B48E" opacity="0.35"/><circle cx="393.7" cy="357.7" r="0.8" fill="#FFD7BF" opacity="0.7"/><circle cx="282.1" cy="362.5" r="1" fill="#C9C8F0" opacity="0.35"/><circle cx="387.3" cy="412.9" r="0.8" fill="#F5B48E" opacity="0.35"/><circle cx="421.4" cy="377.7" r="0.8" fill="#EE5F2A" opacity="0.9"/><circle cx="173.7" cy="460.3" r="0.8" fill="#FFD7BF" opacity="0.9"/><circle cx="276.2" cy="357.1" r="1" fill="#EE5F2A" opacity="0.9"/><circle cx="343.7" cy="360.1" r="1.2" fill="#F5B48E" opacity="0.5"/><circle cx="340.1" cy="324.0" r="1.2" fill="#FFD7BF" opacity="0.9"/><circle cx="413.8" cy="471.4" r="1.2" fill="#C9C8F0" opacity="0.5"/><circle cx="313.4" cy="351.1" r="0.8" fill="#EE5F2A" opacity="0.35"/><circle cx="249.4" cy="370.9" r="0.8" fill="#F5B48E" opacity="0.9"/><circle cx="267.2" cy="431.3" r="0.8" fill="#C9C8F0" opacity="0.7"/><circle cx="254.7" cy="321.9" r="1" fill="#EE5F2A" opacity="0.5"/><circle cx="352.3" cy="396.7" r="0.8" fill="#F5B48E" opacity="0.7"/><circle cx="411.1" cy="373.5" r="1.2" fill="#C9C8F0" opacity="0.7"/><circle cx="397.6" cy="451.7" r="0.7" fill="#FFD7BF" opacity="0.35"/><circle cx="279.1" cy="434.2" r="1.2" fill="#C9C8F0" opacity="0.35"/><circle cx="180.5" cy="460.8" r="1.2" fill="#C9C8F0" opacity="0.5"/><circle cx="379.3" cy="347.8" r="0.8" fill="#F5B48E" opacity="0.9"/><circle cx="183.8" cy="436.3" r="0.7" fill="#FFD7BF" opacity="0.5"/><circle cx="319.4" cy="318.0" r="1" fill="#FFD7BF" opacity="0.7"/><circle cx="307.9" cy="382.0" r="0.7" fill="#F5B48E" opacity="0.35"/><circle cx="244.1" cy="463.0" r="0.8" fill="#C9C8F0" opacity="0.7"/><circle cx="222.6" cy="408.2" r="0.7" fill="#EE5F2A" opacity="0.9"/><circle cx="238.0" cy="362.6" r="0.8" fill="#C9C8F0" opacity="0.5"/><circle cx="313.2" cy="316.7" r="1.2" fill="#EE5F2A" opacity="0.35"/><circle cx="166.1" cy="391.7" r="1.2" fill="#F5B48E" opacity="0.7"/><circle cx="223.8" cy="379.9" r="1" fill="#FFD7BF" opacity="0.9"/><circle cx="169.5" cy="366.1" r="1.2" fill="#EE5F2A" opacity="0.9"/><circle cx="215.5" cy="439.5" r="0.7" fill="#FFD7BF" opacity="0.9"/><circle cx="431.6" cy="361.9" r="0.8" fill="#FFD7BF" opacity="0.9"/><circle cx="222.0" cy="433.7" r="1" fill="#F5B48E" opacity="0.9"/><circle cx="330.8" cy="455.4" r="1.2" fill="#C9C8F0" opacity="0.35"/><circle cx="425.7" cy="335.4" r="1.2" fill="#F5B48E" opacity="0.5"/><circle cx="166.6" cy="407.4" r="1.2" fill="#F5B48E" opacity="0.35"/></g>
+  </g>
+  <g class="fw-risers" stroke="#EE5F2A" stroke-width="1.2" stroke-dasharray="2 4" opacity=".7">
+  <path d="M150 392 L150 318"/>
+  <path d="M450 392 L450 318"/>
+  <path d="M300 308.0 L300 234.0"/>
+  </g>
+  <g class="fw-core">
+  <polygon points="300.0,230.0 475.0,328.0 300.0,426.0 125.0,328.0" fill="#EE5F2A" opacity=".55" filter="url(#fwBlur)"/>
+  <polygon points="135.0,318.0 300.0,410.4 300.0,417.4 135.0,325.0" fill="#D9501D"/>
+  <polygon points="300.0,410.4 465.0,318.0 465.0,325.0 300.0,417.4" fill="#C24716"/>
+  <polygon points="300.0,225.6 465.0,318.0 300.0,410.4 135.0,318.0" fill="url(#fwCore)" stroke="#FFE1D0" stroke-width="1.4"/>
+  <polygon points="300.0,246.9 427.0,318.0 300.0,389.1 173.0,318.0" fill="none" stroke="#fff" stroke-opacity=".55" stroke-width="1.2"/>
+  <polygon points="300.0,268.2 389.0,318.0 300.0,367.8 211.0,318.0" fill="#FFE9DC" fill-opacity=".35"/>
+  </g>
+  <g class="fw-float">
+  <polygon points="95.0,250.0 300.0,364.8 300.0,369.8 95.0,255.0" fill="#9F9CD8" fill-opacity=".65"/>
+  <polygon points="300.0,364.8 505.0,250.0 505.0,255.0 300.0,369.8" fill="#8D8ACC" fill-opacity=".65"/>
+  <polygon points="300.0,135.2 505.0,250.0 300.0,364.8 95.0,250.0" fill="url(#fwGlass)" stroke="#fff" stroke-opacity=".9" stroke-width="1.4"/>
+  <circle cx="95.0" cy="250.0" r="5" fill="#fff" stroke="#7C7AC6" stroke-width="1.6"/>
+  <circle cx="505.0" cy="250.0" r="5" fill="#fff" stroke="#7C7AC6" stroke-width="1.6"/>
+  <circle cx="300.0" cy="364.8" r="5" fill="#fff" stroke="#7C7AC6" stroke-width="1.6"/>
+  <polygon points="300.0,179.9 418.0,246.0 300.0,312.1 182.0,246.0" fill="#EE5F2A" opacity=".28" filter="url(#fwSoft)"/>
+  <polygon points="188.0,160.0 300.0,222.7 300.0,300.7 188.0,238.0" fill="url(#fwBlockL)" stroke="#fff" stroke-width="1.2"/>
+  <polygon points="300.0,222.7 412.0,160.0 412.0,238.0 300.0,300.7" fill="url(#fwBlockR)" stroke="#fff" stroke-width="1.2"/>
+  <polygon points="300.0,97.3 412.0,160.0 300.0,222.7 188.0,160.0" fill="#FFFFFF" fill-opacity=".92" stroke="#C9C8F0" stroke-width="1.2"/>
+  <polygon points="300.0,108.5 392.0,160.0 300.0,211.5 208.0,160.0" fill="#EEEEFA" fill-opacity=".75"/>
+  <circle cx="300" cy="160" r="7" fill="#EE5F2A"/><circle cx="300" cy="160" r="13" fill="none" stroke="#EE5F2A" stroke-opacity=".35" stroke-width="1.5"/>
+  </g>
+  </svg>
   </header>
 
   <section class="section fw-core" id="deployability">
