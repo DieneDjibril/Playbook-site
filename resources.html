@@ -14,12 +14,43 @@
 <meta property="og:image" content="assets/brand/rf-favicon-512.png">
 <meta property="og:site_name" content="Advancing Partnerships Playbook — The Rockefeller Foundation">
 <style>
-.resources-hero{padding:76px 0 86px;position:relative;overflow:hidden;color:#fff;background:linear-gradient(90deg,rgba(4,28,24,.88),rgba(4,28,24,.55)),url('assets/cases/resources-collaboration.jpg') center/cover no-repeat}
-.resources-hero .breadcrumb{color:rgba(255,255,255,.72)}
-.resources-hero .breadcrumb a{color:#fff}
-.resources-hero h1{color:#fff;font-size:clamp(3rem,7vw,6rem);line-height:.98;letter-spacing:-.05em;max-width:780px;margin:20px 0}
-.resources-hero .lead{color:rgba(255,255,255,.88);font-size:clamp(1.05rem,2vw,1.3rem);max-width:650px;line-height:1.55}
-.resources-hero .eyebrow{color:#ffd08a}
+.resources-hero{min-height:520px;padding:76px 0 86px;display:flex;align-items:center;position:relative;isolation:isolate;overflow:hidden;color:var(--ink);background:#fff}
+.resources-hero::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(ellipse at 82% 48%,rgba(8,128,103,.07),transparent 38%)}
+.resources-hero .wrap{width:100%;position:relative;z-index:1}
+.resources-hero-copy{position:relative;z-index:2;max-width:55%}
+.resources-hero-graph{position:absolute;z-index:1;top:50%;right:1%;width:min(48%,620px);height:auto;transform:translateY(-50%);overflow:visible}
+.resources-hero-graph text{font-family:var(--sans)}
+.resources-hero-graph .chart-title{fill:var(--forest);font-size:17px;font-weight:700;letter-spacing:.12em}
+.resources-hero-graph .chart-subtitle{fill:#71817b;font-size:12px}
+.resources-hero-graph .chart-grid{stroke:#e5ece8;stroke-width:1}
+.resources-hero-graph .chart-line{fill:none;stroke:#078067;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:900;stroke-dashoffset:900;animation:resourcePathProgress 8s ease-in-out infinite}
+.resources-hero-graph .chart-point{fill:#fff;stroke:#078067;stroke-width:4}
+.resources-hero-graph .chart-point-core{fill:#e99a3b}
+.resources-hero-graph .chart-card{fill:#fff;stroke:#dce6e0;stroke-width:1.5}
+.resources-hero-graph .step-1 .chart-card{animation:resourceStep1 8s ease-in-out infinite}
+.resources-hero-graph .step-2 .chart-card{animation:resourceStep2 8s ease-in-out infinite}
+.resources-hero-graph .step-3 .chart-card{animation:resourceStep3 8s ease-in-out infinite}
+.resources-hero-graph .step-4 .chart-card{animation:resourceStep4 8s ease-in-out infinite}
+.resources-hero-graph .chart-point{transform-box:fill-box;transform-origin:center;animation:resourcePointPulse 8s ease-in-out infinite}
+.resources-hero-graph .step-2 .chart-point{animation-delay:1.6s}
+.resources-hero-graph .step-3 .chart-point{animation-delay:3.2s}
+.resources-hero-graph .step-4 .chart-point{animation-delay:4.8s}
+.resources-hero-graph .chart-runner{fill:#e99a3b;stroke:#fff;stroke-width:3;filter:drop-shadow(0 1px 3px rgba(4,70,56,.24))}
+@keyframes resourcePathProgress{0%{stroke-dashoffset:900}70%,100%{stroke-dashoffset:0}}
+@keyframes resourceStep1{0%,15%{stroke:#e99a3b;stroke-width:3;fill:#fffaf1}16%,100%{stroke:#dce6e0;stroke-width:1.5;fill:#fff}}
+@keyframes resourceStep2{0%,19%{stroke:#dce6e0;stroke-width:1.5;fill:#fff}20%,35%{stroke:#e99a3b;stroke-width:3;fill:#fffaf1}36%,100%{stroke:#dce6e0;stroke-width:1.5;fill:#fff}}
+@keyframes resourceStep3{0%,39%{stroke:#dce6e0;stroke-width:1.5;fill:#fff}40%,55%{stroke:#e99a3b;stroke-width:3;fill:#fffaf1}56%,100%{stroke:#dce6e0;stroke-width:1.5;fill:#fff}}
+@keyframes resourceStep4{0%,59%{stroke:#dce6e0;stroke-width:1.5;fill:#fff}60%,75%{stroke:#e99a3b;stroke-width:3;fill:#fffaf1}76%,100%{stroke:#dce6e0;stroke-width:1.5;fill:#fff}}
+@keyframes resourcePointPulse{0%,18%,100%{transform:scale(1)}8%{transform:scale(1.35)}}
+.resources-hero-graph .chart-step{fill:var(--forest);font-size:12px;font-weight:700}
+.resources-hero-graph .chart-label{fill:#24483f;font-size:12px;font-weight:700}
+.resources-hero-graph .chart-detail{fill:#71817b;font-size:10px}
+.resources-hero-graph .chart-icon{fill:none;stroke:#078067;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.resources-hero .breadcrumb{color:var(--muted)}
+.resources-hero .breadcrumb a{color:var(--forest)}
+.resources-hero h1{color:var(--forest);font-size:clamp(3rem,7vw,6rem);line-height:.98;letter-spacing:-.05em;max-width:780px;margin:20px 0}
+.resources-hero .lead{color:var(--muted);font-size:clamp(1.05rem,2vw,1.3rem);max-width:650px;line-height:1.55}
+.resources-hero .eyebrow{color:var(--amber)}
 .resources-intro{max-width:720px;margin-bottom:34px}
 .resources-intro h2{font-size:clamp(2rem,4vw,3.5rem);margin:12px 0}
 .resources-intro p{color:var(--muted);font-size:1.05rem;line-height:1.6}
@@ -51,15 +82,25 @@
 .resources-step-number{display:grid;place-items:center;width:42px;height:42px;border-radius:50%;background:var(--amber-soft);color:var(--amber);font-weight:700;margin-bottom:18px}
 .resources-step h3{font-size:1.25rem;margin-bottom:9px}
 .resources-step p{color:var(--muted);font-size:.94rem;line-height:1.5}
+@media(prefers-reduced-motion:reduce){
+  .resources-hero-graph .chart-line,.resources-hero-graph .chart-card,.resources-hero-graph .chart-point{animation:none}
+  .resources-hero-graph .chart-line{stroke-dashoffset:0}
+  .resources-hero-graph .chart-runner{display:none}
+}
 @media(min-width:761px){
-  .resources-hero{min-height:520px;display:flex;align-items:center;padding:72px 0;background-position:center 42%}
-  .resources-hero .wrap{width:100%}
+  .resources-hero{padding:72px 0}
 }
 @media(max-width:1080px){
   .resources-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
 }
 @media(max-width:760px){
-  .resources-hero{padding:54px 0 62px}
+  .resources-hero{min-height:0;padding:40px 0 48px;display:block}
+  .resources-hero-copy{max-width:100%}
+  .resources-hero-graph{position:relative;top:auto;right:auto;display:block;width:calc(100% - 24px);max-width:540px;margin:28px auto 0;transform:none}
+  .resources-hero-graph .chart-title{font-size:20px}
+  .resources-hero-graph .chart-subtitle{font-size:15px}
+  .resources-hero-graph .chart-label{font-size:17px}
+  .resources-hero-graph .chart-detail{font-size:13px}
   .resources-hero h1{font-size:clamp(2.8rem,14vw,4.3rem)}
   .resources-hero .lead{font-size:1rem}
   .resources-intro h2{font-size:2.15rem}
@@ -79,11 +120,48 @@
 
 <header class="resources-hero">
   <div class="wrap">
-    <div class="breadcrumb reveal"><a href="index.html">Home</a> / Resources</div>
-    <span class="eyebrow reveal">A library for action</span>
-    <h1 class="reveal">Resources to move from ideas to action.</h1>
-    <p class="lead reveal">Start with the Executive Summary, go deeper with the Playbook, apply the tools, or learn from partnership examples across Africa.</p>
+    <div class="resources-hero-copy">
+      <div class="breadcrumb reveal"><a href="index.html">Home</a> / Resources</div>
+      <span class="eyebrow reveal">A library for action</span>
+      <h1 class="reveal">Resources to move from ideas to action.</h1>
+      <p class="lead reveal">Start with the Executive Summary, go deeper with the Playbook, apply the tools, or learn from partnership examples across Africa.</p>
+    </div>
   </div>
+  <svg class="resources-hero-graph" viewBox="0 0 620 460" role="img" aria-labelledby="resourcesGraphTitle">
+    <title id="resourcesGraphTitle">A resource pathway from understanding to exploring, applying, and learning</title>
+    <text class="chart-title" x="34" y="36">THE RESOURCE PATHWAY</text>
+    <text class="chart-subtitle" x="34" y="57">Move from insight to practical action</text>
+    <path class="chart-grid" d="M42 355H590M42 285H590M42 215H590M42 145H590"></path>
+    <path class="chart-line" d="M95 294C190 280 190 227 265 219S369 163 430 159 511 103 548 91"></path>
+    <g class="resource-step step-1">
+      <rect class="chart-card" x="48" y="320" width="112" height="98" rx="14"></rect>
+      <circle class="chart-point" cx="95" cy="294" r="12"></circle><circle class="chart-point-core" cx="95" cy="294" r="4"></circle>
+      <path class="chart-icon" d="M87 344h16v22H87zM91 350h8M91 355h8"></path>
+      <text class="chart-step" x="112" y="347">01</text><text class="chart-label" x="65" y="385">Understand</text><text class="chart-detail" x="65" y="401">Executive summary</text>
+    </g>
+    <g class="resource-step step-2">
+      <rect class="chart-card" x="179" y="250" width="112" height="98" rx="14"></rect>
+      <circle class="chart-point" cx="265" cy="219" r="12"></circle><circle class="chart-point-core" cx="265" cy="219" r="4"></circle>
+      <path class="chart-icon" d="M217 274v23m16-23v23m-16-21c5-3 11-3 16 0m-16 18c5-3 11-3 16 0"></path>
+      <text class="chart-step" x="242" y="277">02</text><text class="chart-label" x="196" y="315">Explore</text><text class="chart-detail" x="196" y="331">Full Playbook</text>
+    </g>
+    <g class="resource-step step-3">
+      <rect class="chart-card" x="354" y="190" width="112" height="98" rx="14"></rect>
+      <circle class="chart-point" cx="430" cy="159" r="12"></circle><circle class="chart-point-core" cx="430" cy="159" r="4"></circle>
+      <path class="chart-icon" d="m394 219 8 8 17-19"></path>
+      <text class="chart-step" x="420" y="217">03</text><text class="chart-label" x="371" y="255">Apply</text><text class="chart-detail" x="371" y="271">Practical toolkit</text>
+    </g>
+    <g class="resource-step step-4">
+      <rect class="chart-card" x="484" y="122" width="112" height="98" rx="14"></rect>
+      <circle class="chart-point" cx="548" cy="91" r="12"></circle><circle class="chart-point-core" cx="548" cy="91" r="4"></circle>
+      <path class="chart-icon" d="M520 151h17v22h-17zM525 146h17v22"></path>
+      <text class="chart-step" x="546" y="149">04</text><text class="chart-label" x="501" y="187">Learn</text><text class="chart-detail" x="501" y="203">Case studies</text>
+    </g>
+    <circle class="chart-runner" r="7" aria-hidden="true">
+      <animateMotion dur="8s" repeatCount="indefinite" path="M95 294C190 280 190 227 265 219S369 163 430 159 511 103 548 91" keyPoints="0;1;1" keyTimes="0;0.7;1" calcMode="linear"></animateMotion>
+    </circle>
+    <text class="chart-subtitle" x="42" y="447">A practical library for every step of the journey</text>
+  </svg>
 </header>
 
 <section class="sec-pad-sm">
