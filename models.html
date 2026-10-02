@@ -30,19 +30,22 @@
   .model-detail-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg)}
   .logic{transition:transform .25s ease,background .25s ease}
   .logic:hover{transform:translateY(-5px);background:rgba(255,255,255,.12)}
-  .readiness-section{background:#fff;color:var(--text)}
-  .readiness-section .sec-head h2,
-  .readiness-section .sec-head .eyebrow,
-  .readiness-section .logic h3{color:#ed7d16}
-  .readiness-section .sec-head .lead,
-  .readiness-section .logic p,
-  .readiness-section > .wrap > .lead{color:var(--muted)!important}
-  .readiness-section .logic{background:#fff;border:1px solid var(--line);border-top:4px solid #ed7d16;border-radius:var(--radius);box-shadow:var(--shadow);padding:24px;transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease}
-  .readiness-section .logic:hover{background:#fff;border-color:#ed7d16;box-shadow:var(--shadow-lg)}
-  .readiness-section .logic:nth-child(2){border-top-color:var(--green)}
-  .readiness-section .logic:nth-child(2) h3{color:var(--green)}
-  .readiness-section .logic:nth-child(3){border-top-color:#2f7d8f}
-  .readiness-section .logic:nth-child(3) h3{color:#2f7d8f}
+  .readiness-section{padding:52px 0;background:#fff;color:var(--text)}
+  .readiness-section .readiness-head{display:grid;grid-template-columns:minmax(260px,.8fr) minmax(0,1.2fr);align-items:end;gap:28px;margin:0 0 24px}
+  .readiness-section .readiness-head .eyebrow{color:var(--amber)}
+  .readiness-section .readiness-head h2{margin-top:8px;color:var(--forest);font-size:clamp(1.7rem,3vw,2.35rem)}
+  .readiness-section .readiness-head .lead{max-width:none;color:var(--muted);font-size:.98rem;line-height:1.55}
+  .readiness-system{position:relative;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));overflow:hidden;border:1px solid var(--line);border-radius:var(--radius);background:var(--sand)}
+  .readiness-system::before{content:"";position:absolute;top:42px;left:16.66%;right:16.66%;height:2px;background:linear-gradient(90deg,var(--forest),var(--amber),#2f7d8f);opacity:.48}
+  .readiness-part{position:relative;padding:22px 26px 20px}
+  .readiness-part+.readiness-part{border-left:1px solid var(--line)}
+  .readiness-node{position:relative;z-index:1;display:grid;width:40px;height:40px;place-items:center;margin:0 0 15px;border:4px solid var(--sand);border-radius:50%;background:var(--forest);color:#fff;font-size:.78rem;font-weight:700}
+  .readiness-part:nth-child(2) .readiness-node{background:var(--amber)}
+  .readiness-part:nth-child(3) .readiness-node{background:#2f7d8f}
+  .readiness-part h3{margin:0 0 6px;color:var(--forest);font-size:1rem}
+  .readiness-part p{color:var(--muted);font-size:.86rem;line-height:1.5}
+  .readiness-implication{grid-column:1/-1;margin:0;padding:14px 22px;border-top:1px solid var(--line);background:#fff;color:var(--forest);font-size:.9rem;line-height:1.5}
+  .readiness-implication strong{color:var(--amber)}
   .page-hero .lead{max-width:68ch}
   .models-selector .card:nth-child(1){transition-delay:.05s}
   .models-selector .card:nth-child(2){transition-delay:.12s}
@@ -57,21 +60,25 @@
   .model-detail-card .chip:hover{transform:translateY(-2px);background:var(--green);color:#fff}
   .model-detail-card .card-link{transition:color .2s ease,transform .2s ease}
   .model-detail-card .card-link:hover{transform:translateX(4px)}
-  .readiness-section .sec-head.reveal,
-  .readiness-section .logic.reveal,
-  .readiness-section>.wrap>.lead.reveal{transition-duration:.8s}
-  .readiness-section .logic:nth-child(1){transition-delay:.08s}
-  .readiness-section .logic:nth-child(2){transition-delay:.16s}
-  .readiness-section .logic:nth-child(3){transition-delay:.24s}
-  .readiness-section .logic h3{transition:transform .25s ease}
-  .readiness-section .logic:hover h3{transform:translateX(4px)}
+  .readiness-section .readiness-part{transition:background .2s ease}
+  .readiness-section .readiness-part:hover{background:rgba(255,255,255,.68)}
   .cta-band{transition:transform .35s ease,box-shadow .35s ease}
   .cta-band:hover{transform:translateY(-5px);box-shadow:0 20px 42px rgba(4,70,56,.2)}
   @media(prefers-reduced-motion:reduce){
     .models-selector .card,.model-heading .mnum,.model-heading h2,.model-detail-card .chip,.model-detail-card .card-link,
-    .readiness-section .logic,.readiness-section .logic h3,.cta-band{transition:none!important}
+    .readiness-section .readiness-part,.model-full-link,.cta-band{transition:none!important}
   }
   @media(max-width:760px){
+    .readiness-section{padding:38px 0}
+    .readiness-section .readiness-head{grid-template-columns:1fr;gap:10px;margin-bottom:18px}
+    .readiness-section .readiness-head h2{font-size:1.7rem}
+    .readiness-system{grid-template-columns:1fr}
+    .readiness-system::before{top:36px;bottom:36px;left:42px;right:auto;width:2px;height:auto;background:linear-gradient(180deg,var(--forest),var(--amber),#2f7d8f)}
+    .readiness-part{display:grid;grid-template-columns:40px 1fr;column-gap:14px;padding:15px 18px}
+    .readiness-part+.readiness-part{border-left:0;border-top:1px solid var(--line)}
+    .readiness-node{grid-row:span 2;margin:0}
+    .readiness-part h3{align-self:end}
+    .readiness-implication{padding:13px 18px}
     .models-selector::before{margin-bottom:16px}
     .models-selector .card{min-height:0}
     .model-heading{align-items:flex-start;gap:14px}
@@ -81,6 +88,104 @@
   }
   @media(prefers-reduced-motion:reduce){
     .models-selector .card,.models-selector .card::after,.model-detail-card,.logic{transition:none}
+  }
+  .model-tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-bottom:30px}
+  .model-tabs::before{grid-column:1/-1;margin-bottom:0}
+  .model-tabs button{
+    width:100%;min-height:290px;padding:34px 30px;border:1px solid var(--line);border-radius:22px;background:var(--paper);color:var(--text);
+    display:flex;flex-direction:column;align-items:flex-start;text-align:left;cursor:pointer;
+    box-shadow:none;transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease
+  }
+  .model-tabs button::before{display:none}
+  .model-tabs .model-card-tag{display:inline-flex;align-items:center;padding:7px 14px;border-radius:999px;background:var(--amber-soft);color:var(--amber);font-size:.82rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase}
+  .model-tabs .model-card-title{margin:34px 0 10px;color:var(--ink);font-size:1.3rem;font-weight:700;line-height:1.25}
+  .model-tabs .model-card-copy{color:var(--muted);font-size:1rem;line-height:1.6}
+  .model-tabs .model-card-link{display:inline-flex;align-items:center;gap:10px;margin-top:auto;padding-top:22px;color:var(--forest);font-weight:600}
+  .model-tabs button:hover{transform:translateY(-4px);border-color:var(--green);box-shadow:var(--shadow)}
+  .model-tabs button.active{border-color:var(--green);background:var(--paper);color:var(--text)}
+  .model-tabs button.active .model-card-tag{background:var(--amber-soft);color:var(--amber)}
+  .model-tabs button.active .model-card-title{color:var(--ink)}
+  .model-tabs button.active .model-card-link{color:var(--forest)}
+  .model-tabs button.active:hover{border-color:var(--green)}
+  .model-tabs button:nth-of-type(1).active{border-color:var(--green);background:var(--green-soft)}
+  .model-tabs button:nth-of-type(1).active .model-card-tag{background:var(--green);color:#fff}
+  .model-tabs button:nth-of-type(1).active .model-card-title,.model-tabs button:nth-of-type(1).active .model-card-link{color:var(--forest)}
+  .model-tabs button:nth-of-type(2).active{border-color:var(--amber);background:var(--amber-soft)}
+  .model-tabs button:nth-of-type(2).active .model-card-tag{background:var(--amber);color:#fff}
+  .model-tabs button:nth-of-type(2).active .model-card-title,.model-tabs button:nth-of-type(2).active .model-card-link{color:#9b571c}
+  .model-tabs button:nth-of-type(3).active{border-color:#2f7d8f;background:#eaf3f5}
+  .model-tabs button:nth-of-type(3).active .model-card-tag{background:#2f7d8f;color:#fff}
+  .model-tabs button:nth-of-type(3).active .model-card-title,.model-tabs button:nth-of-type(3).active .model-card-link{color:#245e6b}
+  .model-tabs button:nth-of-type(1):hover{border-color:var(--green);background:var(--green-soft)}
+  .model-tabs button:nth-of-type(1):hover .model-card-tag{background:var(--green);color:#fff}
+  .model-tabs button:nth-of-type(1):hover .model-card-title,.model-tabs button:nth-of-type(1):hover .model-card-link{color:var(--forest)}
+  .model-tabs button:nth-of-type(2):hover{border-color:var(--amber);background:var(--amber-soft)}
+  .model-tabs button:nth-of-type(2):hover .model-card-tag{background:var(--amber);color:#fff}
+  .model-tabs button:nth-of-type(2):hover .model-card-title,.model-tabs button:nth-of-type(2):hover .model-card-link{color:#9b571c}
+  .model-tabs button:nth-of-type(3):hover{border-color:#2f7d8f;background:#eaf3f5}
+  .model-tabs button:nth-of-type(3):hover .model-card-tag{background:#2f7d8f;color:#fff}
+  .model-tabs button:nth-of-type(3):hover .model-card-title,.model-tabs button:nth-of-type(3):hover .model-card-link{color:#245e6b}
+  .model-tabs button:focus-visible{outline:3px solid rgba(217,131,48,.38);outline-offset:3px}
+  .model-panel{display:none}
+  .model-panel.active{display:block}
+  .model-panel.slide-in-right{animation:caseSlideInRight .45s ease both}
+  .model-panel.slide-in-left{animation:caseSlideInLeft .45s ease both}
+  .model-panel.active .model-heading{animation:caseVisualIn .65s cubic-bezier(.16,1,.3,1) both}
+  .model-panel.active .model-content{animation:caseContentIn .65s .12s cubic-bezier(.16,1,.3,1) both}
+  .model-panel .reveal{opacity:1;transform:none}
+  .model-panel{width:min(calc(100% - 52px),var(--maxw));padding:0!important;margin:0 auto 30px;border-radius:var(--radius);overflow:hidden;background:var(--paper)!important;border:1px solid var(--line);box-shadow:var(--shadow);scroll-margin-top:108px}
+  .model-panel>.wrap{max-width:none;padding:0}
+  .model-panel .model-heading{
+    position:relative;isolation:isolate;overflow:hidden;min-height:260px;margin:0!important;padding:42px 48px!important;
+    display:flex;align-items:center;gap:24px;background:var(--forest)!important;color:#fff
+  }
+  .model-panel .model-heading::after{
+    content:"";position:absolute;z-index:-1;width:340px;height:340px;right:7%;top:-38%;border:1px solid rgba(255,255,255,.2);
+    border-radius:50%;box-shadow:0 0 0 38px rgba(255,255,255,.04),0 0 0 78px rgba(255,255,255,.035)
+  }
+  .model-panel#model2 .model-heading{background:var(--amber)!important}
+  .model-panel#model3 .model-heading{background:#2f7d8f!important}
+  .model-panel .model-heading .mnum{width:72px;height:72px;flex-basis:72px;font-size:2rem;box-shadow:0 0 0 9px rgba(255,255,255,.13)!important}
+  .model-panel .model-heading .m-sub{color:rgba(255,255,255,.82);font-size:.78rem;font-weight:600;letter-spacing:.13em;text-transform:uppercase}
+  .model-panel .model-heading h2{position:relative;z-index:1;max-width:760px;margin-top:8px;color:#fff;font-size:clamp(1.8rem,3.5vw,2.7rem);line-height:1.12}
+  .model-panel .model-content{display:grid;grid-template-columns:1.2fr .8fr;align-items:stretch}
+  .model-panel .model-content>.reveal{padding:34px 38px}
+  .model-panel .model-content>.reveal:first-child{border-right:1px solid var(--line)}
+  .model-panel .model-content .prose h3{margin:24px 0 12px;font-size:1.15rem;color:var(--forest)}
+  .model-panel .model-content .prose p,.model-panel .model-content .prose li{font-size:.96rem}
+  .model-panel .model-detail-card{height:100%;border:0;border-radius:0;box-shadow:none;padding:28px;background:var(--sand)}
+  .model-panel .model-detail-card:hover{transform:none;box-shadow:none}
+  .model-panel .model-detail-card h3{color:var(--forest)}
+  .model-panel .model-detail-card .chip:hover{background:var(--forest)}
+  .model-full-link{display:inline-flex;align-items:center;gap:8px;margin-top:14px;padding:10px 16px;border-radius:999px;background:var(--forest);color:#fff;font-size:.82rem;font-weight:600;transition:background .2s ease,transform .2s ease}
+  .model-full-link:hover{background:var(--green);transform:translateY(-2px)}
+  @keyframes caseSlideInRight{from{opacity:0;transform:translateX(34px)}to{opacity:1;transform:translateX(0)}}
+  @keyframes caseSlideInLeft{from{opacity:0;transform:translateX(-34px)}to{opacity:1;transform:translateX(0)}}
+  @keyframes caseVisualIn{from{opacity:0;transform:scale(1.04)}to{opacity:1;transform:scale(1)}}
+  @keyframes caseContentIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+  @media(prefers-reduced-motion:reduce){
+    .model-panel.slide-in-right,.model-panel.slide-in-left,.model-panel.active .model-heading,.model-panel.active .model-content{animation:none}
+    .model-tabs button{transition:none}
+  }
+  @media(max-width:960px){
+    .model-tabs{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+    .model-tabs button{min-height:260px;padding:26px 24px}
+    .model-tabs .model-card-title{margin-top:26px}
+  }
+  @media(max-width:760px){
+    .model-tabs{grid-template-columns:1fr;gap:12px;margin-bottom:22px}
+    .model-tabs button{min-height:0;padding:22px 20px}
+    .model-tabs .model-card-title{margin:18px 0 8px;font-size:1.15rem}
+    .model-tabs .model-card-copy{font-size:.92rem}
+    .model-tabs .model-card-link{padding-top:14px}
+    .model-panel .model-heading{min-height:210px;padding:30px 24px!important;gap:18px}
+    .model-panel .model-heading .mnum{width:52px;height:52px;flex-basis:52px;font-size:1.5rem}
+    .model-panel .model-heading h2{font-size:1.55rem}
+    .model-panel .model-content{grid-template-columns:1fr}
+    .model-panel .model-content>.reveal{padding:24px 20px}
+    .model-panel .model-content>.reveal:first-child{border-right:0;border-bottom:1px solid var(--line)}
+    .model-panel .model-detail-card{padding:24px 20px}
+    .band .logics{grid-template-columns:1fr!important}
   }
 </style>
 </head>
@@ -97,23 +202,38 @@
 
 <!-- SELECTOR OVERVIEW -->
 <section class="sec-pad-sm">
-  <div class="wrap models-selector">
-    <div class="grid g-3">
-      <a href="#model1" class="card reveal"><span class="tag">Model 1</span><h3>Aggregation &amp; Warehouse Platforms</h3><p>For fragmentation — when dispersed producers or opportunities are invisible to buyers and financiers.</p><span class="card-link">Explore <span class="arw">&rarr;</span></span></a>
-      <a href="#model2" class="card reveal"><span class="tag">Model 2</span><h3>Preparation &amp; Guarantee Platform</h3><p>For underdeveloped opportunities — when preparation, coordination, and risk allocation are missing.</p><span class="card-link">Explore <span class="arw">&rarr;</span></span></a>
-      <a href="#model3" class="card reveal"><span class="tag">Model 3</span><h3>Predictable Delivery Networks</h3><p>For fragmented delivery — when existing providers lack anchor demand and credible payment.</p><span class="card-link">Explore <span class="arw">&rarr;</span></span></a>
+  <div class="wrap">
+    <div class="models-selector model-tabs" id="modelTabs" role="tablist" aria-label="Partnership models">
+      <button type="button" role="tab" aria-selected="false" aria-controls="model1" tabindex="0" data-c="1" data-target="model1">
+        <span class="model-card-tag">Model 1</span>
+        <span class="model-card-title">Aggregation &amp; Warehouse Platforms</span>
+        <span class="model-card-copy">For fragmentation — when dispersed producers or opportunities are invisible to buyers and financiers.</span>
+        <span class="model-card-link">Explore <span class="arw">&rarr;</span></span>
+      </button>
+      <button type="button" role="tab" aria-selected="false" aria-controls="model2" tabindex="-1" data-c="2" data-target="model2">
+        <span class="model-card-tag">Model 2</span>
+        <span class="model-card-title">Preparation &amp; Guarantee Platform</span>
+        <span class="model-card-copy">For underdeveloped opportunities — when preparation, coordination, and risk allocation are missing.</span>
+        <span class="model-card-link">Explore <span class="arw">&rarr;</span></span>
+      </button>
+      <button type="button" role="tab" aria-selected="false" aria-controls="model3" tabindex="-1" data-c="3" data-target="model3">
+        <span class="model-card-tag">Model 3</span>
+        <span class="model-card-title">Predictable Delivery Networks</span>
+        <span class="model-card-copy">For fragmented delivery — when existing providers lack anchor demand and credible payment.</span>
+        <span class="model-card-link">Explore <span class="arw">&rarr;</span></span>
+      </button>
     </div>
   </div>
 </section>
 
 <!-- MODEL 1 -->
-<section class="sec-pad" id="model1" style="background:var(--green-soft)">
+<section class="model-panel" id="model1" role="tabpanel" aria-labelledby="modelTab1" aria-hidden="true">
   <div class="wrap">
     <div class="model model-heading m1 reveal" style="background:transparent;border:none;padding:0;margin-bottom:36px">
       <div class="mnum">1</div>
       <div><div class="m-sub">Constraint: fragmentation</div><h2>Aggregation &amp; Warehouse Platforms</h2></div>
     </div>
-    <div class="grid g-2" style="align-items:start">
+    <div class="model-content">
       <div class="reveal"><div class="prose">
         <p>Pools multiple small or fragmented opportunities into a larger, standardized portfolio that can be assessed, financed, and managed collectively — the direct answer to opportunities without visibility.</p>
         <h3>Four complementary functions</h3>
@@ -131,6 +251,7 @@
             <span class="tag">Live case</span>
             <p class="muted" style="margin-top:8px">Babban Gona organizes farmers into standardized Trust Groups, bundling input financing, training, aggregation, warehousing, and market access into one system — now one of Nigeria's largest single maize producers.</p>
             <a class='card-link' href='cases.html#babbangona'>Read the case <span class="arw">&rarr;</span></a>
+            <a class="model-full-link" href="read/viewer.html?doc=capital-mobilization-playbook.pdf&amp;page=57">Read the full model <span class="arw">&rarr;</span></a>
           </div>
         </div>
       </div>
@@ -139,13 +260,13 @@
 </section>
 
 <!-- MODEL 2 -->
-<section class="sec-pad" id="model2">
+<section class="model-panel" id="model2" role="tabpanel" aria-labelledby="modelTab2" aria-hidden="true">
   <div class="wrap">
     <div class="model model-heading m2 reveal" style="background:transparent;border:none;padding:0;margin-bottom:36px">
       <div class="mnum">2</div>
       <div><div class="m-sub">Constraint: underdeveloped opportunity</div><h2>Integrated Project Preparation &amp; Guarantee Platform</h2></div>
     </div>
-    <div class="grid g-2" style="align-items:start">
+    <div class="model-content">
       <div class="reveal"><div class="prose">
         <p>Rather than focusing on a single barrier, the model strengthens the broader conditions required for large-scale implementation. Capital mobilization is the outcome, not the starting point.</p>
         <h3>Four complementary functions</h3>
@@ -163,6 +284,7 @@
             <span class="tag">Live cases</span>
             <p class="muted" style="margin-top:8px">KCB's Clean Cooking transition for schools (47 &rarr; 266 schools, national scale-up approved) and Lake Turkana Wind Power (€623m, Kenya's largest private investment at financial close) both apply this model.</p>
             <a class='card-link' href='cases.html#kcb'>Read the cases <span class="arw">&rarr;</span></a>
+            <a class="model-full-link" href="read/viewer.html?doc=capital-mobilization-playbook.pdf&amp;page=66">Read the full model <span class="arw">&rarr;</span></a>
           </div>
         </div>
       </div>
@@ -171,13 +293,13 @@
 </section>
 
 <!-- MODEL 3 -->
-<section class="sec-pad" id="model3" style="background:var(--green-soft)">
+<section class="model-panel" id="model3" role="tabpanel" aria-labelledby="modelTab3" aria-hidden="true">
   <div class="wrap">
     <div class="model model-heading m3 reveal" style="background:transparent;border:none;padding:0;margin-bottom:36px">
       <div class="mnum">3</div>
       <div><div class="m-sub">Constraint: fragmented delivery</div><h2>Predictable Delivery Networks</h2></div>
     </div>
-    <div class="grid g-2" style="align-items:start">
+    <div class="model-content">
       <div class="reveal"><div class="prose">
         <p>Rather than creating new providers or technologies, the model organizes existing capabilities into a coordinated delivery system with reliable standards, verification, and payment flows.</p>
         <h3>Four complementary functions</h3>
@@ -195,6 +317,7 @@
             <span class="tag">Live case</span>
             <p class="muted" style="margin-top:8px">UNICEF as anchor purchaser plus technology transfer from Nutriset enabled Hilina to supply 10,000+ MT of therapeutic foods annually — reducing import dependence in Ethiopia.</p>
             <a class='card-link' href='cases.html#rutf'>Read the case <span class="arw">&rarr;</span></a>
+            <a class="model-full-link" href="read/viewer.html?doc=capital-mobilization-playbook.pdf&amp;page=76">Read the full model <span class="arw">&rarr;</span></a>
           </div>
         </div>
       </div>
@@ -203,19 +326,21 @@
 </section>
 
 <!-- SYSTEM READINESS -->
-<section class="sec-pad band readiness-section">
+<section class="readiness-section">
   <div class="wrap">
-    <div class="sec-head">
+    <div class="readiness-head">
+      <div>
       <span class="eyebrow">Before you scale</span>
       <h2>System readiness beats model design</h2>
-      <p class="lead">A model can be conceptually strong but still stall if the systems beneath it are too weak to support delivery, payment, coordination, and learning.</p>
+      </div>
+      <p class="lead">A strong model scales only when the systems beneath it work together to support delivery, payment, coordination, and learning.</p>
     </div>
-    <div class="logics" style="grid-template-columns:repeat(3,1fr)">
-      <div class="logic reveal"><h3>Financial &amp; regulatory</h3><p>Payment rails, procurement, regulatory approvals, and governance systems.</p></div>
-      <div class="logic reveal"><h3>Operational &amp; data</h3><p>Logistics, delivery capacity, data infrastructure, and verification mechanisms.</p></div>
-      <div class="logic reveal"><h3>Relational &amp; accountability</h3><p>Trust, community engagement, feedback loops, grievance channels, and protection.</p></div>
+    <div class="readiness-system">
+      <div class="readiness-part"><span class="readiness-node">01</span><h3>Financial &amp; regulatory</h3><p>Payment rails, procurement, regulatory approvals, and governance systems.</p></div>
+      <div class="readiness-part"><span class="readiness-node">02</span><h3>Operational &amp; data</h3><p>Logistics, delivery capacity, data infrastructure, and verification mechanisms.</p></div>
+      <div class="readiness-part"><span class="readiness-node">03</span><h3>Relational &amp; accountability</h3><p>Trust, community engagement, feedback loops, grievance channels, and protection.</p></div>
+      <p class="readiness-implication"><strong>Key implication:</strong> scale depends on all three dimensions working as one system — not on model design alone.</p>
     </div>
-    <p class="lead reveal" style="margin-top:34px"><strong>Key implication:</strong> scaling is not only a function of model design — it is a function of system readiness.</p>
   </div>
 </section>
 
@@ -229,5 +354,53 @@
 
 <div id="footer"></div>
 <script src="assets/components.js"></script>
+<script>
+(function(){
+  var tabs=document.querySelectorAll('#modelTabs [role="tab"]');
+  var panels=document.querySelectorAll('.model-panel');
+  var activeIndex=0;
+  function activate(target,button,animate){
+    var nextIndex=Array.prototype.indexOf.call(tabs,button);
+    panels.forEach(function(panel){
+      var active=panel.id===target;
+      panel.classList.toggle('active',active);
+      panel.setAttribute('aria-hidden',active?'false':'true');
+      panel.classList.remove('slide-in-left','slide-in-right');
+    });
+    tabs.forEach(function(tab){
+      var active=tab===button;
+      tab.classList.toggle('active',active);
+      tab.setAttribute('aria-selected',active?'true':'false');
+      tab.setAttribute('tabindex',active?'0':'-1');
+    });
+    if(animate){
+      var activePanel=document.getElementById(target);
+      activePanel.classList.add(nextIndex>=activeIndex?'slide-in-right':'slide-in-left');
+      activePanel.scrollIntoView({behavior:'smooth',block:'start'});
+    }
+    activeIndex=nextIndex;
+    history.replaceState(null,'','#'+target);
+  }
+  tabs.forEach(function(tab,index){
+    tab.id='modelTab'+(index+1);
+    tab.addEventListener('click',function(){
+      if(!tab.classList.contains('active')) activate(tab.getAttribute('data-target'),tab,true);
+    });
+    tab.addEventListener('keydown',function(event){
+      if(event.key==='ArrowRight'||event.key==='ArrowLeft'){
+        event.preventDefault();
+        var offset=event.key==='ArrowRight'?1:-1;
+        var next=(index+offset+tabs.length)%tabs.length;
+        tabs[next].focus();
+        activate(tabs[next].getAttribute('data-target'),tabs[next],true);
+      }
+    });
+  });
+  var hash=window.location.hash.slice(1);
+  var initial=Array.prototype.find.call(tabs,function(tab){return tab.getAttribute('data-target')===hash;});
+  if(initial) activate(hash,initial,false);
+  else panels.forEach(function(panel){panel.setAttribute('aria-hidden','true');});
+})();
+</script>
 </body>
 </html>

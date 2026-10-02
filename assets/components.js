@@ -75,6 +75,7 @@
         '</div></div>' +
       '</div>' +
     '</div><div class="footer-bot"><div class="wrap">' +
+      '<img class="footer-bot-logo" src="' + h('assets/logo%20Partenaire/HASKE_CONSEIL_LOGO.webp') + '" alt="Haskè Conseil" width="160" height="53">' +
       '<span>&copy; 2026 Haskè Conseil. All rights reserved.</span>' +
     '</div></div></footer>';
 

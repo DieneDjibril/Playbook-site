@@ -43,8 +43,8 @@
 @keyframes resourceStep4{0%,59%{stroke:#dce6e0;stroke-width:1.5;fill:#fff}60%,75%{stroke:#e99a3b;stroke-width:3;fill:#fffaf1}76%,100%{stroke:#dce6e0;stroke-width:1.5;fill:#fff}}
 @keyframes resourcePointPulse{0%,18%,100%{transform:scale(1)}8%{transform:scale(1.35)}}
 .resources-hero-graph .chart-step{fill:var(--forest);font-size:12px;font-weight:700}
-.resources-hero-graph .chart-label{fill:#24483f;font-size:12px;font-weight:700}
-.resources-hero-graph .chart-detail{fill:#71817b;font-size:10px}
+.resources-hero-graph .chart-label{fill:#24483f;font-size:12px;font-weight:700;text-anchor:middle}
+.resources-hero-graph .chart-detail{fill:#71817b;font-size:10px;text-anchor:middle}
 .resources-hero-graph .chart-icon{fill:none;stroke:#078067;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .resources-hero .breadcrumb{color:var(--muted)}
 .resources-hero .breadcrumb a{color:var(--forest)}
@@ -60,17 +60,17 @@
 .resources-intro{max-width:720px;margin-bottom:34px}
 .resources-intro h2{font-size:clamp(2rem,4vw,3.5rem);margin:12px 0}
 .resources-intro p{color:var(--muted);font-size:1.05rem;line-height:1.6}
-.resources-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px;align-items:stretch}
-.resources-grid .res{display:flex;flex-direction:column;min-height:520px;padding:0;position:relative;overflow:hidden;background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);transition:transform .25s ease,box-shadow .25s ease}
+.resources-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:32px;align-items:stretch}
+.resources-grid .res{display:flex;flex-direction:column;min-height:0;padding:0;position:relative;background:transparent;border:0;border-radius:0;box-shadow:none;transition:transform .25s ease}
 .resources-grid .res.reveal{opacity:0;transform:translateY(28px)}
 .resources-grid .res.reveal.in{opacity:1;transform:translateY(0);transition:opacity .7s ease,transform .7s cubic-bezier(.16,1,.3,1),box-shadow .25s ease}
 .resources-grid .res:nth-child(2).reveal.in{transition-delay:.1s}
 .resources-grid .res:nth-child(3).reveal.in{transition-delay:.2s}
 .resources-grid .res:nth-child(4).reveal.in{transition-delay:.3s}
-.resources-grid .res:hover,.resources-grid .res:focus-within{transform:translateY(-5px);box-shadow:var(--shadow-lg)}
-.resources-grid .res.reveal.in:hover,.resources-grid .res.reveal.in:focus-within{transform:translateY(-5px);box-shadow:var(--shadow-lg)}
-.resources-grid .res>div:last-child{display:flex;flex-direction:column;flex:1;padding:20px 18px 22px}
-.resources-grid .res .res-cover{width:100%;height:auto;aspect-ratio:3/4;flex:none;position:relative;overflow:hidden;margin:0;background:#382d3d}
+.resources-grid .res:hover,.resources-grid .res:focus-within{transform:translateY(-5px)}
+.resources-grid .res.reveal.in:hover,.resources-grid .res.reveal.in:focus-within{transform:translateY(-5px)}
+.resources-grid .res>div:last-child{display:flex;flex-direction:column;flex:1;padding:0}
+.resources-grid .res .res-cover{width:100%;height:auto;aspect-ratio:3/4;flex:none;position:relative;overflow:hidden;margin:0;border-radius:14px;background:#382d3d}
 .resources-grid .res .res-cover::before,.resources-grid .res .res-cover::after,.resources-grid .res .res-cover-art,.resources-grid .res .res-case-mosaic{transition:transform .65s cubic-bezier(.2,.7,.2,1)}
 .resources-grid .res .res-case-mosaic img{transition:transform .65s cubic-bezier(.2,.7,.2,1)}
 .resources-grid .res:hover .res-cover::before,.resources-grid .res:hover .res-cover::after,.resources-grid .res:focus-within .res-cover::before,.resources-grid .res:focus-within .res-cover::after{transform:scale(1.05)}
@@ -81,35 +81,30 @@
 .res-cover-count{position:absolute;z-index:2;top:18px;left:18px;display:grid;width:42px;height:42px;place-items:center;border-radius:50%;background:#fff;color:var(--ink);font-size:1.15rem;font-weight:700}
 .res-cover-title{position:absolute;z-index:2;left:20px;right:18px;bottom:20px;color:#fff;font-size:clamp(1.35rem,1.8vw,1.75rem);font-weight:700;line-height:1.06;letter-spacing:-.035em;text-shadow:0 2px 12px rgba(0,0,0,.18)}
 .res-cover-art{position:absolute;inset:0;overflow:hidden}
-.res-cover-summary{background:#3b2d3e}
-.res-cover-summary::before{content:"";position:absolute;width:56%;height:68%;top:-9%;right:-8%;border-radius:0 0 0 52%;background:#a6a1d4}
-.res-cover-summary::after{content:"";position:absolute;left:18%;top:34%;width:56%;height:40%;border:1px solid rgba(255,255,255,.2);border-radius:46px}
-.res-cover-summary .art-dot{position:absolute;z-index:1;right:21%;bottom:29%;width:19px;height:19px;border-radius:50%;background:#f26932}
-.res-cover-playbook{background:#eeedf8}
-.res-cover-playbook::before{content:"";position:absolute;left:-9%;top:12%;width:62%;height:51%;border-radius:0 45px 45px 0;background:#3b2d3e}
-.res-cover-playbook::after{content:"";position:absolute;left:44%;top:38%;width:40%;height:40%;border-radius:30px;background:#f26932}
-.res-cover-playbook .art-line{position:absolute;top:-10%;right:15%;width:20%;height:95%;border:1px solid rgba(87,79,124,.3);border-radius:40px}
-.res-cover-toolkit{background:#f05a30}
-.res-cover-toolkit .art-box{position:absolute;width:33%;height:29%;border:1.5px solid rgba(255,255,255,.6);border-radius:15px}
-.res-cover-toolkit .art-box:nth-child(1){top:13%;left:15%}
-.res-cover-toolkit .art-box:nth-child(2){top:13%;right:14%}
-.res-cover-toolkit .art-box:nth-child(3){top:48%;left:15%}
-.res-cover-toolkit .art-box:nth-child(4){top:48%;right:14%;background:#3b2d3e;border-color:#3b2d3e}
+.res-cover-art svg{position:absolute;inset:0;width:100%;height:100%}
+.resources-grid .res .res-cover-summary{background:#044638}
+.resources-grid .res .res-cover-playbook{background:#e3efe9}
+.resources-grid .res .res-cover-playbook .res-cover-title{color:#044638;text-shadow:none}
+.resources-grid .res .res-cover-toolkit{background:#d98330}
+.resources-grid .res .res-cover-cases{background:#162f2a}
 .res-cover-cases{background:#162f2a}
 .res-cover-cases::after{content:"";position:absolute;inset:35% 0 0;background:linear-gradient(0deg,rgba(0,0,0,.7),transparent)}
 .res-case-mosaic{position:absolute;inset:0;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:2px}
 .res-case-mosaic img{width:100%;height:100%;min-width:0;min-height:0;object-fit:cover}
-.resources-grid .res .tag{align-self:flex-start;font-size:.68rem;padding:4px 9px;margin-bottom:8px}
-.resources-grid .res h3{font-size:clamp(1.15rem,1.4vw,1.38rem);line-height:1.2;margin:6px 0 10px}
-.resources-grid .res p{font-size:.86rem;line-height:1.48;color:var(--muted)}
+.resources-grid .res .tag{align-self:flex-start;margin:22px 0 0;padding:6px 12px;border:0;border-radius:999px;background:#e3efe9;color:#044638;font-size:.76rem;font-weight:600;letter-spacing:.04em;line-height:1.65;text-transform:uppercase}
+.resources-grid .res h3{margin:12px 0 0;color:#044638;font-size:clamp(1.15rem,1.45vw,1.3rem);font-weight:600;line-height:1.25;letter-spacing:-.01em}
+.resources-grid .res p{margin:10px 0 0;font-size:.93rem;line-height:1.65;color:#6b6672}
 .resources-grid .res .ri{width:46px;height:46px;display:grid;place-items:center;border-radius:13px;background:var(--green-soft);color:var(--forest);margin-bottom:12px}
 .resources-grid .res .ri svg{width:22px;height:22px}
-.res-actions{display:flex;gap:8px;margin-top:auto;padding-top:18px;flex-wrap:wrap;width:100%}
-.res-actions .btn{flex:1 1 calc(50% - 4px);min-width:85px;font-size:.8rem;padding:9px 8px;justify-content:center;text-align:center}
-.res-actions .btn-ghost{border:1.5px solid var(--forest);color:var(--forest)}
-.res-actions .btn-ghost:hover{background:var(--forest);color:#fff}
-.res-actions .btn[disabled]{flex:1 1 100%;opacity:.55;cursor:not-allowed}
-.res-note{width:100%;margin-top:8px;font-size:.78rem;color:var(--muted);font-style:italic;line-height:1.35}
+.res-actions{display:flex;flex-direction:column;align-items:flex-start;gap:12px;margin-top:auto;padding-top:22px;width:100%}
+.res-actions .btn{flex:none;min-width:0;padding:13px 26px;font-size:.95rem;font-weight:500;justify-content:center;text-align:center}
+.res-actions .btn-primary{background:#044638;color:#fff}
+.res-actions .btn-primary:hover{background:#d98330}
+.res-actions .btn-primary::after{content:"\2193";font-size:.85em}
+.res-actions .btn-ghost{padding:0 0 2px;border:0;border-bottom:.8px solid #d98330;border-radius:0;background:none;color:#044638;font-weight:600}
+.res-actions .btn-ghost:hover{background:none;color:#d98330}
+.res-actions .btn[disabled]{opacity:.55;cursor:not-allowed}
+.res-note{width:100%;margin:0;font-size:.85rem;color:#6b6672;font-style:italic;line-height:1.35}
 .resources-steps{padding:clamp(40px,5vw,72px) 0 72px;background:#fff}
 .resources-steps-head{max-width:700px;margin:0 0 38px}
 .resources-steps-head .eyebrow{color:#ee5f2a}
@@ -178,10 +173,10 @@
   .resources-intro p{font-size:.96rem}
   .resources-grid{grid-template-columns:1fr;gap:16px}
   .resources-grid .res{min-height:0}
-  .resources-grid .res>div:last-child{padding:20px 22px 22px}
+  .resources-grid .res>div:last-child{padding:0}
   .resources-grid .res h3{font-size:1.35rem}
-  .resources-grid .res p{font-size:.9rem}
-  .res-actions .btn{flex:1;justify-content:center;text-align:center}
+  .resources-grid .res p{font-size:.93rem}
+  .res-actions .btn{flex:none}
   .resources-step-grid{grid-template-columns:1fr;--step-node:44px}
   .resources-steps{padding-bottom:48px}
   .resources-step{display:grid;grid-template-columns:var(--step-node) minmax(0,1fr);column-gap:18px;padding:0 0 30px}
@@ -216,25 +211,25 @@
       <rect class="chart-card" x="48" y="320" width="112" height="98" rx="14"></rect>
       <circle class="chart-point" cx="95" cy="294" r="12"></circle><circle class="chart-point-core" cx="95" cy="294" r="4"></circle>
       <path class="chart-icon" d="M87 344h16v22H87zM91 350h8M91 355h8"></path>
-      <text class="chart-step" x="112" y="347">01</text><text class="chart-label" x="65" y="385">Understand</text><text class="chart-detail" x="65" y="401">Executive summary</text>
+      <text class="chart-step" x="112" y="347">01</text><text class="chart-label" x="104" y="385">Understand</text><text class="chart-detail" x="104" y="401">Executive summary</text>
     </g>
     <g class="resource-step step-2">
       <rect class="chart-card" x="179" y="250" width="112" height="98" rx="14"></rect>
       <circle class="chart-point" cx="265" cy="219" r="12"></circle><circle class="chart-point-core" cx="265" cy="219" r="4"></circle>
       <path class="chart-icon" d="M217 274v23m16-23v23m-16-21c5-3 11-3 16 0m-16 18c5-3 11-3 16 0"></path>
-      <text class="chart-step" x="242" y="277">02</text><text class="chart-label" x="196" y="315">Explore</text><text class="chart-detail" x="196" y="331">Full Playbook</text>
+      <text class="chart-step" x="242" y="277">02</text><text class="chart-label" x="235" y="315">Explore</text><text class="chart-detail" x="235" y="331">Full Playbook</text>
     </g>
     <g class="resource-step step-3">
       <rect class="chart-card" x="354" y="190" width="112" height="98" rx="14"></rect>
       <circle class="chart-point" cx="430" cy="159" r="12"></circle><circle class="chart-point-core" cx="430" cy="159" r="4"></circle>
       <path class="chart-icon" d="m394 219 8 8 17-19"></path>
-      <text class="chart-step" x="420" y="217">03</text><text class="chart-label" x="371" y="255">Apply</text><text class="chart-detail" x="371" y="271">Practical toolkit</text>
+      <text class="chart-step" x="420" y="217">03</text><text class="chart-label" x="410" y="255">Apply</text><text class="chart-detail" x="410" y="271">Practical toolkit</text>
     </g>
     <g class="resource-step step-4">
       <rect class="chart-card" x="484" y="122" width="112" height="98" rx="14"></rect>
       <circle class="chart-point" cx="548" cy="91" r="12"></circle><circle class="chart-point-core" cx="548" cy="91" r="4"></circle>
       <path class="chart-icon" d="M520 151h17v22h-17zM525 146h17v22"></path>
-      <text class="chart-step" x="546" y="149">04</text><text class="chart-label" x="501" y="187">Learn</text><text class="chart-detail" x="501" y="203">Case studies</text>
+      <text class="chart-step" x="546" y="149">04</text><text class="chart-label" x="540" y="187">Learn</text><text class="chart-detail" x="540" y="203">Case studies</text>
     </g>
     <circle class="chart-runner" r="7" aria-hidden="true">
       <animateMotion dur="8s" repeatCount="indefinite" path="M95 294C190 280 190 227 265 219S369 163 430 159 511 103 548 91" keyPoints="0;1;1" keyTimes="0;0.7;1" calcMode="linear"></animateMotion>
@@ -254,7 +249,7 @@
       <div class="res reveal">
         <div class="res-cover res-cover-summary" role="img" aria-label="Illustrated cover for the Executive Summary">
           <span class="res-cover-count">1</span>
-          <span class="res-cover-art" aria-hidden="true"><span class="art-dot"></span></span>
+          <span class="res-cover-art" aria-hidden="true"><svg viewBox="0 0 300 400" preserveAspectRatio="xMidYMid slice"><rect x="150" y="-40" width="220" height="220" rx="60" fill="#d98330" opacity=".9"/><rect x="60" y="120" width="170" height="170" rx="48" fill="none" stroke="#fff" stroke-opacity=".28" stroke-width="2"/><circle cx="238" cy="232" r="14" fill="#d98330"/></svg></span>
           <span class="res-cover-title">Executive<br>Summary</span>
         </div>
         <div>
@@ -269,7 +264,7 @@
       <div class="res reveal">
         <div class="res-cover res-cover-playbook" role="img" aria-label="Illustrated cover for the Playbook">
           <span class="res-cover-count">2</span>
-          <span class="res-cover-art" aria-hidden="true"><span class="art-line"></span></span>
+          <span class="res-cover-art" aria-hidden="true"><svg viewBox="0 0 300 400" preserveAspectRatio="xMidYMid slice"><rect x="-40" y="40" width="210" height="210" rx="58" fill="#044638"/><rect x="120" y="-20" width="210" height="210" rx="58" fill="none" stroke="#2f7d68" stroke-width="2"/><rect x="110" y="150" width="130" height="130" rx="38" fill="#d98330"/></svg></span>
           <span class="res-cover-title">The<br>Playbook</span>
         </div>
         <div>
@@ -284,7 +279,7 @@
       <div class="res reveal">
         <div class="res-cover res-cover-toolkit" role="img" aria-label="Illustrated cover for the Toolkit">
           <span class="res-cover-count">3</span>
-          <span class="res-cover-art" aria-hidden="true"><span class="art-box"></span><span class="art-box"></span><span class="art-box"></span><span class="art-box"></span></span>
+          <span class="res-cover-art" aria-hidden="true"><svg viewBox="0 0 300 400" preserveAspectRatio="xMidYMid slice"><g fill="none" stroke="#fff" stroke-opacity=".6" stroke-width="2"><rect x="40" y="40" width="90" height="90" rx="24"/><rect x="150" y="40" width="90" height="90" rx="24"/><rect x="40" y="150" width="90" height="90" rx="24"/></g><rect x="150" y="150" width="90" height="90" rx="24" fill="#044638"/></svg></span>
           <span class="res-cover-title">The Toolkit</span>
         </div>
         <div>
@@ -317,42 +312,6 @@
         </div>
       </div>
     </div>
-  </div>
-</section>
-
-<section class="sec-pad-sm resources-steps">
-  <div class="wrap">
-    <div class="resources-steps-head reveal">
-      <span class="eyebrow">How to use this library</span>
-      <h2>Move forward, one step at a time.</h2>
-    </div>
-    <ol class="resources-step-grid" aria-label="Steps for using this library">
-      <li class="resources-step s1">
-        <span class="resources-step-number" aria-hidden="true">01</span>
-        <svg class="resources-step-segment horizontal" viewBox="0 0 400 40" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path class="track" d="M0 20 C 110 -4, 290 44, 400 20"></path><path class="draw" pathLength="1" d="M0 20 C 110 -4, 290 44, 400 20"></path></svg>
-        <svg class="resources-step-segment vertical" viewBox="0 0 40 100" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path class="track" d="M20 0 C 34 30, 6 70, 20 100"></path><path class="draw" pathLength="1" d="M20 0 C 34 30, 6 70, 20 100"></path></svg>
-        <div class="resources-step-copy">
-          <h3>Understand the opportunity</h3>
-          <p>Begin with the Executive Summary to build a shared understanding of deployability and partnership value.</p>
-        </div>
-      </li>
-      <li class="resources-step s2">
-        <span class="resources-step-number" aria-hidden="true">02</span>
-        <svg class="resources-step-segment horizontal" viewBox="0 0 400 40" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path class="track" d="M0 20 C 110 -4, 290 44, 400 20"></path><path class="draw" pathLength="1" d="M0 20 C 110 -4, 290 44, 400 20"></path></svg>
-        <svg class="resources-step-segment vertical" viewBox="0 0 40 100" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path class="track" d="M20 0 C 34 30, 6 70, 20 100"></path><path class="draw" pathLength="1" d="M20 0 C 34 30, 6 70, 20 100"></path></svg>
-        <div class="resources-step-copy">
-          <h3>Explore the framework</h3>
-          <p>Use the Playbook to explore the framework, understand the structuring logic, and examine the partnership models in context.</p>
-        </div>
-      </li>
-      <li class="resources-step s3">
-        <span class="resources-step-number" aria-hidden="true">03</span>
-        <div class="resources-step-copy">
-          <h3>Apply and learn</h3>
-          <p>Move into the Toolkit and Case Study Compendium to test the approach in your own context.</p>
-        </div>
-      </li>
-    </ol>
   </div>
 </section>
 

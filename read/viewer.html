@@ -43,19 +43,27 @@
   .flip-controls button{border:1px solid var(--forest);background:#fff;color:var(--forest);border-radius:999px;padding:10px 18px;font:600 .88rem var(--sans);cursor:pointer}
   .flip-controls button:hover:not(:disabled){background:var(--forest);color:#fff}
   .flip-controls button:disabled{opacity:.4;cursor:not-allowed}
-  .zoom-controls{display:flex;align-items:center;justify-content:center;gap:8px;margin:0 auto 16px}
+  .zoom-controls{display:flex;align-items:center;justify-content:center;gap:12px;margin:0 auto 16px}
   .zoom-controls button{min-width:38px;border:1px solid var(--forest);background:#fff;color:var(--forest);border-radius:999px;padding:7px 12px;font:600 .85rem var(--sans);cursor:pointer}
   .zoom-controls button:hover:not(:disabled){background:var(--forest);color:#fff}
   .zoom-controls button:disabled{opacity:.4;cursor:not-allowed}
-  #zoomLevel{width:68px;border:1px solid var(--line);border-radius:8px;padding:7px 6px;text-align:center;font:500 .85rem var(--sans);color:var(--text)}
-  .zoom-percent{font-size:.82rem;color:var(--muted);margin-left:-5px}
+  .zoom-range-wrap{display:flex;align-items:center;gap:10px;width:min(340px,55vw)}
+  .zoom-range-label{color:var(--muted);font-size:.82rem;line-height:1}
+  #zoomSlider{width:100%;height:6px;margin:0;appearance:none;-webkit-appearance:none;border-radius:999px;background:linear-gradient(90deg,var(--forest),var(--amber));cursor:pointer;touch-action:pan-y}
+  #zoomSlider::-webkit-slider-thumb{width:20px;height:20px;appearance:none;-webkit-appearance:none;border:3px solid #fff;border-radius:50%;background:var(--forest);box-shadow:0 1px 5px rgba(15,40,35,.3);cursor:grab}
+  #zoomSlider::-moz-range-thumb{width:15px;height:15px;border:3px solid #fff;border-radius:50%;background:var(--forest);box-shadow:0 1px 5px rgba(15,40,35,.3);cursor:grab}
+  #zoomSlider:active::-webkit-slider-thumb{background:var(--amber);cursor:grabbing}
+  #zoomSlider:active::-moz-range-thumb{background:var(--amber);cursor:grabbing}
+  #zoomSlider:focus-visible{outline:3px solid rgba(217,131,48,.35);outline-offset:6px}
+  #zoomValue{min-width:3.4em;color:var(--forest);font-size:.85rem;font-weight:600;text-align:center;font-variant-numeric:tabular-nums}
+  .zoom-controls .zoom-reset{border-color:var(--line);padding:7px 13px}
   #pageCounter{min-width:100px;text-align:center;font-size:.9rem;color:var(--muted)}
   .flip-progress{height:4px;background:rgba(4,70,56,.12);margin-top:18px;border-radius:99px;overflow:hidden}
   .flip-progress span{display:block;height:100%;background:var(--amber);width:0;transition:width .3s ease}
   .pdf-fallback{display:none;width:100%;height:78vh;min-height:520px;border:0;background:#fff}
   .pdf-fallback-message{display:none;margin:14px 0 0;padding:12px 14px;border-radius:10px;background:var(--amber-soft);color:#6a431d;font-size:.88rem}
   .viewer-actions{display:flex;gap:10px}
-  @media (max-width:720px){.viewer-wrap{padding:20px 14px 44px}.viewer-head{display:block}.viewer-actions{margin-top:14px}.viewer-actions .btn{flex:1;text-align:center;padding:10px 8px;font-size:.78rem}.doc-tabs{overflow-x:auto;flex-wrap:nowrap;padding-bottom:6px}.doc-tabs button{white-space:nowrap;font-size:.78rem}.reader-layout{grid-template-columns:minmax(0,1fr);gap:12px}.chapter-panel{position:static;max-height:190px;padding:10px}.chapter-panel h2{font-size:.9rem}.chapter-list{grid-template-columns:repeat(2,minmax(0,1fr));gap:2px}.chapter-list button{font-size:.72rem;padding:7px}.flipbook-shell{padding:12px 8px 16px}.flip-controls{gap:8px}.flip-controls button{padding:9px 12px;font-size:.78rem}.zoom-controls{gap:5px}.zoom-controls button{padding:7px 10px}}
+  @media (max-width:720px){.viewer-wrap{padding:20px 14px 44px}.viewer-head{display:block}.viewer-actions{margin-top:14px}.viewer-actions .btn{flex:1;text-align:center;padding:10px 8px;font-size:.78rem}.doc-tabs{overflow-x:auto;flex-wrap:nowrap;padding-bottom:6px}.doc-tabs button{white-space:nowrap;font-size:.78rem}.reader-layout{grid-template-columns:minmax(0,1fr);gap:12px}.chapter-panel{position:static;max-height:190px;padding:10px}.chapter-panel h2{font-size:.9rem}.chapter-list{grid-template-columns:repeat(2,minmax(0,1fr));gap:2px}.chapter-list button{font-size:.72rem;padding:7px}.flipbook-shell{padding:12px 8px 16px}.flip-controls{gap:8px}.flip-controls button{padding:9px 12px;font-size:.78rem}.zoom-controls{gap:8px}.zoom-range-wrap{width:min(280px,58vw);gap:7px}.zoom-range-label{font-size:.75rem}.zoom-controls .zoom-reset{padding:7px 10px}}
 </style>
 </head>
 <body data-page="read" data-root="../">
@@ -89,11 +97,13 @@
     </aside>
     <div class="flipbook-shell" id="flipbookShell">
       <div class="zoom-controls" aria-label="Zoom controls">
-        <button type="button" id="zoomOut" aria-label="Zoom out">&minus;</button>
-        <input type="number" id="zoomLevel" aria-label="Zoom percentage" min="0" max="200" step="1" value="100">
-        <span class="zoom-percent" aria-hidden="true">%</span>
-        <button type="button" id="zoomIn" aria-label="Zoom in">+</button>
-        <button type="button" id="zoomReset">Fit</button>
+        <div class="zoom-range-wrap">
+          <span class="zoom-range-label" aria-hidden="true">−</span>
+          <input type="range" id="zoomSlider" aria-label="Zoom the document" min="50" max="200" step="5" value="100" aria-valuetext="100 percent">
+          <span class="zoom-range-label" aria-hidden="true">+</span>
+        </div>
+        <output id="zoomValue" for="zoomSlider" aria-live="polite">100%</output>
+        <button type="button" class="zoom-reset" id="zoomReset" aria-label="Reset zoom to fit">Fit</button>
       </div>
       <div class="flipbook" id="flipbook" aria-live="polite">
         <div class="flip-page" id="flipPage">
@@ -132,10 +142,9 @@
   var flipbook = document.getElementById('flipbook');
   var chapterList = document.getElementById('chapterList');
   var chapterHeading = document.getElementById('chapterHeading');
-  var zoomIn = document.getElementById('zoomIn');
-  var zoomOut = document.getElementById('zoomOut');
   var zoomReset = document.getElementById('zoomReset');
-  var zoomLabel = document.getElementById('zoomLevel');
+  var zoomSlider = document.getElementById('zoomSlider');
+  var zoomValue = document.getElementById('zoomValue');
   var flipPage = document.getElementById('flipPage');
   var frontPage = document.getElementById('frontPage');
   var backPage = document.getElementById('backPage');
@@ -153,6 +162,7 @@
   var activeFile = '';
   var zoomPercent = 100;
   var flipTimer = null;
+  var zoomRenderTimer = null;
   var navigationToken = 0;
   var renderTasks = new WeakMap();
   var documentSections = {
@@ -259,9 +269,10 @@
     var availableWidth = flipbookShell.clientWidth - parseFloat(window.getComputedStyle(flipbookShell).paddingLeft) - parseFloat(window.getComputedStyle(flipbookShell).paddingRight);
     var baseWidth = Math.min(794, availableWidth);
     flipbook.style.width = Math.max(1, Math.round(baseWidth * zoomPercent / 100)) + 'px';
-    zoomLabel.value = zoomPercent;
-    zoomOut.disabled = zoomPercent <= 0;
-    zoomIn.disabled = zoomPercent >= 200;
+    zoomSlider.value = zoomPercent;
+    zoomSlider.setAttribute('aria-valuetext', zoomPercent + ' percent');
+    zoomValue.value = zoomPercent + '%';
+    zoomValue.textContent = zoomPercent + '%';
   }
   function renderVisiblePages(){
     if(!pdfDocument || !pages.length) return Promise.resolve();
@@ -275,13 +286,13 @@
     ]);
   }
   function setZoom(nextZoom){
-    zoomPercent = Math.max(0, Math.min(200, Math.round(nextZoom)));
+    zoomPercent = Math.max(Number(zoomSlider.min), Math.min(Number(zoomSlider.max), Math.round(nextZoom / Number(zoomSlider.step)) * Number(zoomSlider.step)));
     updateZoomControls();
     renderVisiblePages().catch(function(error){
       console.error('Unable to render the PDF at the selected zoom level.', error);
     });
   }
-  function showFallback(file){
+  function showFallback(file, startPage){
     activeFile = file;
     readerLayout.classList.remove('chapters-visible');
     flipbookShell.style.display = 'none';
@@ -289,9 +300,9 @@
     progress.parentElement.style.display = 'none';
     pdfFallback.style.display = 'block';
     pdfFallbackMessage.style.display = 'block';
-    pdfFallback.src = '../downloads/' + file;
+    pdfFallback.src = '../downloads/' + file + (startPage ? '#page=' + startPage : '');
   }
-  function buildPages(file){
+  function buildPages(file, startPage){
     activeFile = file;
     navigationToken += 1;
     window.clearTimeout(flipTimer);
@@ -319,12 +330,19 @@
       if(requestId !== pdfLoading) return;
       pdfDocument = pdf;
       pages = Array.from({length:pdf.numPages}, function(_, index){ return index + 1; });
-      renderPage(0, frontPage).then(function(){ return renderPage(Math.min(1, pages.length - 1), backPage); }).then(updateControls).catch(function(error){
+      var targetIndex = startPage == null ? 0 : startPage - 1;
+      if(!Number.isInteger(targetIndex) || targetIndex < 0 || targetIndex >= pages.length){
+        console.error('The requested Playbook page is outside the document.', startPage);
+        targetIndex = 0;
+      }
+      pageIndex = targetIndex;
+      updateControls();
+      renderPage(targetIndex, frontPage).then(function(){ return renderPage(Math.min(targetIndex + 1, pages.length - 1), backPage); }).then(updateControls).catch(function(error){
         console.error('Unable to render the PDF pages.', error);
-        showFallback(file);
+        showFallback(file, startPage);
       });
     }).catch(function(){
-      showFallback(file);
+      showFallback(file, startPage);
     });
   }
   function renderPage(index, canvas){
@@ -397,10 +415,10 @@
     }).catch(function(error){ console.error('Unable to open the selected Playbook chapter.', error); });
   }
 
-  function selectDoc(file, label, btn){
+  function selectDoc(file, label, btn, startPage){
     dl.href = '../downloads/' + file;
     nt.href = '../downloads/' + file;
-    buildPages(file);
+    buildPages(file, startPage);
     renderDocumentSections(file);
     if(zoomPercent !== 100) setZoom(100);
     title.textContent = label;
@@ -415,18 +433,18 @@
   });
   prev.addEventListener('click', function(){ turn(-1); });
   next.addEventListener('click', function(){ turn(1); });
-  zoomIn.addEventListener('click', function(){ setZoom(zoomPercent + 1); });
-  zoomOut.addEventListener('click', function(){ setZoom(zoomPercent - 1); });
-  zoomLabel.addEventListener('change', function(){
-    var enteredZoom = Number(zoomLabel.value);
-    if(zoomLabel.value === '' || !Number.isFinite(enteredZoom)){
-      updateZoomControls();
-      return;
-    }
-    setZoom(enteredZoom);
-  });
-  zoomLabel.addEventListener('keydown', function(event){
-    if(event.key === 'Enter') zoomLabel.blur();
+  zoomSlider.addEventListener('input', function(){
+    zoomPercent = Number(zoomSlider.value);
+    zoomSlider.setAttribute('aria-valuetext', zoomPercent + ' percent');
+    zoomValue.value = zoomPercent + '%';
+    zoomValue.textContent = zoomPercent + '%';
+    updateZoomControls();
+    window.clearTimeout(zoomRenderTimer);
+    zoomRenderTimer = window.setTimeout(function(){
+      renderVisiblePages().catch(function(error){
+        console.error('Unable to render the PDF at the selected zoom level.', error);
+      });
+    }, 120);
   });
   zoomReset.addEventListener('click', function(){ setZoom(100); });
   chapterList.addEventListener('click', function(event){
@@ -435,20 +453,30 @@
   });
   window.addEventListener('resize', updateZoomControls);
   document.addEventListener('keydown', function(e){
+    if(e.target.matches('input, button, select, textarea, [contenteditable="true"]')) return;
     if(e.key === 'ArrowLeft') turn(-1);
     if(e.key === 'ArrowRight') turn(1);
   });
 
-  // deep link: viewer.html?doc=case-study-kcb.pdf
+  // Deep links may select a document and a page, e.g. viewer.html?doc=capital-mobilization-playbook.pdf&page=57
   var params = new URLSearchParams(window.location.search);
   var docParam = params.get('doc');
+  var pageParam = params.get('page');
+  var startPage = null;
+  if(pageParam !== null){
+    var parsedPage = Number(pageParam);
+    if(Number.isInteger(parsedPage) && parsedPage > 0) startPage = parsedPage;
+    else console.error('The requested reader page must be a positive integer.', pageParam);
+  }
   if (docParam) {
     var match = Array.prototype.find.call(tabs, function(b){ return b.getAttribute('data-doc') === docParam; });
-    if (match) { selectDoc(docParam, match.getAttribute('data-title'), match); }
+    if (match) { selectDoc(docParam, match.getAttribute('data-title'), match, startPage); }
+    else console.error('The requested reader document is not available.', docParam);
   } else {
+    if(startPage !== null) console.error('A reader page was requested without selecting a document.', startPage);
     tabs[0].classList.add('active');
     renderDocumentSections(tabs[0].getAttribute('data-doc'));
-    buildPages(tabs[0].getAttribute('data-doc'));
+    buildPages(tabs[0].getAttribute('data-doc'), startPage);
   }
 })();
 </script>
