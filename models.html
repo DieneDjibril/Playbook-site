@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Partnership Models — Advancing Partnerships Playbook</title>
 <meta name="description" content="Three partnership models: Aggregation & Warehouse Platforms, Integrated Project Preparation & Guarantee Platform, and Predictable Delivery Networks.">
+<link rel="icon" href="assets/brand/rf-favicon-32.png" type="image/png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -37,11 +38,12 @@
   .readiness-section .readiness-head .lead{max-width:none;color:var(--muted);font-size:.98rem;line-height:1.55}
   .readiness-system{position:relative;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));overflow:hidden;border:1px solid var(--line);border-radius:var(--radius);background:var(--sand)}
   .readiness-system::before{content:"";position:absolute;top:42px;left:16.66%;right:16.66%;height:2px;background:linear-gradient(90deg,var(--forest),var(--amber),#2f7d8f);opacity:.48}
-  .readiness-part{position:relative;padding:22px 26px 20px}
-  .readiness-part+.readiness-part{border-left:1px solid var(--line)}
-  .readiness-node{position:relative;z-index:1;display:grid;width:40px;height:40px;place-items:center;margin:0 0 15px;border:4px solid var(--sand);border-radius:50%;background:var(--forest);color:#fff;font-size:.78rem;font-weight:700}
-  .readiness-part:nth-child(2) .readiness-node{background:var(--amber)}
-  .readiness-part:nth-child(3) .readiness-node{background:#2f7d8f}
+  .readiness-steps{display:contents}
+  .readiness-part{position:relative;padding:22px 26px 20px;transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1),background .2s ease}
+  .readiness-part:not(:first-child){border-left:1px solid var(--line)}
+  .readiness-node{position:relative;z-index:1;display:grid;width:40px;height:40px;place-items:center;margin:0 auto 15px;border:4px solid var(--sand);border-radius:50%;background:var(--forest);color:#fff;font-size:.78rem;font-weight:700}
+  .readiness-part:nth-child(2) .readiness-node,.readiness-steps .readiness-part:nth-child(2) .readiness-node{background:var(--amber)}
+  .readiness-part:nth-child(3) .readiness-node,.readiness-steps .readiness-part:nth-child(3) .readiness-node{background:#2f7d8f}
   .readiness-part h3{margin:0 0 6px;color:var(--forest);font-size:1rem}
   .readiness-part p{color:var(--muted);font-size:.86rem;line-height:1.5}
   .readiness-implication{grid-column:1/-1;margin:0;padding:14px 22px;border-top:1px solid var(--line);background:#fff;color:var(--forest);font-size:.9rem;line-height:1.5}
@@ -60,22 +62,26 @@
   .model-detail-card .chip:hover{transform:translateY(-2px);background:var(--green);color:#fff}
   .model-detail-card .card-link{transition:color .2s ease,transform .2s ease}
   .model-detail-card .card-link:hover{transform:translateX(4px)}
-  .readiness-section .readiness-part{transition:background .2s ease}
+  .readiness-section .readiness-part:nth-child(2){transition-delay:.12s}
+  .readiness-section .readiness-part:nth-child(3){transition-delay:.24s}
+  .readiness-section .readiness-implication{transition:opacity .7s .32s cubic-bezier(.16,1,.3,1),transform .7s .32s cubic-bezier(.16,1,.3,1)}
   .readiness-section .readiness-part:hover{background:rgba(255,255,255,.68)}
   .cta-band{transition:transform .35s ease,box-shadow .35s ease}
   .cta-band:hover{transform:translateY(-5px);box-shadow:0 20px 42px rgba(4,70,56,.2)}
   @media(prefers-reduced-motion:reduce){
     .models-selector .card,.model-heading .mnum,.model-heading h2,.model-detail-card .chip,.model-detail-card .card-link,
-    .readiness-section .readiness-part,.model-full-link,.cta-band{transition:none!important}
+    .readiness-section .readiness-part,.readiness-section .readiness-implication,.model-full-link,.cta-band{transition:none!important}
   }
   @media(max-width:760px){
     .readiness-section{padding:38px 0}
     .readiness-section .readiness-head{grid-template-columns:1fr;gap:10px;margin-bottom:18px}
     .readiness-section .readiness-head h2{font-size:1.7rem}
     .readiness-system{grid-template-columns:1fr}
-    .readiness-system::before{top:36px;bottom:36px;left:42px;right:auto;width:2px;height:auto;background:linear-gradient(180deg,var(--forest),var(--amber),#2f7d8f)}
+    .readiness-system::before{display:none}
+    .readiness-steps{position:relative;display:grid;grid-template-rows:repeat(3,minmax(0,1fr))}
+    .readiness-steps::before{position:absolute;z-index:0;top:35px;bottom:calc(33.333% - 35px);left:38px;width:2px;background:linear-gradient(180deg,var(--forest),var(--amber),#2f7d8f);content:""}
     .readiness-part{display:grid;grid-template-columns:40px 1fr;column-gap:14px;padding:15px 18px}
-    .readiness-part+.readiness-part{border-left:0;border-top:1px solid var(--line)}
+    .readiness-part:not(:first-child){border-left:0;border-top:1px solid var(--line)}
     .readiness-node{grid-row:span 2;margin:0}
     .readiness-part h3{align-self:end}
     .readiness-implication{padding:13px 18px}
@@ -328,7 +334,7 @@
 <!-- SYSTEM READINESS -->
 <section class="readiness-section">
   <div class="wrap">
-    <div class="readiness-head">
+    <div class="readiness-head reveal">
       <div>
       <span class="eyebrow">Before you scale</span>
       <h2>System readiness beats model design</h2>
@@ -336,10 +342,12 @@
       <p class="lead">A strong model scales only when the systems beneath it work together to support delivery, payment, coordination, and learning.</p>
     </div>
     <div class="readiness-system">
-      <div class="readiness-part"><span class="readiness-node">01</span><h3>Financial &amp; regulatory</h3><p>Payment rails, procurement, regulatory approvals, and governance systems.</p></div>
-      <div class="readiness-part"><span class="readiness-node">02</span><h3>Operational &amp; data</h3><p>Logistics, delivery capacity, data infrastructure, and verification mechanisms.</p></div>
-      <div class="readiness-part"><span class="readiness-node">03</span><h3>Relational &amp; accountability</h3><p>Trust, community engagement, feedback loops, grievance channels, and protection.</p></div>
-      <p class="readiness-implication"><strong>Key implication:</strong> scale depends on all three dimensions working as one system — not on model design alone.</p>
+      <div class="readiness-steps">
+        <div class="readiness-part reveal"><span class="readiness-node">01</span><h3>Financial &amp; regulatory</h3><p>Payment rails, procurement, regulatory approvals, and governance systems.</p></div>
+        <div class="readiness-part reveal"><span class="readiness-node">02</span><h3>Operational &amp; data</h3><p>Logistics, delivery capacity, data infrastructure, and verification mechanisms.</p></div>
+        <div class="readiness-part reveal"><span class="readiness-node">03</span><h3>Relational &amp; accountability</h3><p>Trust, community engagement, feedback loops, grievance channels, and protection.</p></div>
+      </div>
+      <p class="readiness-implication reveal"><strong>Key implication:</strong> scale depends on all three dimensions working as one system — not on model design alone.</p>
     </div>
   </div>
 </section>

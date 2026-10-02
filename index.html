@@ -107,11 +107,24 @@
   .home-partners-layout{display:grid;grid-template-columns:minmax(220px,.7fr) minmax(0,1.3fr);align-items:center;gap:clamp(36px,7vw,100px)}
   .home-partners-head .eyebrow{color:#f1b777}
   .home-partners-head h2{margin-top:16px;color:#fff;font-size:clamp(2.2rem,4.4vw,3.8rem);line-height:1.04}
+  .home-partners-head h2::after{display:block;width:76px;height:3px;margin-top:18px;background:var(--amber);content:"";transform:scaleX(0);transform-origin:left;transition:transform .65s .35s cubic-bezier(.16,1,.3,1)}
+  .home-partners-head{opacity:0;transform:translateX(-32px)}
+  .home-partners.is-visible .home-partners-head{opacity:1;transform:translateX(0);animation:partnerHeadingIn .85s cubic-bezier(.16,1,.3,1) both}
+  .home-partners.is-visible .home-partners-head h2::after{transform:scaleX(1)}
   .home-partner-panel{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-items:center;min-height:190px;padding:26px 18px;border:1px solid rgba(255,255,255,.22);border-radius:20px;background:rgba(255,255,255,.97);box-shadow:0 24px 60px rgba(0,0,0,.16)}
-  .home-partner-logo-card{display:grid;min-width:0;min-height:128px;padding:18px 26px;place-items:center;transition:transform .25s ease}
+  .home-partner-panel{opacity:0;transform:translateX(38px);transition:box-shadow .25s ease}
+  .home-partners.is-visible .home-partner-panel{opacity:1;transform:translateX(0);animation:partnerPanelIn 1.1s .08s cubic-bezier(.16,1,.3,1) both}
+  .home-partner-logo-card{display:grid;min-width:0;min-height:128px;padding:18px 26px;place-items:center;opacity:0;transform:translateY(14px) scale(.97);transition:opacity .55s .18s ease,transform .55s .18s cubic-bezier(.16,1,.3,1)}
+  .home-partner-logo-card:nth-child(2){transition-delay:.3s}
+  .home-partners.is-visible .home-partner-panel .home-partner-logo-card{opacity:1;transform:translateY(0) scale(1);animation:partnerLogoIn .8s .3s cubic-bezier(.16,1,.3,1) both}
+  .home-partners.is-visible .home-partner-panel .home-partner-logo-card:nth-child(2){animation-delay:.58s}
   .home-partner-logo-card+ .home-partner-logo-card{border-left:1px solid var(--line)}
-  .home-partner-logo-card:hover{transform:translateY(-3px)}
-  .home-partner-logo-card img{width:100%;max-width:300px;height:88px;object-fit:contain}
+  .home-partner-logo-card:hover{transform:translateY(-4px) scale(1.02)}
+  .home-partner-logo-card img{width:100%;max-width:300px;height:88px;object-fit:contain;transition:filter .25s ease}
+  .home-partner-panel:hover{box-shadow:0 30px 70px rgba(0,0,0,.22)}
+  @keyframes partnerHeadingIn{from{opacity:0;transform:translate3d(-48px,18px,0)}to{opacity:1;transform:translate3d(0,0,0)}}
+  @keyframes partnerPanelIn{from{opacity:0;transform:translate3d(56px,20px,0) scale(.97)}to{opacity:1;transform:translate3d(0,0,0) scale(1)}}
+  @keyframes partnerLogoIn{from{opacity:0;transform:translate3d(0,22px,0) scale(.92)}to{opacity:1;transform:translate3d(0,0,0) scale(1)}}
   .home-cases{background:var(--paper);padding:112px 0}
   .home-cases-head{display:block;max-width:850px;margin-bottom:42px}
   .home-cases-head .sec-head{margin-bottom:0}
@@ -172,6 +185,7 @@
     .home-hero .hero-copy>*,.home-intro-mark svg{animation:none}
     .home-hero-slide{transition:none}
     .home-intro-mark.reveal,.home-intro-copy.reveal,.home-pathways .path-card.reveal,.home-case-card.reveal{opacity:1;transform:none;transition:none}
+    .home-partners-head,.home-partner-panel,.home-partner-logo-card,.home-partners-head h2::after{opacity:1;transform:none;transition:none;animation:none}
   }
   @media(max-width:960px){
     .home-hero .hero-bar{flex-direction:column;align-items:flex-start;gap:26px}
@@ -476,6 +490,22 @@
 
     updatePauseButton();
     startAutoplay();
+  })();
+</script>
+<script>
+  (function () {
+    var section = document.querySelector('.home-partners');
+    if (!section) return;
+    if (!('IntersectionObserver' in window)) {
+      section.classList.add('is-visible');
+      return;
+    }
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        section.classList.toggle('is-visible', entry.isIntersecting);
+      });
+    }, { threshold: 0.15 });
+    observer.observe(section);
   })();
 </script>
 <script src="assets/areas.js"></script>
