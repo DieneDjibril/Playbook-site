@@ -1,4 +1,4 @@
-@font-face{font-family:"Alexandria";font-style:normal;font-weight:300;font-display:swap;src:url("fonts/alexandria-latin-300-normal.woff2") format("woff2")}
+﻿@font-face{font-family:"Alexandria";font-style:normal;font-weight:300;font-display:swap;src:url("fonts/alexandria-latin-300-normal.woff2") format("woff2")}
 @font-face{font-family:"Alexandria";font-style:normal;font-weight:400;font-display:swap;src:url("fonts/alexandria-latin-400-normal.woff2") format("woff2")}
 @font-face{font-family:"Alexandria";font-style:normal;font-weight:500;font-display:swap;src:url("fonts/alexandria-latin-500-normal.woff2") format("woff2")}
 @font-face{font-family:"Alexandria";font-style:normal;font-weight:600;font-display:swap;src:url("fonts/alexandria-latin-600-normal.woff2") format("woff2")}
@@ -383,24 +383,12 @@ h3{font-size:clamp(1.3rem,2.2vw,1.7rem)}
 .callout strong{color:var(--ink)}
 
 /* ---------- Responsive ---------- */
-@media(max-width:960px){
-  .hero-grid{grid-template-columns:1fr;gap:40px}
-  .g-4{grid-template-columns:repeat(2,1fr)}
-  .logics{grid-template-columns:1fr}
-  .footer-grid{grid-template-columns:1fr 1fr;gap:30px}
-  .continuum{flex-wrap:wrap}
-  .cstage{flex:1 1 45%;border-bottom:1px solid var(--line)}
-}
-@media(max-width:760px){
-  .nav-inner{height:72px;position:relative;justify-content:space-between;padding-left:0;padding-right:18px}
-  .brand{gap:8px;max-width:70vw;margin:0}
-  .brand-name{font-size:.7rem;line-height:1.1}
-  .brand small{font-size:.5rem;letter-spacing:.08em}
-  .logo-mark{height:31px;max-width:112px}
-  .brand-divider{height:32px}
-  .network-mark{width:31px;height:31px;transform:scale(.82);transform-origin:left center;margin-right:-7px}
+/* Tablet: burger menu to avoid nav overflow */
+@media(max-width:1180px){
+  .nav-inner{position:relative;padding-right:18px}
+  .brand{max-width:calc(100% - 70px)}
   .nav-links{
-    position:fixed;top:72px;left:0;right:0;background:#fff;flex-direction:column;
+    position:fixed;top:88px;left:0;right:0;background:#fff;flex-direction:column;
     align-items:stretch;padding:16px 20px;gap:4px;border-bottom:1px solid var(--line);
     transform:translateY(-140%);transition:.35s;box-shadow:var(--shadow);
   }
@@ -413,6 +401,33 @@ h3{font-size:clamp(1.3rem,2.2vw,1.7rem)}
   .nav-dd-menu{position:static;opacity:1;visibility:visible;transform:none;box-shadow:none;border:none;padding:2px 0 6px 12px;min-width:0;display:none}
   .nav-dd-menu.open{display:block}
   .burger{display:flex;position:absolute;right:18px;top:50%;transform:translateY(-50%);z-index:2}
+  .nav-links{max-height:calc(100vh - 88px);overflow-y:auto}
+}
+@media(max-width:960px){
+  .hero-grid{grid-template-columns:1fr;gap:40px}
+  .g-4{grid-template-columns:repeat(2,1fr)}
+  .logics{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:30px}
+  .continuum{flex-wrap:wrap}
+  .cstage{flex:1 1 45%;border-bottom:1px solid var(--line)}
+}
+@media(min-width:761px) and (max-width:1180px){
+  .footer-grid{grid-template-columns:repeat(3,1fr);gap:36px 28px;text-align:center}
+  .footer-grid>div:first-child{grid-column:1/-1;display:flex;flex-direction:column;align-items:center}
+  .footer-grid>div:first-child .brand{justify-content:center}
+  .footer p{margin-left:auto;margin-right:auto}
+  .footer-social{justify-content:center}
+}
+@media(max-width:760px){
+  .nav-inner{height:72px;position:relative;justify-content:space-between;padding-left:0;padding-right:18px}
+  .nav-links{top:72px}
+  .brand{gap:8px;max-width:70vw;margin:0}
+  .brand-name{font-size:.7rem;line-height:1.1}
+  .brand small{font-size:.5rem;letter-spacing:.08em}
+  .logo-mark{height:31px;max-width:112px}
+  .brand-divider{height:32px}
+  .network-mark{width:31px;height:31px;transform:scale(.82);transform-origin:left center;margin-right:-7px}
+
   .sec-pad{padding:64px 0}
   .g-2,.g-3,.g-4{grid-template-columns:1fr}
   .path-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}

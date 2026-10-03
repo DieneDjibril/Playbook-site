@@ -19,7 +19,7 @@
   .home-hero{background:#244b43}
   .home-hero-slides,.home-hero-slide{position:absolute;inset:0}
   .home-hero-slides{z-index:0}
-  .home-hero-slide{opacity:0;background-position:center;background-size:100% auto;background-repeat:no-repeat;transition:opacity .9s ease}
+  .home-hero-slide{opacity:0;background-position:center;background-size:cover;background-repeat:no-repeat;transition:opacity .9s ease}
   .home-hero-slide.active{opacity:1}
   .home-hero-slide:nth-child(1){background-image:url('assets/home/home-african-green.jpg')}
   .home-hero-slide:nth-child(2){background-image:url('assets/home/home-african-coast.jpg')}
@@ -188,6 +188,7 @@
     .home-intro-mark.reveal,.home-intro-copy.reveal,.home-pathways .path-card.reveal,.home-case-card.reveal{opacity:1;transform:none;transition:none}
     .home-partners-head,.home-partner-panel,.home-partner-logo-card,.home-partners-head h2::after{opacity:1;transform:none;transition:none;animation:none}
   }
+  @media(max-width:1180px){.home-case-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
   @media(max-width:960px){
     .home-hero .hero-bar{flex-direction:column;align-items:flex-start;gap:26px}
     .home-hero .hero-stats{gap:26px}
