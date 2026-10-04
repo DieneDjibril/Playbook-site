@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -227,13 +227,26 @@
     #framework-page .inv-path li{padding-right:0;white-space:normal}
     #framework-page .inv-path li:not(:last-child)::after{display:none}
     #framework-page .inv-tabs-sep{flex-basis:100%;margin:6px 0 0;padding-left:0;border:0}
-    #framework-page .cont-stages{grid-template-columns:1fr;gap:18px}
-    #framework-page .cstage{padding:0 0 18px;border-bottom:1px solid var(--line)}
+    #framework-page .continuum{display:grid;grid-template-columns:34px minmax(0,1fr);column-gap:16px;row-gap:18px}
+    #framework-page .cont-track,#framework-page .cont-stages{display:contents}
+    #framework-page .cont-track::before,#framework-page .cont-track-fill{display:none}
+    #framework-page .cont-marker{--marker-size:34px;grid-column:1;align-self:start;font-size:.8rem}
+    #framework-page .cont-marker:nth-of-type(2){grid-row:1}
+    #framework-page .cont-marker:nth-of-type(3){grid-row:2}
+    #framework-page .cont-marker:nth-of-type(4){grid-row:3}
+    #framework-page .cont-marker:nth-of-type(5){grid-row:4}
+    #framework-page .cont-marker:nth-of-type(6){grid-row:5}
+    #framework-page .cstage{grid-column:2;padding:4px 0 0;border:0}
+    #framework-page .cstage:nth-child(1){grid-row:1}
+    #framework-page .cstage:nth-child(2){grid-row:2}
+    #framework-page .cstage:nth-child(3){grid-row:3}
+    #framework-page .cstage:nth-child(4){grid-row:4}
+    #framework-page .cstage:nth-child(5){grid-row:5}
     #framework-page .cstage:not(:last-child){margin:0;border-right:0}
-    #framework-page .cont-track{--marker-size:34px;height:38px;margin-bottom:24px}
-    #framework-page .cont-track::before,#framework-page .cont-track-fill{height:5px}
-    #framework-page .cont-marker{font-size:.8rem}
-    #framework-page .cont-axis{margin-top:24px;font-size:.67rem}
+    #framework-page .cstage:not(:last-child)::before{position:absolute;top:34px;bottom:-52px;left:-33px;width:3px;border-radius:3px;background:var(--green);content:"";z-index:1}
+    #framework-page .cstage:nth-child(1)::before{background:var(--amber)}
+    #framework-page .cstage:nth-child(2)::before{background:linear-gradient(var(--amber),var(--green))}
+    #framework-page .cont-axis{grid-column:1/-1;grid-row:6;margin-top:6px;font-size:.67rem}
   }
   @media(max-width:480px){
     #framework-page .fw-visual-desktop{width:min(340px,100%)}

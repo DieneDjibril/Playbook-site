@@ -434,7 +434,7 @@ h3{font-size:clamp(1.3rem,2.2vw,1.7rem)}
   .logics{grid-template-columns:1fr}
   .footer-grid{grid-template-columns:1fr}
   .footer{padding-top:48px}
-  .footer-bot{margin-left:-26px;margin-right:-26px;padding-left:26px;padding-right:26px}
+  .footer-bot{margin-left:0;margin-right:0;padding-left:0;padding-right:0}
   .cta-band{padding:44px 26px}
   .flowrow{grid-template-columns:1fr;text-align:center;gap:8px}
   .flowrow .to{text-align:center}

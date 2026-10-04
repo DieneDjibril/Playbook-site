@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -188,7 +188,13 @@
     .model-panel .model-heading{min-height:210px;padding:30px 24px!important;gap:18px}
     .model-panel .model-heading .mnum{width:52px;height:52px;flex-basis:52px;font-size:1.5rem}
     .model-panel .model-heading h2{font-size:1.55rem}
-    .model-panel .model-content{grid-template-columns:1fr}
+    .model-panel .model-content{grid-template-columns:minmax(0,1fr)}
+    .model-panel .model-content>.reveal{min-width:0;overflow-wrap:anywhere}
+    .model-panel .model-heading{flex-direction:column;align-items:flex-start;min-width:0}
+    .model-panel .model-heading h2{font-size:1.45rem;overflow-wrap:anywhere}
+    .model-panel .model-heading::after{width:240px;height:240px;right:-12%}
+    .model-panel .model-detail-card .chips{grid-template-columns:minmax(0,1fr)}
+    .model-panel .model-detail-card .chip{text-align:center}
     .model-panel .model-content>.reveal{padding:24px 20px}
     .model-panel .model-content>.reveal:first-child{border-right:0;border-bottom:1px solid var(--line)}
     .model-panel .model-detail-card{padding:24px 20px}
