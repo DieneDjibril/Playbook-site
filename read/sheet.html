@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Toolkit Workbook — Advancing Partnerships Playbook</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/styles.css">
+<link rel="icon" href="../assets/brand/rf-favicon-32.png" type="image/png">
+<style>
+  .viewer-wrap{max-width:1280px;margin:0 auto;padding:28px 24px 60px}
+  .viewer-head{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;margin-bottom:18px}
+  .viewer-actions{display:flex;gap:10px;flex-wrap:wrap}
+  .sheet-tabs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+  .sheet-tabs button{border:1px solid var(--line);background:#fff;color:var(--text);padding:8px 14px;border-radius:8px 8px 0 0;font-size:.85rem;font-weight:500;cursor:pointer}
+  .sheet-tabs button.active{background:var(--green);border-color:var(--green);color:#fff}
+  .sheet-box{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:auto;max-height:75vh}
+  .sheet-box table{border-collapse:collapse;font-size:.82rem;min-width:100%}
+  .sheet-box td,.sheet-box th{border:1px solid #dfe3e0;padding:6px 10px;vertical-align:top;white-space:pre-wrap;min-width:60px;max-width:420px}
+  .sheet-box tr:first-child td{background:#f1f5f2;font-weight:600}
+  .sheet-msg{padding:24px;color:var(--text)}
+  @media (max-width:720px){.viewer-wrap{padding:20px 14px 44px}.sheet-tabs{overflow-x:auto;flex-wrap:nowrap}.sheet-tabs button{white-space:nowrap}}
+</style>
+</head>
+<body data-page="read" data-root="../">
+<div id="nav"></div>
+<div class="viewer-wrap">
+  <div class="viewer-head">
+    <div>
+      <span class="eyebrow">Read online</span>
+      <h1 style="font-family:var(--serif);font-size:1.9rem;margin-top:4px">Toolkit — Updated Workbook</h1>
+    </div>
+    <div class="viewer-actions">
+      <a class="btn btn-ghost" href="viewer.html?doc=toolkit-quickguide.pdf">← Other toolkit documents</a>
+      <a class="btn btn-primary" href="../downloads/toolkit-workbook.xlsx" download>Download Excel</a>
+    </div>
+  </div>
+  <div class="sheet-tabs" id="sheetTabs"></div>
+  <div class="sheet-box" id="sheetBox"><p class="sheet-msg">Loading workbook…</p></div>
+</div>
+<div id="footer"></div>
+<script src="../assets/components.js"></script>
+<script src="../assets/vendor/xlsx.full.min.js"></script>
+<script>
+(function(){
+  var tabs = document.getElementById('sheetTabs');
+  var box = document.getElementById('sheetBox');
+  function show(wb, name, btn){
+    Array.prototype.forEach.call(tabs.children, function(b){ b.classList.toggle('active', b === btn); });
+    box.innerHTML = XLSX.utils.sheet_to_html(wb.Sheets[name]);
+  }
+  fetch('../downloads/toolkit-workbook.xlsx').then(function(r){
+    if(!r.ok) throw new Error(r.status);
+    return r.arrayBuffer();
+  }).then(function(buf){
+    var wb = XLSX.read(buf, {type:'array'});
+    wb.SheetNames.forEach(function(name, i){
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.textContent = name;
+      b.addEventListener('click', function(){ show(wb, name, b); });
+      tabs.appendChild(b);
+      if(i === 0) show(wb, name, b);
+    });
+  }).catch(function(){
+    box.innerHTML = '<p class="sheet-msg">The workbook could not be loaded. Please use the Download Excel button.</p>';
+  });
+})();
+</script>
+</body>
+</html>
