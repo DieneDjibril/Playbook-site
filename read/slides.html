@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Toolkit Design Workbook — Advancing Partnerships Playbook</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/styles.css">
+<link rel="icon" href="../assets/brand/rf-favicon-32.png" type="image/png">
+<style>
+  .viewer-wrap{max-width:1100px;margin:0 auto;padding:28px 24px 60px}
+  .viewer-head{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;margin-bottom:18px}
+  .viewer-actions{display:flex;gap:10px;flex-wrap:wrap}
+  .stage{background:#1d2a25;border-radius:14px;padding:14px;position:relative}
+  .stage img{display:block;width:100%;height:auto;border-radius:6px;background:#fff}
+  .ctrl{display:flex;align-items:center;justify-content:center;gap:14px;margin:16px 0}
+  .ctrl button{border:1px solid var(--line);background:#fff;color:var(--text);padding:10px 18px;border-radius:999px;font-weight:600;cursor:pointer}
+  .ctrl button:disabled{opacity:.4;cursor:default}
+  .ctrl span{font-weight:600;min-width:90px;text-align:center}
+  .thumbs{display:flex;gap:8px;overflow-x:auto;padding-bottom:6px}
+  .thumbs button{flex:0 0 120px;border:2px solid transparent;border-radius:6px;padding:0;background:none;cursor:pointer;opacity:.7}
+  .thumbs button.active{border-color:var(--green);opacity:1}
+  .thumbs img{display:block;width:100%;border-radius:4px}
+  @media (max-width:720px){.viewer-wrap{padding:20px 14px 44px}.stage{padding:6px}.thumbs button{flex-basis:90px}}
+</style>
+</head>
+<body data-page="read" data-root="../">
+<div id="nav"></div>
+<div class="viewer-wrap">
+  <div class="viewer-head">
+    <div>
+      <span class="eyebrow">Read online</span>
+      <h1 style="font-family:var(--serif);font-size:1.9rem;margin-top:4px">Toolkit — Design Workbook</h1>
+    </div>
+    <div class="viewer-actions">
+      <a class="btn btn-ghost" href="viewer.html?doc=toolkit-quickguide.pdf">← Other toolkit documents</a>
+      <a class="btn btn-primary" href="../downloads/toolkit-design-workbook.pptx" download>Download PowerPoint</a>
+    </div>
+  </div>
+  <div class="stage"><img id="slide" alt="Slide 1"></div>
+  <div class="ctrl">
+    <button type="button" id="prev">← Previous</button>
+    <span id="count"></span>
+    <button type="button" id="next">Next →</button>
+  </div>
+  <div class="thumbs" id="thumbs"></div>
+</div>
+<div id="footer"></div>
+<script src="../assets/components.js"></script>
+<script>
+(function(){
+  var total = 9, cur = 1;
+  var img = document.getElementById('slide'), count = document.getElementById('count');
+  var prev = document.getElementById('prev'), next = document.getElementById('next');
+  var thumbs = document.getElementById('thumbs');
+  function src(i){ return '../downloads/toolkit-slides/slide-' + i + '.png'; }
+  function go(i){
+    cur = Math.min(total, Math.max(1, i));
+    img.src = src(cur);
+    img.alt = 'Slide ' + cur;
+    count.textContent = 'Slide ' + cur + ' / ' + total;
+    prev.disabled = cur === 1;
+    next.disabled = cur === total;
+    Array.prototype.forEach.call(thumbs.children, function(b, k){ b.classList.toggle('active', k + 1 === cur); });
+  }
+  for(var i = 1; i <= total; i++){
+    (function(n){
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.setAttribute('aria-label', 'Go to slide ' + n);
+      b.innerHTML = '<img src="' + src(n) + '" alt="" loading="lazy">';
+      b.addEventListener('click', function(){ go(n); });
+      thumbs.appendChild(b);
+    })(i);
+  }
+  prev.addEventListener('click', function(){ go(cur - 1); });
+  next.addEventListener('click', function(){ go(cur + 1); });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'ArrowLeft') go(cur - 1);
+    if(e.key === 'ArrowRight') go(cur + 1);
+  });
+  go(1);
+})();
+</script>
+</body>
+</html>
