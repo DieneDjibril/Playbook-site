@@ -29,6 +29,7 @@
         '<a href="' + h('read/viewer.html?doc=executive-summary.pdf') + '"><b>Executive Summary</b><span>Read the PDF</span></a>' +
         '<a href="' + h('read/viewer.html') + '"><b>Full Playbook</b><span>Open the PDF viewer</span></a>' +
         '<a href="' + h('cases.html') + '"><b>Case Studies</b><span>Four cases, in detail</span></a>' +
+        '<a href="' + h('read/viewer.html?doc=toolkit-quickguide.pdf') + '"><b>Toolkit</b><span>Guide, workbooks and slides</span></a>' +
       '</div>' +
     '</div>';
 
@@ -66,6 +67,7 @@
         '<div><h5>Read</h5><ul>' +
           '<li><a href="' + h('read/viewer.html?doc=executive-summary.pdf') + '">Executive Summary</a></li>' +
           '<li><a href="' + h('read/viewer.html') + '">Full Playbook</a></li>' +
+          '<li><a href="' + h('read/viewer.html?doc=toolkit-quickguide.pdf') + '">Toolkit</a></li>' +
           '<li><a href="' + h('downloads.html') + '">Downloads</a></li>' +
         '</ul></div>' +
         '<div><h5>Contact &amp; follow</h5><div class="footer-social">' +
